@@ -8,10 +8,17 @@ namespace Data.Entities.Models
 {
     public class Subcategory
     {
-        public Guid Id;
-        public string Name;
-        public string Description;
-        public Guid CatgoryId;
-        public Category? Category;
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description
+        {
+            get; set;
+        }
+        public Guid CatgoryId 
+        {
+            get; set;
+        }
+        public Category? Category { get; set; }
+        public ICollection<Course> Courses = new List<Course>();
     }
 }

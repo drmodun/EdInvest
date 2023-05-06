@@ -22,14 +22,16 @@ namespace Data.Entities.Models
 
         public string ProfilePicture { get; set; }
 
+        public Dictionary<string, string> SocialLinks { get; set; }
+
         public bool IsDonator { get; set; }
 
         public bool? IsAdmin { get; set; }
 
         public Guid CountryId;
         public Country? Country { get; set; }
-        public string LocationName;
-        public string WalletAddress;
+        public string LocationName { get; set; }
+        public string WalletAddress { get; set; }
         public decimal ? Balance { get; set; }
         public ICollection<Course> Courses { get; set; } = new List<Course>();
         public ICollection<Investments> Investments { get; set; } = new List<Investments>();

@@ -8,14 +8,16 @@ namespace Data.Entities.Models
 {
     public class Investments
     {
-        public Guid Id;
-        public Guid UserId;
-        public User? User;
-        public Guid CourseId;
-        public Course? Course;
-        public decimal Amount;
-        public DateTime CreatedAt;
-        public DateTime UpdatedAt;
+        public Guid UserId { get; set; }
+        public User? User { get; set; }
+        public Guid CourseId { get; set; }
+        public Course? Course { get; set; }
+        public decimal Amount 
+        {
+            get; set;
+        }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 
 }

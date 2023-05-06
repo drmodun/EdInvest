@@ -8,28 +8,27 @@ namespace Data.Entities.Models
 {
     public class Course
     {
-        public Guid Id;
-        public string Name;
-        public string Description;
-        public List<string> Images;
-        public List<string> Tags;
-        public DateTime CreatedAt;
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public List<string> Images { get; set; } = new List<string>();
+        public DateTime CreatedAt { get; set; }
         
-        public DateTime UpdatedAt;
-        public Guid CategorId;
-        public Category? Category;
-        public Guid SubcategoryId;
-        public Subcategory? Subcategory;
-        public decimal Goal;
-        public decimal CurrentAmount;
-        public int? ExpectedApplicants;
-        public int? ExpectedGraduates;
-        public decimal? Passrate;
-        public DateTime? StartDate;
-        public DateTime? EndDate;
-        public Guid DoneeId;
-        public User? Donee;
-        public int? ActiveStudents;
+        public DateTime UpdatedAt { get; set; }
+        public Guid CategoryId { get; set; }
+        public Category? Category { get; set; }
+        public Guid SubcategoryId { get; set; }
+        public Subcategory? Subcategory { get; set; }
+        public decimal Goal { get; set; }
+        public decimal CurrentAmount { get; set; }
+        public int? ExpectedApplicants { get; set; }
+        public int? ExpectedGraduates { get; set; }
+        public decimal? Passrate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public Guid DoneeId { get; set; }
+        public User? Donee { get; set; }
+        public int? ActiveStudents { get; set; }
         public ICollection<Investments> Investments = new List<Investments>();
     }
 }

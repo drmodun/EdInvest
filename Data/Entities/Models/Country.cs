@@ -10,7 +10,8 @@ namespace Data.Entities.Models
     public class Country
     {
         public Guid Id { get; set; }
-        public string Name;
-        public string Flag;
+        public string Name { get; set; }
+        public string Flag { get; set; }
+        public ICollection<User> Users = new List<User>();  
     }
 }
