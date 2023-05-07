@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Entities.Models
+namespace Data.Entities.Models.Users
 {
-    public class User
+    public abstract class User
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -24,17 +25,15 @@ namespace Data.Entities.Models
 
         public Dictionary<string, string> SocialLinks { get; set; }
 
-        public bool IsDonator { get; set; }
-
         public bool? IsAdmin { get; set; }
 
         public Guid CountryId;
         public Country? Country { get; set; }
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }
-        public decimal ? Balance { get; set; }
-        public ICollection<Course> Courses { get; set; } = new List<Course>();
-        public ICollection<Investments> Investments { get; set; } = new List<Investments>();
+        public decimal? Balance { get; set; }
+
+        public UserType Type { get; set; }
 
 
     }

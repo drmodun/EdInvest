@@ -19,6 +19,6 @@ namespace Data.Entities.Models
             get; set;
         }
         public Category? Category { get; set; }
-        public ICollection<Course> Courses = new List<Course>();
+        public ICollection<Item> Courses = new List<Item>();
     }
 }

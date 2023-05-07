@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Data.Entities.Models
 {
-    public class Category
+    public class Field
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set;}
-        public ICollection<Subcategory> Subcategories = new List<Subcategory>();
-        public ICollection<Item> Courses = new List<Item>();
+        public ICollection<Student> Students { get; set; } = new List<Student>();
     }
 }

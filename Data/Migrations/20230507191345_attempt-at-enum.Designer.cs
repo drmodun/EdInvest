@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,16 +13,17 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(EdInvestContext))]
-    partial class EdInvestContextModelSnapshot : ModelSnapshot
+    [Migration("20230507191345_attempt-at-enum")]
+    partial class attemptatenum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "item_type", new[] { "course", "application", "bootcamp", "online_course", "event" });
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "hstore");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
@@ -63,6 +65,74 @@ namespace Data.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("Data.Entities.Models.Course", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("ActiveStudents")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("CurrentAmount")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("DoneeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("ExpectedApplicants")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ExpectedGraduates")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Goal")
+                        .HasColumnType("numeric");
+
+                    b.Property<List<string>>("Images")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal?>("Passrate")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("SubcategoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("DoneeId");
+
+                    b.HasIndex("SubcategoryId");
+
+                    b.ToTable("Courses");
+                });
+
             modelBuilder.Entity("Data.Entities.Models.Field", b =>
                 {
                     b.Property<Guid>("Id")
@@ -80,91 +150,26 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Entities.Models.Investments", b =>
                 {
-                    b.Property<Guid>("InvestorId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("CourseId")
                         .HasColumnType("uuid");
 
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("Tier")
-                        .HasColumnType("integer");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("InvestorId", "CourseId");
+                    b.HasKey("UserId", "CourseId");
 
                     b.HasIndex("CourseId");
 
                     b.ToTable("Investments");
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.Item", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<decimal>("CurrentAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("Goal")
-                        .HasColumnType("numeric");
-
-                    b.Property<List<string>>("Images")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("OrganisationId")
-                        .HasColumnType("uuid");
-
-                    b.Property<List<decimal>>("Prices")
-                        .IsRequired()
-                        .HasColumnType("numeric[]");
-
-                    b.Property<Guid>("SubcategoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Dictionary<string, string>>("Tiers")
-                        .IsRequired()
-                        .HasColumnType("hstore");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("OrganisationId");
-
-                    b.HasIndex("SubcategoryId");
-
-                    b.ToTable("Courses");
-
-                    b.HasDiscriminator<int>("Type");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Subcategory", b =>
@@ -262,114 +267,6 @@ namespace Data.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Application", b =>
-                {
-                    b.HasBaseType("Data.Entities.Models.Item");
-
-                    b.Property<string>("AppPurpose")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("EstimatedNumberOfUsers")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("EstimatedRelease")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<List<string>>("Features")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.Property<List<string>>("Markets")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.HasDiscriminator().HasValue(1);
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.Course", b =>
-                {
-                    b.HasBaseType("Data.Entities.Models.Item");
-
-                    b.Property<int?>("ActiveStudents")
-                        .HasColumnType("integer");
-
-                    b.Property<Dictionary<string, string>>("Curriculum")
-                        .IsRequired()
-                        .HasColumnType("hstore");
-
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("ExpectedApplicants")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ExpectedGraduates")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasDiscriminator().HasValue(0);
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.Event", b =>
-                {
-                    b.HasBaseType("Data.Entities.Models.Item");
-
-                    b.Property<Dictionary<string, string>>("Activities")
-                        .IsRequired()
-                        .HasColumnType("hstore");
-
-                    b.Property<int>("Capacity")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("ExpectedAttendance")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<List<string>>("NotableAttendees")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.Property<List<string>>("NotableSpeakers")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.HasDiscriminator().HasValue(4);
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.OnlineCourse", b =>
-                {
-                    b.HasBaseType("Data.Entities.Models.Item");
-
-                    b.Property<int>("AvarageDuration")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ExpectedAudience")
-                        .HasColumnType("integer");
-
-                    b.Property<Dictionary<string, string>>("Lessons")
-                        .IsRequired()
-                        .HasColumnType("hstore");
-
-                    b.Property<List<DateTime>>("LessonsDate")
-                        .IsRequired()
-                        .HasColumnType("timestamp with time zone[]");
-
-                    b.Property<Dictionary<string, string>>("LinksToChannels")
-                        .IsRequired()
-                        .HasColumnType("hstore");
-
-                    b.HasDiscriminator().HasValue(3);
-                });
-
             modelBuilder.Entity("Data.Entities.Models.Investor", b =>
                 {
                     b.HasBaseType("Data.Entities.Models.User");
@@ -426,26 +323,7 @@ namespace Data.Migrations
                     b.HasDiscriminator().HasValue(0);
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Investments", b =>
-                {
-                    b.HasOne("Data.Entities.Models.Item", "Course")
-                        .WithMany("Investments")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Data.Entities.Models.Investor", "Investor")
-                        .WithMany("Investments")
-                        .HasForeignKey("InvestorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Investor");
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.Item", b =>
+            modelBuilder.Entity("Data.Entities.Models.Course", b =>
                 {
                     b.HasOne("Data.Entities.Models.Category", "Category")
                         .WithMany("Courses")
@@ -455,7 +333,7 @@ namespace Data.Migrations
 
                     b.HasOne("Data.Entities.Models.Organisation", "Organisation")
                         .WithMany("Courses")
-                        .HasForeignKey("OrganisationId")
+                        .HasForeignKey("DoneeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -470,6 +348,25 @@ namespace Data.Migrations
                     b.Navigation("Organisation");
 
                     b.Navigation("Subcategory");
+                });
+
+            modelBuilder.Entity("Data.Entities.Models.Investments", b =>
+                {
+                    b.HasOne("Data.Entities.Models.Course", "Course")
+                        .WithMany("Investments")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Data.Entities.Models.Investor", "Investor")
+                        .WithMany("Investments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Investor");
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Subcategory", b =>
@@ -523,14 +420,14 @@ namespace Data.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("Data.Entities.Models.Course", b =>
+                {
+                    b.Navigation("Investments");
+                });
+
             modelBuilder.Entity("Data.Entities.Models.Field", b =>
                 {
                     b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("Data.Entities.Models.Item", b =>
-                {
-                    b.Navigation("Investments");
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Subcategory", b =>

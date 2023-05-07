@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Migrations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,11 @@ namespace Data.Entities.Models
 {
     public class Investments
     {
-        public Guid UserId { get; set; }
-        public User? User { get; set; }
+        public Guid InvestorId { get; set; }
+        public Investor? Investor { get; set; }
         public Guid CourseId { get; set; }
-        public Course? Course { get; set; }
-        public decimal Amount 
+        public Item? Course { get; set; }
+        public int Tier
         {
             get; set;
         }
