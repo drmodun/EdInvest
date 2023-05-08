@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,5 +7,27 @@
   </PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Data\Data.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Contracts\Requests\Field\" />
+	  <Folder Include="Contracts\Requests\Category\" />
+	  <Folder Include="Contracts\Requests\Investments\" />
+	  <Folder Include="Contracts\Requests\Users\Organisation\" />
+	  <Folder Include="Contracts\Requests\Subcategory\" />
+	  <Folder Include="Contracts\Responses\Application\" />
+	  <Folder Include="Contracts\Responses\Category\" />
+	  <Folder Include="Contracts\Responses\Course\" />
+	  <Folder Include="Contracts\Responses\Ecent\" />
+	  <Folder Include="Contracts\Responses\Field\" />
+	  <Folder Include="Contracts\Responses\Investments\" />
+	  <Folder Include="Contracts\Responses\Investor\" />
+	  <Folder Include="Contracts\Responses\NewFolder\" />
+	  <Folder Include="Contracts\Responses\OnlineCourse\" />
+	  <Folder Include="Contracts\Responses\Organisation\" />
+	  <Folder Include="Contracts\Responses\Student\" />
+	  <Folder Include="Contracts\Responses\Subcategory\" />
+	  <Folder Include="Mappers\" />
+	  <Folder Include="Repositories\" />
+	  <Folder Include="Services\" />
 	</ItemGroup>
 </Project>

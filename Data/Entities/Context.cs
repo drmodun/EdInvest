@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Data.Entities.Models;
 using Data.Enums;
+using Data.Entities.Models.Items;
+using Data.Entities.Models.Users;
 
 namespace Data.Entities
 {

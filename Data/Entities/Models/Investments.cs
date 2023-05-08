@@ -1,4 +1,6 @@
-﻿using Data.Migrations;
+﻿using Data.Entities.Models.Items;
+using Data.Entities.Models.Users;
+using Data.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
