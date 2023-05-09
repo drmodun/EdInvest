@@ -16,6 +16,8 @@ namespace Domain.Contracts.Responses.Subcategory
         public string Name { get; set; }
         public Guid CategoryId { get; set; }
 
+        public string Description { get; set; }
+
         public List<GetaApplicationResponse> Applications { get; set; }
         public List<GetEventResponse> Evnets { get; set; }
         public List<GetCourseResponse> Courses { get; set; }

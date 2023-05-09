@@ -13,6 +13,6 @@ namespace Data.Entities.Models
         public string Name { get; set; }
         public string Description { get; set;}
         public ICollection<Subcategory> Subcategories = new List<Subcategory>();
-        public ICollection<Item> Courses = new List<Item>();
+        public ICollection<Item> Items = new List<Item>();
     }
 }

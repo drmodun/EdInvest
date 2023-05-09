@@ -73,11 +73,11 @@ namespace Data.Entities
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Item>()
                 .HasOne(c => c.Category)
-                .WithMany(co => co.Courses)
+                .WithMany(co => co.Items)
                 .HasForeignKey(c => c.CategoryId);
             modelBuilder.Entity<Item>()
                 .HasOne(c => c.Subcategory)
-                .WithMany(co => co.Courses)
+                .WithMany(co => co.Items)
                 .HasForeignKey(c => c.SubcategoryId);
             modelBuilder.Entity<Investments>()
                    .HasKey(i => new { i.InvestorId, i.CourseId });
