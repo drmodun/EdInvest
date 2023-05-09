@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Users.Student
 {
-    public class GetStudentRequest : GetUserRequest
+    public class GetOrganisationRequest : GetUserRequest
     {
     }
 }

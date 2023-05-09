@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Subcategory
+namespace Domain.Contracts.Responses.Application
 {
-    public class DeleteCategoryRequest
+    internal class GetaApplicationResponse
     {
-
-        public Guid Id { get; set;}
     }
 }

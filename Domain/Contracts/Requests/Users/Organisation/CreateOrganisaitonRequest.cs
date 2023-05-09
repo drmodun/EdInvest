@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Users.Investor
+namespace Domain.Contracts.Requests.Users.organisation
+
 {
-    public class CreateInvestorRequest : CreateUserRequest
+    public class CreateOrganisationRequest : CreateUserRequest
     {
-        public int NumberOfEmployees { get; set; }
+        public int NumberOfMembers { get; set; }
     }
 }

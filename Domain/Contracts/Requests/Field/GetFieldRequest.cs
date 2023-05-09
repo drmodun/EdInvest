@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Field
 {
-    internal class GetFieldRequest
+    public class GetFieldRequest
     {
+        public Guid  Id { get; set; }
     }
 }

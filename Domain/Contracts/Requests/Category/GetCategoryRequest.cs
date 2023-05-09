@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Category
 {
-    internal class GetCategoryRequest
+    public class GetCategoryRequest
     {
+        public Guid Id { get; set; }
     }
 }

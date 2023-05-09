@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Users.Investor
 {
-    public class UpdateInvestorRequest : UpdateUserRequest
+    public class UpdateOrganisationRequest : UpdateUserRequest
     {
-        public int NumberOfEmployees { get; set; }
+        public int NumberOfMembers { get; set; }
 
     }
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Users.Student
+namespace Domain.Contracts.Requests.Users.Investor
 {
-    public class GetStudentRequest : GetUserRequest
+    public class GetInvestorRequest : GetUserRequest
     {
     }
 }

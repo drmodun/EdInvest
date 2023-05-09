@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Field
 {
-    internal class UpdateFieldRequest
+    public class UpdateFieldRequest
     {
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
     }
 }

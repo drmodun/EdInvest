@@ -9,11 +9,6 @@
 		<ProjectReference Include="..\Data\Data.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Contracts\Requests\Field\" />
-	  <Folder Include="Contracts\Requests\Category\" />
-	  <Folder Include="Contracts\Requests\Investments\" />
-	  <Folder Include="Contracts\Requests\Users\Organisation\" />
-	  <Folder Include="Contracts\Requests\Subcategory\" />
 	  <Folder Include="Contracts\Responses\Application\" />
 	  <Folder Include="Contracts\Responses\Category\" />
 	  <Folder Include="Contracts\Responses\Course\" />

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Investments
 {
-    internal class DeleteInvestmentRRequest
+    public class DeleteInvestmentRRequest
     {
+        public Guid InvaestorId { get; set; }
+        public Guid CourseId { get; set; }
     }
 }

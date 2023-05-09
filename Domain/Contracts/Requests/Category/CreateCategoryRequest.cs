@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Category
 {
-    internal class CreateCategoryRequest
+    public class CreateCategoryRequest
     {
+        public string Name { get; set; }
+        public string Description { get; set; }
+
     }
 }

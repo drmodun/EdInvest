@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Subcategory
 {
-    internal class UpdateSubcategoryRequest
+    public class UpdateSubcategoryRequest
     {
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
+
+        public Guid CategoryId { get; set; }
+
+        public string Description { get; set; }
+
     }
 }
