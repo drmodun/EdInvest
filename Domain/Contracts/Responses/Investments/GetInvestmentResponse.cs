@@ -1,20 +1,19 @@
-﻿using Data.Entities.Models.Items;
-using Data.Entities.Models.Users;
-using Data.Migrations;
+﻿using Domain.Contracts.Responses.Items.Item;
+using Domain.Contracts.Responses.Users.Investor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Entities.Models
+namespace Domain.Contracts.Responses.Investments
 {
-    public class Investments
+    public class GetInvestmentResponse
     {
+
         public Guid InvestorId { get; set; }
-        public Investor? Investor { get; set; }
-        public Guid CourseId { get; set; }
-        public Item? Item { get; set; }
+        public Guid ItemId { get; set; }
+
         public int Tier
         {
             get; set;
@@ -22,5 +21,4 @@ namespace Data.Entities.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
-
 }

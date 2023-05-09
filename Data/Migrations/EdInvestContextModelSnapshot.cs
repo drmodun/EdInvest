@@ -41,7 +41,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Country", b =>
@@ -60,7 +60,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Field", b =>
@@ -75,7 +75,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Field");
+                    b.ToTable("Field", (string)null);
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Investments", b =>
@@ -99,7 +99,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Investments");
+                    b.ToTable("Investments", (string)null);
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Items.Item", b =>
@@ -165,7 +165,7 @@ namespace Data.Migrations
 
                     b.HasIndex("SubcategoryId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
 
                     b.HasDiscriminator<int>("Type");
 
@@ -193,7 +193,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CatgoryId");
 
-                    b.ToTable("Subcategories");
+                    b.ToTable("Subcategories", (string)null);
                 });
 
             modelBuilder.Entity("Data.Entities.Models.Users.User", b =>
@@ -260,7 +260,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasDiscriminator<int>("Type");
 

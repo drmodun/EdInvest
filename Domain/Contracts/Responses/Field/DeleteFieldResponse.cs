@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Application
+namespace Domain.Contracts.Responses.Field
 {
-    internal class GetaApplicationResponse
+    public class DeleteFieldResponse
     {
+        public bool Success { get; set; }
     }
 }

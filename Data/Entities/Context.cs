@@ -53,7 +53,7 @@ namespace Data.Entities
                 .HasForeignKey(c => c.CatgoryId)
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Organisation>()
-                .HasMany(u => u.Courses)
+                .HasMany(u => u.Items)
                 .WithOne(u => u.Organisation)
                 .HasForeignKey(c => c.OrganisationId)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -68,7 +68,7 @@ namespace Data.Entities
                 .HasForeignKey(i => i.FunderId);
             modelBuilder.Entity<Item>()
                 .HasMany(c => c.Investments)
-                .WithOne(i => i.Course)
+                .WithOne(i => i.Item)
                 .HasForeignKey(i => i.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Item>()
