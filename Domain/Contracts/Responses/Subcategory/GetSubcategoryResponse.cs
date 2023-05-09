@@ -18,10 +18,6 @@ namespace Domain.Contracts.Responses.Subcategory
 
         public string Description { get; set; }
 
-        public List<GetaApplicationResponse> Applications { get; set; }
-        public List<GetEventResponse> Evnets { get; set; }
-        public List<GetCourseResponse> Courses { get; set; }
-        public List<GetOnlineCourseRequest> OnlineCourses { get; set; }
 
     }
 }

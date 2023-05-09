@@ -17,11 +17,5 @@ namespace Domain.Contracts.Responses.Users.Organisation
 
         public int NumberOfMembers { get; set; }
 
-        public string Location { get; set; }
-        public List<GetaApplicationResponse> Applications { get; set; }
-        public List<GetEventResponse> Evnets { get; set; }
-        public List<GetCourseResponse> Courses { get; set; }
-        public List<GetOnlineCourseRequest> OnlineCourses { get; set; }
-        //add stuff later
     }
 }

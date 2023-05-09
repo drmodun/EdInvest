@@ -17,12 +17,6 @@ namespace Domain.Contracts.Responses.Users.Investor
     {
         public int NumberOfEmployees { get; set; }
         //public List<> Investments { get; set; }
-        public List<GetaApplicationResponse> Applications { get; set; }
-        public List<GetEventResponse> Evnets { get; set; }
-        public List<GetCourseResponse> Courses { get; set; }
-        public List<GetOnlineCourseRequest> OnlineCourses { get; set; }
-
-        
-        public List<GetStudentResponse> Students { get; set; }
+       
     }
 }

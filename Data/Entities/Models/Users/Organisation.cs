@@ -11,7 +11,6 @@ namespace Data.Entities.Models.Users
     {
         public int NumberOfMembers { get; set; }
 
-        public string Location { get; set; }
         public ICollection<Item> Items { get; set; } = new List<Item>();
 
     }

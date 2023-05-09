@@ -12,6 +12,5 @@ namespace Domain.Contracts.Responses.Field
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public List<GetStudentResponse> Students { get; set; }
     }
 }
