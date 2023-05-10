@@ -11,7 +11,7 @@ using Domain.Contracts.Responses.Users.Investor;
 
 namespace Domain.Contracts.Responses.Items.Item
 {
-    public abstract  class GetItemResponse
+    public  class GetItemResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
