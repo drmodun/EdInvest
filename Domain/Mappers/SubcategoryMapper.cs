@@ -13,7 +13,6 @@ namespace Domain.Mappers
 {
     public class SubcategoryMapper : IMapper<Subcategory, GetSubcategoryResponse, CreateSubcategoryRequest, UpdateSubcategoryRequest>
     {
-        private readonly EdInvestContext _context;
 
         public   GetSubcategoryResponse ToDTO(Subcategory entity)
         {

@@ -13,9 +13,6 @@ namespace Domain.Contracts.Responses.Items.Item
 {
     public class GetAllItemsResponse
     {
-        public List<GetaApplicationResponse> Applications = new ();
-        public List<GetCourseResponse> Courses = new();
-        public List<GetEventResponse> Events = new();
-        public List<GetOnlineCourseResponse> OnlineCourses = new();
+        public List<GetItemResponse> Items { get; set; }
     }
 }

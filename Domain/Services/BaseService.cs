@@ -11,20 +11,19 @@ namespace Domain.Services
 {
     public class BaseService<TEntity, TMapper, TReadRepo, TWriteRepo, 
         TCreateRequest, TUpdateRequest, TGetRequest, TGetAllRequest, TId,
-        TCreateResponse, TUpdateResponse, TGetResponse, TGetAllResponse, TList, TItem
+        TGetResponse, TGetAllResponse, TList
         > 
         : IBaseService<TEntity, TMapper, TReadRepo> where TEntity : class 
         where TMapper : IMapper<TEntity, TGetResponse, TCreateRequest, TUpdateRequest> 
         where TWriteRepo : IWriteRepo<TEntity, TId>
-        where TReadRepo : IReadRepo<TEntity, TId, TGetAllRequest, TList>
+        where TReadRepo : IReadRepo<TEntity, TId, TGetAllRequest>
         where TCreateRequest : class
         where TUpdateRequest : class
         where TGetRequest : class
         where TGetAllRequest : class
-       where TId : struct
+        where TId : struct
         where TList : List<TEntity>
         where TGetResponse : class
-        where TGetAllResponse : List<TGetResponse>
     {
         private readonly TMapper _mapper;
         private readonly TReadRepo _readRepo;

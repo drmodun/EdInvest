@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class CategoryRepo : IReadRepo<Category, Guid, GetAllCategoriesRequest, List<Category>>, ICategoryRepo
+    public class CategoryRepo : IReadRepo<Category, Guid, GetAllCategoriesRequest>, ICategoryRepo
     {
         private readonly EdInvestContext _context;
 

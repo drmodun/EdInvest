@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class InvestmentRepo : IReadRepo<Investments, N_NKey, GetAllInvestmentsRequest, List<Investments>>,IInvestmentsRepo 
+    public class InvestmentRepo : IReadRepo<Investments, N_NKey, GetAllInvestmentsRequest>,IInvestmentsRepo 
     {
         private readonly EdInvestContext _context;
 

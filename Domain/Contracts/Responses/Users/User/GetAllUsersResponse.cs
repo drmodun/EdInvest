@@ -12,8 +12,7 @@ namespace Domain.Contracts.Responses.Users.User
 {
     public class GetAllUsersResponse
     {
-        public List<GetInvestorResponse> Investors { get; set; } = new();
-        public List<GetOrganisationResponse> Organisations { get; set; } = new();
+        public List<GetUserResponse> Users { get; set; }
         //Add students in the future
         //public List<GetStudentResponse> Students { get; set; } = new();
 
