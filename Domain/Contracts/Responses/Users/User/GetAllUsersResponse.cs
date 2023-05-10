@@ -1,4 +1,7 @@
 ﻿using Data.Entities.Models.Users;
+using Domain.Contracts.Responses.Users.Investor;
+using Domain.Contracts.Responses.Users.Organisation;
+using Domain.Contracts.Responses.Users.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +12,10 @@ namespace Domain.Contracts.Responses.Users.User
 {
     public class GetAllUsersResponse
     {
-        public List<Data.Entities.Models.Users.Investor> Investors { get; set; } = new();
-        public List<Data.Entities.Models.Users.Organisation> Organisations { get; set; } = new();
-        public List<Data.Entities.Models.Users.Student> Students { get; set; } = new();
+        public List<GetInvestorResponse> Investors { get; set; } = new();
+        public List<GetOrganisationResponse> Organisations { get; set; } = new();
+        //Add students in the future
+        //public List<GetStudentResponse> Students { get; set; } = new();
 
     }
 }

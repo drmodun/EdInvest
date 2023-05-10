@@ -4,6 +4,7 @@ using Data.Entities.Models.Items;
 using Data.Enums;
 using Domain.Contracts.Requests.Items.Item;
 using Domain.Contracts.Responses.Items.Item;
+using Domain.Mappers;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -50,10 +51,10 @@ namespace Domain.Repositories.Implementations
                 .Where(x => x.CategoryId == options.CategoryId || options.CategoryId == null)
                 .Where(x => x.SubcategoryId == options.SubcategoryId || options.SubcategoryId == null)
                 .Where(x => x.OrganisationId == options.OrganisationId || options.OrganisationId == null);
-            var applications = await list.OfType<Application>().ToListAsync();
-            var courses = await list.OfType<Course>().ToListAsync();
-            var onlineCourses = await list.OfType<OnlineCourse>().ToListAsync();
-            var events = await list.OfType<Event>().ToListAsync();
+            var applications = list.OfType<Application>().Select(ApplicationMapper.ToDTO).ToList();
+            var courses = list.OfType<Course>().Select(CourseMapper.ToDTO).ToList();
+            var onlineCourses =list.OfType<OnlineCourse>().Select(OnlineCourseMapper.ToDTO).ToList();
+            var events = list.OfType<Event>().Select(EventMapper.ToDTO).ToList();
             return new GetAllItemsResponse()
             {
                 Applications = applications,
