@@ -4,6 +4,7 @@ using Data.Entities.Models.Items;
 using Data.Enums;
 using Domain.Contracts.Requests.Items.Item;
 using Domain.Contracts.Responses.Items.Item;
+using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
@@ -12,9 +13,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Repositories.Implementations
+namespace Domain.Repositories.Implementations 
 {
-    public class ItemRepo
+    public class ItemRepo : IItemRepo
     {
         private readonly EdInvestContext _context;
 
