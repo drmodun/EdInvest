@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public static class EventMapper
+    public   class EventMapper
     {
-        public static Event ToEntity(CreateEventRequest request)
+        public   Event ToEntity(CreateEventRequest request)
         {
             return new Event
             {
@@ -41,7 +41,7 @@ namespace Domain.Mappers
             };
         }
 
-        public static Event ToUpdatedEntity(UpdateEventRequest request)
+        public   Event ToUpdatedEntity(UpdateEventRequest request)
         {
             return new Event
             {
@@ -70,7 +70,7 @@ namespace Domain.Mappers
                 OrganisationId = request.OrganisationId,
             };
         }
-        public static GetEventResponse ToDTO(Event entity)
+        public   GetEventResponse ToDTO(Event entity)
         {
             return new GetEventResponse
             {

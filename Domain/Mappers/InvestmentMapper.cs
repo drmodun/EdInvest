@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public static class InvestmentMapper
+    public   class InvestmentMapper
     {
-        public static GetInvestmentResponse ToDTO(Investments investments)
+        public   GetInvestmentResponse ToDTO(Investments investments)
         {
             return new GetInvestmentResponse
             {
@@ -23,7 +23,7 @@ namespace Domain.Mappers
 
             };
         }
-        public static Investments ToUpdatedEntity(UpdateInvestmentRequest request)
+        public   Investments ToUpdatedEntity(UpdateInvestmentRequest request)
         {
             return new Investments
             {
@@ -34,7 +34,7 @@ namespace Domain.Mappers
                 UpdatedAt = request.UpdatedAt,
             };
         }
-        public static Investments ToEntity( CreateInvestmentRequest request) {
+        public   Investments ToEntity( CreateInvestmentRequest request) {
             return new Investments
             {
                 Tier = request.Tier,

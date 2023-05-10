@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public static class CourseMapper
+    public   class CourseMapper
     {
-        public static GetCourseResponse ToDTO(Course course)
+        public   GetCourseResponse ToDTO(Course course)
         {
             var newDTO = new GetCourseResponse
             {
@@ -45,7 +45,7 @@ namespace Domain.Mappers
 
         }
 
-        public static Course ToEntity(CreateCourseRequest request)
+        public   Course ToEntity(CreateCourseRequest request)
         {
             var newApp = new Data.Entities.Models.Items.Course
             {
@@ -72,7 +72,7 @@ namespace Domain.Mappers
             };
             return newApp;
         }
-        public static Course ToUpdatedEntity(UpdateCourseRequest request)
+        public   Course ToUpdatedEntity(UpdateCourseRequest request)
         {
             var newApp = new Course
             {

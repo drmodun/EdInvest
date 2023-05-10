@@ -14,7 +14,7 @@ namespace Domain.Mappers
     public class CategoryMapper 
     {
 
-        public static GetCategoryResponse ToDTO(Category entity)
+        public   GetCategoryResponse ToDTO(Category entity)
         {
             var response = new GetCategoryResponse()
             {
@@ -26,7 +26,7 @@ namespace Domain.Mappers
             };
             return response;
         }
-        public static Category ToEntity(CreateCategoryRequest request)
+        public   Category ToEntity(CreateCategoryRequest request)
         {
             var newCategory = new Category()
             {
@@ -36,7 +36,7 @@ namespace Domain.Mappers
             };
             return newCategory;
         } 
-        public static Category ToUpdatedEntity(UpdateCategoryRequest request)
+        public   Category ToUpdatedEntity(UpdateCategoryRequest request)
         {
             var updatedCategory = new Category()
             {

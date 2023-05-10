@@ -1,7 +1,10 @@
 ﻿using Data.Entities;
+using Data.Entities.Models.Items;
 using Data.Entities.Models.Users;
 using Data.Enums;
+using Domain.Contracts.Requests.Items.Item;
 using Domain.Contracts.Requests.Users.User;
+using Domain.Contracts.Responses.Items.Item;
 using Domain.Contracts.Responses.Users.User;
 using Domain.Mappers;
 using Domain.Repositories.Interfaces;
@@ -15,11 +18,19 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class UserRepo : IUserRepo
+    public class UserRepo : IReadRepo<User, Guid, GetAllUsersRequest, GetAllUsersResponse>, IUserRepo
     {
         private readonly EdInvestContext _context;
-        public UserRepo(EdInvestContext edInvest) { 
+        //private readonly _applicationMapper;
+        private readonly InvestorMapper _investorMapper;
+        private readonly OrganisationMapper _organisationMapper;
+
+        public UserRepo(EdInvestContext edInvest,
+            InvestorMapper investorMapper, OrganisationMapper organisationMapper)//, CourseMapper courseMapper) { 
+        {
             _context = edInvest;
+            _investorMapper = investorMapper;
+            _organisationMapper = organisationMapper;
         }
 
         public async Task<User?> GetById(Guid id)
@@ -42,8 +53,8 @@ namespace Domain.Repositories.Implementations
                 .Where(u => u.Type == options.UserType || options.UserType == null);
             return new GetAllUsersResponse
             {
-                Investors =  users.OfType<Investor>().Select(InvestorMapper.ToGetInvestorResponse).ToList(),
-                Organisations =  users.OfType<Organisation>().Select(OrganisationMapper.ToDTO).ToList(),
+                Investors =  users.OfType<Investor>().Select(_investorMapper.ToDTO).ToList(),
+                Organisations =  users.OfType<Organisation>().Select(_organisationMapper.ToDTO).ToList(),
                 //Students =  users.OfType<Student>().Select(StudentMapper).ToList(),
             };
         }

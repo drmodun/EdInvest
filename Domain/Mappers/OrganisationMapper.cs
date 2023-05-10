@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public static class OrganisationMapper
+    public   class OrganisationMapper
     {
-        public static Organisation ToEntity(CreateOrganisationRequest request)
+        public   Organisation ToEntity(CreateOrganisationRequest request)
         {
             return new Organisation
             {
@@ -38,7 +38,7 @@ namespace Domain.Mappers
 
             };
         }
-        public static Organisation ToUpdatedEntity(UpdateOrganisationRequest request)
+        public   Organisation ToUpdatedEntity(UpdateOrganisationRequest request)
         {
             return new Organisation
             {
@@ -62,7 +62,7 @@ namespace Domain.Mappers
 
             };
         }
-        public static GetOrganisationResponse ToDTO(Organisation organisation)
+        public   GetOrganisationResponse ToDTO(Organisation organisation)
         {
             return new GetOrganisationResponse
             {

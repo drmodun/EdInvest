@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Mappers
+namespace Domain.Helpers
 {
-    public   class OptionsMapper
+    internal class N_NKey
     {
-
     }
 }

@@ -1,6 +1,10 @@
 ﻿using Data.Entities;
 using Data.Entities.Models;
+using Data.Entities.Models.Items;
+using Domain.Contracts.Requests.Items.Item;
 using Domain.Contracts.Requests.Subcategory;
+using Domain.Contracts.Responses.Items.Item;
+using Domain.Contracts.Responses.Subcategory;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class SubcategoryRepo : ISubcategoryRepo
+    public class SubcategoryRepo : IReadRepo<Subcategory, Guid, GetAllSubcategoriesRequest, List<Subcategory>>, ISubcategoryRepo
     {
         private readonly EdInvestContext _context;
 

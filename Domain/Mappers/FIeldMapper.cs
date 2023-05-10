@@ -13,7 +13,7 @@ namespace Domain.Mappers
     public class FieldMapper
     {
 
-        public static GetFieldResponse ToDTO(Field field)
+        public   GetFieldResponse ToDTO(Field field)
         {
             var response = new GetFieldResponse()
             {
@@ -22,7 +22,7 @@ namespace Domain.Mappers
             };
             return response;
         }
-        public static Field ToEntity(CreateFieldRequest request)
+        public   Field ToEntity(CreateFieldRequest request)
         {
             var newField = new Field
             {
@@ -31,7 +31,7 @@ namespace Domain.Mappers
             };
             return newField;
         }
-        public static Field ToUpdatedEntity(UpdateFieldRequest request)
+        public   Field ToUpdatedEntity(UpdateFieldRequest request)
         {
             var updatedField = new Field { Id = Guid.NewGuid(),
             Name = request.Name };

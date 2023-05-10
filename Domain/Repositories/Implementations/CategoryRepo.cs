@@ -1,6 +1,9 @@
 ﻿using Data.Entities;
 using Data.Entities.Models;
+using Data.Entities.Models.Items;
 using Domain.Contracts.Requests.Category;
+using Domain.Contracts.Requests.Items.Item;
+using Domain.Contracts.Responses.Items.Item;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class CategoryRepo : ICategoryRepo
+    public class CategoryRepo : IReadRepo<Category, Guid, GetAllCategoriesRequest, List<Category>>, ICategoryRepo
     {
         private readonly EdInvestContext _context;
 

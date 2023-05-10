@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public   class OptionsMapper
+    internal interface IMapper
     {
-
     }
 }

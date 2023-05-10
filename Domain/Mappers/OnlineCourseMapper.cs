@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Domain.Mappers
 
 {
-    public static class OnlineCourseMapper
+    public   class OnlineCourseMapper
     {
-      public static GetOnlineCourseResponse ToDTO(OnlineCourse onlineCourse)
+      public   GetOnlineCourseResponse ToDTO(OnlineCourse onlineCourse)
         {
             return new GetOnlineCourseResponse
             {
@@ -40,7 +40,7 @@ namespace Domain.Mappers
                 UpdatedAt = onlineCourse.UpdatedAt
             };
         }
-      public static OnlineCourse ToEntity(CreateOnlineCourseRequest request)
+      public   OnlineCourse ToEntity(CreateOnlineCourseRequest request)
         {
             return new OnlineCourse
             {
@@ -67,7 +67,7 @@ namespace Domain.Mappers
                 
             };
         }
-        public static OnlineCourse ToUpdatedEntity(UpdateOnlineCourseRequest request)
+        public   OnlineCourse ToUpdatedEntity(UpdateOnlineCourseRequest request)
         {
             var onlineCourse = new OnlineCourse()
             {

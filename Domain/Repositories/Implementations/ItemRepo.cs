@@ -16,14 +16,24 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations 
 {
-    public class ItemRepo : IItemRepo
+    public class ItemRepo : IReadRepo<Item, Guid, GetAllItemsRequest, GetAllItemsResponse>, IItemRepo
     {
         private readonly EdInvestContext _context;
+        private readonly ApplicationMapper _applicationMapper;
+        private readonly CourseMapper _courseMapper;
+        private readonly OnlineCourseMapper _onlineCourseMapper;
+        private readonly EventMapper _eventMapper;
 
-        public ItemRepo(EdInvestContext context)
+        public ItemRepo(EdInvestContext edInvest, ApplicationMapper applicationMapper,
+            OnlineCourseMapper onlineCourseMapper, EventMapper eventMapper, CourseMapper courseMapper)
         {
-            _context = context;
+            _context = edInvest;
+            _applicationMapper = applicationMapper;
+            _courseMapper = courseMapper;
+            _onlineCourseMapper = onlineCourseMapper;
+            _eventMapper = eventMapper;
         }
+        
 
         public async Task<Item?> GetById(Guid id)
         {
@@ -51,10 +61,10 @@ namespace Domain.Repositories.Implementations
                 .Where(x => x.CategoryId == options.CategoryId || options.CategoryId == null)
                 .Where(x => x.SubcategoryId == options.SubcategoryId || options.SubcategoryId == null)
                 .Where(x => x.OrganisationId == options.OrganisationId || options.OrganisationId == null);
-            var applications = list.OfType<Application>().Select(ApplicationMapper.ToDTO).ToList();
-            var courses = list.OfType<Course>().Select(CourseMapper.ToDTO).ToList();
-            var onlineCourses =list.OfType<OnlineCourse>().Select(OnlineCourseMapper.ToDTO).ToList();
-            var events = list.OfType<Event>().Select(EventMapper.ToDTO).ToList();
+            var applications = list.OfType<Application>().Select(_applicationMapper.ToDTO).ToList();
+            var courses = list.OfType<Course>().Select(_courseMapper.ToDTO).ToList();
+            var onlineCourses =list.OfType<OnlineCourse>().Select(_onlineCourseMapper.ToDTO).ToList();
+            var events = list.OfType<Event>().Select(_eventMapper.ToDTO).ToList();
             return new GetAllItemsResponse()
             {
                 Applications = applications,

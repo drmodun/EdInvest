@@ -15,7 +15,7 @@ namespace Domain.Mappers
     {
         private readonly EdInvestContext _context;
 
-        public static GetSubcategoryResponse ToDTO(Subcategory subcategory)
+        public   GetSubcategoryResponse ToDTO(Subcategory subcategory)
         {
             var response = new GetSubcategoryResponse()
             {
@@ -27,7 +27,7 @@ namespace Domain.Mappers
             };
             return response;
         }
-        public static Subcategory ToEntity(CreateSubcategoryRequest request)
+        public   Subcategory ToEntity(CreateSubcategoryRequest request)
         {
             var entity = new Subcategory()
             {
@@ -38,7 +38,7 @@ namespace Domain.Mappers
             };
             return entity;
         }
-        public static Subcategory ToUpdatedEntity(UpdateSubcategoryRequest request)
+        public   Subcategory ToUpdatedEntity(UpdateSubcategoryRequest request)
         {
             var entity = new Subcategory()
             {

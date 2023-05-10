@@ -1,13 +1,13 @@
 ﻿using Data.Entities.Models.Items;
 using Domain.Contracts.Requests.Items.Application;
 using Domain.Contracts.Responses.Items.Application;
-using static System.Net.Mime.MediaTypeNames;
+using   System.Net.Mime.MediaTypeNames;
 
 namespace Domain.Mappers
 {
-    public static class ApplicationMapper
+    public   class ApplicationMapper
     {
-        public static GetaApplicationResponse ToDTO(Data.Entities.Models.Items.Application application)
+        public   GetaApplicationResponse ToDTO(Data.Entities.Models.Items.Application application)
         {
             var newDTO = new GetaApplicationResponse
             {
@@ -40,7 +40,7 @@ namespace Domain.Mappers
         }
 
         //problem with createdAt changing in updated property
-        public static Data.Entities.Models.Items.Application ToEntity(CreateApplicationRequest request)
+        public   Data.Entities.Models.Items.Application ToEntity(CreateApplicationRequest request)
         {
             var newApp = new Data.Entities.Models.Items.Application
             {
@@ -67,7 +67,7 @@ namespace Domain.Mappers
             };
             return newApp;
         }
-        public static Data.Entities.Models.Items.Application ToUpdatedEntity(UpdateApplicationRequest request)
+        public   Data.Entities.Models.Items.Application ToUpdatedEntity(UpdateApplicationRequest request)
         {
             var newApp = new Data.Entities.Models.Items.Application
             {
