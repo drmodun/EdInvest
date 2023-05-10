@@ -22,8 +22,9 @@ namespace Domain.Services
         where TGetRequest : class
         where TGetAllRequest : class
        where TId : struct
+        where TList : List<TEntity>
         where TGetResponse : class
-        where TGetAllResponse : class
+        where TGetAllResponse : List<TGetResponse>
     {
         private readonly TMapper _mapper;
         private readonly TReadRepo _readRepo;
@@ -60,6 +61,19 @@ namespace Domain.Services
             if (!deletion) return false;
             return true;
         }
+        public async Task<TGetResponse> GetById(TId id)
+        {
+            var item = await _readRepo.GetById(id);
+            if (item == null)
+                return null;
+            return _mapper.ToDTO(item);
+        }
+        public async Task<List<TGetResponse>> GetAll(TGetAllRequest options)
+        {
+            var items = await _readRepo.GetAll(options);
+            return items.Select(_mapper.ToDTO).ToList();
+        }
+
 
 
 
