@@ -13,7 +13,7 @@ namespace Data.Entities
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Subcategory> Subcategories => Set<Subcategory>();
         public DbSet<User> Users => Set<User>();
-        public DbSet<Item> Courses => Set<Item>();
+        public DbSet<Item> Items => Set<Item>();
         public DbSet<Investments> Investments => Set<Investments>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

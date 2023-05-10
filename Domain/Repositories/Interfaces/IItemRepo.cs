@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Mappers
+namespace Domain.Repositories.Interfaces
 {
-    public static class OptionsMapper
+    public interface IItemRepo
     {
-
+        public 
     }
 }

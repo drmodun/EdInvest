@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Subcategory
 {
-    internal class GetAllSubcategoriesRequest
+    public class GetAllSubcategoriesRequest 
     {
+        public Guid? CategoryId { get; set; }
+        public string? Name { get; set; }
     }
 }
