@@ -11,33 +11,40 @@ using System.Threading.Tasks;
 namespace Domain.Mappers
 
 {
-    public   class OnlineCourseMapper
+    public   class OnlineCourseMapper : IMapper<OnlineCourse, GetOnlineCourseResponse, CreateOnlineCourseRequest, UpdateOnlineCourseRequest>
     {
-      public   GetOnlineCourseResponse ToDTO(OnlineCourse onlineCourse)
+        private readonly InvestmentMapper _investmentMapper;
+
+        public OnlineCourseMapper(InvestmentMapper investmentMapper)
+        {
+            _investmentMapper = investmentMapper;
+        }
+
+      public   GetOnlineCourseResponse ToDTO(OnlineCourse entity)
         {
             return new GetOnlineCourseResponse
             {
-                Id = onlineCourse.Id,
-                Name = onlineCourse.Name,
-                CategoryId = onlineCourse.CategoryId,
-                Description = onlineCourse.Description,
-                CountryId = onlineCourse.CountryId,
-                CurrentAmount = onlineCourse.CurrentAmount,
-                Images = onlineCourse.Images,
-                Goal = onlineCourse.Goal,
-                Investments = onlineCourse.Investments.Select(InvestmentMapper.ToDTO).ToList(),
-                OrganisationId  = onlineCourse.OrganisationId,
-                Prices = onlineCourse.Prices,
-                SubcategoryId = onlineCourse.SubcategoryId,
-                Tiers = onlineCourse.Tiers,
-                LinksToChannels = onlineCourse.LinksToChannels,
-                Lessons = onlineCourse.Lessons,
-                LessonsDate = onlineCourse.LessonsDate,
-                AvarageDuration = onlineCourse.AvarageDuration,
-                ExpectedAudience = onlineCourse.ExpectedAudience,
+                Id = entity .Id,
+                Name = entity .Name,
+                CategoryId = entity  .CategoryId,
+                Description = entity .Description,
+                CountryId = entity .CountryId,
+                CurrentAmount = entity .CurrentAmount,
+                Images = entity .Images,
+                Goal = entity .Goal,
+                Investments = entity .Investments.Select(_investmentMapper.ToDTO).ToList(),
+                OrganisationId  = entity .OrganisationId,
+                Prices = entity .Prices,
+                SubcategoryId = entity .SubcategoryId,
+                Tiers = entity .Tiers,
+                LinksToChannels = entity .LinksToChannels,
+                Lessons = entity .Lessons,
+                LessonsDate = entity .LessonsDate,
+                AvarageDuration = entity .AvarageDuration,
+                ExpectedAudience = entity .ExpectedAudience,
                 Type = ItemType.OnlineCourse,
-                CreatedAt = onlineCourse.CreatedAt,
-                UpdatedAt = onlineCourse.UpdatedAt
+                CreatedAt = entity .CreatedAt,
+                UpdatedAt = entity .UpdatedAt
             };
         }
       public   OnlineCourse ToEntity(CreateOnlineCourseRequest request)

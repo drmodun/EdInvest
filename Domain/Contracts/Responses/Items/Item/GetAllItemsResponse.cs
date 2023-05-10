@@ -1,4 +1,8 @@
 ﻿using Data.Entities.Models.Items;
+using Domain.Contracts.Responses.Items.Application;
+using Domain.Contracts.Responses.Items.Course;
+using Domain.Contracts.Responses.Items.Event;
+using Domain.Contracts.Responses.Items.OnlineCourse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +13,9 @@ namespace Domain.Contracts.Responses.Items.Item
 {
     public class GetAllItemsResponse
     {
-        public List<Data.Entities.Models.Items.Application> Applications = new List<Data.Entities.Models.Items.Application>();
-        public List<Data.Entities.Models.Items.Course> Courses = new List<Data.Entities.Models.Items.Course>();
-        public List<Data.Entities.Models.Items.Event> Events = new List<Data.Entities.Models.Items.Event>();
-        public List<Data.Entities.Models.Items.OnlineCourse> OnlineCourses = new List<Data.Entities.Models.Items.OnlineCourse>();
+        public List<GetaApplicationResponse> Applications = new ();
+        public List<GetCourseResponse> Courses = new();
+        public List<GetEventResponse> Events = new();
+        public List<GetOnlineCourseResponse> OnlineCourses = new();
     }
 }

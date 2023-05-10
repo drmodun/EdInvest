@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Helpers
 {
-    internal class N_NKey
+    public class N_NKey
     {
+        public Guid investorId;
+        public Guid itemId;
     }
 }

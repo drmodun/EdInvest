@@ -11,8 +11,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public class CategoryMapper 
+    public class CategoryMapper : IMapper<Category, GetCategoryResponse, CreateCategoryRequest, UpdateCategoryRequest>
     {
+        private readonly SubcategoryMapper _subcategoryMapper;
+
+        public CategoryMapper(SubcategoryMapper subcategoryMapper)
+        {
+            _subcategoryMapper = subcategoryMapper;
+        }
 
         public   GetCategoryResponse ToDTO(Category entity)
         {
@@ -20,7 +26,7 @@ namespace Domain.Mappers
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Subcategories = entity.Subcategories.Select(SubcategoryMapper.ToDTO).ToList()//.Select,
+                Subcategories = entity.Subcategories.Select(_subcategoryMapper.ToDTO).ToList()//.Select,
                 
 
             };

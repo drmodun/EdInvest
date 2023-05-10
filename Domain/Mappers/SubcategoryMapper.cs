@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public class SubcategoryMapper
+    public class SubcategoryMapper : IMapper<Subcategory, GetSubcategoryResponse, CreateSubcategoryRequest, UpdateSubcategoryRequest>
     {
         private readonly EdInvestContext _context;
 
-        public   GetSubcategoryResponse ToDTO(Subcategory subcategory)
+        public   GetSubcategoryResponse ToDTO(Subcategory entity)
         {
             var response = new GetSubcategoryResponse()
             {
-                Id = subcategory.Id,
-                Name = subcategory.Name,
-                CategoryId = subcategory.CatgoryId,
-                Description = subcategory.Description,
+                Id = entity .Id,
+                Name =  entity .Name,
+                CategoryId = entity .CatgoryId,
+                Description = entity .Description,
 
             };
             return response;

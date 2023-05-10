@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    internal interface IService
+    internal interface IBaseService<TEntity, TMapper, TRepository> //add validator later
     {
     }
 }

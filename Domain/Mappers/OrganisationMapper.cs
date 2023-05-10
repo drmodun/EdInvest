@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public   class OrganisationMapper
+    public   class OrganisationMapper : IMapper<Organisation, GetOrganisationResponse, CreateOrganisationRequest, UpdateOrganisationRequest>
     {
         public   Organisation ToEntity(CreateOrganisationRequest request)
         {
@@ -62,25 +62,25 @@ namespace Domain.Mappers
 
             };
         }
-        public   GetOrganisationResponse ToDTO(Organisation organisation)
+        public   GetOrganisationResponse ToDTO(Organisation entity)
         {
             return new GetOrganisationResponse
             {
-                Id = organisation.Id,
-                Name = organisation.Name,
-                Description = organisation.Description,
-                LocationName = organisation.LocationName,
-                Balance = organisation.Balance,
+                Id = entity .Id,
+                Name = entity .Name,
+                Description = entity .Description,
+                LocationName = entity .LocationName,
+                Balance = entity .Balance,
                 UpdatedAt = DateTime.UtcNow,
-                Type = organisation.Type,
-                CountryId = organisation.CountryId,
-                ProfilePicture = organisation.ProfilePicture,
-                Email = organisation.Email,
-                Password = organisation.Password,
-                IsAdmin = organisation.IsAdmin,
-                SocialLinks = organisation.SocialLinks,
-                WalletAddress = organisation.WalletAddress,
-                NumberOfMembers = organisation.NumberOfMembers,
+                Type = entity .Type,
+                CountryId = entity .CountryId,
+                ProfilePicture = entity .ProfilePicture,
+                Email = entity .Email,
+                Password = entity .Password,
+                IsAdmin = entity .IsAdmin,
+                SocialLinks = entity .SocialLinks,
+                WalletAddress = entity .WalletAddress,
+                NumberOfMembers = entity .NumberOfMembers,
 
 
 

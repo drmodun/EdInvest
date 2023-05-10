@@ -9,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public   class InvestorMapper
+    public   class InvestorMapper : IMapper<Investor, GetInvestorResponse, CreateInvestorRequest, UpdateInvestorRequest>
     {
-        public   GetInvestorResponse ToGetInvestorResponse(Investor investor)
+        public   GetInvestorResponse ToDTO(Investor entity )
         {
             return new GetInvestorResponse
             {
-                Id = investor.Id,
-                Name = investor.Name,
-                Email = investor.Email,
-                Password = investor.Password,
-                Balance = investor.Balance,
-                NumberOfEmployees = investor.NumberOfEmployees,
-                CreatedAt = investor.CreatedAt,
-                UpdatedAt = investor.UpdatedAt,
-                Description = investor.Description,
-                ProfilePicture = investor.ProfilePicture,
-                SocialLinks = investor.SocialLinks,
-                IsAdmin = investor.IsAdmin,
-                CountryId = investor.CountryId,
-                LocationName = investor.LocationName,
-                WalletAddress = investor.WalletAddress,
-                Type = investor.Type
+                Id = entity .Id,
+                Name = entity .Name,
+                Email = entity .Email,
+                Password = entity .Password,
+                Balance = entity .Balance,
+                NumberOfEmployees = entity .NumberOfEmployees,
+                CreatedAt = entity .CreatedAt,
+                UpdatedAt = entity .UpdatedAt,
+                Description = entity .Description,
+                ProfilePicture = entity .ProfilePicture,
+                SocialLinks = entity .SocialLinks,
+                IsAdmin = entity .IsAdmin,
+                CountryId = entity .CountryId,
+                LocationName = entity .LocationName,
+                WalletAddress = entity .WalletAddress,
+                Type = entity .Type
                 
 
             };

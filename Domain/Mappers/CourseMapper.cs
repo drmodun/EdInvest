@@ -10,34 +10,40 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public   class CourseMapper
+    public   class CourseMapper : IMapper<Course, GetCourseResponse, CreateCourseRequest, UpdateCourseRequest>
     {
-        public   GetCourseResponse ToDTO(Course course)
+        private readonly InvestmentMapper _investmentMapper;
+
+        public CourseMapper(InvestmentMapper investmentMapper)
+        {
+            _investmentMapper = investmentMapper;
+        }
+        public   GetCourseResponse ToDTO(Course entity)
         {
             var newDTO = new GetCourseResponse
             {
-                Id = course.Id,
-                Name = course.Name,
-                Description = course.Description,
-                Images = course.Images,
-                CategoryId = course.CategoryId,
-                SubcategoryId = course.SubcategoryId,
-                Tiers = course.Tiers,
-                ActiveStudents = course.ActiveStudents,
-                ExpectedGraduates = course.ExpectedGraduates,
-                ExpectedApplicants = course.ExpectedApplicants,
-                StartDate = course.StartDate,
-                EndDate = course.EndDate,
-                CountryId = course.CountryId,
-                CreatedAt = course.CreatedAt,
-                CurrentAmount = course.CurrentAmount,
-                Goal = course.Goal,
-                OrganisationId = course.OrganisationId,
-                Investments = course.Investments.Select(InvestmentMapper.ToDTO).ToList(),
-                Curriculum = course.Curriculum,
-                UpdatedAt = course.UpdatedAt,
-                Type = course.Type,
-                Prices = course.Prices,
+                Id = entity.Id,
+                Name = entity.Name,
+                Description = entity .Description,
+                Images = entity .Images,
+                CategoryId = entity .CategoryId,
+                SubcategoryId = entity .SubcategoryId,
+                Tiers = entity .Tiers,
+                ActiveStudents = entity .ActiveStudents,
+                ExpectedGraduates = entity .ExpectedGraduates,
+                ExpectedApplicants = entity .ExpectedApplicants,
+                StartDate = entity .StartDate,
+                EndDate = entity .EndDate,
+                CountryId = entity .CountryId,
+                CreatedAt = entity .CreatedAt,
+                CurrentAmount = entity .CurrentAmount,
+                Goal = entity .Goal,
+                OrganisationId = entity .OrganisationId,
+                Investments = entity .Investments.Select(_investmentMapper.ToDTO).ToList(),
+                Curriculum = entity .Curriculum,
+                UpdatedAt = entity .UpdatedAt,
+                Type = entity .Type,
+                Prices = entity .Prices,
 
 
             };

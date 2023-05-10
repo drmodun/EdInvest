@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public   class InvestmentMapper
+    public   class InvestmentMapper : IMapper<Investments, GetInvestmentResponse, CreateInvestmentRequest, UpdateInvestmentRequest>
     {
-        public   GetInvestmentResponse ToDTO(Investments investments)
+        public   GetInvestmentResponse ToDTO(Investments entity)
         {
             return new GetInvestmentResponse
             {
-                CreatedAt = investments.CreatedAt,
-                InvestorId = investments.InvestorId,
-                ItemId = investments.ItemId,
-                UpdatedAt = investments.UpdatedAt,
-                Tier = investments.Tier,
+                CreatedAt =  entity .CreatedAt,
+                InvestorId = entity .InvestorId,
+                ItemId = entity .ItemId,
+                UpdatedAt = entity .UpdatedAt,
+                Tier = entity .Tier,
 
             };
         }

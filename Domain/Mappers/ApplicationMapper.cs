@@ -1,37 +1,42 @@
 ﻿using Data.Entities.Models.Items;
 using Domain.Contracts.Requests.Items.Application;
 using Domain.Contracts.Responses.Items.Application;
-using   System.Net.Mime.MediaTypeNames;
 
 namespace Domain.Mappers
 {
-    public   class ApplicationMapper
+    public   class ApplicationMapper : IMapper<Application, GetaApplicationResponse, CreateApplicationRequest, UpdateApplicationRequest>
     {
-        public   GetaApplicationResponse ToDTO(Data.Entities.Models.Items.Application application)
+        private readonly InvestmentMapper _investmentMapper;
+
+        public ApplicationMapper(InvestmentMapper investmentMapper)
+        {
+            _investmentMapper = investmentMapper;
+        }
+        public   GetaApplicationResponse ToDTO(Data.Entities.Models.Items.Application entity)
         {
             var newDTO = new GetaApplicationResponse
             {
-                Id = application.Id,
-                Name = application.Name,
-                Description = application.Description,
-                Images = application.Images,
-                CategoryId = application.CategoryId,
-                SubcategoryId = application.SubcategoryId,
-                Tiers = application.Tiers,
-                AppPurpose = application.AppPurpose,
-                EstimatedNumberOfUsers = application.EstimatedNumberOfUsers,
-                EstimatedRelease = application.EstimatedRelease,
-                CountryId = application.CountryId,
-                CreatedAt = application.CreatedAt,
-                CurrentAmount = application.CurrentAmount,
-                Goal = application.Goal,
-                OrganisationId = application.OrganisationId,
-                Investments = application.Investments.Select(InvestmentMapper.ToDTO).ToList(),
-                Features = application.Features,
-                Markets = application.Markets,
-                UpdatedAt = application.UpdatedAt,
-                Type = application.Type,
-                Prices = application.Prices,
+                Id = entity .Id,
+                Name = entity .Name,
+                Description = entity .Description,
+                Images = entity .Images,
+                CategoryId = entity .CategoryId,
+                SubcategoryId = entity .SubcategoryId,
+                Tiers = entity .Tiers,
+                AppPurpose = entity .AppPurpose,
+                EstimatedNumberOfUsers = entity .EstimatedNumberOfUsers,
+                EstimatedRelease = entity .EstimatedRelease,
+                CountryId = entity .CountryId,
+                CreatedAt = entity .CreatedAt,
+                CurrentAmount = entity .CurrentAmount,
+                Goal = entity .Goal,
+                OrganisationId = entity .OrganisationId,
+                Investments = entity .Investments.Select(_investmentMapper.ToDTO).ToList(),
+                Features = entity .Features,
+                Markets = entity .Markets,
+                UpdatedAt = entity .UpdatedAt,
+                Type = entity .Type,
+                Prices = entity .Prices,
 
 
             };

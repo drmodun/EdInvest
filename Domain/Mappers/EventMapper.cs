@@ -9,10 +9,17 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    public   class EventMapper
+    public   class EventMapper : IMapper<Event, GetEventResponse, CreateEventRequest, UpdateEventRequest>
     {
+        private readonly InvestmentMapper _investmentMapper;
+
+        public EventMapper(InvestmentMapper investmentMapper)
+        {
+            _investmentMapper = investmentMapper;
+        }
         public   Event ToEntity(CreateEventRequest request)
         {
+
             return new Event
             {
                 Id = Guid.NewGuid(),
@@ -88,7 +95,7 @@ namespace Domain.Mappers
                 NotableAttendees = entity.NotableAttendees,
                 NotableSpeakers = entity.NotableSpeakers,
                 CurrentAmount = entity.CurrentAmount,
-                Investments = entity.Investments.Select(InvestmentMapper.ToDTO).ToList(),
+                Investments = entity.Investments.Select(_investmentMapper.ToDTO).ToList(),
                 SubcategoryId = entity.SubcategoryId,
                 CountryId = entity.CountryId,
                 Goal = entity.Goal,
