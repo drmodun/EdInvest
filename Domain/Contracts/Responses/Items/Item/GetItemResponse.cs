@@ -36,6 +36,5 @@ namespace Domain.Contracts.Responses.Items.Item
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();
         public List<GetInvestmentResponse> Investments { get; set; }
 
-        public List<GetInvestorResponse> Investors { get; set; }
     }
 }

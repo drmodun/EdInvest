@@ -10,6 +10,8 @@ namespace Data.Entities.Models.Items
     {
         public DateTime Date { get; set; }
         public string Location { get; set; }
+
+        public decimal TicketPrice { get; set; }
         public Dictionary<string, string> Activities { get; set; }
 
         public List<string> NotableAttendees { get; set; }

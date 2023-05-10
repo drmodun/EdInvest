@@ -13,7 +13,7 @@ namespace Data.Entities.Models
     {
         public Guid InvestorId { get; set; }
         public Investor? Investor { get; set; }
-        public Guid CourseId { get; set; }
+        public Guid ItemId { get; set; }
         public Item? Item { get; set; }
         public int Tier
         {

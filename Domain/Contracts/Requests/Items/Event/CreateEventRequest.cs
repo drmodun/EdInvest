@@ -13,6 +13,7 @@ namespace Domain.Contracts.Requests.Items.Event
         public string Location { get; set; }
         public Dictionary<string, string> Activities { get; set; }
 
+        public decimal TicketPrice { get; set; }
         public List<string> NotableAttendees { get; set; }
 
         public List<string> NotableSpeakers { get; set; }

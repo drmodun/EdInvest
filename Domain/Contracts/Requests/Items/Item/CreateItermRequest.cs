@@ -21,6 +21,8 @@ namespace Domain.Contracts.Items.Item
         public Guid SubcategoryId { get; set; }
         public Guid OrganisationId { get; set; }
 
+        public Guid CountryId { get; set; }
+
         public decimal Goal { get; set; }
         public decimal CurrentAmount { get; set; }
 

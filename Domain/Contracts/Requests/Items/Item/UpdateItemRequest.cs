@@ -1,4 +1,5 @@
-﻿using Data.Enums;
+﻿using Data.Entities.Models;
+using Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,9 @@ namespace Domain.Contracts.Items.Item
         public Guid CategoryId { get; set; }
         public Guid SubcategoryId { get; set; }
         public Guid OrganisationId { get; set; }
+
+
+        public Guid CountryId { get; set; }
 
         public decimal Goal { get; set; }
         public decimal CurrentAmount { get; set; }

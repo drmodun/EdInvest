@@ -18,6 +18,7 @@ namespace Domain.Contracts.Responses.Items.Event
         public List<string> NotableSpeakers { get; set; }
 
         public int Capacity { get; set; }
+        public decimal TicketPrice { get; set; } 
 
         public int ExpectedAttendance { get; set; }
     }
