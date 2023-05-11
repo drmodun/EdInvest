@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Entities.Models.Items
+namespace Shared.Models.Items
 {
     public class Application : Item
     {

@@ -1,5 +1,5 @@
-﻿using Data.Entities.Models;
-using Domain.Contracts.Requests.Investments;
+﻿using Shared.Models;
+using Shared.Contracts.Requests.Investments;
 using Domain.Helpers;
 using System;
 using System.Collections.Generic;

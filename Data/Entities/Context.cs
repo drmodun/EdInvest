@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Data.Entities.Models;
-using Data.Enums;
-using Data.Entities.Models.Items;
-using Data.Entities.Models.Users;
+using Shared.Models;
+using Shared.Enums;
+using Shared.Models.Items;
+using Shared.Models.Users;
 
 namespace Data.Entities
 {

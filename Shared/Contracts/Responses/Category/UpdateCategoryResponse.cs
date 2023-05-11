@@ -1,11 +1,11 @@
-﻿using Domain.Contracts.Requests.Category;
+﻿using Shared.Contracts.Requests.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Category
+namespace Shared.Contracts.Responses.Category
 {
     public class UpdateCategoryResponse
     {

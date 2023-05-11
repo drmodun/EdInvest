@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data.Entities.Models.Items;
+using Shared.Models.Items;
 
-namespace Data.Entities.Models
+namespace Shared.Models
 {
     public class Subcategory
     {

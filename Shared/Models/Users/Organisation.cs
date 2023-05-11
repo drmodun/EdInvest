@@ -1,11 +1,11 @@
-﻿using Data.Entities.Models.Items;
+﻿using Shared.Models.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Entities.Models.Users
+namespace Shared.Models.Users
 {
     public class Organisation : User
     {

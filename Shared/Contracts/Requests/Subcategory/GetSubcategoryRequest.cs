@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Subcategory
+namespace Shared.Contracts.Requests.Subcategory
 {
     public class GetSubcategoryRequest
     {

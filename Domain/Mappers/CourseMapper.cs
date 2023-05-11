@@ -1,7 +1,7 @@
-﻿using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Items.Course;
-using Domain.Contracts.Responses.Items.Course;
-using Domain.Contracts.Responses.Items.Course;
+﻿using Shared.Models.Items;
+using Shared.Contracts.Requests.Items.Course;
+using Shared.Contracts.Responses.Items.Course;
+using Shared.Contracts.Responses.Items.Course;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +53,7 @@ namespace Domain.Mappers
 
         public   Course ToEntity(CreateCourseRequest request)
         {
-            var newApp = new Data.Entities.Models.Items.Course
+            var newApp = new Shared.Models.Items.Course
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,

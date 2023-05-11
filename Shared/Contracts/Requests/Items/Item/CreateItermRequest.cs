@@ -1,13 +1,13 @@
-﻿using Data.Entities.Models.Users;
-using Data.Entities.Models;
-using Data.Enums;
+﻿using Shared.Models.Users;
+using Shared.Models;
+using Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Items.Item
+namespace Shared.Contracts.Items.Item
 {
     public abstract class CreateItemRequest
     {

@@ -1,8 +1,8 @@
 ﻿using Data.Entities;
-using Data.Entities.Models;
-using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Subcategory;
-using Domain.Contracts.Responses.Subcategory;
+using Shared.Models;
+using Shared.Models.Items;
+using Shared.Contracts.Requests.Subcategory;
+using Shared.Contracts.Responses.Subcategory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

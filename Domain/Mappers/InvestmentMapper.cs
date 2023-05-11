@@ -1,6 +1,6 @@
-﻿using Data.Entities.Models;
-using Domain.Contracts.Requests.Investments;
-using Domain.Contracts.Responses.Investments;
+﻿using Shared.Models;
+using Shared.Contracts.Requests.Investments;
+using Shared.Contracts.Responses.Investments;
 using System;
 using System.Collections.Generic;
 using System.Linq;

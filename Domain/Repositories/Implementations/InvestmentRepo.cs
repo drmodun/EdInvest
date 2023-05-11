@@ -1,9 +1,9 @@
 ﻿using Data.Entities;
-using Data.Entities.Models;
-using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Investments;
-using Domain.Contracts.Requests.Items.Item;
-using Domain.Contracts.Responses.Items.Item;
+using Shared.Models;
+using Shared.Models.Items;
+using Shared.Contracts.Requests.Investments;
+using Shared.Contracts.Requests.Items.Item;
+using Shared.Contracts.Responses.Items.Item;
 using Domain.Helpers;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;

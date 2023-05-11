@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Users.User
+namespace Shared.Contracts.Responses.Users.User
 {
     public class CreateUserResponse
     {

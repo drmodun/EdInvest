@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Investments
+namespace Shared.Contracts.Requests.Investments
 {
     public class DeleteInvestmentRRequest
     {

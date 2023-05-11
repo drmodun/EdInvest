@@ -1,9 +1,10 @@
-﻿using Data.Entities.Models.Users;
-using Domain.Contracts.Requests.Users.Investor;
-using Domain.Contracts.Requests.Users.organisation;
-using Domain.Contracts.Requests.Users.Student;
-using Domain.Contracts.Responses.Users.Organisation;
+﻿using Shared.Models.Users;
+using Shared.Contracts.Requests.Users.Investor;
+using Shared.Contracts.Requests.Users.organisation;
+using Shared.Contracts.Requests.Users.Student;
+using Shared.Contracts.Responses.Users.Organisation;
 using System;
+using Shared.Enums;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

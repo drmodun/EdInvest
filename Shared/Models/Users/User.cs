@@ -1,4 +1,4 @@
-﻿using Data.Enums;
+﻿using Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Entities.Models.Users
+namespace Shared.Models.Users
 {
     public abstract class User
     {

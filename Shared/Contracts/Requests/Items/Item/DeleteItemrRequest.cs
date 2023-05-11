@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Item
+namespace Shared.Contracts.Item
 {
     public abstract class DeleteItemRequest
     {

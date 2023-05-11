@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Users.Investor
+namespace Shared.Contracts.Responses.Users.Investor
 {
     public class GetAllInvestorResponse
     {

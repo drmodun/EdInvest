@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Items.Course
+namespace Shared.Contracts.Responses.Items.Course
 {
     public class CreateCourseResponse
     {

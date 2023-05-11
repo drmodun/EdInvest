@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Items.OnlineCourse
+namespace Shared.Contracts.Responses.Items.OnlineCourse
 {
     public class GetAllOnlineCoursesReponse 
     {

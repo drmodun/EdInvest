@@ -1,12 +1,12 @@
-﻿using Domain.Contracts.Items.Item;
-using Domain.Contracts.Requests.Items;
+﻿using Shared.Contracts.Items.Item;
+using Shared.Contracts.Requests.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Items.Course
+namespace Shared.Contracts.Requests.Items.Course
 {
     public class CreateCourseRequest : CreateItemRequest
     {

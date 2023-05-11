@@ -27,7 +27,7 @@ namespace Data.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "hstore");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Data.Entities.Models.Category", b =>
+            modelBuilder.Entity("Shared.Models.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Country", b =>
+            modelBuilder.Entity("Shared.Models.Country", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace Data.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Course", b =>
+            modelBuilder.Entity("Shared.Models.Course", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,7 +133,7 @@ namespace Data.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Field", b =>
+            modelBuilder.Entity("Shared.Models.Field", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -148,7 +148,7 @@ namespace Data.Migrations
                     b.ToTable("Field");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Investments", b =>
+            modelBuilder.Entity("Shared.Models.Investments", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -172,7 +172,7 @@ namespace Data.Migrations
                     b.ToTable("Investments");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Subcategory", b =>
+            modelBuilder.Entity("Shared.Models.Subcategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -196,7 +196,7 @@ namespace Data.Migrations
                     b.ToTable("Subcategories");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.User", b =>
+            modelBuilder.Entity("Shared.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -267,23 +267,23 @@ namespace Data.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Investor", b =>
+            modelBuilder.Entity("Shared.Models.Investor", b =>
                 {
-                    b.HasBaseType("Data.Entities.Models.User");
+                    b.HasBaseType("Shared.Models.User");
 
                     b.HasDiscriminator().HasValue(1);
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Organisation", b =>
+            modelBuilder.Entity("Shared.Models.Organisation", b =>
                 {
-                    b.HasBaseType("Data.Entities.Models.User");
+                    b.HasBaseType("Shared.Models.User");
 
                     b.HasDiscriminator().HasValue(2);
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Student", b =>
+            modelBuilder.Entity("Shared.Models.Student", b =>
                 {
-                    b.HasBaseType("Data.Entities.Models.User");
+                    b.HasBaseType("Shared.Models.User");
 
                     b.Property<DateTime>("BegginingOfEducation")
                         .HasColumnType("timestamp with time zone");
@@ -323,21 +323,21 @@ namespace Data.Migrations
                     b.HasDiscriminator().HasValue(0);
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Course", b =>
+            modelBuilder.Entity("Shared.Models.Course", b =>
                 {
-                    b.HasOne("Data.Entities.Models.Category", "Category")
+                    b.HasOne("Shared.Models.Category", "Category")
                         .WithMany("Courses")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.Models.Organisation", "Organisation")
+                    b.HasOne("Shared.Models.Organisation", "Organisation")
                         .WithMany("Courses")
                         .HasForeignKey("DoneeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.Models.Subcategory", "Subcategory")
+                    b.HasOne("Shared.Models.Subcategory", "Subcategory")
                         .WithMany("Courses")
                         .HasForeignKey("SubcategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -350,15 +350,15 @@ namespace Data.Migrations
                     b.Navigation("Subcategory");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Investments", b =>
+            modelBuilder.Entity("Shared.Models.Investments", b =>
                 {
-                    b.HasOne("Data.Entities.Models.Course", "Course")
+                    b.HasOne("Shared.Models.Course", "Course")
                         .WithMany("Investments")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.Models.Investor", "Investor")
+                    b.HasOne("Shared.Models.Investor", "Investor")
                         .WithMany("Investments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -369,9 +369,9 @@ namespace Data.Migrations
                     b.Navigation("Investor");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Subcategory", b =>
+            modelBuilder.Entity("Shared.Models.Subcategory", b =>
                 {
-                    b.HasOne("Data.Entities.Models.Category", "Category")
+                    b.HasOne("Shared.Models.Category", "Category")
                         .WithMany("Subcategories")
                         .HasForeignKey("CatgoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -380,9 +380,9 @@ namespace Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.User", b =>
+            modelBuilder.Entity("Shared.Models.User", b =>
                 {
-                    b.HasOne("Data.Entities.Models.Country", "Country")
+                    b.HasOne("Shared.Models.Country", "Country")
                         .WithMany("Users")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -391,15 +391,15 @@ namespace Data.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Student", b =>
+            modelBuilder.Entity("Shared.Models.Student", b =>
                 {
-                    b.HasOne("Data.Entities.Models.Field", "Field")
+                    b.HasOne("Shared.Models.Field", "Field")
                         .WithMany("Students")
                         .HasForeignKey("FieldId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.Models.Investor", "Funder")
+                    b.HasOne("Shared.Models.Investor", "Funder")
                         .WithMany("Students")
                         .HasForeignKey("FunderId");
 
@@ -408,41 +408,41 @@ namespace Data.Migrations
                     b.Navigation("Funder");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Category", b =>
+            modelBuilder.Entity("Shared.Models.Category", b =>
                 {
                     b.Navigation("Courses");
 
                     b.Navigation("Subcategories");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Country", b =>
+            modelBuilder.Entity("Shared.Models.Country", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Course", b =>
+            modelBuilder.Entity("Shared.Models.Course", b =>
                 {
                     b.Navigation("Investments");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Field", b =>
+            modelBuilder.Entity("Shared.Models.Field", b =>
                 {
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Subcategory", b =>
+            modelBuilder.Entity("Shared.Models.Subcategory", b =>
                 {
                     b.Navigation("Courses");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Investor", b =>
+            modelBuilder.Entity("Shared.Models.Investor", b =>
                 {
                     b.Navigation("Investments");
 
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("Data.Entities.Models.Organisation", b =>
+            modelBuilder.Entity("Shared.Models.Organisation", b =>
                 {
                     b.Navigation("Courses");
                 });

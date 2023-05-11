@@ -1,15 +1,15 @@
-﻿using Domain.Contracts.Requests.Items.OnlineCourse;
-using Domain.Contracts.Responses.Items.Application;
-using Domain.Contracts.Responses.Items.Course;
-using Domain.Contracts.Responses.Items.Event;
-using Domain.Contracts.Responses.Subcategory;
+﻿using Shared.Contracts.Requests.Items.OnlineCourse;
+using Shared.Contracts.Responses.Items.Application;
+using Shared.Contracts.Responses.Items.Course;
+using Shared.Contracts.Responses.Items.Event;
+using Shared.Contracts.Responses.Subcategory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Category
+namespace Shared.Contracts.Responses.Category
 {
     public class GetCategoryResponse
     {

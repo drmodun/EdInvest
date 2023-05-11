@@ -1,8 +1,8 @@
-﻿using Data.Entities.Models.Items;
-using Data.Enums;
-using Domain.Contracts.Items.Item;
-using Domain.Contracts.Responses.Items.Item;
-using Domain.Contracts.Responses.Items.OnlineCourse;
+﻿using Shared.Models.Items;
+using Shared.Enums;
+using Shared.Contracts.Items.Item;
+using Shared.Contracts.Responses.Items.Item;
+using Shared.Contracts.Responses.Items.OnlineCourse;
 using System;
 using System.Collections.Generic;
 using System.Linq;

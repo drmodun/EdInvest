@@ -1,11 +1,11 @@
-﻿using Data.Enums;
+﻿using Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Items.Item
+namespace Shared.Contracts.Requests.Items.Item
 {
     public class GetAllItemsRequest
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Items.Event
+namespace Shared.Contracts.Responses.Items.Event
 {
     public class GetAlleventsResponse
     {

@@ -1,9 +1,9 @@
 ﻿using Data.Entities;
-using Data.Entities.Models;
-using Data.Entities.Models.Items;
-using Data.Enums;
-using Domain.Contracts.Requests.Items.Item;
-using Domain.Contracts.Responses.Items.Item;
+using Shared.Models;
+using Shared.Models.Items;
+using Shared.Enums;
+using Shared.Contracts.Requests.Items.Item;
+using Shared.Contracts.Responses.Items.Item;
 using Domain.Mappers;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations 
 {
-    public class ItemRepo<TEntity, TOptions> : IReadRepo<TEntity, Guid, TOptions>, IItemRepo<TEntity, TOptions> 
+    public class ItemRepo<TEntity, TOptions> : 
+        IReadRepo<TEntity, Guid, TOptions>, IItemRepo<TEntity, TOptions> 
         where TEntity : Item where TOptions : GetAllItemsRequest
     {
         private readonly EdInvestContext _context;

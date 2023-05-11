@@ -1,17 +1,17 @@
-﻿using Data.Entities.Models;
-using Domain.Contracts.Requests.Items.OnlineCourse;
-using Domain.Contracts.Responses.Items.Application;
-using Domain.Contracts.Responses.Items.Course;
-using Domain.Contracts.Responses.Items.Event;
-using Domain.Contracts.Responses.Users.Student;
-using Domain.Contracts.Responses.Users.User;
+﻿using Shared.Models;
+using Shared.Contracts.Requests.Items.OnlineCourse;
+using Shared.Contracts.Responses.Items.Application;
+using Shared.Contracts.Responses.Items.Course;
+using Shared.Contracts.Responses.Items.Event;
+using Shared.Contracts.Responses.Users.Student;
+using Shared.Contracts.Responses.Users.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Users.Investor
+namespace Shared.Contracts.Responses.Users.Investor
 {
     public class GetInvestorResponse : GetUserResponse
     {

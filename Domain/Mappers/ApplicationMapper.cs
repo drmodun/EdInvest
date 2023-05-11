@@ -1,6 +1,6 @@
-﻿using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Items.Application;
-using Domain.Contracts.Responses.Items.Application;
+﻿using Shared.Models.Items;
+using Shared.Contracts.Requests.Items.Application;
+using Shared.Contracts.Responses.Items.Application;
 
 namespace Domain.Mappers
 {
@@ -12,7 +12,7 @@ namespace Domain.Mappers
         {
             _investmentMapper = investmentMapper;
         }
-        public   GetaApplicationResponse ToDTO(Data.Entities.Models.Items.Application entity)
+        public   GetaApplicationResponse ToDTO(Shared.Models.Items.Application entity)
         {
             var newDTO = new GetaApplicationResponse
             {
@@ -35,7 +35,7 @@ namespace Domain.Mappers
                 Features = entity .Features,
                 Markets = entity .Markets,
                 UpdatedAt = entity .UpdatedAt,
-                Type = entity .Type,
+                Type = entity.Type,
                 Prices = entity .Prices,
 
 
@@ -45,9 +45,9 @@ namespace Domain.Mappers
         }
 
         //problem with createdAt changing in updated property
-        public   Data.Entities.Models.Items.Application ToEntity(CreateApplicationRequest request)
+        public   Shared.Models.Items.Application ToEntity(CreateApplicationRequest request)
         {
-            var newApp = new Data.Entities.Models.Items.Application
+            var newApp = new Shared.Models.Items.Application
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
@@ -72,9 +72,9 @@ namespace Domain.Mappers
             };
             return newApp;
         }
-        public   Data.Entities.Models.Items.Application ToUpdatedEntity(UpdateApplicationRequest request)
+        public   Shared.Models.Items.Application ToUpdatedEntity(UpdateApplicationRequest request)
         {
-            var newApp = new Data.Entities.Models.Items.Application
+            var newApp = new Shared.Models.Items.Application
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,

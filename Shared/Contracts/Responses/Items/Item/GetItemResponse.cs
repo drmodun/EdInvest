@@ -1,15 +1,13 @@
-﻿using Data.Entities.Models.Users;
-using Data.Entities.Models;
-using Data.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Contracts.Responses.Investments;
-using Domain.Contracts.Responses.Users.Investor;
+using Shared.Contracts.Responses.Investments;
+using Shared.Contracts.Responses.Users.Investor;
+using Shared.Enums;
 
-namespace Domain.Contracts.Responses.Items.Item
+namespace Shared.Contracts.Responses.Items.Item
 {
     public  class GetItemResponse
     {

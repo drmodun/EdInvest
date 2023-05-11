@@ -1,7 +1,7 @@
 ﻿using Data.Entities;
-using Data.Entities.Models;
-using Domain.Contracts.Requests.Field;
-using Domain.Contracts.Responses.Field;
+using Shared.Models;
+using Shared.Contracts.Requests.Field;
+using Shared.Contracts.Responses.Field;
 using System;
 using System.Collections.Generic;
 using System.Linq;

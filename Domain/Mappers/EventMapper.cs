@@ -1,6 +1,6 @@
-﻿using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Items.Event;
-using Domain.Contracts.Responses.Items.Event;
+﻿using Shared.Models.Items;
+using Shared.Contracts.Requests.Items.Event;
+using Shared.Contracts.Responses.Items.Event;
 using System;
 using System.Collections.Generic;
 using System.Linq;

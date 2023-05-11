@@ -1,8 +1,8 @@
 ﻿using API.Routes;
-using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Items.Application;
-using Domain.Contracts.Responses.Category;
-using Domain.Contracts.Responses.Items.Application;
+using Shared.Models.Items;
+using Shared.Contracts.Requests.Items.Application;
+using Shared.Contracts.Responses.Category;
+using Shared.Contracts.Responses.Items.Application;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;

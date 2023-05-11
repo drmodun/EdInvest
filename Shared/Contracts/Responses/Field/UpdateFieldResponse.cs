@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Responses.Field
+namespace Shared.Contracts.Responses.Field
 {
     public class UpdateFieldResponse
     {

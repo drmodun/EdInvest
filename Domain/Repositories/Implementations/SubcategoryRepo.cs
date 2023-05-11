@@ -1,10 +1,10 @@
 ﻿using Data.Entities;
-using Data.Entities.Models;
-using Data.Entities.Models.Items;
-using Domain.Contracts.Requests.Items.Item;
-using Domain.Contracts.Requests.Subcategory;
-using Domain.Contracts.Responses.Items.Item;
-using Domain.Contracts.Responses.Subcategory;
+using Shared.Models;
+using Shared.Models.Items;
+using Shared.Contracts.Requests.Items.Item;
+using Shared.Contracts.Requests.Subcategory;
+using Shared.Contracts.Responses.Items.Item;
+using Shared.Contracts.Responses.Subcategory;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;

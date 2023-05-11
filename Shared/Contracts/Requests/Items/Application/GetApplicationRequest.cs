@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Items.Application
+namespace Shared.Contracts.Requests.Items.Application
 {
     public class GetApplicationRequest
     {

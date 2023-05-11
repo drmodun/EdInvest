@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Contracts.Requests.Field
+namespace Shared.Contracts.Requests.Field
 {
     public class UpdateFieldRequest
     {
