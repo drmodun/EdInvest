@@ -2,6 +2,7 @@
 using Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -22,7 +23,6 @@ namespace Domain.Services
         where TGetRequest : class
         where TGetAllRequest : class
         where TId : struct
-        where TList : List<TEntity>
         where TGetResponse : class
     {
         private readonly TMapper _mapper;
@@ -45,9 +45,9 @@ namespace Domain.Services
                 return null;
             return _mapper.ToDTO(newEntity);
         }
-        public async Task<TGetResponse?> Update(TCreateRequest request, CancellationToken cancellationToken)
+        public async Task<TGetResponse?> Update(TUpdateRequest request, CancellationToken cancellationToken)
         {
-            var updatedEntity = _mapper.ToEntity(request);
+            var updatedEntity = _mapper.ToUpdatedEntity(request);
             //add validator
             var addAsync = await _writeRepo.UpdateAsync(updatedEntity, cancellationToken);
             if (!addAsync)

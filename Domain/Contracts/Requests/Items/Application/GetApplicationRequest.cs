@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Contracts.Requests.Items.Application
 {
-    internal class GetApplicationRequest
+    public class GetApplicationRequest
     {
+        public Guid Id { get; set; }
     }
 }

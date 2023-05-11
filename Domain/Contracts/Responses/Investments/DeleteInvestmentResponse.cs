@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Services
+namespace Domain.Contracts.Responses.Investments
 {
-    public class UserService<TEntity, T>
+    public class DeleteInvestmentResponse
     {
+        public bool? Success { get; set; }
     }
 }

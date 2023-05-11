@@ -4,6 +4,7 @@ using Data.Entities.Models.Items;
 using Data.Entities.Models.Users;
 using Domain.Contracts.Items.Item;
 using Domain.Contracts.Requests.Category;
+using Domain.Contracts.Requests.Investments;
 using Domain.Contracts.Requests.Items.Application;
 using Domain.Contracts.Requests.Items.Course;
 using Domain.Contracts.Requests.Items.Event;
@@ -16,6 +17,7 @@ using Domain.Contracts.Requests.Users.Organisation;
 using Domain.Contracts.Requests.Users.Student;
 using Domain.Contracts.Requests.Users.User;
 using Domain.Contracts.Responses.Category;
+using Domain.Contracts.Responses.Investments;
 using Domain.Contracts.Responses.Items.Application;
 using Domain.Contracts.Responses.Items.Course;
 using Domain.Contracts.Responses.Items.Event;
@@ -25,6 +27,7 @@ using Domain.Contracts.Responses.Subcategory;
 using Domain.Contracts.Responses.Users.Investor;
 using Domain.Contracts.Responses.Users.Organisation;
 using Domain.Contracts.Responses.Users.User;
+using Domain.Helpers;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Repositories.Interfaces;
@@ -50,7 +53,7 @@ namespace Domain
                 >>();
             services.AddScoped<BaseService<Application, ApplicationMapper, ItemRepo<Application, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
-                GetAllCategoriesResponse, List<Application>
+                GetAllApplicationsResponse, List<Application>
                 >>(); 
             services.AddScoped<BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
@@ -82,10 +85,50 @@ namespace Domain
                 CreateUserRequest, UpdateUserRequest, GetUserRequest, GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, List<User>
                 >>();
+            services.AddScoped<BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>, CreateInvestmentRequest,
+                UpdateInvestmentRequest, GetInvestmentRequest, GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse, GetAllInvestmentsResponse, List<Investments>>>();
+
+
+            services.AddScoped<UserRepo<User, GetAllUsersRequest>>();
+            services.AddScoped<WriteRepo<User, Guid>>();
+            services.AddScoped<UserMapper>();
+            services.AddScoped<ItemRepo<Item, GetAllItemsRequest>>();
+            services.AddScoped<WriteRepo<Item, Guid>>();
+            services.AddScoped<ItemMapper>();
+            services.AddScoped<UserRepo<Organisation, GetAllOrganisationsRequest>>();
+            services.AddScoped<WriteRepo<Organisation, Guid>>();
+            services.AddScoped<OrganisationMapper>();
+            services.AddScoped<UserRepo<Investor, GetAllInvestorsRequest>>();
+            services.AddScoped<WriteRepo<Investor, Guid>>();
+            services.AddScoped<InvestorMapper>();
+            services.AddScoped<ItemRepo<OnlineCourse, GetAllOnlineCoursesRequest>>();
+            services.AddScoped<WriteRepo<OnlineCourse, Guid>>();
+            services.AddScoped<OnlineCourseMapper>();
+            services.AddScoped<ItemRepo<Course, GetAllCoursesRequest>>();
+            services.AddScoped<WriteRepo<Course, Guid>>();
+            services.AddScoped<CourseMapper>();
+            services.AddScoped<ItemRepo<Event, GetAllEventsRequest>>();
+            services.AddScoped<WriteRepo<Event, Guid>>();
+            services.AddScoped<EventMapper>();
+            services.AddScoped<ItemRepo<Application, GetAllApplicationsRequest>>();
+            services.AddScoped<WriteRepo<Application, Guid>>();
+            services.AddScoped<ApplicationMapper>();
+            services.AddScoped<InvestmentRepo>();
+            services.AddScoped<InvestmentMapper>();
+            services.AddScoped<WriteRepo<Investments, N_NKey>>();
+            services.AddScoped<CategoryRepo>();
+            services.AddScoped<CategoryMapper>();
+            services.AddScoped<WriteRepo<Category, Guid>>();
+            services.AddScoped<SubcategoryRepo>();
+            services.AddScoped<SubcategoryMapper>();
+            services.AddScoped<WriteRepo<Subcategory, Guid>>();
+
+
             return services;
             
             //I experimented with generics, sorry if the code is too messy
             //add repos for base classes
+            //try to see if there is a good way to store theese
         }
 
 
