@@ -44,49 +44,61 @@ namespace Domain
         {
             services.AddDbContext<EdInvestContext>(options => options.UseNpgsql("Host=localhost;Database=EdInvestment;Username=postgres;Password=postgres;IncludeErrorDetail=True;"));
             services.AddScoped<BaseService<Category, CategoryMapper, CategoryRepo, WriteRepo<Category, Guid>,
-                CreateCategoryRequest, UpdateCategoryRequest, GetCategoryRequest, GetAllCategoriesRequest, Guid, GetCategoryResponse,
+                CreateCategoryRequest, UpdateCategoryRequest, GetCategoryRequest, 
+                GetAllCategoriesRequest, Guid, GetCategoryResponse,
                 GetAllCategoriesResponse, List<Category>
                 >>();
             services.AddScoped<BaseService<Subcategory, SubcategoryMapper, SubcategoryRepo, WriteRepo<Subcategory, Guid>,
-                CreateSubcategoryRequest, UpdateSubcategoryRequest, GetSubcategoryRequest, GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
+                CreateSubcategoryRequest, UpdateSubcategoryRequest, GetSubcategoryRequest, 
+                GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
                 GetAllCategoriesResponse, List<Subcategory>
                 >>();
             services.AddScoped<BaseService<Application, ApplicationMapper, ItemRepo<Application, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
-                CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
+                CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, 
+                GetAllApplicationsRequest, Guid, GetaApplicationResponse,
                 GetAllApplicationsResponse, List<Application>
                 >>(); 
             services.AddScoped<BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
-                CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
+                CreateEventRequest, UpdateEventRequest, GetEventRequest, 
+                GetAllEventsRequest, Guid, GetEventResponse,
                 GetAlleventsResponse, List<Event>
             >>();
              services.AddScoped<BaseService<Item, ItemMapper, ItemRepo<Item, GetAllItemsRequest>, WriteRepo<Item, Guid>,
-                CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
+                CreateItemRequest, UpdateItemRequest, GetItemRequest, 
+                GetAllItemsRequest, Guid, GetItemResponse,
                 GetAllItemsResponse, List<Item>
                 >>();
 
             
            services.AddScoped<BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
-                CreateOnlineCourseRequest, UpdateOnlineCourseRequest, GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
+                CreateOnlineCourseRequest, UpdateOnlineCourseRequest, 
+                GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
                 GetAllOnlineCoursesReponse, List<OnlineCourse>
                 >>();
             services.AddScoped<BaseService<Course, CourseMapper, ItemRepo<Course, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
-                CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, GetAllCoursesRequest, Guid, GetCourseResponse,
+                CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, 
+                GetAllCoursesRequest, Guid, GetCourseResponse,
                 GetAllCoursesResponse, List<Course>
                 >>();
              services.AddScoped<BaseService<Investor, InvestorMapper, UserRepo<Investor, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
-                CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest, GetAllInvestorsRequest, Guid, GetInvestorResponse,
+                CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest, 
+                GetAllInvestorsRequest, Guid, GetInvestorResponse,
                 GetAllInvestorResponse, List<Investor>
                 >>();
             services.AddScoped<BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
-                CreateOrganisationRequest, UpdateOrganisationRequest, GetOrganisationRequest, GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
+                CreateOrganisationRequest, UpdateOrganisationRequest, 
+                GetOrganisationRequest, GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
                 GetAllOrganisationsResponse, List<Organisation>
                 >>();
              services.AddScoped<BaseService<User, UserMapper, UserRepo<User, GetAllUsersRequest>, WriteRepo<User, Guid>,
-                CreateUserRequest, UpdateUserRequest, GetUserRequest, GetAllUsersRequest, Guid, GetUserResponse,
+                CreateUserRequest, UpdateUserRequest, GetUserRequest, 
+                GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, List<User>
                 >>();
-            services.AddScoped<BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>, CreateInvestmentRequest,
-                UpdateInvestmentRequest, GetInvestmentRequest, GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse, GetAllInvestmentsResponse, List<Investments>>>();
+            services.AddScoped<BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>, 
+                CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest, 
+                GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse, 
+                GetAllInvestmentsResponse, List<Investments>>>();
 
 
             services.AddScoped<UserRepo<User, GetAllUsersRequest>>();
@@ -127,7 +139,6 @@ namespace Domain
             return services;
             
             //I experimented with generics, sorry if the code is too messy
-            //add repos for base classes
             //try to see if there is a good way to store theese
         }
 
