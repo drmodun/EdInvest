@@ -50,7 +50,7 @@ namespace Domain.Services
                > ApplicationService;
         public BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
-               GetAlleventsResponse, List<Event>
+               GetAllEventsResponse, List<Event>
            > EventService;
         public BaseService<Item, ItemMapper, ItemRepo<Item, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
@@ -69,7 +69,7 @@ namespace Domain.Services
                 > CourseService;
         public BaseService<Investor, InvestorMapper, UserRepo<Investor, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest, GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorResponse, List<Investor>
+                GetAllInvestorsResponse, List<Investor>
                 > InvestorService;
 
         public BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,

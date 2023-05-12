@@ -28,7 +28,6 @@ namespace Domain.Mappers
             return new Investments
             {
                 Tier = request.Tier,
-                CreatedAt = request.CreatedAt,
                 InvestorId = request.InvestorId,
                 ItemId = request.ItemId,
                 UpdatedAt = request.UpdatedAt,

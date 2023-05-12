@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Responses.Items.Event
 {
-    public class UpdateEventresponse : UpdateItemResponse
+    public class UpdateEventResponse : UpdateItemResponse
     {
         public GetEventResponse Event { get; set; }
 

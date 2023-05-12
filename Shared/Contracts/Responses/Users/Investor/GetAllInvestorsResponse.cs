@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Responses.Users.Investor
 {
-    public class GetAllInvestorResponse
+    public class GetAllInvestorsResponse
     {
         public List<GetInvestorResponse> Investors { get; set; }
     }

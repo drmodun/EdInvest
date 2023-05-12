@@ -61,7 +61,7 @@ namespace Domain
             services.AddScoped<BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, 
                 GetAllEventsRequest, Guid, GetEventResponse,
-                GetAlleventsResponse, List<Event>
+                GetAllEventsResponse, List<Event>
             >>();
              services.AddScoped<BaseService<Item, ItemMapper, ItemRepo<Item, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, 
@@ -83,7 +83,7 @@ namespace Domain
              services.AddScoped<BaseService<Investor, InvestorMapper, UserRepo<Investor, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest, 
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorResponse, List<Investor>
+                GetAllInvestorsResponse, List<Investor>
                 >>();
             services.AddScoped<BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, 

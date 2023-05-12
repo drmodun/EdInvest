@@ -14,7 +14,6 @@ namespace Shared.Contracts.Responses.Users.User
     {
         public List<GetUserResponse> Users { get; set; }
         //Add students in the future
-        //public List<GetStudentResponse> Students { get; set; } = new();
 
     }
 }

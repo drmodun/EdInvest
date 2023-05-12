@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Investments
 {
-    public class DeleteInvestmentRRequest
+    public class DeleteInvestmentRequest
     {
         public Guid InvaestorId { get; set; }
-        public Guid CourseId { get; set; }
+        public Guid ItemId { get; set; }
     }
 }

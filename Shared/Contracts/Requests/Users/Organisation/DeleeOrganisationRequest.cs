@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Users.organisation
 {
-    internal class DeleteOrganisationRequest : DeleteUserRequest  
+    public class DeleteOrganisationRequest : DeleteUserRequest  
     {
     }
 }

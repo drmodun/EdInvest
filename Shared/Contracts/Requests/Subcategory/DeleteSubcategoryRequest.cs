@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Contracts.Responses.Category
+namespace Shared.Contracts.Requests.Subcategory
 {
-    public class DeleteCategoryRespnse
+    public class DeleteSubcategoryRequest
     {
-        public bool Success { get; set; }
+
+        public Guid Id { get; set;}
     }
 }

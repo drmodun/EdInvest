@@ -42,7 +42,7 @@ namespace API.Controllers
             };
         }
         [HttpPut(AppRoutes.Application.Update)]
-        public async Task<ActionResult<UpdateApplicaionResponse>> Update([FromBody] CreateApplicationRequest request, [FromHeader] Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<UpdateApplicaionResponse>> Update([FromBody] CreateApplicationRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var updateRequest =
                 new UpdateApplicationRequest
@@ -71,7 +71,7 @@ namespace API.Controllers
 
         }
         [HttpDelete(AppRoutes.Application.Delete)]
-        public async Task<ActionResult<DeleteApplicationResponse>> Delete([FromHeader] Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteApplicationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var deletion = await _applicationService.Delete(id, cancellationToken);
             return new DeleteApplicationResponse { Success = deletion };

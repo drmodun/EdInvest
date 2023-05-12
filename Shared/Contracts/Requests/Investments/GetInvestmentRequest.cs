@@ -10,6 +10,6 @@ namespace Shared.Contracts.Requests.Investments
     {
         public Guid InvestorId { get; set; }
 
-        public Guid CourseId { get; set; }
+        public Guid itemId { get; set; }
     }
 }

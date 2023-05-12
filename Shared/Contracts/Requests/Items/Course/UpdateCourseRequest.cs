@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Items.Course
 {
-    public abstract class UpdateCourseRequest : UpdateItemRequest
+    public  class UpdateCourseRequest : UpdateItemRequest
     {
         public int? ExpectedApplicants { get; set; }
         public int? ExpectedGraduates { get; set; }
