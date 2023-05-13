@@ -32,7 +32,7 @@ namespace Domain.Repositories.Implementations
         }
         public async Task<bool> DeleteAsync(TId id, CancellationToken cancellationToken)
         {
-            var entity = await _set.FindAsync(id);
+            var entity = await _set.FindAsync(id, cancellationToken);
             _set.Remove(entity);
             return await _context.SaveChangesAsync(cancellationToken) > 0;
         }

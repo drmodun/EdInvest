@@ -82,6 +82,7 @@ namespace API.Controllers
                 Organisation = item,
             };
         }
+        //fix delete
         [HttpDelete(AppRoutes.Organisation.Delete)]
         public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] DeleteOrganisationRequest request, CancellationToken cancellationToken)
         {

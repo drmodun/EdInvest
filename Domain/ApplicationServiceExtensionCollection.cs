@@ -51,7 +51,7 @@ namespace Domain
             services.AddScoped<BaseService<Subcategory, SubcategoryMapper, SubcategoryRepo, WriteRepo<Subcategory, Guid>,
                 CreateSubcategoryRequest, UpdateSubcategoryRequest, GetSubcategoryRequest, 
                 GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
-                GetAllCategoriesResponse, List<Subcategory>
+                GetAllSubcategoriesReponse, List<Subcategory>
                 >>();
             services.AddScoped<BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, 

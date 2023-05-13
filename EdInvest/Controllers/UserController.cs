@@ -43,6 +43,7 @@ namespace API.Controllers
             return await _userSvice.GetById(request);
         }
         //no reason to be able to create a user which is of an unknown type 
+        //maybe change stff for delete requests later
         [HttpDelete(AppRoutes.User.Delete)]
         public async Task<ActionResult<DeleteUserResponse>> Delete([FromRoute] DeleteUserRequest request, CancellationToken cancellationToken)
         {

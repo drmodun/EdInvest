@@ -34,7 +34,6 @@ namespace API.Controllers
             var request = new GetItemRequest { Id = id };
             return await _itemService.GetById(request);
         }
-        [HttpPost(AppRoutes.Item.Create)]
         
         [HttpDelete(AppRoutes.Item.Delete)]
         public async Task<ActionResult<DeleteItemReponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
