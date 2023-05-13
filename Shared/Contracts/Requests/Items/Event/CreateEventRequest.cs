@@ -1,4 +1,5 @@
 ﻿using Shared.Contracts.Items.Item;
+using Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Shared.Contracts.Requests.Items.Event
         public List<string> NotableSpeakers { get; set; }
 
         public int Capacity { get; set; }
+
+        public ItemType Type = ItemType.Event;
 
         public int ExpectedAttendance { get; set; }
     }

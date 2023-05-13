@@ -1,4 +1,5 @@
 ﻿using Shared.Contracts.Items.Item;
+using Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Shared.Contracts.Requests.Items.Event
 
         public decimal TicketPrice { get; set; }
         public Dictionary<string, string> Activities { get; set; }
+
+        public ItemType Type = ItemType.Event;
 
         public List<string> NotableAttendees { get; set; }
 

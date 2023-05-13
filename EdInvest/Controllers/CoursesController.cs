@@ -67,7 +67,6 @@ namespace API.Controllers
                     SubcategoryId = request.SubcategoryId,
                     Prices = request.Prices,
                     Tiers = request.Tiers,
-                    Type = request.Type,
                 };
             var item = await _courseService.Update(updateRequest, cancellationToken);
             return new UpdateCourseResponse { Success = item != null, Course = item };

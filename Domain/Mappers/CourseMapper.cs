@@ -69,6 +69,7 @@ namespace Domain.Mappers
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Curriculum = request.Curriculum,
+                StartDate = request.StartDate,
                 EndDate = request.EndDate,
                 ExpectedApplicants = request.ExpectedApplicants,
                 ExpectedGraduates = request.ExpectedGraduates,
@@ -82,7 +83,7 @@ namespace Domain.Mappers
         {
             var newApp = new Course
             {
-                Id = Guid.NewGuid(),
+                Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
                 Images = request.Images,

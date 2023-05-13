@@ -63,7 +63,6 @@ namespace API.Controllers
                     LocationName = request.LocationName,
                     NumberOfEmployees = request.NumberOfEmployees,
                     Password = request.Password,
-                    PhoneNumber = request.PhoneNumber,
                     ProfilePicture = request.ProfilePicture,
                     SocialLinks = request.SocialLinks,
                     Type = request.Type,

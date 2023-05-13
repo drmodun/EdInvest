@@ -98,10 +98,10 @@ namespace API.Routes
         public static class OnlineCourse
         {
             public const string GetAll = Base + $"/onlinecourses/";
-            public const string Get = Base + $"/onlinecourses/{{investorId:Guid}}/{{itemId:Guid}}";
+            public const string Get = Base + $"/onlinecourses/{{id:Guid}}";
             public const string Create = Base + $"/onlinecourses";
-            public const string Update = Base + $"/onlinecourses/{{investorId:Guid}}/{{itemId:Guid}}";
-            public const string Delete = Base + $"/onlinecourses/{{investorId:Guid}}/{{itemId:Guid}}";
+            public const string Update = Base + $"/onlinecourses/{{id:Guid}}";
+            public const string Delete = Base + $"/onlinecourses/{{id:Guid}}";
         }
 
         //add other routes later

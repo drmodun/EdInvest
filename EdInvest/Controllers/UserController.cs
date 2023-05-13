@@ -45,9 +45,10 @@ namespace API.Controllers
         //no reason to be able to create a user which is of an unknown type 
         //maybe change stff for delete requests later
         [HttpDelete(AppRoutes.User.Delete)]
-        public async Task<ActionResult<DeleteUserResponse>> Delete([FromRoute] DeleteUserRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteUserResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            var item = await _userSvice.Delete(request.Id, cancellationToken);
+           
+            var item = await _userSvice.Delete(id, cancellationToken);
             return new DeleteUserResponse
             {
                 Success = item,

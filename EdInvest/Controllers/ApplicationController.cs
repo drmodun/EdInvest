@@ -68,7 +68,6 @@ namespace API.Controllers
                     SubcategoryId = request.SubcategoryId,
                     Prices = request.Prices,
                     Tiers = request.Tiers,
-                    Type = request.Type
                 };
             var item = await _applicationService.Update(updateRequest, cancellationToken);
             return new UpdateApplicaionResponse { Success = item != null, Application = item };

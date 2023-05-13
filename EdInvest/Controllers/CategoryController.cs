@@ -62,9 +62,9 @@ namespace API.Controllers
             };
         }
         [HttpDelete(AppRoutes.Category.Delete)]
-        public async Task<ActionResult<DeleteCategoryResponse>> Delete([FromRoute] DeleteCategoryRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteCategoryResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            var item = await _categoryService.Delete(request.Id, cancellationToken);
+            var item = await _categoryService.Delete(id, cancellationToken);
             return new DeleteCategoryResponse
             {
                 Success = item,

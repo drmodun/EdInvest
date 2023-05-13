@@ -1,4 +1,5 @@
 ﻿using Shared.Contracts.Items.Item;
+using Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Shared.Contracts.Requests.Items.OnlineCourse
         public Dictionary<string, string> Lessons { get; set; }
         public List<DateTime> LessonsDate { get; set; }
         public int AvarageDuration { get; set; }
+        public ItemType Type = ItemType.OnlineCourse;
+
         public int ExpectedAudience { get; set; }
 
     }

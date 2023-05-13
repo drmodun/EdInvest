@@ -15,7 +15,6 @@ namespace Shared.Contracts.Items.Item
         public string Description { get; set; }
         public List<string> Images { get; set; } = new List<string>();
 
-        public ItemType Type { get; set; }
 
         public Guid CategoryId { get; set; }
         public Guid SubcategoryId { get; set; }

@@ -45,6 +45,7 @@ namespace Domain.Repositories.Implementations
             var users = await _context.Users
                 .OfType<TEntity>() 
                 .Where(u => u.Name.Contains(options.Name) || options.Name == null)
+                .Where(u=>u.CountryId == options.CountryId || options.CountryId == null)
                 .ToListAsync();
             return users;
             

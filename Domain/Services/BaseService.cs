@@ -12,7 +12,7 @@ namespace Domain.Services
 {
     public class BaseService<TEntity, TMapper, TReadRepo, TWriteRepo, 
         TCreateRequest, TUpdateRequest, TGetRequest, TGetAllRequest, TId,
-        TGetResponse, TGetAllResponse, TList
+        TGetResponse, TGetAllResponse, TValidation
         > 
         : IBaseService<TEntity, TMapper, TReadRepo> where TEntity : class 
         where TMapper : IMapper<TEntity, TGetResponse, TCreateRequest, TUpdateRequest> 

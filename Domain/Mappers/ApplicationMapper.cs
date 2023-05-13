@@ -76,7 +76,7 @@ namespace Domain.Mappers
         {
             var newApp = new Shared.Models.Items.Application
             {
-                Id = Guid.NewGuid(),
+                Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
                 Images = request.Images,

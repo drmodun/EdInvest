@@ -65,12 +65,12 @@ namespace API.Controllers
             };
         }
         [HttpDelete(AppRoutes.Investments.Delete)]
-        public async Task<ActionResult<DeleteInvestmentResponse>> Delete([FromRoute] DeleteInvestmentRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteInvestmentResponse>> Delete([FromRoute] Guid investorId, [FromRoute] Guid itemId, CancellationToken cancellationToken)
         {
             var key = new N_NKey
             {
-                investorId = request.InvaestorId,
-                itemId = request.ItemId
+                investorId = investorId,
+                itemId = itemId
             };
             var item = await _investmentService.Delete(key, cancellationToken);
             return new DeleteInvestmentResponse

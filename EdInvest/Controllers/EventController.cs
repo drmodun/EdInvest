@@ -70,7 +70,6 @@ namespace API.Controllers
                     SubcategoryId = request.SubcategoryId,
                     Prices = request.Prices,
                     Tiers = request.Tiers,
-                    Type = request.Type
                 };
             var item = await _eventService.Update(updateRequest, cancellationToken);
             return new UpdateEventResponse { Success = item != null, Event = item };

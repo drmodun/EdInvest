@@ -64,7 +64,6 @@ namespace API.Controllers
                     SubcategoryId = request.SubcategoryId,
                     Prices = request.Prices,
                     Tiers = request.Tiers,
-                    Type = request.Type,
                     AvarageDuration = request.AvarageDuration,
                     ExpectedAudience = request.ExpectedAudience,
                     Lessons = request.Lessons,

@@ -69,7 +69,6 @@ namespace API.Controllers
                     LocationName = request.LocationName,
                     NumberOfMembers = request.NumberOfMembers,
                     Password = request.Password,
-                    PhoneNumber = request.PhoneNumber,
                     ProfilePicture = request.ProfilePicture,
                     SocialLinks = request.SocialLinks,
                     WalletAddress = request.WalletAddress,
@@ -84,9 +83,9 @@ namespace API.Controllers
         }
         //fix delete
         [HttpDelete(AppRoutes.Organisation.Delete)]
-        public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] DeleteOrganisationRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            var item = await _organisationService.Delete(request.Id, cancellationToken);
+            var item = await _organisationService.Delete(id, cancellationToken);
             return new DeleteOrganisationResponse
             {
                 Success = item,
