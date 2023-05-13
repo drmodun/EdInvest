@@ -32,7 +32,7 @@ namespace Domain.Repositories.Implementations
             return await _context.Subcategories
                 .Where(sc => sc.Name == options.Name
                 || options.Name == null)
-                .Where(sc => sc.CatgoryId == options.CategoryId
+                .Where(sc => sc.CategoryId == options.CategoryId
                 || options.CategoryId == null
                 ).ToListAsync();
         }

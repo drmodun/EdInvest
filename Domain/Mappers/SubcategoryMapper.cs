@@ -20,7 +20,7 @@ namespace Domain.Mappers
             {
                 Id = entity .Id,
                 Name =  entity .Name,
-                CategoryId = entity .CatgoryId,
+                CategoryId = entity .CategoryId,
                 Description = entity .Description,
 
             };
@@ -33,7 +33,7 @@ namespace Domain.Mappers
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Description = request.Description,
-                CatgoryId = request.CategoryId
+                CategoryId = request.CategoryId
             };
             return entity;
         }
@@ -44,7 +44,7 @@ namespace Domain.Mappers
                 Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
-                CatgoryId = request.CategoryId
+                CategoryId = request.CategoryId
             };
             return entity;
         }

@@ -176,7 +176,7 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CatgoryId")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
@@ -189,7 +189,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CatgoryId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Subcategories");
                 });
@@ -479,7 +479,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Shared.Models.Category", "Category")
                         .WithMany("Subcategories")
-                        .HasForeignKey("CatgoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

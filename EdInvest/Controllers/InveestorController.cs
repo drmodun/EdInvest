@@ -12,6 +12,7 @@ using Shared.Models.Users;
 using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Responses.Users.Investor;
 using Domain.Repositories.Interfaces;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -21,13 +22,13 @@ namespace API.Controllers
         private readonly BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest,
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorsResponse, List<Investor>
+                GetAllInvestorsResponse,InvestorValidation
                 > _investorService;
 
         public InvestorController(BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest,
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorsResponse, List<Investor>
+                GetAllInvestorsResponse,InvestorValidation
                 > investorService)
         {
             _investorService = investorService;

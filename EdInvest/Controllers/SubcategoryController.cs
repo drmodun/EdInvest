@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -19,13 +20,13 @@ namespace API.Controllers
         private readonly BaseService<Subcategory, SubcategoryMapper, SubcategoryRepo, WriteRepo<Subcategory, Guid>,
                 CreateSubcategoryRequest, UpdateSubcategoryRequest, GetSubcategoryRequest,
                 GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
-                GetAllSubcategoriesReponse, List<Subcategory>
+                GetAllSubcategoriesReponse, SubcategoryValidation
                 > _subcategoryService;
 
         public SubcategoryController(BaseService<Subcategory, SubcategoryMapper, SubcategoryRepo, WriteRepo<Subcategory, Guid>,
                 CreateSubcategoryRequest, UpdateSubcategoryRequest, GetSubcategoryRequest,
                 GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
-                GetAllSubcategoriesReponse, List<Subcategory>
+                GetAllSubcategoriesReponse, SubcategoryValidation
                 > subcategoryService)
         {
             _subcategoryService = subcategoryService;

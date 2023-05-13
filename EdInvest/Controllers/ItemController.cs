@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
 using Shared.Contracts.Items.Item;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -18,12 +19,12 @@ namespace API.Controllers
     {
         private readonly BaseService<Item, ItemMapper, ItemRepo<Item, GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
-                GetAllItemsResponse, List<Item>
+                GetAllItemsResponse, ItemValidation<Item>
                 > _itemService;
 
         public ItemController(BaseService<Item, ItemMapper, ItemRepo<Item,GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
-                GetAllItemsResponse, List<Item>
+                GetAllItemsResponse, ItemValidation<Item>
                 > service)
         {
             _itemService = service;

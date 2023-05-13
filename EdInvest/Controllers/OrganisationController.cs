@@ -15,6 +15,7 @@ using Domain.Repositories.Interfaces;
 using Shared.Contracts.Requests.Users.organisation;
 using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.Student;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -24,13 +25,13 @@ namespace API.Controllers
         private readonly BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, GetOrganisationRequest,
                 GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
-                GetAllOrganisationsResponse, List<Organisation>
+                GetAllOrganisationsResponse, OrganisationValidation
                 > _organisationService;
 
         public OrganisationController(BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, GetOrganisationRequest,
                 GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
-                GetAllOrganisationsResponse, List<Organisation>
+                GetAllOrganisationsResponse, OrganisationValidation
                 > organisationService)
         {
             _organisationService = organisationService;

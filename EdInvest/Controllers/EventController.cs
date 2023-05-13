@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
 using Shared.Contracts.Items.Item;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -18,12 +19,12 @@ namespace API.Controllers
     {
         private readonly BaseService<Event, EventMapper, ItemRepo<Event, GetEventRequest, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
-                GetAllEventsResponse, List<Event>
+                GetAllEventsResponse, EventValidation
                 > _eventService;
 
         public EventController(BaseService<Event, EventMapper, ItemRepo<Event, GetEventRequest, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
-                GetAllEventsResponse, List<Event>
+                GetAllEventsResponse, EventValidation
                 > service)
         {
             _eventService = service;

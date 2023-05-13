@@ -1,5 +1,6 @@
 ﻿using Domain.Mappers;
 using Domain.Repositories.Interfaces;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -24,22 +25,25 @@ namespace Domain.Services
         where TGetAllRequest : class
         where TId : struct
         where TGetResponse : class
+        where TValidation : AbstractValidator<TEntity>
     {
         private readonly TMapper _mapper;
         private readonly TReadRepo _readRepo;
         private readonly TWriteRepo _writeRepo;
+        private readonly TValidation _validation;
 
-        public BaseService(TMapper mapper, TReadRepo readRepo, TWriteRepo writeRepo)
+        public BaseService(TMapper mapper, TReadRepo readRepo, TWriteRepo writeRepo, TValidation validation)
         {
 
             _mapper = mapper;
             _readRepo = readRepo;
             _writeRepo = writeRepo;
+            _validation = validation;
         }
         public async Task<TGetResponse?> Create(TCreateRequest request, CancellationToken cancellationToken)
         {
             var newEntity = _mapper.ToEntity(request);
-            //add validator
+            await _validation.ValidateAndThrowAsync(newEntity, cancellationToken);
             var addAsync = await _writeRepo.AddAsync(newEntity, cancellationToken);
             if (!addAsync)
                 return null;
@@ -48,7 +52,7 @@ namespace Domain.Services
         public async Task<TGetResponse?> Update(TUpdateRequest request, CancellationToken cancellationToken)
         {
             var updatedEntity = _mapper.ToUpdatedEntity(request);
-            //add validator
+            await _validation.ValidateAndThrowAsync(updatedEntity, cancellationToken);
             var addAsync = await _writeRepo.UpdateAsync(updatedEntity, cancellationToken);
             if (!addAsync)
                 return null;

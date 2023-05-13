@@ -8,6 +8,7 @@ using Domain.Repositories.Implementations;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -16,12 +17,12 @@ namespace API.Controllers
     {
         private readonly BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
-                GetAllApplicationsResponse, List<Application>
+                GetAllApplicationsResponse, ApplicationValidation
                 > _applicationService;
         
         public ApplicationController(BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
-                GetAllApplicationsResponse, List<Application>
+                GetAllApplicationsResponse, ApplicationValidation
                 > service)
         {
             _applicationService = service;

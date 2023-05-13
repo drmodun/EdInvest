@@ -35,6 +35,9 @@ using Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Domain.Validation;
+using Shared.Config;
+using Microsoft.Extensions.Configuration;
 
 namespace Domain
 {
@@ -42,65 +45,77 @@ namespace Domain
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddDbContext<EdInvestContext>(options => options.UseNpgsql("Host=localhost;Database=EdInvestment;Username=postgres;Password=postgres;IncludeErrorDetail=True;"));
+            services.AddDbContext<EdInvestContext>(options => options.UseNpgsql(ConfigurationHelper.GetConfiguration().GetConnectionString("Database")));
             services.AddScoped<BaseService<Category, CategoryMapper, CategoryRepo, WriteRepo<Category, Guid>,
                 CreateCategoryRequest, UpdateCategoryRequest, GetCategoryRequest, 
                 GetAllCategoriesRequest, Guid, GetCategoryResponse,
-                GetAllCategoriesResponse, List<Category>
+                GetAllCategoriesResponse, CategoryValidation
                 >>();
             services.AddScoped<BaseService<Subcategory, SubcategoryMapper, SubcategoryRepo, WriteRepo<Subcategory, Guid>,
                 CreateSubcategoryRequest, UpdateSubcategoryRequest, GetSubcategoryRequest, 
                 GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
-                GetAllSubcategoriesReponse, List<Subcategory>
+                GetAllSubcategoriesReponse, SubcategoryValidation
                 >>();
             services.AddScoped<BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, 
                 GetAllApplicationsRequest, Guid, GetaApplicationResponse,
-                GetAllApplicationsResponse, List<Application>
+                GetAllApplicationsResponse,ApplicationValidation
                 >>(); 
             services.AddScoped<BaseService<Event, EventMapper, ItemRepo<Event, GetEventRequest, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, 
                 GetAllEventsRequest, Guid, GetEventResponse,
-                GetAllEventsResponse, List<Event>
+                GetAllEventsResponse, EventValidation
             >>();
              services.AddScoped<BaseService<Item, ItemMapper, ItemRepo<Item, GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, 
                 GetAllItemsRequest, Guid, GetItemResponse,
-                GetAllItemsResponse, List<Item>
+                GetAllItemsResponse, ItemValidation<Item>
                 >>();
 
             
            services.AddScoped<BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
                 CreateOnlineCourseRequest, UpdateOnlineCourseRequest, 
                 GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
-                GetAllOnlineCoursesReponse, List<OnlineCourse>
+                GetAllOnlineCoursesReponse, OnlineCourseValidation
                 >>();
             services.AddScoped<BaseService<Course, CourseMapper, ItemRepo<Course, GetCourseRequest, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
                 CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, 
                 GetAllCoursesRequest, Guid, GetCourseResponse,
-                GetAllCoursesResponse, List<Course>
+                GetAllCoursesResponse, CourseValidation
                 >>();
              services.AddScoped<BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest, 
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorsResponse, List<Investor>
+                GetAllInvestorsResponse, InvestorValidation
                 >>();
             services.AddScoped<BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, 
                 GetOrganisationRequest, GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
-                GetAllOrganisationsResponse, List<Organisation>
+                GetAllOrganisationsResponse, OrganisationValidation
                 >>();
              services.AddScoped<BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest, 
                 GetAllUsersRequest, Guid, GetUserResponse,
-                GetAllUsersResponse, List<User>
+                GetAllUsersResponse, UserValidation<User>
                 >>();
             services.AddScoped<BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>, 
                 CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest, 
                 GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse, 
-                GetAllInvestmentsResponse, List<Investments>>>();
+                GetAllInvestmentsResponse,InvestmentsValidation>>();
             services.AddScoped<CountryService>();
              
+            services.AddScoped<ApplicationValidation>();
+            services.AddScoped<CategoryValidation>();
+            services.AddScoped<CourseValidation>();
+            services.AddScoped<EventValidation>();
+            services.AddScoped<CategoryValidation>();
+            services.AddScoped<InvestmentsValidation>();
+            services.AddScoped<ItemValidation<Item>>();
+            services.AddScoped<OnlineCourseValidation>();
+            services.AddScoped<OrganisationValidation>();
+            services.AddScoped<SubcategoryValidation>();
+            services.AddScoped<UserValidation<User>>();
+            services.AddScoped<InvestorValidation>();
 
 
             services.AddScoped<UserRepo<User, GetUserRequest, GetAllUsersRequest>>();
@@ -137,7 +152,6 @@ namespace Domain
             services.AddScoped<SubcategoryMapper>();
             services.AddScoped<WriteRepo<Subcategory, Guid>>();
             services.AddScoped<ICountryRepo, CountryRepo>();
-
 
             return services;
             

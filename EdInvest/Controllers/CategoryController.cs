@@ -2,6 +2,7 @@
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
+using Domain.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Requests.Category;
 using Shared.Contracts.Responses.Category;
@@ -15,13 +16,13 @@ namespace API.Controllers
         private readonly BaseService<Category, CategoryMapper, CategoryRepo, WriteRepo<Category, Guid>,
                 CreateCategoryRequest, UpdateCategoryRequest, GetCategoryRequest,
                 GetAllCategoriesRequest, Guid, GetCategoryResponse,
-                GetAllCategoriesResponse, List<Category>
+                GetAllCategoriesResponse, CategoryValidation
                 > _categoryService;
 
         public CategoryController(BaseService<Category, CategoryMapper, CategoryRepo, WriteRepo<Category, Guid>,
                 CreateCategoryRequest, UpdateCategoryRequest, GetCategoryRequest,
                 GetAllCategoriesRequest, Guid, GetCategoryResponse,
-                GetAllCategoriesResponse, List<Category>
+                GetAllCategoriesResponse, CategoryValidation
                 > categorService){
             _categoryService = categorService;
         }

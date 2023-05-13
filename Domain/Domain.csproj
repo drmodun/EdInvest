@@ -5,11 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.5.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
+  </ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Data\Data.csproj" />
 		<ProjectReference Include="..\Shared\Shared.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Validation\" />
 	</ItemGroup>
 </Project>

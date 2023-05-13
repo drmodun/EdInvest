@@ -9,6 +9,7 @@ using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -17,12 +18,12 @@ namespace API.Controllers
     {
         private readonly BaseService<Course, CourseMapper, ItemRepo<Course, GetCourseRequest, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
                 CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, GetAllCoursesRequest, Guid, GetCourseResponse,
-                GetAllCoursesResponse, List<Course>
+                GetAllCoursesResponse, CourseValidation
                 > _courseService;
 
         public CourseController(BaseService<Course, CourseMapper, ItemRepo<Course, GetCourseRequest, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
                 CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, GetAllCoursesRequest, Guid, GetCourseResponse,
-                GetAllCoursesResponse, List<Course>
+                GetAllCoursesResponse, CourseValidation
                 > service)
         {
             _courseService = service;

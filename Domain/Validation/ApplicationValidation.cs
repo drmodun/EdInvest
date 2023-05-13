@@ -1,0 +1,30 @@
+﻿using Domain.Repositories.Implementations;
+using Domain.Repositories.Interfaces;
+using FluentValidation;
+using Shared.Contracts.Requests.Users.Organisation;
+using Shared.Contracts.Requests.Users.Student;
+using Shared.Models.Items;
+using Shared.Models.Users;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Validation
+{
+    public class ApplicationValidation : ItemValidation<Application>
+    {
+        public ApplicationValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
+            UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo) :
+            base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo)
+        {
+
+            RuleFor(x => x.EstimatedRelease).Must(x => x > DateTime.Now).WithMessage("Application release date must be in the future");
+            RuleFor(x => x.EstimatedNumberOfUsers).Must(x => x > 0).WithMessage("Appliaction must have a set number of users");
+            RuleFor(x => x.AppPurpose).NotEmpty().WithMessage("Application must have a purpose (at least somebody does)");
+            RuleFor(x => x.Markets).NotEmpty().WithMessage("Application must be availablke on markets");
+            RuleFor(x => x.Features).NotEmpty().WithMessage("Application must have features");
+        }
+    }
+}

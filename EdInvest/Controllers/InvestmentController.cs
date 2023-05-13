@@ -3,6 +3,7 @@ using Domain.Helpers;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
+using Domain.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses.Investments;
@@ -16,12 +17,12 @@ namespace API.Controllers
         private readonly BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                            CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
                                           GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
-                                                         GetAllInvestmentsResponse, List<Investments>
+                                                         GetAllInvestmentsResponse, InvestmentsValidation
                            > _investmentService;
         public InvestmentController(BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                            CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
                                           GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
-                                                         GetAllInvestmentsResponse, List<Investments>
+                                                         GetAllInvestmentsResponse, InvestmentsValidation
                            > investmentService)
         {
             _investmentService = investmentService;

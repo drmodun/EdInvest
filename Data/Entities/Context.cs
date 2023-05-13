@@ -52,7 +52,7 @@ namespace Data.Entities
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Subcategories)
                 .WithOne(s => s.Category)
-                .HasForeignKey(c => c.CatgoryId)
+                .HasForeignKey(c => c.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Organisation>()
                 .HasMany(u => u.Items)

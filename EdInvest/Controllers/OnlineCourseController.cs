@@ -9,6 +9,7 @@ using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -17,12 +18,12 @@ namespace API.Controllers
     {
         private readonly BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
                 CreateOnlineCourseRequest, UpdateOnlineCourseRequest, GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
-                GetAllOnlineCoursesReponse, List<OnlineCourse>
+                GetAllOnlineCoursesReponse, OnlineCourseValidation
                 > _onlineCourseService;
 
         public OnlineCourseController(BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
                 CreateOnlineCourseRequest, UpdateOnlineCourseRequest, GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
-                GetAllOnlineCoursesReponse, List<OnlineCourse>
+                GetAllOnlineCoursesReponse, OnlineCourseValidation
                 > service)
         {
             _onlineCourseService = service;

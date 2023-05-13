@@ -15,6 +15,7 @@ using Domain.Repositories.Interfaces;
 using Shared.Contracts.Requests.Users.User;
 using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.Student;
+using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -24,13 +25,13 @@ namespace API.Controllers
         private readonly BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest,
                 GetAllUsersRequest, Guid, GetUserResponse,
-                GetAllUsersResponse, List<User>
+                GetAllUsersResponse, UserValidation<User>
                 > _userSvice;
 
         public UserController(BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest,
                 GetAllUsersRequest, Guid, GetUserResponse,
-                GetAllUsersResponse, List<User>
+                GetAllUsersResponse, UserValidation<User>
                 > userSvice)
         {
             _userSvice = userSvice;
