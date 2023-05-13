@@ -18,13 +18,13 @@ namespace API.Controllers
     [ApiController]
     public class InvestorController : ControllerBase
     {
-        private readonly BaseService<Investor, InvestorMapper, UserRepo<Investor, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
+        private readonly BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest,
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
                 GetAllInvestorsResponse, List<Investor>
                 > _investorService;
 
-        public InvestorController(BaseService<Investor, InvestorMapper, UserRepo<Investor, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
+        public InvestorController(BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest,
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
                 GetAllInvestorsResponse, List<Investor>
@@ -33,9 +33,10 @@ namespace API.Controllers
             _investorService = investorService;
         }
         [HttpGet(AppRoutes.Investor.Get)]
-        public async Task<ActionResult<GetInvestorResponse>> Get([FromQuery] GetInvestorRequest request)
+        public async Task<ActionResult<GetInvestorResponse>> Get([FromRoute] Guid id)
         {
-            return await _investorService.GetById(request.Id);
+            var request = new GetInvestorRequest { Id = id };
+            return await _investorService.GetById(request);
         }
         [HttpPost(AppRoutes.Investor.Create)]
         public async Task<ActionResult<CreateInvestorResponse>> Post([FromBody] CreateInvestorRequest request, CancellationToken cancellationToken)
@@ -43,7 +44,7 @@ namespace API.Controllers
             var item = await _investorService.Create(request, cancellationToken);
             return new CreateInvestorResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Investor = item,
             };
         }
@@ -72,14 +73,14 @@ namespace API.Controllers
             var item = await _investorService.Update(updateRequest, cancellationToken);
             return new UpdateInvestorResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Investor = item,
             };
         }
         [HttpDelete(AppRoutes.Investor.Delete)]
-        public async Task<ActionResult<DeleteInvestorResponse>> Delete([FromQuery] DeleteInvestorRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteInvestorResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            var item = await _investorService.Delete(request.Id, cancellationToken);
+            var item = await _investorService.Delete(id, cancellationToken);
             return new DeleteInvestorResponse
             {
                 Success = item,

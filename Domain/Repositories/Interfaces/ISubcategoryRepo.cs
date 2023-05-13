@@ -11,7 +11,7 @@ namespace Domain.Repositories.Interfaces
 {
     public interface ISubcategoryRepo
     {
-        public Task<Subcategory> GetById(Guid id);
+        public Task<Subcategory> GetById(GetSubcategoryRequest request);
         public Task<List<Subcategory>> GetAll(GetAllSubcategoriesRequest options);
 
     }

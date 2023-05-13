@@ -16,12 +16,12 @@ namespace API.Controllers
     [ApiController]
     public class ItemController : ControllerBase
     {
-        private readonly BaseService<Item, ItemMapper, ItemRepo<Item, GetAllItemsRequest>, WriteRepo<Item, Guid>,
+        private readonly BaseService<Item, ItemMapper, ItemRepo<Item, GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
                 GetAllItemsResponse, List<Item>
                 > _itemService;
 
-        public ItemController(BaseService<Item, ItemMapper, ItemRepo<Item, GetAllItemsRequest>, WriteRepo<Item, Guid>,
+        public ItemController(BaseService<Item, ItemMapper, ItemRepo<Item,GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
                 GetAllItemsResponse, List<Item>
                 > service)
@@ -29,9 +29,10 @@ namespace API.Controllers
             _itemService = service;
         }
         [HttpGet(AppRoutes.Item.Get)]
-        public async Task<ActionResult<GetItemResponse>> Get([FromQuery] GetItemRequest request)
+        public async Task<ActionResult<GetItemResponse>> Get([FromRoute] Guid id)
         {
-            return await _itemService.GetById(request.Id);
+            var request = new GetItemRequest { Id = id };
+            return await _itemService.GetById(request);
         }
         [HttpPost(AppRoutes.Item.Create)]
         

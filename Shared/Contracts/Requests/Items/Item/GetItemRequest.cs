@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Items.Item
 {
-    public abstract class GetItemRequest
+    public class GetItemRequest
     {
         public Guid Id { get; set; }
     }

@@ -17,7 +17,7 @@ namespace Domain.Services
         : IBaseService<TEntity, TMapper, TReadRepo> where TEntity : class 
         where TMapper : IMapper<TEntity, TGetResponse, TCreateRequest, TUpdateRequest> 
         where TWriteRepo : IWriteRepo<TEntity, TId>
-        where TReadRepo : IReadRepo<TEntity, TId, TGetAllRequest>
+        where TReadRepo : IReadRepo<TEntity, TGetRequest, TGetAllRequest>
         where TCreateRequest : class
         where TUpdateRequest : class
         where TGetRequest : class
@@ -60,9 +60,9 @@ namespace Domain.Services
             if (!deletion) return false;
             return true;
         }
-        public async Task<TGetResponse> GetById(TId id)
+        public async Task<TGetResponse?> GetById(TGetRequest request)
         {
-            var item = await _readRepo.GetById(id);
+            var item = await _readRepo.GetById(request);
             if (item == null)
                 return null;
             return _mapper.ToDTO(item);

@@ -53,44 +53,44 @@ namespace Domain
                 GetAllSubcategoriesRequest, Guid, GetSubcategoryResponse,
                 GetAllCategoriesResponse, List<Subcategory>
                 >>();
-            services.AddScoped<BaseService<Application, ApplicationMapper, ItemRepo<Application, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
+            services.AddScoped<BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, 
                 GetAllApplicationsRequest, Guid, GetaApplicationResponse,
                 GetAllApplicationsResponse, List<Application>
                 >>(); 
-            services.AddScoped<BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
+            services.AddScoped<BaseService<Event, EventMapper, ItemRepo<Event, GetEventRequest, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, 
                 GetAllEventsRequest, Guid, GetEventResponse,
                 GetAllEventsResponse, List<Event>
             >>();
-             services.AddScoped<BaseService<Item, ItemMapper, ItemRepo<Item, GetAllItemsRequest>, WriteRepo<Item, Guid>,
+             services.AddScoped<BaseService<Item, ItemMapper, ItemRepo<Item, GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, 
                 GetAllItemsRequest, Guid, GetItemResponse,
                 GetAllItemsResponse, List<Item>
                 >>();
 
             
-           services.AddScoped<BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
+           services.AddScoped<BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
                 CreateOnlineCourseRequest, UpdateOnlineCourseRequest, 
                 GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
                 GetAllOnlineCoursesReponse, List<OnlineCourse>
                 >>();
-            services.AddScoped<BaseService<Course, CourseMapper, ItemRepo<Course, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
+            services.AddScoped<BaseService<Course, CourseMapper, ItemRepo<Course, GetCourseRequest, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
                 CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, 
                 GetAllCoursesRequest, Guid, GetCourseResponse,
                 GetAllCoursesResponse, List<Course>
                 >>();
-             services.AddScoped<BaseService<Investor, InvestorMapper, UserRepo<Investor, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
+             services.AddScoped<BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest, 
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
                 GetAllInvestorsResponse, List<Investor>
                 >>();
-            services.AddScoped<BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
+            services.AddScoped<BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, 
                 GetOrganisationRequest, GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
                 GetAllOrganisationsResponse, List<Organisation>
                 >>();
-             services.AddScoped<BaseService<User, UserMapper, UserRepo<User, GetAllUsersRequest>, WriteRepo<User, Guid>,
+             services.AddScoped<BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest, 
                 GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, List<User>
@@ -101,28 +101,28 @@ namespace Domain
                 GetAllInvestmentsResponse, List<Investments>>>();
 
 
-            services.AddScoped<UserRepo<User, GetAllUsersRequest>>();
+            services.AddScoped<UserRepo<User, GetUserRequest, GetAllUsersRequest>>();
             services.AddScoped<WriteRepo<User, Guid>>();
             services.AddScoped<UserMapper>();
-            services.AddScoped<ItemRepo<Item, GetAllItemsRequest>>();
+            services.AddScoped<ItemRepo<Item,GetItemRequest, GetAllItemsRequest>>();
             services.AddScoped<WriteRepo<Item, Guid>>();
             services.AddScoped<ItemMapper>();
-            services.AddScoped<UserRepo<Organisation, GetAllOrganisationsRequest>>();
+            services.AddScoped<UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>>();
             services.AddScoped<WriteRepo<Organisation, Guid>>();
             services.AddScoped<OrganisationMapper>();
-            services.AddScoped<UserRepo<Investor, GetAllInvestorsRequest>>();
+            services.AddScoped<UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>>();
             services.AddScoped<WriteRepo<Investor, Guid>>();
             services.AddScoped<InvestorMapper>();
-            services.AddScoped<ItemRepo<OnlineCourse, GetAllOnlineCoursesRequest>>();
+            services.AddScoped<ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>>();
             services.AddScoped<WriteRepo<OnlineCourse, Guid>>();
             services.AddScoped<OnlineCourseMapper>();
-            services.AddScoped<ItemRepo<Course, GetAllCoursesRequest>>();
+            services.AddScoped<ItemRepo<Course,GetCourseRequest, GetAllCoursesRequest>>();
             services.AddScoped<WriteRepo<Course, Guid>>();
             services.AddScoped<CourseMapper>();
-            services.AddScoped<ItemRepo<Event, GetAllEventsRequest>>();
+            services.AddScoped<ItemRepo<Event, GetEventRequest, GetAllEventsRequest>>();
             services.AddScoped<WriteRepo<Event, Guid>>();
             services.AddScoped<EventMapper>();
-            services.AddScoped<ItemRepo<Application, GetAllApplicationsRequest>>();
+            services.AddScoped<ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>>();
             services.AddScoped<WriteRepo<Application, Guid>>();
             services.AddScoped<ApplicationMapper>();
             services.AddScoped<InvestmentRepo>();

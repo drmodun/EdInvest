@@ -11,7 +11,7 @@ namespace Domain.Repositories.Interfaces
 {
     public interface IInvestmentsRepo
     {
-        public Task<Investments?> GetById(N_NKey id);
+        public Task<Investments?> GetById(GetInvestmentRequest request);
         public Task<List<Investments>> GetAll(GetAllInvestmentsRequest options);
     }
 }

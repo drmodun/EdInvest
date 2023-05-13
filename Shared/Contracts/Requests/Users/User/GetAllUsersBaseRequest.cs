@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Users.User
 {
-    public class GetAllUsersRequest : GetAllUsersBaseRequest
+    public class GetAllUsersBaseRequest
     {
-        //later add a special kind of filter
-
+        public string? Name { get; set; }
     }
 }

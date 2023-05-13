@@ -15,12 +15,12 @@ namespace API.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
-        private readonly BaseService<Course, CourseMapper, ItemRepo<Course, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
+        private readonly BaseService<Course, CourseMapper, ItemRepo<Course, GetCourseRequest, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
                 CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, GetAllCoursesRequest, Guid, GetCourseResponse,
                 GetAllCoursesResponse, List<Course>
                 > _courseService;
 
-        public CourseController(BaseService<Course, CourseMapper, ItemRepo<Course, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
+        public CourseController(BaseService<Course, CourseMapper, ItemRepo<Course, GetCourseRequest, GetAllCoursesRequest>, WriteRepo<Course, Guid>,
                 CreateCourseRequest, UpdateCourseRequest, GetCourseRequest, GetAllCoursesRequest, Guid, GetCourseResponse,
                 GetAllCoursesResponse, List<Course>
                 > service)
@@ -28,9 +28,10 @@ namespace API.Controllers
             _courseService = service;
         }
         [HttpGet(AppRoutes.Course.Get)]
-        public async Task<ActionResult<GetCourseResponse>> Get([FromQuery] GetCourseRequest request)
+        public async Task<ActionResult<GetCourseResponse>> Get([FromRoute] Guid id)
         {
-            return await _courseService.GetById(request.Id);
+            var request = new GetCourseRequest { Id = id };
+            return await _courseService.GetById(request);
         }
         [HttpPost(AppRoutes.Course.Create)]
         public async Task<ActionResult<CreateCourseResponse>> Post([FromBody] CreateCourseRequest request, CancellationToken cancellationToken)
@@ -38,7 +39,7 @@ namespace API.Controllers
             var item = await _courseService.Create(request, cancellationToken);
             return new CreateCourseResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Course = item,
             };
         }
@@ -69,7 +70,7 @@ namespace API.Controllers
                     Type = request.Type,
                 };
             var item = await _courseService.Update(updateRequest, cancellationToken);
-            return new UpdateCourseResponse { Success = item == null, Course = item };
+            return new UpdateCourseResponse { Success = item != null, Course = item };
 
         }
         [HttpDelete(AppRoutes.Course.Delete)]

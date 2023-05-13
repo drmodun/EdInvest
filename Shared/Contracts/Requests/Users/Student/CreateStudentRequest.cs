@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Enums;
 
 namespace Shared.Contracts.Requests.Users.Student
 {
@@ -28,5 +29,6 @@ namespace Shared.Contracts.Requests.Users.Student
         public DateTime BegginingOfEducation { get; set; }
 
         public DateTime EndOfEducation { get; set; }
+        public UserType Type = UserType.Student;
     }
 }

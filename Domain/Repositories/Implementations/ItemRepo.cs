@@ -13,12 +13,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Contracts.Items.Item;
 
 namespace Domain.Repositories.Implementations 
 {
-    public class ItemRepo<TEntity, TOptions> : 
-        IReadRepo<TEntity, Guid, TOptions>, IItemRepo<TEntity, TOptions> 
+    public class ItemRepo<TEntity, TGet, TOptions> : 
+        IReadRepo<TEntity, TGet, TOptions>, IItemRepo<TEntity, TGet, TOptions> 
         where TEntity : Item where TOptions : GetAllItemsRequest
+        where TGet : GetItemRequest
     {
         private readonly EdInvestContext _context;
 
@@ -28,12 +30,12 @@ namespace Domain.Repositories.Implementations
         }
         
 
-        public async Task<TEntity?> GetById(Guid id)
+        public async Task<TEntity?> GetById(TGet request)
         {
             var item = await _context.Items
                 .OfType<TEntity>()
                 .Include(x => x.Investments)
-                .FirstOrDefaultAsync(x=>x.Id==id);
+                .FirstOrDefaultAsync(x=>x.Id==request.Id);
             return item;
         }
         public async Task<List<TEntity>> GetAll(TOptions options)

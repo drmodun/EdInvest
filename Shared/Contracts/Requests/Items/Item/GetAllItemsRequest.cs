@@ -15,7 +15,6 @@ namespace Shared.Contracts.Requests.Items.Item
 
         public Guid? CategoryId { get; set; }
 
-        public ItemType? ItemType { get; set; }
 
         public Guid? OrganisationId { get; set; }
     }

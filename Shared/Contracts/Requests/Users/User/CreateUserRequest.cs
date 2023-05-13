@@ -23,10 +23,9 @@ namespace Shared.Contracts.Requests.Users.User
 
         public bool? IsAdmin { get; set; }
 
-        public Guid CountryId;
+        public Guid CountryId { get; set; }
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }
         public decimal? Balance { get; set; }
-        public UserType Type { get; set; }
     }
 }

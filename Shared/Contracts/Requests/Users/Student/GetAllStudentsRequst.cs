@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Users.Student
 {
-    public class GetAllStudentsRequst : GetAllUsersRequest
+    public class GetAllStudentsRequst : GetAllUsersBaseRequest
     {
         public Guid? FieldId { get; set; }
 

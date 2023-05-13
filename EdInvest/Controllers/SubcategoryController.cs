@@ -31,9 +31,13 @@ namespace API.Controllers
             _subcategoryService = subcategoryService;
         }
         [HttpGet(AppRoutes.Subcategory.Get)]
-        public async Task<ActionResult<GetSubcategoryResponse>> Get([FromQuery] GetSubcategoryRequest request)
+        public async Task<ActionResult<GetSubcategoryResponse>> Get([FromRoute] Guid id)
         {
-            return await _subcategoryService.GetById(request.Id);
+            var request = new GetSubcategoryRequest
+            {
+                Id = id,
+            };
+            return await _subcategoryService.GetById(request);
         }
         [HttpPost(AppRoutes.Subcategory.Create)]
         public async Task<ActionResult<CreateSubcategoryResponse>> Post([FromBody] CreateSubcategoryRequest request, CancellationToken cancellationToken)
@@ -41,7 +45,7 @@ namespace API.Controllers
             var item = await _subcategoryService.Create(request, cancellationToken);
             return new CreateSubcategoryResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Subcategory = item,
             };
         }
@@ -59,12 +63,12 @@ namespace API.Controllers
             var item = await _subcategoryService.Update(updateRequest, cancellationToken);
             return new UpdateSubcategoryResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Subcategory = item,
             };
         }
         [HttpDelete(AppRoutes.Subcategory.Delete)]
-        public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromQuery] DeleteSubcategoryRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] DeleteSubcategoryRequest request, CancellationToken cancellationToken)
         {
             var item = await _subcategoryService.Delete(request.Id, cancellationToken);
             return new DeleteSubcategoryResponse

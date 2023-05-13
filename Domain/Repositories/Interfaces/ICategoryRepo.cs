@@ -11,7 +11,7 @@ namespace Domain.Repositories.Interfaces
 {
     public interface ICategoryRepo
     {
-        Task<Category> GetById(Guid id);
+        Task<Category> GetById(GetCategoryRequest request);
         Task<List<Category>> GetAll(GetAllCategoriesRequest options);
         
     }

@@ -81,6 +81,7 @@ namespace Data.Entities
                 .HasForeignKey(c => c.SubcategoryId);
             modelBuilder.Entity<Investments>()
                    .HasKey(i => new { i.InvestorId, i.ItemId });
+            Seeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
 
 

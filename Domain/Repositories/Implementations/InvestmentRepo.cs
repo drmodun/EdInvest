@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class InvestmentRepo : IReadRepo<Investments, N_NKey, GetAllInvestmentsRequest>,IInvestmentsRepo 
+    public class InvestmentRepo : IReadRepo<Investments, GetInvestmentRequest, GetAllInvestmentsRequest>,IInvestmentsRepo 
     {
         private readonly EdInvestContext _context;
 
@@ -26,10 +26,10 @@ namespace Domain.Repositories.Implementations
         }
 
 
-       public async Task<Investments?> GetById(N_NKey id)
+       public async Task<Investments?> GetById(GetInvestmentRequest request)
         {
             return await _context.Investments
-                .FirstOrDefaultAsync(i => i.InvestorId == id.investorId && i.ItemId == id.itemId);
+                .FirstOrDefaultAsync(i => i.InvestorId == request.InvestorId && i.ItemId == request.itemId);
         }
 
         public async Task<List<Investments>> GetAll(GetAllInvestmentsRequest options)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Users.Investor
 {
-    public class GetAllInvestorsRequest : GetAllUsersRequest
+    public class GetAllInvestorsRequest : GetAllUsersBaseRequest
     {
     }
 }

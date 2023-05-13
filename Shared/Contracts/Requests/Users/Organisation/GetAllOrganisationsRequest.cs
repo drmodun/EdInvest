@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Users.Organisation
 {
-    public class GetAllOrganisationsRequest : GetAllUsersRequest
+    public class GetAllOrganisationsRequest : GetAllUsersBaseRequest
     {
     }
 }

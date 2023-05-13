@@ -27,7 +27,6 @@ namespace Shared.Contracts.Requests.Users.User
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }
         public decimal? Balance { get; set; }
-        public UserType Type { get; set; }
 
     }
 }

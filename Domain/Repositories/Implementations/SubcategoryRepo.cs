@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class SubcategoryRepo : IReadRepo<Subcategory, Guid, GetAllSubcategoriesRequest>, ISubcategoryRepo
+    public class SubcategoryRepo : IReadRepo<Subcategory, GetSubcategoryRequest, GetAllSubcategoriesRequest>, ISubcategoryRepo
     {
         private readonly EdInvestContext _context;
 
@@ -23,9 +23,9 @@ namespace Domain.Repositories.Implementations
         {
             _context = context;
         }
-        public async Task<Subcategory?> GetById(Guid id)
+        public async Task<Subcategory?> GetById(GetSubcategoryRequest request)
         {
-            return await _context.Subcategories.FindAsync(id);
+            return await _context.Subcategories.FindAsync(request.Id);
         }
         public async Task<List<Subcategory>> GetAll(GetAllSubcategoriesRequest options)
         {

@@ -18,9 +18,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
 {
-    public class UserRepo<TEntity, TOptions> 
-        : IReadRepo<TEntity, Guid, TOptions>, IUserRepo<TEntity, TOptions> 
-        where TEntity : User where TOptions : GetAllUsersRequest
+    public class UserRepo<TEntity, TGet, TOptions> 
+        : IReadRepo<TEntity, TGet, TOptions>, IUserRepo<TEntity, TGet, TOptions> 
+        where TEntity : User where TOptions : GetAllUsersBaseRequest
+        where TGet : GetUserRequest
     {
         private readonly EdInvestContext _context;
         //private readonly _applicationMapper;
@@ -32,9 +33,9 @@ namespace Domain.Repositories.Implementations
             
         }
 
-        public async Task<TEntity?> GetById(Guid id)
+        public async Task<TEntity?> GetById(TGet request)
         {
-            var user = await _context.Users.OfType<TEntity>().FirstOrDefaultAsync(x=>x.Id == id);
+            var user = await _context.Users.OfType<TEntity>().FirstOrDefaultAsync(x=>x.Id == request.Id);
             return user;
 
         }

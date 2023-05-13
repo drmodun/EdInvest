@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories.Interfaces
 {
-    public interface IUserRepo<TEntity, TOptions>
+    public interface IUserRepo<TEntity, TGet, TOptions>
     {
-        public Task<TEntity?> GetById(Guid id);
+        public Task<TEntity?> GetById(TGet id);
         public Task<List<TEntity>> GetAll(TOptions options);
     }
 }

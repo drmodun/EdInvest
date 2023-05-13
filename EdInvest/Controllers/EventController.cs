@@ -9,18 +9,19 @@ using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
+using Shared.Contracts.Items.Item;
 
 namespace API.Controllers
 {
     [ApiController]
     public class EventController : ControllerBase
     {
-        private readonly BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
+        private readonly BaseService<Event, EventMapper, ItemRepo<Event, GetEventRequest, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
                 GetAllEventsResponse, List<Event>
                 > _eventService;
 
-        public EventController(BaseService<Event, EventMapper, ItemRepo<Event, GetAllEventsRequest>, WriteRepo<Event, Guid>,
+        public EventController(BaseService<Event, EventMapper, ItemRepo<Event, GetEventRequest, GetAllEventsRequest>, WriteRepo<Event, Guid>,
                 CreateEventRequest, UpdateEventRequest, GetEventRequest, GetAllEventsRequest, Guid, GetEventResponse,
                 GetAllEventsResponse, List<Event>
                 > service)
@@ -28,9 +29,10 @@ namespace API.Controllers
             _eventService = service;
         }
         [HttpGet(AppRoutes.Event.Get)]
-        public async Task<ActionResult<GetEventResponse>> Get([FromQuery] GetEventRequest request)
+        public async Task<ActionResult<GetEventResponse>> Get([FromRoute] Guid id)
         {
-            return await _eventService.GetById(request.Id);
+            var request = new GetEventRequest { Id = id };
+            return await _eventService.GetById(request);
         }
         [HttpPost(AppRoutes.Event.Create)]
         public async Task<ActionResult<CreateEventResponse>> Post([FromBody] CreateEventRequest request, CancellationToken cancellationToken)
@@ -38,7 +40,7 @@ namespace API.Controllers
             var item = await _eventService.Create(request, cancellationToken);
             return new CreateEventResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Event = item,
             };
         }
@@ -71,7 +73,7 @@ namespace API.Controllers
                     Type = request.Type
                 };
             var item = await _eventService.Update(updateRequest, cancellationToken);
-            return new UpdateEventResponse { Success = item == null, Event = item };
+            return new UpdateEventResponse { Success = item != null, Event = item };
 
         }
         [HttpDelete(AppRoutes.Event.Delete)]

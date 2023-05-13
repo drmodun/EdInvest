@@ -14,12 +14,12 @@ namespace API.Controllers
     [ApiController]
     public class ApplicationController : ControllerBase
     {
-        private readonly BaseService<Application, ApplicationMapper, ItemRepo<Application, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
+        private readonly BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
                 GetAllApplicationsResponse, List<Application>
                 > _applicationService;
         
-        public ApplicationController(BaseService<Application, ApplicationMapper, ItemRepo<Application, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
+        public ApplicationController(BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
                 GetAllApplicationsResponse, List<Application>
                 > service)
@@ -27,9 +27,13 @@ namespace API.Controllers
             _applicationService = service;
         }
         [HttpGet(AppRoutes.Application.Get)]
-        public async Task<ActionResult<GetaApplicationResponse>> Get([FromQuery] GetApplicationRequest request)
+        public async Task<ActionResult<GetaApplicationResponse>> Get([FromRoute] Guid id)
         {
-            return await _applicationService.GetById(request.Id);
+            var request = new GetApplicationRequest
+            {
+                Id = id,
+            };
+            return await _applicationService.GetById(request);
         }
         [HttpPost(AppRoutes.Application.Create)]
         public async Task<ActionResult<CreateApplicationResponse>> Post([FromBody] CreateApplicationRequest request, CancellationToken cancellationToken)
@@ -37,7 +41,7 @@ namespace API.Controllers
             var item = await _applicationService.Create(request, cancellationToken);
             return new CreateApplicationResponse
             {
-                Success = item==null,
+                Success = item!=null,
                 Application = item,
             };
         }
@@ -67,7 +71,7 @@ namespace API.Controllers
                     Type = request.Type
                 };
             var item = await _applicationService.Update(updateRequest, cancellationToken);
-            return new UpdateApplicaionResponse { Success = item == null, Application = item };
+            return new UpdateApplicaionResponse { Success = item != null, Application = item };
 
         }
         [HttpDelete(AppRoutes.Application.Delete)]

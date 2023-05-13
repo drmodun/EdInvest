@@ -21,13 +21,13 @@ namespace API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly BaseService<User, UserMapper, UserRepo<User, GetAllUsersRequest>, WriteRepo<User, Guid>,
+        private readonly BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest,
                 GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, List<User>
                 > _userSvice;
 
-        public UserController(BaseService<User, UserMapper, UserRepo<User, GetAllUsersRequest>, WriteRepo<User, Guid>,
+        public UserController(BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest,
                 GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, List<User>
@@ -36,13 +36,15 @@ namespace API.Controllers
             _userSvice = userSvice;
         }
         [HttpGet(AppRoutes.User.Get)]
-        public async Task<ActionResult<GetUserResponse>> Get([FromQuery] GetUserRequest request)
+        public async Task<ActionResult<GetUserResponse>> Get([FromRoute] Guid id)
         {
-            return await _userSvice.GetById(request.Id);
+            var request = new GetUserRequest
+            {Id = id};
+            return await _userSvice.GetById(request);
         }
         //no reason to be able to create a user which is of an unknown type 
         [HttpDelete(AppRoutes.User.Delete)]
-        public async Task<ActionResult<DeleteUserResponse>> Delete([FromQuery] DeleteUserRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteUserResponse>> Delete([FromRoute] DeleteUserRequest request, CancellationToken cancellationToken)
         {
             var item = await _userSvice.Delete(request.Id, cancellationToken);
             return new DeleteUserResponse

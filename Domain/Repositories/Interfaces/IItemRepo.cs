@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Contracts.Items.Item;
 
 namespace Domain.Repositories.Interfaces
 {
-    public interface IItemRepo<TEntity, TOptions>
+    public interface IItemRepo<TEntity, TGet, TOptions>
     {
-        public Task<TEntity?> GetById(Guid id);
+        public Task<TEntity?> GetById(TGet request);
         public Task<List<TEntity>> GetAll(TOptions options);
     }
 }

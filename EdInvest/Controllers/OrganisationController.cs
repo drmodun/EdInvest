@@ -21,13 +21,13 @@ namespace API.Controllers
     [ApiController]
     public class OrganisationController : ControllerBase
     {
-        private readonly BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
+        private readonly BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, GetOrganisationRequest,
                 GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
                 GetAllOrganisationsResponse, List<Organisation>
                 > _organisationService;
 
-        public OrganisationController(BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
+        public OrganisationController(BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, GetOrganisationRequest,
                 GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
                 GetAllOrganisationsResponse, List<Organisation>
@@ -36,9 +36,13 @@ namespace API.Controllers
             _organisationService = organisationService;
         }
         [HttpGet(AppRoutes.Organisation.Get)]
-        public async Task<ActionResult<GetOrganisationResponse>> Get([FromQuery] GetOrganisationRequest request)
+        public async Task<ActionResult<GetOrganisationResponse>> Get([FromRoute] Guid id)
         {
-            return await _organisationService.GetById(request.Id);
+            var request = new GetOrganisationRequest
+            {
+                Id = id,
+            };
+            return await _organisationService.GetById(request);
         }
         [HttpPost(AppRoutes.Organisation.Create)]
         public async Task<ActionResult<CreateOrganisationResponse>> Post([FromBody] CreateOrganisationRequest request, CancellationToken cancellationToken)
@@ -46,7 +50,7 @@ namespace API.Controllers
             var item = await _organisationService.Create(request, cancellationToken);
             return new CreateOrganisationResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Organisation = item,
             };
         }
@@ -68,19 +72,18 @@ namespace API.Controllers
                     PhoneNumber = request.PhoneNumber,
                     ProfilePicture = request.ProfilePicture,
                     SocialLinks = request.SocialLinks,
-                    Type = request.Type,
                     WalletAddress = request.WalletAddress,
                     Id = id,
                 };
             var item = await _organisationService.Update(updateRequest, cancellationToken);
             return new UpdateOrganisationResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Organisation = item,
             };
         }
         [HttpDelete(AppRoutes.Organisation.Delete)]
-        public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromQuery] DeleteOrganisationRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] DeleteOrganisationRequest request, CancellationToken cancellationToken)
         {
             var item = await _organisationService.Delete(request.Id, cancellationToken);
             return new DeleteOrganisationResponse

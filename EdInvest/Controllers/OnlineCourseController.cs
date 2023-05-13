@@ -15,12 +15,12 @@ namespace API.Controllers
     [ApiController]
     public class OnlineCourseController : ControllerBase
     {
-        private readonly BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
+        private readonly BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
                 CreateOnlineCourseRequest, UpdateOnlineCourseRequest, GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
                 GetAllOnlineCoursesReponse, List<OnlineCourse>
                 > _onlineCourseService;
 
-        public OnlineCourseController(BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
+        public OnlineCourseController(BaseService<OnlineCourse, OnlineCourseMapper, ItemRepo<OnlineCourse, GetOnlineCourseRequest, GetAllOnlineCoursesRequest>, WriteRepo<OnlineCourse, Guid>,
                 CreateOnlineCourseRequest, UpdateOnlineCourseRequest, GetOnlineCourseRequest, GetAllOnlineCoursesRequest, Guid, GetOnlineCourseResponse,
                 GetAllOnlineCoursesReponse, List<OnlineCourse>
                 > service)
@@ -28,9 +28,13 @@ namespace API.Controllers
             _onlineCourseService = service;
         }
         [HttpGet(AppRoutes.OnlineCourse.Get)]
-        public async Task<ActionResult<GetOnlineCourseResponse>> Get([FromQuery] GetOnlineCourseRequest request)
+        public async Task<ActionResult<GetOnlineCourseResponse>> Get([FromRoute] Guid id)
         {
-            return await _onlineCourseService.GetById(request.Id);
+            var request = new GetOnlineCourseRequest
+            {
+                Id = id,
+            };
+            return await _onlineCourseService.GetById(request);
         }
         [HttpPost(AppRoutes.OnlineCourse.Create)]
         public async Task<ActionResult<CreateOnlineCourseResponse>> Post([FromBody] CreateOnlineCourseRequest request, CancellationToken cancellationToken)
@@ -38,7 +42,7 @@ namespace API.Controllers
             var item = await _onlineCourseService.Create(request, cancellationToken);
             return new CreateOnlineCourseResponse
             {
-                Success = item == null,
+                Success = item != null,
                 OnlineCourse = item,
             };
         }
@@ -68,7 +72,7 @@ namespace API.Controllers
                     LinksToChannels = request.LinksToChannels
                 };
             var item = await _onlineCourseService.Update(updateRequest, cancellationToken);
-            return new UpdateOnlineCourseResponse { Success = item == null, OnlineCourse = item };
+            return new UpdateOnlineCourseResponse { Success = item != null, OnlineCourse = item };
 
         }
         [HttpDelete(AppRoutes.OnlineCourse.Delete)]

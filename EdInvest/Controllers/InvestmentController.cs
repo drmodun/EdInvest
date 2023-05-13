@@ -27,14 +27,14 @@ namespace API.Controllers
             _investmentService = investmentService;
         }
         [HttpGet(AppRoutes.Investments.Get)]
-        public async Task<ActionResult<GetInvestmentResponse>> Get([FromQuery] GetInvestmentRequest request)
+        public async Task<ActionResult<GetInvestmentResponse>> Get([FromRoute] Guid investorId, [FromRoute] Guid itemId)
         {
-            var key = new N_NKey
+            var request = new GetInvestmentRequest
             {
-                investorId = request.InvestorId,
-                itemId = request.itemId
+                InvestorId = investorId,
+                itemId = itemId
             };
-            return await _investmentService.GetById(key);
+            return await _investmentService.GetById(request);
         }
         [HttpPost(AppRoutes.Investments.Create)]
         public async Task<ActionResult<CreateInvestmentResponse>> Post([FromBody] CreateInvestmentRequest request, CancellationToken cancellationToken)
@@ -42,7 +42,7 @@ namespace API.Controllers
             var item = await _investmentService.Create(request, cancellationToken);
             return new CreateInvestmentResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Investment = item,
             };
         }
@@ -60,12 +60,12 @@ namespace API.Controllers
             var item = await _investmentService.Update(updateRequest, cancellationToken);
             return new UpdateInvestmentResponse
             {
-                Success = item == null,
+                Success = item != null,
                 Investment = item,
             };
         }
         [HttpDelete(AppRoutes.Investments.Delete)]
-        public async Task<ActionResult<DeleteInvestmentResponse>> Delete([FromQuery] DeleteInvestmentRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteInvestmentResponse>> Delete([FromRoute] DeleteInvestmentRequest request, CancellationToken cancellationToken)
         {
             var key = new N_NKey
             {
@@ -75,7 +75,7 @@ namespace API.Controllers
             var item = await _investmentService.Delete(key, cancellationToken);
             return new DeleteInvestmentResponse
             {
-                Success = item == null,
+                Success = item != null,
             };
         }
         [HttpGet(AppRoutes.Investments.GetAll)]
