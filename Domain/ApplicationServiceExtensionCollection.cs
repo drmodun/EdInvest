@@ -99,6 +99,8 @@ namespace Domain
                 CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest, 
                 GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse, 
                 GetAllInvestmentsResponse, List<Investments>>>();
+            services.AddScoped<CountryService>();
+             
 
 
             services.AddScoped<UserRepo<User, GetUserRequest, GetAllUsersRequest>>();
@@ -134,6 +136,7 @@ namespace Domain
             services.AddScoped<SubcategoryRepo>();
             services.AddScoped<SubcategoryMapper>();
             services.AddScoped<WriteRepo<Subcategory, Guid>>();
+            services.AddScoped<ICountryRepo, CountryRepo>();
 
 
             return services;
