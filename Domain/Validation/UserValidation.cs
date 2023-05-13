@@ -21,7 +21,7 @@ namespace Domain.Validation
             RuleFor(x => x.Name).NotEmpty().WithMessage("Last name is required");
             RuleFor(x => x.Description).MaximumLength(500).WithMessage("Description must be less than 500 characters");
             RuleFor(x => x.Description).MinimumLength(20).WithMessage("Descriptio must be at least 20 characters long");
-            RuleFor(x => x.CountryId).MustAsync(async (n, cancellationToken) => { return await _countryRepo.GetById(n) == null; }).WithMessage("Country is not valid");
+            RuleFor(x => x.CountryId).MustAsync(async (n, cancellationToken) => { return await _countryRepo.GetById(n) != null; }).WithMessage("Country is not valid");
             RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required");
             RuleFor(x => x.Email).EmailAddress().WithMessage("Email is not valid");
             RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");

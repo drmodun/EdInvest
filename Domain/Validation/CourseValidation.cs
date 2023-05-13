@@ -25,7 +25,7 @@ namespace Domain.Validation
             RuleFor(x => x.ExpectedApplicants).Must(ea => ea > 0).WithMessage(" The number of applicants must be positive");
             RuleFor(x => new { x.ExpectedGraduates, x.ExpectedApplicants}).Must(eg => eg.ExpectedGraduates > 0 && eg.ExpectedGraduates<=eg.ExpectedApplicants).
                 WithMessage(" The number of graduates must be positive and cannot be larger than the number of applicants");
-            RuleFor(x => x.ActiveStudents).Must(a => a == null || a >= 0).WithMessage("The number  of active student smust be positive");
+            RuleFor(x => x.ActiveStudents).Must(a => a != null || a >= 0).WithMessage("The number  of active student smust be positive");
 
         }
     }

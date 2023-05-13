@@ -23,7 +23,7 @@ namespace Domain.Validation
             RuleFor(x => x.Name).MinimumLength(3).WithMessage("Name cannot be shorter than 3 characters");
             RuleFor(x => x.Description).MinimumLength(3).WithMessage("Decription cannot be shorter than 3 characters");
             RuleFor(x => x.CategoryId).MustAsync(async (n, cancellationToken) =>
-            { return await _categoryRepo.GetById(new GetCategoryRequest { Id = n }) == null; }).WithMessage("Category is not valid");
+            { return await _categoryRepo.GetById(new GetCategoryRequest { Id = n }) != null; }).WithMessage("Category is not valid");
         }
     }
 }

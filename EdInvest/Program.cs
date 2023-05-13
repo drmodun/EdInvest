@@ -1,3 +1,4 @@
+using Api.Middleware;
 using Domain;
 using System.Text.Json.Serialization;
 
@@ -29,8 +30,9 @@ namespace Presentation
 
             app.UseAuthorization();
 
-
+            app.UseMiddleware<ValidationMappingMiddleware>();
             app.MapControllers();
+
 
             app.Run();
         }
