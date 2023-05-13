@@ -3,6 +3,8 @@ using Shared.Models;
 using Shared.Enums;
 using Shared.Models.Items;
 using Shared.Models.Users;
+using Shared.Config;
+using Microsoft.Extensions.Configuration;
 
 namespace Data.Entities
 {
@@ -18,7 +20,7 @@ namespace Data.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Database=EdInvestment;Username=postgres;Password=postgres;IncludeErrorDetail=True;");
+            optionsBuilder.UseNpgsql(ConfigurationHelper.GetConfiguration().GetConnectionString("ContextSettings"));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

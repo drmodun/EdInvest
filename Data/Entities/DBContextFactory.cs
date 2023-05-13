@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Config;
+
 namespace Data.Entities
 {
     public class DbContextFactory : IDesignTimeDbContextFactory<EdInvestContext>
@@ -14,7 +16,7 @@ namespace Data.Entities
         {
          
             var options = new DbContextOptionsBuilder<EdInvestContext>()
-                .UseNpgsql("Server = localhost; Port = 5430; Database = EdInvest; User Id = postgres; Password = postgres;")
+                .UseNpgsql(ConfigurationHelper.GetConfiguration().GetConnectionString("Database"))
                 .Options;
 
             return new EdInvestContext(options);
