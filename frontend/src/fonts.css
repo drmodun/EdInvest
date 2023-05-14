@@ -15,3 +15,9 @@
   src: url("./assets/fonts/inter/static/Inter-Bold.ttf");
   font-weight: 700;
 }
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/inter/static/Inter-Medium.ttf");
+  font-weight: 500;
+}

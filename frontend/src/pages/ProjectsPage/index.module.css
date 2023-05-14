@@ -11,3 +11,30 @@
   margin-top: 79px;
   color: var(--color-light-gray);
 }
+
+.sectionSearchQuery {
+  padding: 22px 38px;
+  width: 789px;
+  height: 69px;
+  box-sizing: border-box;
+  padding: 22px 38px;
+  background: #f3f3f3;
+  border-radius: 15px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.sectionSearchQuery > input {
+  width: 100%;
+  margin-left: 37px;
+  border: none;
+  outline: none;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 20px;
+  background: none;
+}
+
+.sectionSearchQuery > input::placeholder {
+  color: #a2a2a2;
+}
