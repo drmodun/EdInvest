@@ -26,7 +26,7 @@ namespace Domain.Mappers
                 Description = entity.Description,
                 ProfilePicture = entity.ProfilePicture,
                 SocialLinks = entity.SocialLinks,
-                IsAdmin = entity.IsAdmin,
+
                 CountryId = entity.CountryId,
                 LocationName = entity.LocationName,
                 WalletAddress = entity.WalletAddress,

@@ -26,7 +26,6 @@ namespace Domain.Mappers
                 Description = entity .Description,
                 ProfilePicture = entity .ProfilePicture,
                 SocialLinks = entity .SocialLinks,
-                IsAdmin = entity .IsAdmin,
                 CountryId = entity .CountryId,
                 LocationName = entity .LocationName,
                 WalletAddress = entity .WalletAddress,
@@ -50,7 +49,10 @@ namespace Domain.Mappers
                 Description = request.Description,
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
-                IsAdmin = request.IsAdmin,
+                Claims = new Dictionary<string, string>()
+                {
+                    { "trusted_member", "true" }
+                },
                 CountryId = request.CountryId,
                 LocationName = request.LocationName,
                 WalletAddress = request.WalletAddress,
@@ -74,7 +76,6 @@ namespace Domain.Mappers
                 Description = request.Description,
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
-                IsAdmin = request.IsAdmin,
                 CountryId = request.CountryId,
                 LocationName = request.LocationName,
                 WalletAddress = request.WalletAddress,

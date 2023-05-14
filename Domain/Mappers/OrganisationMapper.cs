@@ -33,7 +33,10 @@ namespace Domain.Mappers
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
                 WalletAddress = request.WalletAddress,
-                IsAdmin = request.IsAdmin
+                Claims = new Dictionary<string, string>()
+                {
+                    { "trusted_member", "true" }
+                }
 
 
 
@@ -57,7 +60,6 @@ namespace Domain.Mappers
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
                 WalletAddress = request.WalletAddress,
-                IsAdmin = request.IsAdmin
 
 
 
@@ -78,7 +80,6 @@ namespace Domain.Mappers
                 ProfilePicture = entity .ProfilePicture,
                 Email = entity .Email,
                 Password = entity .Password,
-                IsAdmin = entity .IsAdmin,
                 SocialLinks = entity .SocialLinks,
                 WalletAddress = entity .WalletAddress,
                 NumberOfMembers = entity .NumberOfMembers,

@@ -21,8 +21,6 @@ namespace Shared.Contracts.Requests.Users.User
 
         public Dictionary<string, string> SocialLinks { get; set; }
 
-        public bool? IsAdmin { get; set; }
-
         public Guid CountryId;
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }

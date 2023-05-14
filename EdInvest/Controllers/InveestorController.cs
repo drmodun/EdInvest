@@ -60,7 +60,6 @@ namespace API.Controllers
                     Balance = request.Balance,
                     CountryId = request.CountryId,
                     Email = request.Email,
-                    IsAdmin = request.IsAdmin,
                     LocationName = request.LocationName,
                     NumberOfEmployees = request.NumberOfEmployees,
                     Password = request.Password,

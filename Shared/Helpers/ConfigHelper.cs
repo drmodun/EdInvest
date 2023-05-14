@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Shared .Config
+namespace Shared.Helpers
 {
     public class ConfigurationHelper
     {

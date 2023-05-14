@@ -24,9 +24,8 @@ namespace Shared.Models.Users
 
         public Dictionary<string, string> SocialLinks { get; set; }
 
-        public bool? IsAdmin { get; set; }
-
-        public Guid CountryId;
+        public Dictionary<string, string> Claims { get; set; }
+        public Guid CountryId { get; set; }
         public Country? Country { get; set; }
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }

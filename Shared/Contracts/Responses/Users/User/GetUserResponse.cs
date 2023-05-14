@@ -22,10 +22,8 @@ namespace Shared.Contracts.Responses.Users.User
 
         public string ProfilePicture { get; set; }
 
-
         public Dictionary<string, string> SocialLinks { get; set; }
 
-        public bool? IsAdmin { get; set; }
 
         public Guid CountryId { get; set; }
         public string LocationName { get; set; }

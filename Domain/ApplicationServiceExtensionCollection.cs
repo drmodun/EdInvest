@@ -36,8 +36,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Domain.Validation;
-using Shared.Config;
+using Shared.Helpers;
 using Microsoft.Extensions.Configuration;
+using Shared.Helpers;
 
 namespace Domain
 {
