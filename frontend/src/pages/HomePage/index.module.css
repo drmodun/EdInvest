@@ -1,0 +1,25 @@
+.HeaderHeroWrapper {
+  background-color: var(--color-blue);
+  display: flex;
+  justify-content: center;
+}
+
+.HeaderHeroBackgroundImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.HeaderHeroTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  z-index: 1;
+  margin-top: 90px;
+  max-width: 763px;
+}
