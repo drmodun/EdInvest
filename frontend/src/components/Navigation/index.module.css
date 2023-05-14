@@ -23,3 +23,7 @@
 .headerNavItem:not(:last-child) {
   margin-right: 60px;
 }
+
+.header > button {
+  margin-left: auto;
+}

@@ -1,0 +1,12 @@
+.button {
+  padding: 12px 26px;
+  width: 112px;
+  height: 43px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  color: #3D3D3D;
+  font-size: 16px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+}
