@@ -3,6 +3,7 @@
   height: var(--header-height);
   background: var(--header-background);
   position: fixed;
+  z-index: 100;
 }
 
 .header > div {
@@ -20,7 +21,7 @@
 .headerNavItem {
   color: var(--header-nav-color);
   font-size: 18px;
-  font-family: 'SF Pro Display', serif;
+  font-family: "SF Pro Display", serif;
   font-weight: 500;
 }
 
