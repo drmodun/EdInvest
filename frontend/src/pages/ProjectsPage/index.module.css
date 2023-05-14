@@ -1,0 +1,13 @@
+.sectionSearch {
+  width: 100%;
+  padding-top: var(--header-height);
+}
+
+.sectionSearchTitle {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 58px;
+  text-align: center;
+  margin-top: 79px;
+  color: var(--color-light-gray);
+}
