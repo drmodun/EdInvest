@@ -7,7 +7,12 @@ a {
 }
 
 :root {
+  --color-blue: #1B2DAF;
+  --color-gray: #6D6D6D;
+
   --header-height: 117px;
+  --header-background: white;
+  --header-nav-color: var(--color-gray);
 }
 
 .headerMargin {

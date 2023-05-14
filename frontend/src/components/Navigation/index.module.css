@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: var(--header-height);
-  background: #1B2DAF;
+  background: var(--header-background);
   position: fixed;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .headerNavItem {
-  color: white;
+  color: var(--header-nav-color);
   font-size: 18px;
   font-family: 'SF Pro Display', serif;
   font-weight: 500;
