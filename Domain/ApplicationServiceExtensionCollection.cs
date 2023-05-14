@@ -153,6 +153,7 @@ namespace Domain
             services.AddScoped<SubcategoryMapper>();
             services.AddScoped<WriteRepo<Subcategory, Guid>>();
             services.AddScoped<ICountryRepo, CountryRepo>();
+            services.AddScoped<IdentityService>();
 
             return services;
             

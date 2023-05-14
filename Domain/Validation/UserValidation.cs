@@ -17,6 +17,7 @@ namespace Domain.Validation
         private readonly ICountryRepo _countryRepo;
         public UserValidation(ICountryRepo countryRepo)
         {
+            //change password check later
             _countryRepo = countryRepo;
             RuleFor(x => x.Name).NotEmpty().WithMessage("Last name is required");
             RuleFor(x => x.Description).MaximumLength(500).WithMessage("Description must be less than 500 characters");

@@ -12,6 +12,6 @@ namespace Shared.Contracts.Requests
         public string Email { get; set; }
 
         public string Name { get; set; }
-        public Dictionary<string, object> Claims { get; set; } = new Dictionary<string, object>();
+        public Dictionary<string, string> Claims { get; set; } = new Dictionary<string, string>();
     }
 }

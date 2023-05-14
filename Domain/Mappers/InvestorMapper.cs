@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Hash;
 
 namespace Domain.Mappers
 {
@@ -13,12 +14,12 @@ namespace Domain.Mappers
     {
         public   GetInvestorResponse ToDTO(Investor entity )
         {
+
             return new GetInvestorResponse
             {
                 Id = entity .Id,
                 Name = entity .Name,
                 Email = entity .Email,
-                Password = entity .Password,
                 Balance = entity .Balance,
                 NumberOfEmployees = entity .NumberOfEmployees,
                 CreatedAt = entity .CreatedAt,
@@ -36,12 +37,16 @@ namespace Domain.Mappers
         }
         public   Investor ToEntity (CreateInvestorRequest request)
         {
+            if (request.Password.Length < 8)
+                return null;
+            if (request.Password == request.Password.ToLower())
+                return null;
             return new Investor
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Email = request.Email,
-                Password = request.Password,
+                Password = HashHelper.Hash(request.Password),
                 Balance = request.Balance,
                 NumberOfEmployees = request.NumberOfEmployees,
                 CreatedAt = DateTime.UtcNow,
@@ -63,12 +68,16 @@ namespace Domain.Mappers
         }
         public   Investor ToUpdatedEntity(UpdateInvestorRequest request)
         {
+            if (request.Password.Length < 8)
+                return null;
+            if (request.Password == request.Password.ToLower())
+                return null;
             return new Investor
             {
                 Id =request.Id,
                 Name = request.Name,
                 Email = request.Email,
-                Password = request.Password,
+                Password = HashHelper.Hash(request.Password),
                 Balance = request.Balance,
                 NumberOfEmployees = request.NumberOfEmployees,
                 CreatedAt = DateTime.UtcNow,

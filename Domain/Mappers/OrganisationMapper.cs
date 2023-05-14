@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Hash;
+using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Mappers
 {
@@ -16,13 +18,18 @@ namespace Domain.Mappers
     {
         public   Organisation ToEntity(CreateOrganisationRequest request)
         {
+            if (request.Password.Length < 8)
+                return null;
+            if (request.Password == request.Password.ToLower())
+                return null;
+            //a robust password check beacause we are hashing stuff in the mapper already so it will never validate the password with validation
             return new Organisation
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 NumberOfMembers = request.NumberOfMembers,
                 Email = request.Email,
-                Password = request.Password,
+                Password = HashHelper.Hash(request.Password),
                 Description = request.Description,
                 LocationName = request.LocationName,
                 Balance = request.Balance,
@@ -42,15 +49,21 @@ namespace Domain.Mappers
 
             };
         }
-        public   Organisation ToUpdatedEntity(UpdateOrganisationRequest request)
+        public   Organisation? ToUpdatedEntity(UpdateOrganisationRequest request)
         {
+            if (request.Password.Length < 8)
+                return null;
+            if (request.Password == request.Password.ToLower())
+                return null;
+
+
             return new Organisation
             {
                 Id = request.Id,
                 Name = request.Name,
                 NumberOfMembers = request.NumberOfMembers,
                 Email = request.Email,
-                Password = request.Password,
+                Password = HashHelper.Hash(request.Password),
                 Description = request.Description,
                 LocationName = request.LocationName,
                 Balance = request.Balance,
@@ -65,8 +78,10 @@ namespace Domain.Mappers
 
             };
         }
-        public   GetOrganisationResponse ToDTO(Organisation entity)
+        public   GetOrganisationResponse? ToDTO(Organisation entity)
         {
+            if (entity.Password.Length<8)
+                return null;
             return new GetOrganisationResponse
             {
                 Id = entity .Id,
@@ -79,7 +94,6 @@ namespace Domain.Mappers
                 CountryId = entity .CountryId,
                 ProfilePicture = entity .ProfilePicture,
                 Email = entity .Email,
-                Password = entity .Password,
                 SocialLinks = entity .SocialLinks,
                 WalletAddress = entity .WalletAddress,
                 NumberOfMembers = entity .NumberOfMembers,

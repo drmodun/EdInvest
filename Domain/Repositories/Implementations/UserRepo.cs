@@ -50,5 +50,12 @@ namespace Domain.Repositories.Implementations
             return users;
             
         }
+        public async Task<TEntity?> GetUserByEmail(string email)
+        {
+           return await _context.Users
+                .OfType<TEntity>().
+                FirstOrDefaultAsync(x=>x.Email==email);
+        }
+
     }
 }

@@ -16,6 +16,7 @@ namespace API.Routes
         public static class User
         {
             public const string GetAll = Base + $"/users";
+            public const string Login = Base + $"/users/login";
             public const string Get = Base + $"/users/{{id:Guid}}";
             public const string Create = Base + $"/users";
             public const string Update = Base + $"/users/{{id:Guid}}";

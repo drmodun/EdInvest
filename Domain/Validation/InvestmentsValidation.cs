@@ -30,7 +30,7 @@ namespace Domain.Validation
             { return await _userRepo.GetById(new GetInvestorRequest { Id = n }) != null; }).WithMessage("Investor is not valid");
             RuleFor(x => x.ItemId).MustAsync(async (n, cancellationToken) =>
             { return await _itemRepo.GetById(new GetItemRequest { Id = n }) != null; }).WithMessage("Item is not valid");
-            RuleFor(x => x.Tier).Must(x => x > 0 && x < 11).WithMessage("Tier mustz be betwen 1 and 10");
+            RuleFor(x => x.Tier).Must(x => x >= 0 && x < 11).WithMessage("Tier mustz be betwen 0 and 10");
 
         }
     }

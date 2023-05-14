@@ -16,6 +16,8 @@ using Shared.Contracts.Requests.Users.User;
 using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.Student;
 using Domain.Validation;
+using Shared.Contracts.Requests;
+using System.Security.Cryptography.X509Certificates;
 
 namespace API.Controllers
 {
@@ -27,14 +29,16 @@ namespace API.Controllers
                 GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, UserValidation<User>
                 > _userSvice;
+        private readonly IdentityService _identityService;
 
         public UserController(BaseService<User, UserMapper, UserRepo<User, GetUserRequest, GetAllUsersRequest>, WriteRepo<User, Guid>,
                 CreateUserRequest, UpdateUserRequest, GetUserRequest,
                 GetAllUsersRequest, Guid, GetUserResponse,
                 GetAllUsersResponse, UserValidation<User>
-                > userSvice)
+                > userSvice, IdentityService identityService)
         {
             _userSvice = userSvice;
+            _identityService = identityService;
         }
         [HttpGet(AppRoutes.User.Get)]
         public async Task<ActionResult<GetUserResponse>> Get([FromRoute] Guid id)
@@ -64,6 +68,14 @@ namespace API.Controllers
                 Users = items,
             };
 
+        }
+        [HttpPost(AppRoutes.User.Login)]
+        public async Task<ActionResult<string?>> GetJWT([FromBody] LoginUserRequset request)
+        {
+            var jwt = await _identityService.LoginUser(request);
+            if (jwt == null)
+                return NotFound();
+            return jwt;
         }
 
     }

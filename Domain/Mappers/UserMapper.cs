@@ -19,7 +19,6 @@ namespace Domain.Mappers
                 Id = entity.Id,
                 Name = entity.Name,
                 Email = entity.Email,
-                Password = entity.Password,
                 Balance = entity.Balance,
                 CreatedAt = entity.CreatedAt,
                 UpdatedAt = entity.UpdatedAt,

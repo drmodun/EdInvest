@@ -41,7 +41,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Shared.Models.Country", b =>
@@ -60,7 +60,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
 
                     b.HasData(
                         new
@@ -677,7 +677,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Field");
+                    b.ToTable("Field", (string)null);
                 });
 
             modelBuilder.Entity("Shared.Models.Investments", b =>
@@ -701,7 +701,7 @@ namespace Data.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("Investments");
+                    b.ToTable("Investments", (string)null);
                 });
 
             modelBuilder.Entity("Shared.Models.Items.Item", b =>
@@ -767,7 +767,7 @@ namespace Data.Migrations
 
                     b.HasIndex("SubcategoryId");
 
-                    b.ToTable("Items");
+                    b.ToTable("Items", (string)null);
 
                     b.HasDiscriminator<int>("Type");
 
@@ -795,7 +795,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Subcategories");
+                    b.ToTable("Subcategories", (string)null);
                 });
 
             modelBuilder.Entity("Shared.Models.Users.User", b =>
@@ -859,7 +859,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasDiscriminator<int>("Type");
 
