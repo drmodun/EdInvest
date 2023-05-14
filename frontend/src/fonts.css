@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url("./assets/fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url("./assets/fonts/manrope/static/Manrope-SemiBold.ttf");
+  font-weight: 600;
+}
