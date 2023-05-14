@@ -1,0 +1,33 @@
+.header {
+  width: 100%;
+  height: var(--header-height);
+  background: var(--header-background);
+  position: fixed;
+}
+
+.header > div {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.headerLogo {
+  height: 53px;
+  margin-right: 45px;
+}
+
+.headerNavItem {
+  color: var(--header-nav-color);
+  font-size: 18px;
+  font-family: 'SF Pro Display', serif;
+  font-weight: 500;
+}
+
+.headerNavItem:not(:last-child) {
+  margin-right: 60px;
+}
+
+.header > div > button {
+  margin-left: auto;
+}

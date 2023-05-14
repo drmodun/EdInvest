@@ -5,3 +5,25 @@ body {
 a {
   text-decoration: none;
 }
+
+:root {
+  --color-blue: #1B2DAF;
+  --color-light-gray: #6D6D6D;
+  --color-dark-gray: #3D3D3D;
+
+  --header-height: 117px;
+  --header-background: white;
+  --header-nav-color: var(--color-light-gray);
+}
+
+.headerMargin {
+  padding-top: var(--header-height);
+}
+
+.layoutSpacing {
+  max-width: calc(1440px - 2 * 123px);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
