@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(EdInvestContext))]
-    partial class EdInvestContextModelSnapshot : ModelSnapshot
+    [Migration("20230514223318_add-seed")]
+    partial class addseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -98,7 +101,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries", (string)null);
+                    b.ToTable("Countries");
 
                     b.HasData(
                         new
@@ -715,7 +718,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Field", (string)null);
+                    b.ToTable("Field");
                 });
 
             modelBuilder.Entity("Shared.Models.Investments", b =>
@@ -742,7 +745,7 @@ namespace Data.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("Investments", (string)null);
+                    b.ToTable("Investments");
 
                     b.HasData(
                         new
@@ -837,7 +840,7 @@ namespace Data.Migrations
 
                     b.HasIndex("SubcategoryId");
 
-                    b.ToTable("Items", (string)null);
+                    b.ToTable("Items");
 
                     b.HasDiscriminator<int>("Type");
 
@@ -865,7 +868,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Subcategories", (string)null);
+                    b.ToTable("Subcategories");
 
                     b.HasData(
                         new
@@ -1015,7 +1018,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasDiscriminator<int>("Type");
 

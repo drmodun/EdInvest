@@ -10,7 +10,7 @@ namespace Shared.Models
         {
             get; set;
         }
-        public Guid CategoryId
+        public Guid CategoryId 
         {
             get; set;
         }
