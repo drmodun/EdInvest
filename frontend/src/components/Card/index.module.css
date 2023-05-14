@@ -1,0 +1,15 @@
+.card {
+  width: 384px;
+  height: 516px;
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 212px;
+  border-radius: 10px 10px 0 0;
+}
