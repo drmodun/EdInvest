@@ -30,6 +30,7 @@ const HomePage = () => {
             potential of education and make a lasting impact on learners
             worlwide.
           </h3>
+
           <div className={classes.HeaderHeroButtonsWrapper}>
             <button className={classes.HeaderHeroWhiteButton}>
               <span className={classes.WhiteButtonText}>Explore projects</span>
@@ -41,6 +42,16 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className={classes.TrustSection}>
+        <h2 className={classes.TrustSectionTitle}>We have your back.</h2>
+        <h4 className={classes.TrustSectionDescription}>
+          Cryptocurrencies are built on blockchain technology, which provides a
+          high level of security and transparency. Each transaction is securely
+          recorded and verified on the blockchain, ensuring the integrity of the
+          funding process.
+        </h4>
+        <button className={classes.TrustSectionButton}></button>
       </div>
     </div>
   );
