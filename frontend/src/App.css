@@ -5,3 +5,11 @@ body {
 a {
   text-decoration: none;
 }
+
+.layoutSpacing {
+  max-width: calc(1440px - 2 * 123px);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}

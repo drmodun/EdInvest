@@ -2,10 +2,14 @@
   width: 100%;
   height: 117px;
   background: #1B2DAF;
+  /*padding: 0 123px;*/
+}
+
+.header > div {
+  height: 100%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 0 123px;
 }
 
 .headerLogo {
@@ -24,6 +28,6 @@
   margin-right: 60px;
 }
 
-.header > button {
+.header > div > button {
   margin-left: auto;
 }
