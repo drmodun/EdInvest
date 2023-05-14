@@ -1,8 +1,8 @@
 .header {
   width: 100%;
-  height: 117px;
+  height: var(--header-height);
   background: #1B2DAF;
-  /*padding: 0 123px;*/
+  position: fixed;
 }
 
 .header > div {

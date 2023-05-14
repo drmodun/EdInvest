@@ -6,6 +6,14 @@ a {
   text-decoration: none;
 }
 
+:root {
+  --header-height: 117px;
+}
+
+.headerMargin {
+  padding-top: var(--header-height);
+}
+
 .layoutSpacing {
   max-width: calc(1440px - 2 * 123px);
   width: 100%;
