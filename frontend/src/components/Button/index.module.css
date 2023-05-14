@@ -5,8 +5,10 @@
   background: white;
   border: none;
   border-radius: 8px;
-  color: #3D3D3D;
+  color: var(--color-dark-gray);
   font-size: 16px;
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
+  box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }

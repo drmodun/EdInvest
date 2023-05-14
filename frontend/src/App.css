@@ -8,11 +8,12 @@ a {
 
 :root {
   --color-blue: #1B2DAF;
-  --color-gray: #6D6D6D;
+  --color-light-gray: #6D6D6D;
+  --color-dark-gray: #3D3D3D;
 
   --header-height: 117px;
   --header-background: white;
-  --header-nav-color: var(--color-gray);
+  --header-nav-color: var(--color-light-gray);
 }
 
 .headerMargin {
