@@ -1,13 +1,16 @@
-﻿using API.Routes;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Helpers;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses.Investments;
 using Shared.Models;
+using Shared.Constants;
 
 namespace API.Controllers
 {
@@ -37,9 +40,18 @@ namespace API.Controllers
             };
             return await _investmentService.GetById(request);
         }
-        [HttpPost(AppRoutes.Investments.Create)]
-        public async Task<ActionResult<CreateInvestmentResponse>> Post([FromBody] CreateInvestmentRequest request, CancellationToken cancellationToken)
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
+        [HttpPost(AppRoutes.Investments.Create)] 
+        public async Task<ActionResult<CreateInvestmentResponse>> Post([FromRoute] Guid itemId, [FromBody] int tier, CancellationToken cancellationToken)
         {
+            var request = new CreateInvestmentRequest
+            {
+                ItemId = itemId,
+                Tier = tier,
+                CreatedAt = DateTime.UtcNow,
+                InvestorId = HttpContext.GetUserId()
+                
+            };
             var item = await _investmentService.Create(request, cancellationToken);
             return new CreateInvestmentResponse
             {
@@ -47,15 +59,16 @@ namespace API.Controllers
                 Investment = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Investments.Update)]
-        public async Task<ActionResult<UpdateInvestmentResponse>> Update([FromBody] CreateInvestmentRequest request, [FromRoute] Guid investorId, [FromRoute] Guid itemId, CancellationToken cancellationToken)
+        public async Task<ActionResult<UpdateInvestmentResponse>> Update([FromRoute] Guid itemId, [FromBody] int tier, CancellationToken cancellationToken)
         {
             var updateRequest =
                 new UpdateInvestmentRequest
                 {
-                    InvestorId = investorId,
+                    InvestorId = HttpContext.GetUserId(),
                     ItemId = itemId,
-                    Tier = request.Tier,
+                    Tier = tier,
                     UpdatedAt = DateTime.UtcNow,
                 };
             var item = await _investmentService.Update(updateRequest, cancellationToken);
@@ -65,12 +78,13 @@ namespace API.Controllers
                 Investment = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpDelete(AppRoutes.Investments.Delete)]
-        public async Task<ActionResult<DeleteInvestmentResponse>> Delete([FromRoute] Guid investorId, [FromRoute] Guid itemId, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteInvestmentResponse>> Delete([FromRoute] Guid itemId, CancellationToken cancellationToken)
         {
             var key = new N_NKey
             {
-                investorId = investorId,
+                investorId = HttpContext.GetUserId(),
                 itemId = itemId
             };
             var item = await _investmentService.Delete(key, cancellationToken);

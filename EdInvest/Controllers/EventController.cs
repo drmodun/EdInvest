@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
 using Shared.Contracts.Items.Item;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Constants;
+using API.Auth;
 
 namespace API.Controllers
 {
@@ -35,9 +38,12 @@ namespace API.Controllers
             var request = new GetEventRequest { Id = id };
             return await _eventService.GetById(request);
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.Event.Create)]
         public async Task<ActionResult<CreateEventResponse>> Post([FromBody] CreateEventRequest request, CancellationToken cancellationToken)
         {
+            if (HttpContext.GetUserId() != request.OrganisationId)
+                return BadRequest("Can only create a avent fot the logged in organisation");
             var item = await _eventService.Create(request, cancellationToken);
             return new CreateEventResponse
             {

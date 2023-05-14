@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.Json;
 using Shared.Hash;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Domain.Services
 {
@@ -91,5 +92,6 @@ namespace Domain.Services
             var jwt = tokenHandler.WriteToken(token);
             return jwt;
         }
+        
     }
 }

@@ -28,7 +28,7 @@ namespace Domain.Mappers
             return new Investments
             {
                 Tier = request.Tier,
-                InvestorId = request.InvestorId,
+                InvestorId = (Guid)request.InvestorId,
                 ItemId = request.ItemId,
                 UpdatedAt = request.UpdatedAt,
             };
@@ -38,7 +38,7 @@ namespace Domain.Mappers
             {
                 Tier = request.Tier,
                 CreatedAt = DateTime.UtcNow,
-                InvestorId = request.InvestorId,
+                InvestorId = (Guid)request.InvestorId,
                 ItemId = request.ItemId,
                 UpdatedAt = DateTime.UtcNow
             };

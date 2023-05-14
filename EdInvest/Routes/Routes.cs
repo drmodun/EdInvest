@@ -12,6 +12,8 @@ namespace API.Routes
             public const string Create = Base + $"/applications";
             public const string Update = Base + $"/applications/{{id:Guid}}";
             public const string Delete = Base + $"/applications/{{id:Guid}}";
+            public const string Investments = Base + $"/applications/{{id:Guid}}/investments";
+
         }
         public static class User
         {
@@ -21,6 +23,8 @@ namespace API.Routes
             public const string Create = Base + $"/users";
             public const string Update = Base + $"/users/{{id:Guid}}";
             public const string Delete = Base + $"/users/{{id:Guid}}";
+            public const string Investments = Base + $"/users/{{id:Guid}}/investments";
+
         }
         public static class Category
         {
@@ -29,6 +33,7 @@ namespace API.Routes
             public const string Create = Base + $"/categories";
             public const string Update = Base + $"/categories/{{id:Guid}}";
             public const string Delete = Base + $"/categories/{{id:Guid}}";
+
         }
         public static class Subcategory
         {
@@ -45,14 +50,17 @@ namespace API.Routes
             public const string Create = Base + $"/items";
             public const string Update = Base + $"/items/{{id:Guid}}";
             public const string Delete = Base + $"/items/{{id:Guid}}";
+            public const string Investments = Base + $"/items/{{id:Guid}}/investments";
+
         }
         public static class Investments
         {
             public const string GetAll = Base + $"/investments";
-            public const string Get = Base + $"/{{InvestorId:Guid}}/{{CourseId:Guid}}";
-            public const string Update = Base + $"/{{InvestorId:Guid}}/{{CourseId:Guid}}";
-            public const string Delete = Base + $"/{{InvestorId:Guid}}/{{CourseId:Guid}}";
-            public const string Create = Base + $"/{{InvestorId:Guid}}/{{CourseId:Guid}}";
+            public const string Get = Base + $"/investments/{{itemId:Guid}}/{{investorId:Guid}}";
+            public const string Update = Base + $"/investments/{{itemId:Guid}}";
+            public const string Delete = Base + $"/investemtns/{{itemId:Guid}}";
+            public const string Create = Base + $"/investemnts/{{itemId:Guid}}";
+            public const string UserInvestments = Base + $"/investments/me";
 
         }
         public static class Country
@@ -70,6 +78,8 @@ namespace API.Routes
             public const string Create = Base + $"/courses";
             public const string Update = Base + $"/courses/{{id:Guid}}";
             public const string Delete = Base + $"/courses/{{id:Guid}}";
+            public const string Investments = Base + $"/courses/{{id:Guid}}/investments";
+
         }
         public static class Investor
         {
@@ -78,6 +88,8 @@ namespace API.Routes
             public const string Create = Base + $"/investors";
             public const string Update = Base + $"/investors/{{id:Guid}}";
             public const string Delete = Base + $"/investors/{{id:Guid}}";
+            public const string Investments = Base + $"/investors/{{id:Guid}}/investments";
+
         }
         public static class Organisation
         {
@@ -86,6 +98,8 @@ namespace API.Routes
             public const string Create = Base + $"/organisations";
             public const string Update = Base + $"/organisations/{{id:Guid}}";
             public const string Delete = Base + $"/organisations/{{id:Guid}}";
+
+
         
     }
         public static class Event
@@ -95,6 +109,8 @@ namespace API.Routes
             public const string Create = Base + $"/events";
             public const string Update = Base + $"/events/{{id:Guid}}";
             public const string Delete = Base + $"/events/{{id:Guid}}";
+            public const string Investments = Base + $"/events/{{id:Guid}}/investments";
+
         }
         public static class OnlineCourse
         {
@@ -103,6 +119,8 @@ namespace API.Routes
             public const string Create = Base + $"/onlinecourses";
             public const string Update = Base + $"/onlinecourses/{{id:Guid}}";
             public const string Delete = Base + $"/onlinecourses/{{id:Guid}}";
+            public const string Investments = Base + $"/onlinecourse/{{id:Guid}}/investments";
+
         }
 
         //add other routes later
