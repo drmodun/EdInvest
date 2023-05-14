@@ -10,4 +10,16 @@
 
 .headerLogo {
   height: 53px;
+  margin-right: 45px;
+}
+
+.headerNavItem {
+  color: white;
+  font-size: 18px;
+  font-family: 'SF Pro Display', serif;
+  font-weight: 500;
+}
+
+.headerNavItem:not(:last-child) {
+  margin-right: 60px;
 }
