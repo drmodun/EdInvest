@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Shared.Contracts.Items.Item;
+using Shared.Contracts.Responses.Ranked;
 
 namespace Domain.Repositories.Implementations 
 {
@@ -49,6 +50,24 @@ namespace Domain.Repositories.Implementations
                 .Where(x => x.OrganisationId == options.OrganisationId || options.OrganisationId == null)
                 .ToListAsync();
             return list;
+
+        }
+        public async Task<List<RankedItemResponse>> GetAllInvestments(Guid userId)
+        {
+            return await _context.Investments
+                .Where(i=>i.InvestorId == userId)
+                .Include(i=>i.Item)
+                .Select(i=> new RankedItemResponse
+                {
+                    Amount = 0,
+                    Image = i.Item.Images[0],
+                    Name = i.Item.Name,
+                    OrganisationId = i.Item.OrganisationId,
+                    Type = i.Item.Type,
+                    Updated = i.UpdatedAt
+                })
+                .ToListAsync();
+
 
         }
     }

@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Contracts.Responses.RankedInvestor;
 
 namespace Domain.Repositories.Implementations
 {
@@ -55,6 +56,39 @@ namespace Domain.Repositories.Implementations
            return await _context.Users
                 .OfType<TEntity>().
                 FirstOrDefaultAsync(x=>x.Email==email);
+        }
+        public async Task<List<RankedResponse>> GetInvestors(Guid itemId)
+        {
+            return await _context.Investments
+                .Where(i=>i.ItemId == itemId)
+                .Include(i=>i.Investor)
+                .OrderByDescending(i=>i.Amount)
+                .Select(i=> new RankedResponse
+                {
+                    Amount = i.Amount,
+                    Email = i.Investor.Email,
+                    Image = i.Investor.ProfilePicture,
+                    InvestorId = i.InvestorId,
+                    Name = i.Investor.Name                    
+                })
+                .ToListAsync();
+        }
+        public async Task<List<RankedResponse>> GetTopGlobalInvestors()
+        {
+            return await _context.Users
+                .OfType<Investor>()
+                .Include(u=>u.Investments)
+                .OrderByDescending(u => u.Investments.Sum(i => i.Amount))
+                .Take(10)
+                .Select(i => new RankedResponse
+                {
+                    Amount = i.Investments.Sum(i => i.Amount),
+                    Email = i.Email,
+                    Image = i.ProfilePicture,
+                    InvestorId = i.Id,
+                    Name = i.Name
+                })
+                .ToListAsync();
         }
 
     }

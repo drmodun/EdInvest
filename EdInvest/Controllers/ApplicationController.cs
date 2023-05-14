@@ -9,6 +9,10 @@ using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Constants;
+using API.Auth;
+using Shared.Contracts.Requests.Items.OnlineCourse;
 
 namespace API.Controllers
 {
@@ -36,6 +40,7 @@ namespace API.Controllers
             };
             return await _applicationService.GetById(request);
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.Application.Create)]
         public async Task<ActionResult<CreateApplicationResponse>> Post([FromBody] CreateApplicationRequest request, CancellationToken cancellationToken)
         {
@@ -46,9 +51,12 @@ namespace API.Controllers
                 Application = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Application.Update)]
         public async Task<ActionResult<UpdateApplicaionResponse>> Update([FromBody] CreateApplicationRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            if (request.OrganisationId != HttpContext.GetUserId())
+                return BadRequest("Cannot create, update or delete a request to create an item that has a different organisation than the logged in user");
             var updateRequest =
                 new UpdateApplicationRequest
                 {
@@ -74,9 +82,13 @@ namespace API.Controllers
             return new UpdateApplicaionResponse { Success = item != null, Application = item };
 
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpDelete(AppRoutes.Application.Delete)]
+
         public async Task<ActionResult<DeleteApplicationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            var item = await _applicationService.GetById(new GetApplicationRequest { Id = id });
+            if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _applicationService.Delete(id, cancellationToken);
             return new DeleteApplicationResponse { Success = deletion };
 

@@ -31,6 +31,9 @@ namespace Domain.Mappers
                 InvestorId = (Guid)request.InvestorId,
                 ItemId = request.ItemId,
                 UpdatedAt = request.UpdatedAt,
+                Amount = request.Amount,
+                
+                
             };
         }
         public   Investments ToEntity( CreateInvestmentRequest request) {
@@ -40,7 +43,8 @@ namespace Domain.Mappers
                 CreatedAt = DateTime.UtcNow,
                 InvestorId = (Guid)request.InvestorId,
                 ItemId = request.ItemId,
-                UpdatedAt = DateTime.UtcNow
+                UpdatedAt = DateTime.UtcNow,
+                Amount = request.Amount,
             };
         }
     }

@@ -3,7 +3,9 @@ using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
 using Shared.Contracts.Requests.Category;
 using Shared.Contracts.Responses.Category;
 using Shared.Models;
@@ -35,6 +37,8 @@ namespace API.Controllers
             };
             return await _categoryService.GetById(request);
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpPost(AppRoutes.Category.Create)]
         public async Task<ActionResult<CreateCategoryResponse>> Post([FromBody] CreateCategoryRequest request, CancellationToken cancellationToken)
         {
@@ -45,6 +49,8 @@ namespace API.Controllers
                 Category = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpPut(AppRoutes.Category.Update)]
         public async Task<ActionResult<UpdateCategoryResponse>> Update([FromBody] CreateCategoryRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
@@ -62,6 +68,7 @@ namespace API.Controllers
                 Category = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Category.Delete)]
         public async Task<ActionResult<DeleteCategoryResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {

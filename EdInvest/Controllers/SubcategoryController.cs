@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Threading;
 using System;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Constants;
 
 namespace API.Controllers
 {
@@ -40,6 +42,8 @@ namespace API.Controllers
             };
             return await _subcategoryService.GetById(request);
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpPost(AppRoutes.Subcategory.Create)]
         public async Task<ActionResult<CreateSubcategoryResponse>> Post([FromBody] CreateSubcategoryRequest request, CancellationToken cancellationToken)
         {
@@ -50,6 +54,8 @@ namespace API.Controllers
                 Subcategory = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpPut(AppRoutes.Subcategory.Update)]
         public async Task<ActionResult<UpdateSubcategoryResponse>> Update([FromBody] CreateSubcategoryRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
@@ -68,6 +74,8 @@ namespace API.Controllers
                 Subcategory = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpDelete(AppRoutes.Subcategory.Delete)]
         public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] Guid  id, CancellationToken cancellationToken)
         {

@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Responses.Items.Application;
 using Domain.Validation;
+using API.Auth;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Constants;
 
 namespace API.Controllers
 {
@@ -37,19 +40,26 @@ namespace API.Controllers
             };
             return await _onlineCourseService.GetById(request);
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.OnlineCourse.Create)]
         public async Task<ActionResult<CreateOnlineCourseResponse>> Post([FromBody] CreateOnlineCourseRequest request, CancellationToken cancellationToken)
         {
             var item = await _onlineCourseService.Create(request, cancellationToken);
+            if (request.OrganisationId != HttpContext.GetUserId())
+                return BadRequest("Cannot create, update or delete an item that has a different organisation than the logged in user");
             return new CreateOnlineCourseResponse
             {
                 Success = item != null,
                 OnlineCourse = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.OnlineCourse.Update)]
         public async Task<ActionResult<UpdateOnlineCourseResponse>> Update([FromBody] CreateOnlineCourseRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            if (request.OrganisationId != HttpContext.GetUserId())
+                return BadRequest("Cannot create, update or delete a request to create an item that has a different organisation than the logged in user");
+
             var updateRequest =
                 new UpdateOnlineCourseRequest
                 {
@@ -76,8 +86,11 @@ namespace API.Controllers
 
         }
         [HttpDelete(AppRoutes.OnlineCourse.Delete)]
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         public async Task<ActionResult<DeleteOnlineCourseResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            var item = await _onlineCourseService.GetById(new GetOnlineCourseRequest { Id = id });
+            if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _onlineCourseService.Delete(id, cancellationToken);
             return new DeleteOnlineCourseResponse { Success = deletion };
 

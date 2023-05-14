@@ -16,6 +16,9 @@ using Shared.Contracts.Requests.Users.organisation;
 using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.Student;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Constants;
+using API.Auth;
 
 namespace API.Controllers
 {
@@ -55,9 +58,12 @@ namespace API.Controllers
                 Organisation = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
+
         [HttpPut(AppRoutes.Organisation.Update)]
-        public async Task<ActionResult<UpdateOrganisationResponse>> Update([FromBody] CreateOrganisationRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<UpdateOrganisationResponse>> Update([FromBody] CreateOrganisationRequest request, CancellationToken cancellationToken)
         {
+
             var updateRequest =
                 new UpdateOrganisationRequest
                 {
@@ -72,7 +78,7 @@ namespace API.Controllers
                     ProfilePicture = request.ProfilePicture,
                     SocialLinks = request.SocialLinks,
                     WalletAddress = request.WalletAddress,
-                    Id = id,
+                    Id = (Guid)HttpContext.GetUserId(),
                 };
             var item = await _organisationService.Update(updateRequest, cancellationToken);
             return new UpdateOrganisationResponse
@@ -82,6 +88,7 @@ namespace API.Controllers
             };
         }
         //fix delete
+        [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Organisation.Delete)]
         public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {

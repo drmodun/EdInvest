@@ -1,7 +1,9 @@
 ﻿using Domain.Repositories.Implementations;
 using Domain.Repositories.Interfaces;
 using FluentValidation;
+using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Category;
+using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Subcategory;
 using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
@@ -21,14 +23,17 @@ namespace Domain.Validation
         private readonly CategoryRepo _categoryRepo;
         private readonly SubcategoryRepo _subCategoryRepo;
         private readonly ICountryRepo _countryRepo;
+        private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
         private readonly UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> _organisatorRepo;
         //remmber to reesaearch if requests are problematic in repos
         public ItemValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
-            UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo)
+            UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
+            ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo)
         {
             _categoryRepo = categoryRepo;
             _subCategoryRepo = subcategoryRepo;
             _countryRepo = countryRepo;
+            _itemRepo = itemRepo; 
             _organisatorRepo = organisationRepo;
             RuleFor(x => x.Name).NotEmpty().WithMessage("Last name is required");
             RuleFor(x => x.Description).MaximumLength(10000).WithMessage("Description must be less than 1000 characters");
@@ -48,8 +53,14 @@ namespace Domain.Validation
             RuleFor(x=>new { x.UpdatedAt, x.CreatedAt}).Must(d => d.UpdatedAt < DateTime.Now && d.CreatedAt <= d.UpdatedAt).WithMessage("Update cannot happen prior to creation");
             RuleFor(x => x.Tiers).NotEmpty().WithMessage("Tiers must exist");
             RuleFor(x => x.Prices).NotEmpty().WithMessage("Prices must be set");
+            RuleFor(x => new {x.Id, x.OrganisationId }).MustAsync(async (n, cancellationToken) =>
+            {
+                var item = await _itemRepo.GetById(new GetItemRequest { Id = n.Id });
+                return n.OrganisationId == item.OrganisationId || item == null;
+                }).
+            WithMessage("Organisation cannot be changed");
 
-            
+
 
         }
     }

@@ -119,6 +119,7 @@ namespace Domain
             services.AddScoped<InvestorValidation>();
 
 
+            services.AddScoped<RankedService>();
             services.AddScoped<UserRepo<User, GetUserRequest, GetAllUsersRequest>>();
             services.AddScoped<WriteRepo<User, Guid>>();
             services.AddScoped<UserMapper>();

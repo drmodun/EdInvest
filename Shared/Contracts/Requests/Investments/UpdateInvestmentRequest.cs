@@ -10,6 +10,8 @@ namespace Shared.Contracts.Requests.Investments
     {
         public Guid ? InvestorId;
         public Guid ItemId;
+
+        public decimal Amount;
         public int Tier
         {
             get; set;

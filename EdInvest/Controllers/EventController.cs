@@ -14,6 +14,7 @@ using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Shared.Constants;
 using API.Auth;
+using Shared.Contracts.Requests.Items.OnlineCourse;
 
 namespace API.Controllers
 {
@@ -51,9 +52,12 @@ namespace API.Controllers
                 Event = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Event.Update)]
         public async Task<ActionResult<UpdateEventResponse>> Update([FromBody] CreateEventRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            if (request.OrganisationId != HttpContext.GetUserId())
+                return BadRequest("Cannot create, update or delete an item that has a different organisation than the logged in user");
             var updateRequest =
                 new UpdateEventRequest
                 {
@@ -82,9 +86,12 @@ namespace API.Controllers
             return new UpdateEventResponse { Success = item != null, Event = item };
 
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpDelete(AppRoutes.Event.Delete)]
         public async Task<ActionResult<DeleteEventResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            var item = await _eventService.GetById(new GetEventRequest { Id = id });
+            if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _eventService.Delete(id, cancellationToken);
             return new DeleteEventResponse { Success = deletion };
 

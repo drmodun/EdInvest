@@ -13,6 +13,9 @@ using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Responses.Users.Investor;
 using Domain.Repositories.Interfaces;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Constants;
+using API.Auth;
 
 namespace API.Controllers
 {
@@ -49,8 +52,9 @@ namespace API.Controllers
                 Investor = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Investor.Update)]
-        public async Task<ActionResult<UpdateInvestorResponse>> Update([FromBody] CreateInvestorRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<UpdateInvestorResponse>> Update([FromBody] CreateInvestorRequest request, CancellationToken cancellationToken)
         {
             var updateRequest =
                 new UpdateInvestorRequest
@@ -67,7 +71,7 @@ namespace API.Controllers
                     SocialLinks = request.SocialLinks,
                     Type = request.Type,
                     WalletAddress = request.WalletAddress,
-                    Id = id,
+                    Id = (Guid)HttpContext.GetUserId(),
                 };
             var item = await _investorService.Update(updateRequest, cancellationToken);
             return new UpdateInvestorResponse
@@ -76,6 +80,7 @@ namespace API.Controllers
                 Investor = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Investor.Delete)]
         public async Task<ActionResult<DeleteInvestorResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
