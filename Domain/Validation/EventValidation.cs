@@ -7,17 +7,12 @@ using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
 using Shared.Models.Items;
 using Shared.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Validation
 {
     public class EventValidation : ItemValidation<Event>
     {
-        public EventValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,  ICountryRepo countryRepo,
+        public EventValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
             UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
             ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo) :
             base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo, itemRepo)

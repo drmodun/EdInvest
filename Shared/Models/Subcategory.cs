@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Shared.Models.Items;
+﻿using Shared.Models.Items;
 
 namespace Shared.Models
 {
@@ -15,7 +10,7 @@ namespace Shared.Models
         {
             get; set;
         }
-        public Guid CategoryId 
+        public Guid CategoryId
         {
             get; set;
         }

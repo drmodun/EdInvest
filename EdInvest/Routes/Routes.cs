@@ -1,6 +1,4 @@
-﻿using Shared.Models.Users;
-
-namespace API.Routes
+﻿namespace API.Routes
 {
     public static class AppRoutes
     {
@@ -102,8 +100,8 @@ namespace API.Routes
             public const string Delete = Base + $"/organisations/{{id:Guid}}";
 
 
-        
-    }
+
+        }
         public static class Event
         {
             public const string GetAll = Base + $"/events";

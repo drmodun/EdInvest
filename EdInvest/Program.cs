@@ -1,12 +1,9 @@
 using Api.Middleware;
 using Domain;
-using Microsoft.AspNetCore.Authentication.OAuth;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.OAuth;
 using Shared.Constants;
+using System.Text;
 namespace Presentation
 {
     public class Program

@@ -1,21 +1,15 @@
-﻿using API.Routes;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Shared.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Shared.Models.Users;
-using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Responses.Users.Investor;
-using Domain.Repositories.Interfaces;
 using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Constants;
-using API.Auth;
+using Shared.Contracts.Requests.Users.Investor;
+using Shared.Contracts.Responses.Users.Investor;
+using Shared.Models.Users;
 
 namespace API.Controllers
 {
@@ -25,13 +19,13 @@ namespace API.Controllers
         private readonly BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest,
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorsResponse,InvestorValidation
+                GetAllInvestorsResponse, InvestorValidation
                 > _investorService;
 
         public InvestorController(BaseService<Investor, InvestorMapper, UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest>, WriteRepo<Investor, Guid>,
                 CreateInvestorRequest, UpdateInvestorRequest, GetInvestorRequest,
                 GetAllInvestorsRequest, Guid, GetInvestorResponse,
-                GetAllInvestorsResponse,InvestorValidation
+                GetAllInvestorsResponse, InvestorValidation
                 > investorService)
         {
             _investorService = investorService;

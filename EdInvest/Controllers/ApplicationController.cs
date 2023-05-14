@@ -1,18 +1,15 @@
-﻿using API.Routes;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.Application;
-using Shared.Contracts.Responses.Category;
-using Shared.Contracts.Responses.Items.Application;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Constants;
-using API.Auth;
-using Shared.Contracts.Requests.Items.OnlineCourse;
+using Shared.Contracts.Requests.Items.Application;
+using Shared.Contracts.Responses.Items.Application;
+using Shared.Models.Items;
 
 namespace API.Controllers
 {
@@ -23,7 +20,7 @@ namespace API.Controllers
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
                 GetAllApplicationsResponse, ApplicationValidation
                 > _applicationService;
-        
+
         public ApplicationController(BaseService<Application, ApplicationMapper, ItemRepo<Application, GetApplicationRequest, GetAllApplicationsRequest>, WriteRepo<Application, Guid>,
                 CreateApplicationRequest, UpdateApplicationRequest, GetApplicationRequest, GetAllApplicationsRequest, Guid, GetaApplicationResponse,
                 GetAllApplicationsResponse, ApplicationValidation
@@ -47,7 +44,7 @@ namespace API.Controllers
             var item = await _applicationService.Create(request, cancellationToken);
             return new CreateApplicationResponse
             {
-                Success = item!=null,
+                Success = item != null,
                 Application = item,
             };
         }
@@ -96,7 +93,7 @@ namespace API.Controllers
         [HttpGet(AppRoutes.Application.GetAll)]
         public async Task<ActionResult<GetAllApplicationsResponse>> GetAll([FromQuery] GetAllApplicationsRequest options)
         {
-            var items =  await _applicationService.GetAll(options);
+            var items = await _applicationService.GetAll(options);
             return new GetAllApplicationsResponse
             {
                 Applications = items,

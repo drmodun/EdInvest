@@ -25,7 +25,8 @@ namespace API.Controllers
                 CreateCategoryRequest, UpdateCategoryRequest, GetCategoryRequest,
                 GetAllCategoriesRequest, Guid, GetCategoryResponse,
                 GetAllCategoriesResponse, CategoryValidation
-                > categorService){
+                > categorService)
+        {
             _categoryService = categorService;
         }
         [HttpGet(AppRoutes.Category.Get)]
@@ -45,7 +46,7 @@ namespace API.Controllers
             var item = await _categoryService.Create(request, cancellationToken);
             return new CreateCategoryResponse
             {
-                Success = item!=null,
+                Success = item != null,
                 Category = item,
             };
         }
@@ -64,7 +65,7 @@ namespace API.Controllers
             var item = await _categoryService.Update(updateRequest, cancellationToken);
             return new UpdateCategoryResponse
             {
-                Success = item!=null,
+                Success = item != null,
                 Category = item,
             };
         }

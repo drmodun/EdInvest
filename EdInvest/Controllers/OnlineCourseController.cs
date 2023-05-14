@@ -1,18 +1,15 @@
-﻿using API.Routes;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.OnlineCourse;
-using Shared.Contracts.Responses.Category;
-using Shared.Contracts.Responses.Items.OnlineCourse;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Shared.Contracts.Responses.Items.Application;
 using Domain.Validation;
-using API.Auth;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Constants;
+using Shared.Contracts.Requests.Items.OnlineCourse;
+using Shared.Contracts.Responses.Items.OnlineCourse;
+using Shared.Models.Items;
 
 namespace API.Controllers
 {

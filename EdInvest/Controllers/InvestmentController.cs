@@ -7,12 +7,12 @@ using Domain.Services;
 using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses.Investments;
-using Shared.Models;
-using Shared.Constants;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;
+using Shared.Models;
 
 namespace API.Controllers
 {
@@ -46,7 +46,7 @@ namespace API.Controllers
             return await _investmentService.GetById(request);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
-        [HttpPost(AppRoutes.Investments.Create)] 
+        [HttpPost(AppRoutes.Investments.Create)]
         public async Task<ActionResult<CreateInvestmentResponse>> Post([FromRoute] Guid itemId, [FromBody] int tier, CancellationToken cancellationToken)
         {
             var request = new CreateInvestmentRequest
@@ -55,7 +55,7 @@ namespace API.Controllers
                 Tier = tier,
                 CreatedAt = DateTime.UtcNow,
                 InvestorId = HttpContext.GetUserId()
-                
+
             };
             var item = await _investmentService.Create(request, cancellationToken);
             return new CreateInvestmentResponse

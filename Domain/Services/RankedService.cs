@@ -1,17 +1,11 @@
 ﻿using Domain.Repositories.Implementations;
 using Shared.Contracts.Items.Item;
-using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models.Items;
 using Shared.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Services
 {
@@ -35,8 +29,9 @@ namespace Domain.Services
         {
             return await _userRepo.GetInvestors(courseId);
         }
-        public async Task<List<RankedResponse>> GetTopInvestors() {
-        
+        public async Task<List<RankedResponse>> GetTopInvestors()
+        {
+
             return await _userRepo.GetTopGlobalInvestors();
         }
 

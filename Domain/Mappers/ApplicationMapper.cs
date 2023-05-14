@@ -1,10 +1,10 @@
-﻿using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.Application;
+﻿using Shared.Contracts.Requests.Items.Application;
 using Shared.Contracts.Responses.Items.Application;
+using Shared.Models.Items;
 
 namespace Domain.Mappers
 {
-    public   class ApplicationMapper : IMapper<Application, GetaApplicationResponse, CreateApplicationRequest, UpdateApplicationRequest>
+    public class ApplicationMapper : IMapper<Application, GetaApplicationResponse, CreateApplicationRequest, UpdateApplicationRequest>
     {
         private readonly InvestmentMapper _investmentMapper;
 
@@ -12,31 +12,31 @@ namespace Domain.Mappers
         {
             _investmentMapper = investmentMapper;
         }
-        public   GetaApplicationResponse ToDTO(Shared.Models.Items.Application entity)
+        public GetaApplicationResponse ToDTO(Shared.Models.Items.Application entity)
         {
             var newDTO = new GetaApplicationResponse
             {
-                Id = entity .Id,
-                Name = entity .Name,
-                Description = entity .Description,
-                Images = entity .Images,
-                CategoryId = entity .CategoryId,
-                SubcategoryId = entity .SubcategoryId,
-                Tiers = entity .Tiers,
-                AppPurpose = entity .AppPurpose,
-                EstimatedNumberOfUsers = entity .EstimatedNumberOfUsers,
-                EstimatedRelease = entity .EstimatedRelease,
-                CountryId = entity .CountryId,
-                CreatedAt = entity .CreatedAt,
-                CurrentAmount = entity .CurrentAmount,
-                Goal = entity .Goal,
-                OrganisationId = entity .OrganisationId,
-                Investments = entity .Investments.Select(_investmentMapper.ToDTO).ToList(),
-                Features = entity .Features,
-                Markets = entity .Markets,
-                UpdatedAt = entity .UpdatedAt,
+                Id = entity.Id,
+                Name = entity.Name,
+                Description = entity.Description,
+                Images = entity.Images,
+                CategoryId = entity.CategoryId,
+                SubcategoryId = entity.SubcategoryId,
+                Tiers = entity.Tiers,
+                AppPurpose = entity.AppPurpose,
+                EstimatedNumberOfUsers = entity.EstimatedNumberOfUsers,
+                EstimatedRelease = entity.EstimatedRelease,
+                CountryId = entity.CountryId,
+                CreatedAt = entity.CreatedAt,
+                CurrentAmount = entity.CurrentAmount,
+                Goal = entity.Goal,
+                OrganisationId = entity.OrganisationId,
+                Investments = entity.Investments.Select(_investmentMapper.ToDTO).ToList(),
+                Features = entity.Features,
+                Markets = entity.Markets,
+                UpdatedAt = entity.UpdatedAt,
                 Type = entity.Type,
-                Prices = entity .Prices,
+                Prices = entity.Prices,
 
 
             };
@@ -45,7 +45,7 @@ namespace Domain.Mappers
         }
 
         //problem with createdAt changing in updated property
-        public   Shared.Models.Items.Application ToEntity(CreateApplicationRequest request)
+        public Shared.Models.Items.Application ToEntity(CreateApplicationRequest request)
         {
             var newApp = new Shared.Models.Items.Application
             {
@@ -72,7 +72,7 @@ namespace Domain.Mappers
             };
             return newApp;
         }
-        public   Shared.Models.Items.Application ToUpdatedEntity(UpdateApplicationRequest request)
+        public Shared.Models.Items.Application ToUpdatedEntity(UpdateApplicationRequest request)
         {
             var newApp = new Shared.Models.Items.Application
             {

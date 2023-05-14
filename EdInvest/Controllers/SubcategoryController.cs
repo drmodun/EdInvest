@@ -2,17 +2,13 @@
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
+using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
 using Shared.Contracts.Requests.Subcategory;
 using Shared.Contracts.Responses.Subcategory;
 using Shared.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Domain.Validation;
-using Microsoft.AspNetCore.Authorization;
-using Shared.Constants;
 
 namespace API.Controllers
 {
@@ -77,7 +73,7 @@ namespace API.Controllers
         [Authorize(AuthConstants.AdminUserPolicyName)]
 
         [HttpDelete(AppRoutes.Subcategory.Delete)]
-        public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] Guid  id, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var item = await _subcategoryService.Delete(id, cancellationToken);
             return new DeleteSubcategoryResponse

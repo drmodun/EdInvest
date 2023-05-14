@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Shared.Contracts.Responses.Investments;
-using Shared.Contracts.Responses.Users.Investor;
+﻿using Shared.Contracts.Responses.Investments;
 using Shared.Enums;
 
 namespace Shared.Contracts.Responses.Items.Item
 {
-    public  class GetItemResponse
+    public class GetItemResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -1,29 +1,24 @@
-﻿using Shared.Models;
-using Shared.Contracts.Requests.Investments;
+﻿using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses.Investments;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Models;
 
 namespace Domain.Mappers
 {
-    public   class InvestmentMapper : IMapper<Investments, GetInvestmentResponse, CreateInvestmentRequest, UpdateInvestmentRequest>
+    public class InvestmentMapper : IMapper<Investments, GetInvestmentResponse, CreateInvestmentRequest, UpdateInvestmentRequest>
     {
-        public   GetInvestmentResponse ToDTO(Investments entity)
+        public GetInvestmentResponse ToDTO(Investments entity)
         {
             return new GetInvestmentResponse
             {
-                CreatedAt =  entity .CreatedAt,
-                InvestorId = entity .InvestorId,
-                ItemId = entity .ItemId,
-                UpdatedAt = entity .UpdatedAt,
-                Tier = entity .Tier,
+                CreatedAt = entity.CreatedAt,
+                InvestorId = entity.InvestorId,
+                ItemId = entity.ItemId,
+                UpdatedAt = entity.UpdatedAt,
+                Tier = entity.Tier,
 
             };
         }
-        public   Investments ToUpdatedEntity(UpdateInvestmentRequest request)
+        public Investments ToUpdatedEntity(UpdateInvestmentRequest request)
         {
             return new Investments
             {
@@ -32,11 +27,12 @@ namespace Domain.Mappers
                 ItemId = request.ItemId,
                 UpdatedAt = request.UpdatedAt,
                 Amount = request.Amount,
-                
-                
+
+
             };
         }
-        public   Investments ToEntity( CreateInvestmentRequest request) {
+        public Investments ToEntity(CreateInvestmentRequest request)
+        {
             return new Investments
             {
                 Tier = request.Tier,

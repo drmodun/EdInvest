@@ -2,24 +2,14 @@
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
+using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Shared.Models.Users;
+using Shared.Constants;
+using Shared.Contracts.Requests;
 using Shared.Contracts.Requests.Users.User;
 using Shared.Contracts.Responses.Users.User;
-using Domain.Repositories.Interfaces;
-using Shared.Contracts.Requests.Users.User;
-using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Requests.Users.Student;
-using Domain.Validation;
-using Shared.Contracts.Requests;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Authorization;
-using Shared.Constants;
+using Shared.Models.Users;
 
 namespace API.Controllers
 {
@@ -46,7 +36,7 @@ namespace API.Controllers
         public async Task<ActionResult<GetUserResponse>> Get([FromRoute] Guid id)
         {
             var request = new GetUserRequest
-            {Id = id};
+            { Id = id };
             return await _userSvice.GetById(request);
         }
         //no reason to be able to create a user which is of an unknown type 
@@ -55,7 +45,7 @@ namespace API.Controllers
         [HttpDelete(AppRoutes.User.Delete)]
         public async Task<ActionResult<DeleteUserResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
-           
+
             var item = await _userSvice.Delete(id, cancellationToken);
             return new DeleteUserResponse
             {

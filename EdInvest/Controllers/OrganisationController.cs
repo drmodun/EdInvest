@@ -1,24 +1,18 @@
-﻿using API.Routes;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Shared.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Shared.Models.Users;
-using Shared.Contracts.Requests.Users.Organisation;
-using Shared.Contracts.Responses.Users.Organisation;
-using Domain.Repositories.Interfaces;
-using Shared.Contracts.Requests.Users.organisation;
-using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Requests.Users.Student;
 using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Constants;
-using API.Auth;
+using Shared.Contracts.Requests.Users.Investor;
+using Shared.Contracts.Requests.Users.organisation;
+using Shared.Contracts.Requests.Users.Organisation;
+using Shared.Contracts.Requests.Users.Student;
+using Shared.Contracts.Responses.Users.Organisation;
+using Shared.Models.Users;
 
 namespace API.Controllers
 {

@@ -1,17 +1,10 @@
-﻿using Shared.Models.Items;
-using Shared.Enums;
-using Shared.Contracts.Items.Item;
+﻿using Shared.Contracts.Items.Item;
 using Shared.Contracts.Responses.Items.Item;
-using Shared.Contracts.Responses.Items.OnlineCourse;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Models.Items;
 
 namespace Domain.Mappers
 {
-    public class ItemMapper : IMapper<Item, GetItemResponse, CreateItemRequest,  UpdateItemRequest>
+    public class ItemMapper : IMapper<Item, GetItemResponse, CreateItemRequest, UpdateItemRequest>
     {
         private readonly InvestmentMapper _investmentMapper;
 
@@ -45,7 +38,7 @@ namespace Domain.Mappers
         {
             throw new NotImplementedException();
         }
-        public Item ToUpdatedEntity(UpdateItemRequest    request)
+        public Item ToUpdatedEntity(UpdateItemRequest request)
         {
             throw new NotImplementedException();
         }

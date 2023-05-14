@@ -1,5 +1,4 @@
-﻿using Shared.Contracts.Response;
-using FluentValidation;
+﻿using FluentValidation;
 using Shared.Contracts.Response;
 
 namespace Api.Middleware;

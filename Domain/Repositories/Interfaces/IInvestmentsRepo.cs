@@ -1,11 +1,5 @@
-﻿using Shared.Models;
-using Shared.Contracts.Requests.Investments;
-using Domain.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared.Contracts.Requests.Investments;
+using Shared.Models;
 
 namespace Domain.Repositories.Interfaces
 {

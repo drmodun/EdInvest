@@ -1,11 +1,5 @@
-﻿using Shared.Models;
-using Shared.Contracts.Requests.Category;
-using Shared.Contracts.Requests.Items.Item;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared.Contracts.Requests.Category;
+using Shared.Models;
 
 namespace Domain.Repositories.Interfaces
 {
@@ -13,6 +7,6 @@ namespace Domain.Repositories.Interfaces
     {
         Task<Category> GetById(GetCategoryRequest request);
         Task<List<Category>> GetAll(GetAllCategoriesRequest options);
-        
+
     }
 }
