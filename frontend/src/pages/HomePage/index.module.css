@@ -226,3 +226,136 @@
   background: #00000055;
   margin-right: 20px;
 }
+
+/* --------------------------------------------- */
+.AboutSectionWrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.AboutSectionLeft {
+  width: 686px;
+  margin-left: 147px;
+  margin-right: 130px;
+}
+
+.AboutSectionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+}
+
+.AboutSectionText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  color: #6d6d6d;
+  margin-bottom: 49px;
+}
+
+.AboutSectionRightContainer {
+  display: flex;
+  align-items: center;
+}
+
+.RightCircleBlue {
+  margin-right: 38px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(
+      0deg,
+      rgba(67, 145, 150, 0.65),
+      rgba(67, 145, 150, 0.65)
+    ),
+    linear-gradient(180deg, #3f86ef 0%, #233dff 100%);
+}
+
+.RightCircleGreen {
+  margin-right: 38px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(0deg, #439196, #439196),
+    linear-gradient(
+      180deg,
+      rgba(35, 61, 255, 0.7) 0%,
+      rgba(35, 61, 255, 0.7) 100%
+    );
+}
+
+.RightCirclePurple {
+  margin-right: 38px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #5c69cd;
+}
+
+.AboutSectionRightTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #343434;
+  margin-bottom: 0px;
+}
+
+.AboutSectionRightText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  width: 270px;
+  color: #6d6d6d;
+}
+
+/* --------------------------------------------- */
+.StatsSection {
+  height: 192px;
+  background-color: #0047b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.StatsSectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.StatsSectionContainer:not(:last-child) {
+  margin-right: 80px;
+}
+
+.StatsSectionSmallText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.StatsSectionBigText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 53px;
+  color: #ffffff;
+  margin: 0px;
+}

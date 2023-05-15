@@ -87,6 +87,72 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      <div className={classes.AboutSectionWrapper}>
+        <div className={classes.AboutSectionLeft}>
+          <h2 className={classes.AboutSectionTitle}>What is EdInvest?</h2>
+          <p className={classes.AboutSectionText}>
+            EdInvest is an innovative platform that uses crypto funding to
+            support education projects. Our platform allows individuals to
+            contribute, invest, and donate to a wide range of education
+            projects. By accepting cryptocurrencies, we make it easy for people
+            around the world to get involved.
+          </p>
+          <button className={classes.TrustSectionButton}>
+            <span>MORE ABOUT US</span>
+            <img src={ChevronRightBlue} alt="" />
+          </button>
+        </div>
+        <div className={classes.AboutSectionRight}>
+          <div className={classes.AboutSectionRightContainer}>
+            <div className={classes.RightCircleBlue}></div>
+            <div>
+              <h4 className={classes.AboutSectionRightTitle}>
+                Diverse educational projects
+              </h4>
+              <p className={classes.AboutSectionRightText}>
+                Projects that empowering learners of all ages and backgrounds.
+              </p>
+            </div>
+          </div>
+          <div className={classes.AboutSectionRightContainer}>
+            <div className={classes.RightCircleGreen}></div>
+            <div>
+              <h4 className={classes.AboutSectionRightTitle}>
+                Fast and safe transactions
+              </h4>
+              <p className={classes.AboutSectionRightText}>
+                Fast and secure transactions on our platform for all your
+                contributions.
+              </p>
+            </div>
+          </div>
+          <div className={classes.AboutSectionRightContainer}>
+            <div className={classes.RightCirclePurple}></div>
+            <div>
+              <h4 className={classes.AboutSectionRightTitle}>Zero fraud</h4>
+              <p className={classes.AboutSectionRightText}>
+                Secure environment where your contributions are protected
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={classes.StatsSection}>
+        <div className={classes.StatsSectionContainer}>
+          <p className={classes.StatsSectionSmallText}>Invested so far</p>
+          <h1 className={classes.StatsSectionBigText}>2550€</h1>
+        </div>
+        <div className={classes.StatsSectionContainer}>
+          <p className={classes.StatsSectionSmallText}>Projects on EdInvest</p>
+          <h1 className={classes.StatsSectionBigText}>117</h1>
+        </div>
+        <div className={classes.StatsSectionContainer}>
+          <p className={classes.StatsSectionSmallText}>Number of investitors</p>
+          <h1 className={classes.StatsSectionBigText}>45</h1>
+        </div>
+      </div>
     </div>
   );
 };
