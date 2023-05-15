@@ -82,6 +82,11 @@
   position: relative;
 }
 
+.sectionExploreSort > div > div {
+  position: absolute;
+  right: 0;
+}
+
 .sectionExploreFiltersButton {
   border: none;
   background-color: white;
@@ -97,11 +102,6 @@
 
 .sectionExploreFiltersButton:not(:last-child) {
   margin-right: 20px;
-}
-
-.sectionExploreFiltersButton:last-child {
-  position: absolute;
-  right: 0;
 }
 
 .sectionExploreSort > div {
@@ -125,17 +125,4 @@
   line-height: 28px;
   color: #82899a;
   margin-left: 16px;
-}
-
-.sectionExploreSortQuery {
-  position: absolute;
-  right: 0;
-}
-
-.sectionExploreSortQuery > label {
-  font-family: "Inter";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: var(--color-light-gray);
 }
