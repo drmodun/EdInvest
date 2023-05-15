@@ -94,3 +94,24 @@
   line-height: 18px;
   color: #82899a;
 }
+
+.companyInvest {
+  width: 96px;
+  height: 36px;
+  background-color: var(--color-azzuro);
+  color: white;
+  border-radius: 8px;
+  margin: auto 0;
+  text-transform: uppercase;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyInvest > img {
+  margin-left: 12px;
+}

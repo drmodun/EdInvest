@@ -2,6 +2,7 @@ import classes from "./index.module.css";
 
 import PlaceholderImage from "../../assets/images/placeholder.jpg";
 import BlueArrow from "../../assets/icons/blue-arrow.svg";
+import WhiteArrow from "../../assets/icons/white-arrow.svg";
 
 const Card = () => {
   return (
@@ -27,7 +28,10 @@ const Card = () => {
           <p className={classes.companyRaisedValue}>
             $479 <span>Raised</span>
           </p>
-          <button>Invest</button>
+          <button className={classes.companyInvest}>
+            Invest
+            <img src={WhiteArrow} alt="" />
+          </button>
         </div>
       </div>
     </div>
