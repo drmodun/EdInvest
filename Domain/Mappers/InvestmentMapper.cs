@@ -20,7 +20,7 @@ namespace Domain.Mappers
         {
             return new GetInvestmentResponse
             {
-                
+
                 InvestorId = entity.InvestorId,
                 ItemId = entity.ItemId,
                 UpdatedAt = entity.UpdatedAt,
@@ -38,7 +38,7 @@ namespace Domain.Mappers
         {
             var investment = CreateInvestment(request);
             return investment.Result;
-            
+
         }
         public async Task<Investments?> CreateInvestment(CreateInvestmentRequest request)
         {
@@ -56,7 +56,7 @@ namespace Domain.Mappers
             return new Investments
             {
                 Tier = tier,
-                
+
                 InvestorId = (Guid)request.InvestorId,
                 ItemId = request.ItemId,
                 UpdatedAt = DateTime.UtcNow,
@@ -79,12 +79,12 @@ namespace Domain.Mappers
             return new Investments
             {
                 Tier = tier,
-                
+
                 InvestorId = (Guid)request.InvestorId,
                 ItemId = request.ItemId,
                 UpdatedAt = DateTime.UtcNow,
                 Amount = request.Amount,
             };
-    }
+        }
     }
 }

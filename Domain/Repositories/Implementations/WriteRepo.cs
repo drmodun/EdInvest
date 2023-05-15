@@ -2,7 +2,6 @@
 using Domain.Helpers;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Shared.Models;
 
 namespace Domain.Repositories.Implementations
 {
@@ -48,7 +47,7 @@ namespace Domain.Repositories.Implementations
             else if (id is N_NKey)
             {
                 N_NKey? n_nId = id as N_NKey?;
-                if (n_nId.HasValue) {  entity = await _set.FindAsync(n_nId.Value.investorId, n_nId.Value.itemId, cancellationToken);}
+                if (n_nId.HasValue) { entity = await _set.FindAsync(n_nId.Value.investorId, n_nId.Value.itemId, cancellationToken); }
             }
             if (entity == null)
                 return false;

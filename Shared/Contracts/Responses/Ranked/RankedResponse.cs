@@ -1,6 +1,4 @@
-﻿using System.Collections.Specialized;
-
-namespace Shared.Contracts.Responses.RankedInvestor
+﻿namespace Shared.Contracts.Responses.RankedInvestor
 {
     public class RankedResponse
     {

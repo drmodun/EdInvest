@@ -15,7 +15,7 @@ namespace Shared.Models
         {
             get; set;
         }
-        
+
         public DateTime UpdatedAt { get; set; }
     }
 

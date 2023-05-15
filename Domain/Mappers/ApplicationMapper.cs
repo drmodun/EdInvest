@@ -27,7 +27,7 @@ namespace Domain.Mappers
                 EstimatedNumberOfUsers = entity.EstimatedNumberOfUsers,
                 EstimatedRelease = entity.EstimatedRelease,
                 CountryId = entity.CountryId,
-                
+
                 CurrentAmount = entity.CurrentAmount,
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
@@ -60,7 +60,7 @@ namespace Domain.Mappers
                 EstimatedNumberOfUsers = request.EstimatedNumberOfUsers,
                 EstimatedRelease = request.EstimatedRelease,
                 CountryId = request.CountryId,
-                
+
                 CurrentAmount = request.CurrentAmount,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,

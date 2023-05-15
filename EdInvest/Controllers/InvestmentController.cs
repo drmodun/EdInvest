@@ -74,7 +74,7 @@ namespace API.Controllers
                     ItemId = itemId,
                     Amount = amount,
                 };
-            var item = await _investmentService.Update(updateRequest, cancellationToken, new N_NKey { investorId = updateRequest.InvestorId, itemId = updateRequest.ItemId});
+            var item = await _investmentService.Update(updateRequest, cancellationToken, new N_NKey { investorId = updateRequest.InvestorId, itemId = updateRequest.ItemId });
             var response = new UpdateInvestmentResponse { Success = item != null, Investment = item };
             return (bool)response.Success ? Ok(response) : BadRequest(response);
         }

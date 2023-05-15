@@ -26,7 +26,7 @@ namespace Domain.Mappers
                 Capacity = request.Capacity,
                 CategoryId = request.CategoryId,
                 Activities = request.Activities,
-                
+
                 ExpectedAttendance = request.ExpectedAttendance,
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
@@ -84,7 +84,7 @@ namespace Domain.Mappers
                 Capacity = entity.Capacity,
                 CategoryId = entity.CategoryId,
                 Activities = entity.Activities,
-                
+
                 ExpectedAttendance = entity.ExpectedAttendance,
                 NotableAttendees = entity.NotableAttendees,
                 NotableSpeakers = entity.NotableSpeakers,

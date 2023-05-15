@@ -30,7 +30,7 @@ namespace Domain.Mappers
                 SubcategoryId = entity.SubcategoryId,
                 Tiers = entity.Tiers,
                 Type = entity.Type,
-                
+
                 UpdatedAt = entity.UpdatedAt
             };
         }

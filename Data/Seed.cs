@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Npgsql.Internal;
 using Shared.Hash;
 using Shared.Models;
 using Shared.Models.Items;
 using Shared.Models.Users;
-using System.Reflection.Metadata;
 
 namespace Data.Entities
 {
@@ -764,7 +762,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecompany@gmail.com",
-                    
+
                     LocationName = "Split",
                     Id = Guid.NewGuid(),
                     NumberOfEmployees = 10,
@@ -775,7 +773,7 @@ namespace Data.Entities
                         {"facebook" , "facebook.com" }
                     },
                     WalletAddress = "1GSnK58N6XUkyGFGbqMDuzt1u3xhGAkTtS"
-                
+
                 },
                 new Investor
                 {
@@ -791,7 +789,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecompany1@gmail.com",
-                    
+
                     LocationName = "Zagreb",
                     Id = Guid.NewGuid(),
                     NumberOfEmployees = 10,
@@ -815,7 +813,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[2].Id,
                     Email = "investor@gmail.com",
-                    
+
                     LocationName = "London",
                     Id = Guid.NewGuid(),
                     NumberOfEmployees = 10,
@@ -844,7 +842,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "evets@gmail.com",
-                    
+
                     LocationName = "Split",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -871,7 +869,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecourse@gmail.com",
-                    
+
                     LocationName = "Hvar",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -895,7 +893,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[2].Id,
                     Email = "organisation@gmail.com",
-                    
+
                     LocationName = "London",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -924,7 +922,7 @@ namespace Data.Entities
                      AppPurpose = "To teach people how to learn",
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest learnign app to exist",
                      EstimatedNumberOfUsers = 1000000,
                      EstimatedRelease = DateTime.UtcNow.AddDays(365),
@@ -956,7 +954,7 @@ namespace Data.Entities
                      AppPurpose = "To teach people how to teach",
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest teaching app to exist",
                      EstimatedNumberOfUsers = 1000000,
                      EstimatedRelease = DateTime.UtcNow.AddDays(365),
@@ -1002,7 +1000,7 @@ namespace Data.Entities
                      Date = DateTime.UtcNow.AddDays(30),
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest learning event to exist",
                      ExpectedAttendance = 1999,
                      Capacity = 3000,
@@ -1044,7 +1042,7 @@ namespace Data.Entities
                      Date = DateTime.UtcNow.AddDays(30),
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest design event to exist",
                      ExpectedAttendance = 1999,
                      Capacity = 3000,
@@ -1082,10 +1080,10 @@ namespace Data.Entities
                      EndDate = DateTime.UtcNow.AddDays(182.5),
                      StartDate = DateTime.UtcNow.AddDays(82.5),
 
-                    
+
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1120,7 +1118,7 @@ namespace Data.Entities
 
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1168,7 +1166,7 @@ namespace Data.Entities
 
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest online course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1213,7 +1211,7 @@ namespace Data.Entities
 
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     
+
                      Description = "The greatest online course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1235,7 +1233,7 @@ namespace Data.Entities
                 new Investments
                 {
                     Amount = 10,
-                    
+
                     UpdatedAt= DateTime.UtcNow,
                     InvestorId = investors[0].Id,
                     ItemId = applications[0].Id,
@@ -1244,7 +1242,7 @@ namespace Data.Entities
                 new Investments
                 {
                     Amount = 100,
-                    
+
                     UpdatedAt= DateTime.UtcNow,
                     InvestorId = investors[1].Id,
                     ItemId = events[0].Id,
@@ -1252,7 +1250,7 @@ namespace Data.Entities
                 },new Investments
                 {
                     Amount = 10000,
-                    
+
                     UpdatedAt= DateTime.UtcNow,
                     InvestorId = investors[1].Id,
                     ItemId = onlineCourses[0].Id,
