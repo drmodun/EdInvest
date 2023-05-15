@@ -29,8 +29,12 @@
 
 .footerLinksIcons {
   height: 24px;
-  width: 100px;
-  background-color: white;
+  display: flex;
+  gap: 29px;
+}
+
+.footerLinksIcons > img {
+  cursor: pointer;
 }
 
 .footerCopy {

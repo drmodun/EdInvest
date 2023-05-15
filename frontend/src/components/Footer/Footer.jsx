@@ -1,5 +1,10 @@
 import classes from "./index.module.css";
 
+import FacebookIcon from "../../assets/icons/facebook.svg";
+import InstagramIcon from "../../assets/icons/instagram.svg";
+import LinkedInIcon from "../../assets/icons/linkedin.svg";
+import TwitterIcon from "../../assets/icons/twitter.svg";
+
 const Footer = () => {
   return (
     <footer className={classes.footer}>
@@ -11,10 +16,10 @@ const Footer = () => {
             <a href="/projects">Projects</a>
           </nav>
           <div className={classes.footerLinksIcons}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <img src={FacebookIcon} alt="" />
+            <img src={InstagramIcon} alt="" />
+            <img src={LinkedInIcon} alt="" />
+            <img src={TwitterIcon} alt="" />
           </div>
         </div>
         <p className={classes.footerCopy}>
