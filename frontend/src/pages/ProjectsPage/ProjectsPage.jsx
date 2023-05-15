@@ -10,12 +10,20 @@ const ProjectsPage = () => {
   const sortingOptions = ["Most popular", "A - Z", "Z - A", "Most relevant"];
 
   const [inputIsFocused, setInputIsFocused] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
   const handleInputFocus = () => {
     if (inputIsFocused) {
       setInputIsFocused(false);
     } else {
       setInputIsFocused(true);
     }
+  };
+
+  const handleInputSelect = (e) => {
+    const value = e.target.innerHTML;
+    setInputValue(value);
+    handleInputFocus();
   };
 
   return (
@@ -74,9 +82,11 @@ const ProjectsPage = () => {
             </h3>
             <Dropdown
               name="Sort by"
+              value={inputValue}
               options={sortingOptions}
               isOpened={inputIsFocused}
               focusEffect={handleInputFocus}
+              selectEffect={handleInputSelect}
             />
           </div>
         </div>
