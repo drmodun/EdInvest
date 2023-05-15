@@ -38,7 +38,7 @@ namespace Domain.Mappers
                 AvarageDuration = entity.AvarageDuration,
                 ExpectedAudience = entity.ExpectedAudience,
                 Type = ItemType.OnlineCourse,
-                CreatedAt = entity.CreatedAt,
+                
                 UpdatedAt = entity.UpdatedAt
             };
         }
@@ -54,7 +54,7 @@ namespace Domain.Mappers
                 Images = request.Images,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
                 SubcategoryId = request.SubcategoryId,
                 Tiers = request.Tiers,
                 LinksToChannels = request.LinksToChannels,
@@ -63,7 +63,7 @@ namespace Domain.Mappers
                 AvarageDuration = request.AvarageDuration,
                 ExpectedAudience = request.ExpectedAudience,
                 Type = ItemType.OnlineCourse,
-                CreatedAt = DateTime.UtcNow,
+                
                 UpdatedAt = DateTime.UtcNow,
                 Id = Guid.NewGuid(),
 
@@ -82,7 +82,7 @@ namespace Domain.Mappers
                 Images = request.Images,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
                 SubcategoryId = request.SubcategoryId,
                 Tiers = request.Tiers,
                 LinksToChannels = request.LinksToChannels,
@@ -91,7 +91,6 @@ namespace Domain.Mappers
                 AvarageDuration = request.AvarageDuration,
                 ExpectedAudience = request.ExpectedAudience,
                 Type = ItemType.OnlineCourse,
-                CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             };
             return onlineCourse;

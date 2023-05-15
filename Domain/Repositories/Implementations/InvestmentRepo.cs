@@ -25,10 +25,10 @@ namespace Domain.Repositories.Implementations
         public async Task<List<Investments>> GetAll(GetAllInvestmentsRequest options)
         {
             return await _context.Investments
-                .Where(i => i.ItemId == options.ItemId)
-                .Where(i => i.InvestorId == options.InvestorId)
-                .Where(i => options.Tier == options.Tier)
-                .Where(i => i.CreatedAt > options.CreatedAt)
+                .Where(i => i.ItemId == options.ItemId || options.ItemId == null)
+                .Where(i => i.InvestorId == options.InvestorId || options.InvestorId == null)
+                .Where(i => i.Tier == options.Tier || options.Tier == null)
+                .Where(i => i.UpdatedAt > options.UpdatedAt || options.Tier == null)
                 .ToListAsync();
         }
     }

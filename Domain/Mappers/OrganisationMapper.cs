@@ -25,7 +25,7 @@ namespace Domain.Mappers
                 Description = request.Description,
                 LocationName = request.LocationName,
                 Balance = request.Balance,
-                CreatedAt = DateTime.UtcNow,
+                
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
                 CountryId = request.CountryId,
@@ -81,7 +81,8 @@ namespace Domain.Mappers
                 Description = entity.Description,
                 LocationName = entity.LocationName,
                 Balance = entity.Balance,
-                UpdatedAt = DateTime.UtcNow,
+                UpdatedAt = entity.UpdatedAt,
+                
                 Type = entity.Type,
                 CountryId = entity.CountryId,
                 ProfilePicture = entity.ProfilePicture,

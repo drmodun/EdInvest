@@ -50,8 +50,10 @@ namespace Domain.Repositories.Implementations
                 .Include(i => i.Item)
                 .Select(i => new RankedItemResponse
                 {
-                    Amount = 0,
+                    Id = i.ItemId,
+                    Amount = i.Amount,
                     Image = i.Item.Images[0],
+                    Tier = i.Tier,
                     Name = i.Item.Name,
                     OrganisationId = i.Item.OrganisationId,
                     Type = i.Item.Type,

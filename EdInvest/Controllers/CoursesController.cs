@@ -32,25 +32,25 @@ namespace API.Controllers
         public async Task<ActionResult<GetCourseResponse>> Get([FromRoute] Guid id)
         {
             var request = new GetCourseRequest { Id = id };
-            return await _courseService.GetById(request);
+            var item = await _courseService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.Course.Create)]
         public async Task<ActionResult<CreateCourseResponse>> Post([FromBody] CreateCourseRequest request, CancellationToken cancellationToken)
         {
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var item = await _courseService.Create(request, cancellationToken);
-            return new CreateCourseResponse
-            {
-                Success = item != null,
-                Course = item,
-            };
+            var response = new CreateCourseResponse { Success = item != null, Course = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Course.Update)]
         public async Task<ActionResult<UpdateCourseResponse>> Update([FromBody] CreateCourseRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            if (request.OrganisationId != HttpContext.GetUserId())
-                return BadRequest("Cannot create, update or delete a request to create an item that has a different organisation than the logged in user");
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var updateRequest =
                 new UpdateCourseRequest
                 {
@@ -73,8 +73,9 @@ namespace API.Controllers
                     Prices = request.Prices,
                     Tiers = request.Tiers,
                 };
-            var item = await _courseService.Update(updateRequest, cancellationToken);
-            return new UpdateCourseResponse { Success = item != null, Course = item };
+            var item = await _courseService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateCourseResponse { Success = item != null, Course = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
@@ -84,7 +85,8 @@ namespace API.Controllers
             var item = await _courseService.GetById(new GetCourseRequest { Id = id });
             if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _courseService.Delete(id, cancellationToken);
-            return new DeleteCourseResponse { Success = deletion };
+            var response = new DeleteCourseResponse { Success = deletion };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [HttpGet(AppRoutes.Course.GetAll)]

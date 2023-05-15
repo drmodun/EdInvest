@@ -32,27 +32,30 @@ namespace API.Controllers
         public async Task<ActionResult<GetEventResponse>> Get([FromRoute] Guid id)
         {
             var request = new GetEventRequest { Id = id };
-            return await _eventService.GetById(request);
+            var item = await _eventService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.Event.Create)]
         public async Task<ActionResult<CreateEventResponse>> Post([FromBody] CreateEventRequest request, CancellationToken cancellationToken)
         {
-            if (HttpContext.GetUserId() != request.OrganisationId)
-                return BadRequest("Can only create a avent fot the logged in organisation");
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var item = await _eventService.Create(request, cancellationToken);
-            return new CreateEventResponse
+            var response = new CreateEventResponse
             {
                 Success = item != null,
                 Event = item,
             };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Event.Update)]
         public async Task<ActionResult<UpdateEventResponse>> Update([FromBody] CreateEventRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            if (request.OrganisationId != HttpContext.GetUserId())
-                return BadRequest("Cannot create, update or delete an item that has a different organisation than the logged in user");
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var updateRequest =
                 new UpdateEventRequest
                 {
@@ -77,8 +80,9 @@ namespace API.Controllers
                     Prices = request.Prices,
                     Tiers = request.Tiers,
                 };
-            var item = await _eventService.Update(updateRequest, cancellationToken);
-            return new UpdateEventResponse { Success = item != null, Event = item };
+            var item = await _eventService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateEventResponse { Success = item != null, Event = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
@@ -88,7 +92,9 @@ namespace API.Controllers
             var item = await _eventService.GetById(new GetEventRequest { Id = id });
             if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _eventService.Delete(id, cancellationToken);
-            return new DeleteEventResponse { Success = deletion };
+            var response = new DeleteEventResponse { Success = deletion };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
 
         }
         [HttpGet(AppRoutes.Event.GetAll)]

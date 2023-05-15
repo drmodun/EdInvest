@@ -6,10 +6,5 @@
         public Guid ItemId;
 
         public decimal Amount;
-        public int Tier
-        {
-            get; set;
-        }
-        public DateTime UpdatedAt { get; set; }
     }
 }

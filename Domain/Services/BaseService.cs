@@ -36,17 +36,21 @@ namespace Domain.Services
         public async Task<TGetResponse?> Create(TCreateRequest request, CancellationToken cancellationToken)
         {
             var newEntity = _mapper.ToEntity(request);
+            if (newEntity == null)
+                return null;
             await _validation.ValidateAndThrowAsync(newEntity, cancellationToken);
             var addAsync = await _writeRepo.AddAsync(newEntity, cancellationToken);
             if (!addAsync)
                 return null;
             return _mapper.ToDTO(newEntity);
         }
-        public async Task<TGetResponse?> Update(TUpdateRequest request, CancellationToken cancellationToken)
+        public async Task<TGetResponse?> Update(TUpdateRequest request, CancellationToken cancellationToken, TId id)
         {
             var updatedEntity = _mapper.ToUpdatedEntity(request);
+            if (updatedEntity == null)
+                return null;
             await _validation.ValidateAndThrowAsync(updatedEntity, cancellationToken);
-            var addAsync = await _writeRepo.UpdateAsync(updatedEntity, cancellationToken);
+            var addAsync = await _writeRepo.UpdateAsync(updatedEntity, cancellationToken, id);
             if (!addAsync)
                 return null;
             return _mapper.ToDTO(updatedEntity);

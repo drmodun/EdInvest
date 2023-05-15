@@ -7,8 +7,6 @@
         public Guid? SubcategoryId { get; set; }
 
         public Guid? CategoryId { get; set; }
-
-
-        public Guid? OrganisationId { get; set; }
+        public Guid? OrganisationId;
     }
 }

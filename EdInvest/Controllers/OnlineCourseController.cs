@@ -35,28 +35,25 @@ namespace API.Controllers
             {
                 Id = id,
             };
-            return await _onlineCourseService.GetById(request);
+            var item = await _onlineCourseService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.OnlineCourse.Create)]
         public async Task<ActionResult<CreateOnlineCourseResponse>> Post([FromBody] CreateOnlineCourseRequest request, CancellationToken cancellationToken)
         {
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var item = await _onlineCourseService.Create(request, cancellationToken);
-            if (request.OrganisationId != HttpContext.GetUserId())
-                return BadRequest("Cannot create, update or delete an item that has a different organisation than the logged in user");
-            return new CreateOnlineCourseResponse
-            {
-                Success = item != null,
-                OnlineCourse = item,
-            };
+            var response = new CreateOnlineCourseResponse { Success = item != null, OnlineCourse = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.OnlineCourse.Update)]
         public async Task<ActionResult<UpdateOnlineCourseResponse>> Update([FromBody] CreateOnlineCourseRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            if (request.OrganisationId != HttpContext.GetUserId())
-                return BadRequest("Cannot create, update or delete a request to create an item that has a different organisation than the logged in user");
-
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var updateRequest =
                 new UpdateOnlineCourseRequest
                 {
@@ -78,8 +75,9 @@ namespace API.Controllers
                     LessonsDate = request.LessonsDate,
                     LinksToChannels = request.LinksToChannels
                 };
-            var item = await _onlineCourseService.Update(updateRequest, cancellationToken);
-            return new UpdateOnlineCourseResponse { Success = item != null, OnlineCourse = item };
+            var item = await _onlineCourseService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateOnlineCourseResponse { Success = item != null, OnlineCourse = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [HttpDelete(AppRoutes.OnlineCourse.Delete)]
@@ -89,7 +87,8 @@ namespace API.Controllers
             var item = await _onlineCourseService.GetById(new GetOnlineCourseRequest { Id = id });
             if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _onlineCourseService.Delete(id, cancellationToken);
-            return new DeleteOnlineCourseResponse { Success = deletion };
+            var response = new DeleteOnlineCourseResponse { Success = deletion };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [HttpGet(AppRoutes.OnlineCourse.GetAll)]

@@ -4,6 +4,7 @@ namespace Shared.Contracts.Responses.Ranked
 {
     public class RankedItemResponse
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
         public decimal Amount { get; set; }
@@ -11,6 +12,8 @@ namespace Shared.Contracts.Responses.Ranked
         public Guid OrganisationId { get; set; }
 
         public string Image { get; set; }
+
+        public int Tier { get; set; }
 
         public DateTime? Updated { get; set; }
 

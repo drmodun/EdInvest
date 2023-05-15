@@ -43,14 +43,15 @@ namespace Domain.Validation
             { return await _subCategoryRepo.GetById(new GetSubcategoryRequest { Id = n }) != null; }).WithMessage("Subcategory is not valid");
             RuleFor(x => x.OrganisationId).MustAsync(async (n, cancellationToken) =>
             { return await _organisatorRepo.GetById(new GetOrganisationRequest { Id = n }) != null; }).WithMessage("Organisation is not valid");
-            RuleFor(x => x.CreatedAt).Must(d => d < DateTime.Now).WithMessage("Invalid date");
-            RuleFor(x => new { x.UpdatedAt, x.CreatedAt }).Must(d => d.UpdatedAt < DateTime.Now && d.CreatedAt <= d.UpdatedAt).WithMessage("Update cannot happen prior to creation");
+            RuleFor(x => x.UpdatedAt).Must(d => d < DateTime.Now).WithMessage("Invalid date");
             RuleFor(x => x.Tiers).NotEmpty().WithMessage("Tiers must exist");
             RuleFor(x => x.Prices).NotEmpty().WithMessage("Prices must be set");
             RuleFor(x => new { x.Id, x.OrganisationId }).MustAsync(async (n, cancellationToken) =>
             {
                 var item = await _itemRepo.GetById(new GetItemRequest { Id = n.Id });
-                return n.OrganisationId == item.OrganisationId || item == null;
+                if (item == null)
+                    return true;
+                return item.OrganisationId == n.OrganisationId;
             }).
             WithMessage("Organisation cannot be changed");
 

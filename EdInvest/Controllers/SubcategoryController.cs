@@ -36,7 +36,10 @@ namespace API.Controllers
             {
                 Id = id,
             };
-            return await _subcategoryService.GetById(request);
+            var item = await _subcategoryService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
 
@@ -44,11 +47,13 @@ namespace API.Controllers
         public async Task<ActionResult<CreateSubcategoryResponse>> Post([FromBody] CreateSubcategoryRequest request, CancellationToken cancellationToken)
         {
             var item = await _subcategoryService.Create(request, cancellationToken);
-            return new CreateSubcategoryResponse
+            var response = new CreateSubcategoryResponse
             {
                 Success = item != null,
                 Subcategory = item,
             };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
 
@@ -63,12 +68,14 @@ namespace API.Controllers
                     CategoryId = request.CategoryId,
                     Id = id,
                 };
-            var item = await _subcategoryService.Update(updateRequest, cancellationToken);
-            return new UpdateSubcategoryResponse
+            var item = await _subcategoryService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateSubcategoryResponse
             {
                 Success = item != null,
                 Subcategory = item,
             };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
 
@@ -76,10 +83,8 @@ namespace API.Controllers
         public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var item = await _subcategoryService.Delete(id, cancellationToken);
-            return new DeleteSubcategoryResponse
-            {
-                Success = item,
-            };
+            var response = new DeleteSubcategoryResponse { Success = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [HttpGet(AppRoutes.Subcategory.GetAll)]
         public async Task<ActionResult<GetAllSubcategoriesReponse>> GetAll([FromQuery] GetAllSubcategoriesRequest request)

@@ -9,7 +9,8 @@
 
         public Guid CategoryId { get; set; }
         public Guid SubcategoryId { get; set; }
-        public Guid OrganisationId { get; set; }
+        public Guid OrganisationId;
+
 
         public Guid CountryId { get; set; }
 

@@ -40,17 +40,17 @@ namespace API.Controllers
             {
                 Id = id,
             };
-            return await _organisationService.GetById(request);
+            var item = await _organisationService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [HttpPost(AppRoutes.Organisation.Create)]
         public async Task<ActionResult<CreateOrganisationResponse>> Post([FromBody] CreateOrganisationRequest request, CancellationToken cancellationToken)
         {
             var item = await _organisationService.Create(request, cancellationToken);
-            return new CreateOrganisationResponse
-            {
-                Success = item != null,
-                Organisation = item,
-            };
+            var response = new CreateOrganisationResponse { Success = item != null, Organisation = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
 
@@ -74,12 +74,9 @@ namespace API.Controllers
                     WalletAddress = request.WalletAddress,
                     Id = (Guid)HttpContext.GetUserId(),
                 };
-            var item = await _organisationService.Update(updateRequest, cancellationToken);
-            return new UpdateOrganisationResponse
-            {
-                Success = item != null,
-                Organisation = item,
-            };
+            var item = await _organisationService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateOrganisationResponse { Success = item != null, Organisation = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         //fix delete
         [Authorize(AuthConstants.AdminUserPolicyName)]
@@ -87,10 +84,8 @@ namespace API.Controllers
         public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var item = await _organisationService.Delete(id, cancellationToken);
-            return new DeleteOrganisationResponse
-            {
-                Success = item,
-            };
+            var response = new DeleteOrganisationResponse { Success = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [HttpGet(AppRoutes.Organisation.GetAll)]
         public async Task<ActionResult<GetAllOrganisationsResponse>> GetAll([FromQuery] GetAllOrganisationsRequest request)

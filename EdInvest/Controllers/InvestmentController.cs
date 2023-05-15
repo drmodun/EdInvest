@@ -43,45 +43,40 @@ namespace API.Controllers
                 InvestorId = investorId,
                 itemId = itemId
             };
-            return await _investmentService.GetById(request);
+            var item = await _investmentService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.Investments.Create)]
-        public async Task<ActionResult<CreateInvestmentResponse>> Post([FromRoute] Guid itemId, [FromBody] int tier, CancellationToken cancellationToken)
+        public async Task<ActionResult<CreateInvestmentResponse>> Post([FromRoute] Guid itemId, [FromBody] decimal amount, CancellationToken cancellationToken)
         {
             var request = new CreateInvestmentRequest
             {
                 ItemId = itemId,
-                Tier = tier,
-                CreatedAt = DateTime.UtcNow,
-                InvestorId = HttpContext.GetUserId()
+                InvestorId = HttpContext.GetUserId(),
+                Amount = amount
 
             };
             var item = await _investmentService.Create(request, cancellationToken);
-            return new CreateInvestmentResponse
-            {
-                Success = item != null,
-                Investment = item,
-            };
+            var response = new CreateInvestmentResponse { Success = item != null, Investment = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Investments.Update)]
-        public async Task<ActionResult<UpdateInvestmentResponse>> Update([FromRoute] Guid itemId, [FromBody] int tier, CancellationToken cancellationToken)
+        public async Task<ActionResult<UpdateInvestmentResponse>> Update([FromRoute] Guid itemId, [FromBody] decimal amount, CancellationToken cancellationToken)
         {
             var updateRequest =
                 new UpdateInvestmentRequest
                 {
                     InvestorId = HttpContext.GetUserId(),
                     ItemId = itemId,
-                    Tier = tier,
-                    UpdatedAt = DateTime.UtcNow,
+                    Amount = amount,
                 };
-            var item = await _investmentService.Update(updateRequest, cancellationToken);
-            return new UpdateInvestmentResponse
-            {
-                Success = item != null,
-                Investment = item,
-            };
+            var item = await _investmentService.Update(updateRequest, cancellationToken, new N_NKey { investorId = updateRequest.InvestorId, itemId = updateRequest.ItemId});
+            var response = new UpdateInvestmentResponse { Success = item != null, Investment = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpDelete(AppRoutes.Investments.Delete)]
@@ -93,10 +88,8 @@ namespace API.Controllers
                 itemId = itemId
             };
             var item = await _investmentService.Delete(key, cancellationToken);
-            return new DeleteInvestmentResponse
-            {
-                Success = item != null,
-            };
+            var response = new DeleteInvestmentResponse { Success = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [HttpGet(AppRoutes.Investments.GetAll)]
         public async Task<ActionResult<GetAllInvestmentsResponse>> GetAll([FromQuery] GetAllInvestmentsRequest options)
@@ -119,11 +112,20 @@ namespace API.Controllers
                 Items = items
             };
         }
-        [HttpGet(AppRoutes.Investments.TopInvestors)]
-        public async Task<ActionResult<AllRankedResponse>> GetAllInvestors([FromRoute] Guid id)
+        [HttpGet(AppRoutes.Investments.GetInvestors)]
+        public async Task<ActionResult<AllRankedResponse>> GetAllInvestors([FromRoute] Guid itemId)
         {
 
-            var items = await _rankedService.GetInvestors(id);
+            var items = await _rankedService.GetInvestors(itemId);
+            return new AllRankedResponse
+            {
+                Investors = items
+            };
+        }
+        [HttpGet(AppRoutes.Investments.TopInvestors)]
+        public async Task<ActionResult<AllRankedResponse>> GetTopInvestors()
+        {
+            var items = await _rankedService.GetTopInvestors();
             return new AllRankedResponse
             {
                 Investors = items

@@ -764,7 +764,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecompany@gmail.com",
-                    CreatedAt = DateTime.UtcNow,
+                    
                     LocationName = "Split",
                     Id = Guid.NewGuid(),
                     NumberOfEmployees = 10,
@@ -791,7 +791,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecompany1@gmail.com",
-                    CreatedAt = DateTime.UtcNow,
+                    
                     LocationName = "Zagreb",
                     Id = Guid.NewGuid(),
                     NumberOfEmployees = 10,
@@ -815,7 +815,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[2].Id,
                     Email = "investor@gmail.com",
-                    CreatedAt = DateTime.UtcNow,
+                    
                     LocationName = "London",
                     Id = Guid.NewGuid(),
                     NumberOfEmployees = 10,
@@ -844,7 +844,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "evets@gmail.com",
-                    CreatedAt = DateTime.UtcNow,
+                    
                     LocationName = "Split",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -871,7 +871,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecourse@gmail.com",
-                    CreatedAt = DateTime.UtcNow,
+                    
                     LocationName = "Hvar",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -895,7 +895,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[2].Id,
                     Email = "organisation@gmail.com",
-                    CreatedAt = DateTime.UtcNow,
+                    
                     LocationName = "London",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -924,7 +924,7 @@ namespace Data.Entities
                      AppPurpose = "To teach people how to learn",
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest learnign app to exist",
                      EstimatedNumberOfUsers = 1000000,
                      EstimatedRelease = DateTime.UtcNow.AddDays(365),
@@ -956,7 +956,7 @@ namespace Data.Entities
                      AppPurpose = "To teach people how to teach",
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest teaching app to exist",
                      EstimatedNumberOfUsers = 1000000,
                      EstimatedRelease = DateTime.UtcNow.AddDays(365),
@@ -1002,8 +1002,8 @@ namespace Data.Entities
                      Date = DateTime.UtcNow.AddDays(30),
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
-                     Description = "The greatest learnign event to exist",
+                     
+                     Description = "The greatest learning event to exist",
                      ExpectedAttendance = 1999,
                      Capacity = 3000,
                      OrganisationId = organisations[0].Id,
@@ -1044,7 +1044,7 @@ namespace Data.Entities
                      Date = DateTime.UtcNow.AddDays(30),
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest design event to exist",
                      ExpectedAttendance = 1999,
                      Capacity = 3000,
@@ -1085,7 +1085,7 @@ namespace Data.Entities
                     
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1120,7 +1120,7 @@ namespace Data.Entities
 
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1168,7 +1168,7 @@ namespace Data.Entities
 
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest online course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1213,7 +1213,7 @@ namespace Data.Entities
 
                      CategoryId = categories[0].Id,
                      CountryId = countries[0].Id,
-                     CreatedAt= DateTime.UtcNow,
+                     
                      Description = "The greatest online course to exist",
                      OrganisationId = organisations[0].Id,
                      SubcategoryId = subcategories[0].Id,
@@ -1235,7 +1235,7 @@ namespace Data.Entities
                 new Investments
                 {
                     Amount = 10,
-                    CreatedAt = DateTime.UtcNow,
+                    
                     UpdatedAt= DateTime.UtcNow,
                     InvestorId = investors[0].Id,
                     ItemId = applications[0].Id,
@@ -1244,7 +1244,7 @@ namespace Data.Entities
                 new Investments
                 {
                     Amount = 100,
-                    CreatedAt = DateTime.UtcNow,
+                    
                     UpdatedAt= DateTime.UtcNow,
                     InvestorId = investors[1].Id,
                     ItemId = events[0].Id,
@@ -1252,7 +1252,7 @@ namespace Data.Entities
                 },new Investments
                 {
                     Amount = 10000,
-                    CreatedAt = DateTime.UtcNow,
+                    
                     UpdatedAt= DateTime.UtcNow,
                     InvestorId = investors[1].Id,
                     ItemId = onlineCourses[0].Id,

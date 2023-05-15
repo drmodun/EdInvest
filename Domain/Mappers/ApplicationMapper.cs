@@ -27,7 +27,7 @@ namespace Domain.Mappers
                 EstimatedNumberOfUsers = entity.EstimatedNumberOfUsers,
                 EstimatedRelease = entity.EstimatedRelease,
                 CountryId = entity.CountryId,
-                CreatedAt = entity.CreatedAt,
+                
                 CurrentAmount = entity.CurrentAmount,
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
@@ -60,7 +60,7 @@ namespace Domain.Mappers
                 EstimatedNumberOfUsers = request.EstimatedNumberOfUsers,
                 EstimatedRelease = request.EstimatedRelease,
                 CountryId = request.CountryId,
-                CreatedAt = DateTime.UtcNow,
+                
                 CurrentAmount = request.CurrentAmount,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
@@ -68,7 +68,7 @@ namespace Domain.Mappers
                 Markets = request.Markets,
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
             };
             return newApp;
         }
@@ -94,7 +94,7 @@ namespace Domain.Mappers
                 Markets = request.Markets,
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
             };
             return newApp;
         }

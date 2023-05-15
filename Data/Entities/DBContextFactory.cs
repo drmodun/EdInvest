@@ -11,6 +11,7 @@ namespace Data.Entities
         {
 
             var options = new DbContextOptionsBuilder<EdInvestContext>()
+                .EnableSensitiveDataLogging(true)
                 .UseNpgsql(ConfigurationHelper.GetConfiguration().GetConnectionString("Database"))
                 .Options;
 

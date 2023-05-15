@@ -36,7 +36,10 @@ namespace API.Controllers
             {
                 Id = id,
             };
-            return await _categoryService.GetById(request);
+            var item = await _categoryService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
 
@@ -44,11 +47,13 @@ namespace API.Controllers
         public async Task<ActionResult<CreateCategoryResponse>> Post([FromBody] CreateCategoryRequest request, CancellationToken cancellationToken)
         {
             var item = await _categoryService.Create(request, cancellationToken);
-            return new CreateCategoryResponse
+            var response = new CreateCategoryResponse
             {
                 Success = item != null,
                 Category = item,
             };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
 
@@ -62,22 +67,26 @@ namespace API.Controllers
                     Description = request.Description,
                     Id = id,
                 };
-            var item = await _categoryService.Update(updateRequest, cancellationToken);
-            return new UpdateCategoryResponse
+            var item = await _categoryService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateCategoryResponse
             {
                 Success = item != null,
                 Category = item,
             };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Category.Delete)]
         public async Task<ActionResult<DeleteCategoryResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var item = await _categoryService.Delete(id, cancellationToken);
-            return new DeleteCategoryResponse
+            var response = new DeleteCategoryResponse
             {
                 Success = item,
             };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
+
         }
         [HttpGet(AppRoutes.Category.GetAll)]
         public async Task<ActionResult<GetAllCategoriesResponse>> GetAll([FromQuery] GetAllCategoriesRequest request)

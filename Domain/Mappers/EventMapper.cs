@@ -26,7 +26,7 @@ namespace Domain.Mappers
                 Capacity = request.Capacity,
                 CategoryId = request.CategoryId,
                 Activities = request.Activities,
-                CreatedAt = DateTime.UtcNow,
+                
                 ExpectedAttendance = request.ExpectedAttendance,
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
@@ -38,7 +38,7 @@ namespace Domain.Mappers
                 UpdatedAt = DateTime.UtcNow,
                 Tiers = request.Tiers,
                 Type = request.Type,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
                 OrganisationId = request.OrganisationId,
             };
         }
@@ -56,7 +56,6 @@ namespace Domain.Mappers
                 Capacity = request.Capacity,
                 CategoryId = request.CategoryId,
                 Activities = request.Activities,
-                CreatedAt = DateTime.UtcNow,
                 ExpectedAttendance = request.ExpectedAttendance,
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
@@ -68,7 +67,7 @@ namespace Domain.Mappers
                 UpdatedAt = DateTime.UtcNow,
                 Tiers = request.Tiers,
                 Type = request.Type,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
                 OrganisationId = request.OrganisationId,
             };
         }
@@ -85,7 +84,7 @@ namespace Domain.Mappers
                 Capacity = entity.Capacity,
                 CategoryId = entity.CategoryId,
                 Activities = entity.Activities,
-                CreatedAt = entity.CreatedAt,
+                
                 ExpectedAttendance = entity.ExpectedAttendance,
                 NotableAttendees = entity.NotableAttendees,
                 NotableSpeakers = entity.NotableSpeakers,

@@ -29,7 +29,7 @@ namespace Domain.Mappers
                 StartDate = entity.StartDate,
                 EndDate = entity.EndDate,
                 CountryId = entity.CountryId,
-                CreatedAt = entity.CreatedAt,
+                
                 CurrentAmount = entity.CurrentAmount,
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
@@ -58,7 +58,7 @@ namespace Domain.Mappers
                 Tiers = request.Tiers,
                 ActiveStudents = request.ActiveStudents,
                 CountryId = request.CountryId,
-                CreatedAt = DateTime.UtcNow,
+                
                 CurrentAmount = request.CurrentAmount,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
@@ -69,7 +69,7 @@ namespace Domain.Mappers
                 ExpectedGraduates = request.ExpectedGraduates,
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
             };
             return newApp;
         }
@@ -95,7 +95,7 @@ namespace Domain.Mappers
                 ExpectedGraduates = request.ExpectedGraduates,
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
-                Prices = request.Prices,
+                Prices = request.Prices.Order().ToList(),
             };
             return newApp;
         }

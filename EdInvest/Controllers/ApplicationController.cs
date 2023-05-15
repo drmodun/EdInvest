@@ -35,25 +35,25 @@ namespace API.Controllers
             {
                 Id = id,
             };
-            return await _applicationService.GetById(request);
+            var item = await _applicationService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPost(AppRoutes.Application.Create)]
         public async Task<ActionResult<CreateApplicationResponse>> Post([FromBody] CreateApplicationRequest request, CancellationToken cancellationToken)
         {
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var item = await _applicationService.Create(request, cancellationToken);
-            return new CreateApplicationResponse
-            {
-                Success = item != null,
-                Application = item,
-            };
+            var response = new CreateApplicationResponse { Success = item != null, Application = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Application.Update)]
         public async Task<ActionResult<UpdateApplicaionResponse>> Update([FromBody] CreateApplicationRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
-            if (request.OrganisationId != HttpContext.GetUserId())
-                return BadRequest("Cannot create, update or delete a request to create an item that has a different organisation than the logged in user");
+            request.OrganisationId = (Guid)HttpContext.GetUserId();
             var updateRequest =
                 new UpdateApplicationRequest
                 {
@@ -75,8 +75,9 @@ namespace API.Controllers
                     Prices = request.Prices,
                     Tiers = request.Tiers,
                 };
-            var item = await _applicationService.Update(updateRequest, cancellationToken);
-            return new UpdateApplicaionResponse { Success = item != null, Application = item };
+            var item = await _applicationService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateApplicaionResponse { Success = item != null, Application = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
@@ -87,7 +88,8 @@ namespace API.Controllers
             var item = await _applicationService.GetById(new GetApplicationRequest { Id = id });
             if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _applicationService.Delete(id, cancellationToken);
-            return new DeleteApplicationResponse { Success = deletion };
+            var response = new DeleteApplicationResponse { Success = deletion };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
 
         }
         [HttpGet(AppRoutes.Application.GetAll)]

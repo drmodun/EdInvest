@@ -34,17 +34,17 @@ namespace API.Controllers
         public async Task<ActionResult<GetInvestorResponse>> Get([FromRoute] Guid id)
         {
             var request = new GetInvestorRequest { Id = id };
-            return await _investorService.GetById(request);
+            var item = await _investorService.GetById(request);
+            if (item == null)
+                return NotFound();
+            return Ok(item);
         }
         [HttpPost(AppRoutes.Investor.Create)]
         public async Task<ActionResult<CreateInvestorResponse>> Post([FromBody] CreateInvestorRequest request, CancellationToken cancellationToken)
         {
             var item = await _investorService.Create(request, cancellationToken);
-            return new CreateInvestorResponse
-            {
-                Success = item != null,
-                Investor = item,
-            };
+            var response = new CreateInvestorResponse { Success = item != null, Investor = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Investor.Update)]
@@ -67,22 +67,17 @@ namespace API.Controllers
                     WalletAddress = request.WalletAddress,
                     Id = (Guid)HttpContext.GetUserId(),
                 };
-            var item = await _investorService.Update(updateRequest, cancellationToken);
-            return new UpdateInvestorResponse
-            {
-                Success = item != null,
-                Investor = item,
-            };
+            var item = await _investorService.Update(updateRequest, cancellationToken, updateRequest.Id);
+            var response = new UpdateInvestorResponse { Success = item != null, Investor = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Investor.Delete)]
         public async Task<ActionResult<DeleteInvestorResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var item = await _investorService.Delete(id, cancellationToken);
-            return new DeleteInvestorResponse
-            {
-                Success = item,
-            };
+            var response = new DeleteInvestorResponse { Success = item };
+            return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [HttpGet(AppRoutes.Investor.GetAll)]
         public async Task<ActionResult<GetAllInvestorsResponse>> GetAll([FromQuery] GetAllInvestorsRequest request)
