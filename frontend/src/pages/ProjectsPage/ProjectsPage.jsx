@@ -23,7 +23,6 @@ const ProjectsPage = () => {
   const handleInputSelect = (e) => {
     const value = e.target.innerHTML;
     setInputValue(value);
-    handleInputFocus();
   };
 
   return (

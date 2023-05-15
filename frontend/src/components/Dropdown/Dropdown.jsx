@@ -19,12 +19,13 @@ const Dropdown = ({
         id={name}
         readOnly
         onFocus={focusEffect}
+        onBlur={focusEffect}
       ></input>
       {isOpened && (
         <div className={classes.dropdownOptions}>
           {options.map((option, index) => {
             return (
-              <p key={index} onClick={selectEffect}>
+              <p key={index} onMouseDown={selectEffect}>
                 {option}
               </p>
             );
