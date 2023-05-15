@@ -66,11 +66,14 @@
 
 /* EXPLORE ALL SECTION */
 
+.sectionExplore {
+  margin-bottom: 300px;
+}
+
 .sectionExploreFilters {
   width: 100%;
   height: 94px;
   background: #e6e6e6;
-  margin-bottom: 300px;
 }
 
 .sectionExploreFilters > div {
@@ -99,4 +102,40 @@
 .sectionExploreFiltersButton:last-child {
   position: absolute;
   right: 0;
+}
+
+.sectionExploreSort > div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sectionExploreTitle {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  color: #343434;
+}
+
+.sectionExploreTitle > span {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 28px;
+  color: #82899a;
+  margin-left: 16px;
+}
+
+.sectionExploreSortQuery {
+  position: absolute;
+  right: 0;
+}
+
+.sectionExploreSortQuery > label {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--color-light-gray);
 }

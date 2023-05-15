@@ -53,6 +53,18 @@ const ProjectsPage = () => {
             </button>
           </div>
         </div>
+
+        <div className={classes.sectionExploreSort}>
+          <div className="layoutSpacing">
+            <h3 className={classes.sectionExploreTitle}>
+              Explore all<span>117 projects</span>
+            </h3>
+            <div className={classes.sectionExploreSortQuery}>
+              <label htmlFor="filter">Sort by</label>
+              <select name="filter" id="filter"></select>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
