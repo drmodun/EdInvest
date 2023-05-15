@@ -1,10 +1,31 @@
+import { useState } from "react";
 import classes from "./index.module.css";
 
 import SearchIcon from "../../assets/icons/search.svg";
+import FilterIcon from "../../assets/icons/filter.svg";
 
 import Card from "../../components/Card";
+import Dropdown from "../../components/Dropdown";
 
 const ProjectsPage = () => {
+  const sortingOptions = ["Most popular", "A - Z", "Z - A", "Most relevant"];
+
+  const [inputIsFocused, setInputIsFocused] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputFocus = () => {
+    if (inputIsFocused) {
+      setInputIsFocused(false);
+    } else {
+      setInputIsFocused(true);
+    }
+  };
+
+  const handleInputSelect = (e) => {
+    const value = e.target.innerHTML;
+    setInputValue(value);
+  };
+
   return (
     <>
       {/* SEARCH SECTION */}
@@ -27,6 +48,58 @@ const ProjectsPage = () => {
             <Card></Card>
             <Card></Card>
             <Card></Card>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPLORE ALL SECTION */}
+      <section className={classes.sectionExplore}>
+        <div className={classes.sectionExploreFilters}>
+          <div className="layoutSpacing">
+            <button className={classes.sectionExploreFiltersButton}>All</button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Technology
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Languages
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Creative
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Science
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Filters
+              <img src={FilterIcon} alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div className={classes.sectionExploreSort}>
+          <div className="layoutSpacing">
+            <h3 className={classes.sectionExploreTitle}>
+              Explore all<span>117 projects</span>
+            </h3>
+            <Dropdown
+              name="Sort by"
+              value={inputValue}
+              options={sortingOptions}
+              isOpened={inputIsFocused}
+              focusEffect={handleInputFocus}
+              selectEffect={handleInputSelect}
+            />
+          </div>
+        </div>
+
+        <div className={classes.sectionExploreCards}>
+          <div className="layoutSpacing">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </div>
         </div>
       </section>

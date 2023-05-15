@@ -1,3 +1,5 @@
+/* SEARCH SECTION */
+
 .sectionSearch {
   width: 100%;
   padding-top: var(--header-height);
@@ -40,11 +42,13 @@
   color: #a2a2a2;
 }
 
+/* EXAMPLES SECTION */
+
 .sectionExamples {
   background: var(--color-mint);
   box-sizing: border-box;
   padding: 50px 0;
-  margin-bottom: 300px;
+  margin-bottom: 115px;
 }
 
 .sectionExamplesTitle {
@@ -58,4 +62,90 @@
 .sectionExamplesCards {
   display: flex;
   justify-content: space-between;
+}
+
+/* EXPLORE ALL SECTION */
+
+.sectionExplore {
+  margin-bottom: 300px;
+}
+
+.sectionExploreFilters {
+  width: 100%;
+  height: 94px;
+  background: #e6e6e6;
+  margin-bottom: 50px;
+}
+
+.sectionExploreFilters > div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sectionExploreSort > div > div {
+  position: absolute;
+  right: 0;
+}
+
+.sectionExploreFiltersButton {
+  border: none;
+  background-color: white;
+  font-family: "Inter";
+  font-weight: 500;
+  color: #343434;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+}
+
+.sectionExploreFiltersButton > img {
+  margin-left: 8px;
+}
+
+.sectionExploreFiltersButton:not(:last-child) {
+  margin-right: 20px;
+}
+
+.sectionExploreFiltersButton:last-child {
+  position: absolute;
+  right: 0;
+}
+
+.sectionExploreSort {
+  margin-bottom: 39px;
+}
+
+.sectionExploreSort > div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sectionExploreTitle {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  color: #343434;
+  margin: 10px;
+}
+
+.sectionExploreTitle > span {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 28px;
+  color: #82899a;
+  margin-left: 16px;
+}
+
+.sectionExploreCards > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 71px;
 }
