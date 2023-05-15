@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classes from "./index.module.css";
 
 import SearchIcon from "../../assets/icons/search.svg";
+import FilterIcon from "../../assets/icons/filter.svg";
 
 import Card from "../../components/Card";
 import Dropdown from "../../components/Dropdown";
@@ -70,6 +71,7 @@ const ProjectsPage = () => {
             </button>
             <button className={classes.sectionExploreFiltersButton}>
               Filters
+              <img src={FilterIcon} alt="" />
             </button>
           </div>
         </div>

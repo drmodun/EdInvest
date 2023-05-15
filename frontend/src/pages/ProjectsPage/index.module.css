@@ -101,8 +101,17 @@
   padding: 12px 20px;
 }
 
+.sectionExploreFiltersButton > img {
+  margin-left: 8px;
+}
+
 .sectionExploreFiltersButton:not(:last-child) {
   margin-right: 20px;
+}
+
+.sectionExploreFiltersButton:last-child {
+  position: absolute;
+  right: 0;
 }
 
 .sectionExploreSort {
