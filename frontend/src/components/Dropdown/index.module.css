@@ -23,6 +23,8 @@
 
   box-sizing: border-box;
   padding: 0 16px;
+
+  user-select: none;
 }
 
 .dropdownOptions {
@@ -57,4 +59,18 @@
 
 .dropdownOptions > p:hover {
   font-weight: 600;
+}
+
+.dropdown > img {
+  position: absolute;
+  height: 10px;
+  top: 20px;
+  right: 22px;
+  z-index: 3;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.arrowOpened {
+  transform: rotate(180deg);
 }

@@ -1,5 +1,7 @@
 import classes from "./index.module.css";
 
+import DropdownArrow from "../../assets/icons/dropdown-arrow.svg";
+
 const Dropdown = ({
   name,
   value,
@@ -29,6 +31,11 @@ const Dropdown = ({
           })}
         </div>
       )}
+      <img
+        src={DropdownArrow}
+        alt=""
+        className={isOpened ? classes.arrowOpened : null}
+      />
     </div>
   );
 };
