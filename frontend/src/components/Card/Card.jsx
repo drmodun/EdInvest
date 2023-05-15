@@ -13,12 +13,12 @@ const Card = () => {
         className={classes.cardImage}
       />
       <div className={classes.cardContent}>
-        <h3 className={classes.companyTitle}>DUMP</h3>
-        <p className={classes.companyType}>Association</p>
+        <h3 className={classes.companyTitle}>Company Title</h3>
+        <p className={classes.companyType}>Company Type</p>
         <p className={classes.companyDescription}>
-          We are an association started out of love for technology. We are most
-          pleased to work with cutting edge technologies, modern hardware and
-          various industrial tools.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit
+          repudiandae quos unde delectus repellendus nam alias in cupiditate
+          dolor, fugit voluptatibus possimus ut explicabo!
         </p>
         <a href="" className={classes.cardReadMore}>
           Read more
