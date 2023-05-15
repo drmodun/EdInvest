@@ -2,6 +2,7 @@ import HeaderBackground from "../../assets/header-background.png";
 import ChevronRightBlack from "../../assets/chevron-right-black.svg";
 import ChevronRightWhite from "../../assets/chevron-right-white.svg";
 import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
+import SmilingGirlImg from "../../assets/smiling-girl-img.png";
 import ArrowLeft from "../../assets/arrow-left.svg";
 import classes from "./index.module.css";
 import Button from "../../components/Button";
@@ -62,7 +63,7 @@ const HomePage = () => {
           funding process.
         </h4>
         <button className={classes.TrustSectionButton}>
-          <span>Trust & Safety</span>
+          <span className={classes.MarginRight17px}>Trust & Safety</span>
           <img src={ChevronRightBlue} alt="" />
         </button>
       </div>
@@ -106,7 +107,7 @@ const HomePage = () => {
             around the world to get involved.
           </p>
           <button className={classes.TrustSectionButton}>
-            <span>MORE ABOUT US</span>
+            <span className={classes.MarginRight17px}>MORE ABOUT US</span>
             <img src={ChevronRightBlue} alt="" />
           </button>
         </div>
@@ -158,6 +159,48 @@ const HomePage = () => {
         <div className={classes.StatsSectionContainer}>
           <p className={classes.StatsSectionSmallText}>Number of investitors</p>
           <h1 className={classes.StatsSectionBigText}>45</h1>
+        </div>
+      </div>
+
+      <div className={classes.MoreInfoSection}>
+        <div className={classes.MoreInfoWrapper}>
+          <div className={classes.MoreInfoContainer}>
+            <h2 className={classes.MoreInfoTitle}>
+              Save on your taxes by investing with crypto
+            </h2>
+            <p className={classes.MoreInfoText}>
+              There’s a reason high net worth individuals tend to donate
+              property instead of cash. Want to maximize your tax savings via
+              charitable giving? This is how.
+            </p>
+            <button className={classes.TrustSectionButton}>
+              <span className={classes.MarginRight17px}>FIND OUT MORE</span>
+              <img src={ChevronRightBlue} alt="" />
+            </button>
+          </div>
+          <div className={classes.SuccessCardWrapper}>
+            <div className={classes.SuccessCardContainer}>
+              <img src={SmilingGirlImg} alt="Smiling Girl Image" />
+              <h3 className={classes.SuccessCardText}>
+                See how Dump finally manifested his success story with help of
+                EdInvest
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={classes.UpToDateSection}>
+        <h2 className={classes.UpToDateSectionTitle}>
+          Want to stay up to date and receive more infromations?
+        </h2>
+        <p className={classes.UpToDateSectionText}>
+          Be the first to receive exciting updates and inspiring success stories
+        </p>
+        <div className={classes.UpToDateSectionForm}>
+          <input
+            placeholder="Email"
+            className={classes.UpToDateSectionInput}
+          ></input>
         </div>
       </div>
     </div>
