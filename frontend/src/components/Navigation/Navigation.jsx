@@ -9,13 +9,13 @@ const Navigation = () => {
       <div className="layoutSpacing">
         <img src={Logo} alt="Logo" className={classes.headerLogo} />
         <nav className={classes.headerNav}>
-          <a href="" className={classes.headerNavItem}>
+          <a href="/" className={classes.headerNavItem}>
             Home
           </a>
           <a href="" className={classes.headerNavItem}>
             About us
           </a>
-          <a href="" className={classes.headerNavItem}>
+          <a href="/projects" className={classes.headerNavItem}>
             Projects
           </a>
         </nav>
