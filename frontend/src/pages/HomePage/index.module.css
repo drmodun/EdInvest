@@ -117,4 +117,16 @@
 }
 
 .TrustSectionButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #3f86ef;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
 }

@@ -1,6 +1,7 @@
 import HeaderBackground from "../../assets/header-background.png";
 import ChevronRightBlack from "../../assets/chevron-right-black.svg";
 import ChevronRightWhite from "../../assets/chevron-right-white.svg";
+import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
 import classes from "./index.module.css";
 import Button from "../../components/Button";
 
@@ -51,7 +52,10 @@ const HomePage = () => {
           recorded and verified on the blockchain, ensuring the integrity of the
           funding process.
         </h4>
-        <button className={classes.TrustSectionButton}></button>
+        <button className={classes.TrustSectionButton}>
+          <span>Trust & Safety</span>
+          <img src={ChevronRightBlue} alt="" />
+        </button>
       </div>
     </div>
   );
