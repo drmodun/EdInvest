@@ -7,10 +7,12 @@ using Domain.Services;
 using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses.Investments;
+using Shared.Contracts.Responses.Ranked;
+using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models;
-using Shared.Constants;
 
 namespace API.Controllers
 {
@@ -22,13 +24,16 @@ namespace API.Controllers
                                           GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
                                                          GetAllInvestmentsResponse, InvestmentsValidation
                            > _investmentService;
+
+        private readonly RankedService _rankedService;
         public InvestmentController(BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                            CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
                                           GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
                                                          GetAllInvestmentsResponse, InvestmentsValidation
-                           > investmentService)
+                           > investmentService, RankedService rankedService)
         {
             _investmentService = investmentService;
+            _rankedService = rankedService;
         }
         [HttpGet(AppRoutes.Investments.Get)]
         public async Task<ActionResult<GetInvestmentResponse>> Get([FromRoute] Guid investorId, [FromRoute] Guid itemId)
@@ -41,7 +46,7 @@ namespace API.Controllers
             return await _investmentService.GetById(request);
         }
         [Authorize(AuthConstants.TrustMemberPolicyName)]
-        [HttpPost(AppRoutes.Investments.Create)] 
+        [HttpPost(AppRoutes.Investments.Create)]
         public async Task<ActionResult<CreateInvestmentResponse>> Post([FromRoute] Guid itemId, [FromBody] int tier, CancellationToken cancellationToken)
         {
             var request = new CreateInvestmentRequest
@@ -50,7 +55,7 @@ namespace API.Controllers
                 Tier = tier,
                 CreatedAt = DateTime.UtcNow,
                 InvestorId = HttpContext.GetUserId()
-                
+
             };
             var item = await _investmentService.Create(request, cancellationToken);
             return new CreateInvestmentResponse
@@ -100,6 +105,28 @@ namespace API.Controllers
             return new GetAllInvestmentsResponse
             {
                 Investments = items
+            };
+        }
+
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
+        [HttpGet(AppRoutes.Investments.UserInvestments)]
+        public async Task<ActionResult<AllRankedItemsResponse>> GetAllFromUser()
+        {
+
+            var items = await _rankedService.GetAllItems((Guid)HttpContext.GetUserId());
+            return new AllRankedItemsResponse
+            {
+                Items = items
+            };
+        }
+        [HttpGet(AppRoutes.Investments.TopInvestors)]
+        public async Task<ActionResult<AllRankedResponse>> GetAllInvestors([FromRoute] Guid id)
+        {
+
+            var items = await _rankedService.GetInvestors(id);
+            return new AllRankedResponse
+            {
+                Investors = items
             };
         }
     }

@@ -1,14 +1,6 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Repositories.Interfaces;
+using FluentValidation;
 using Shared.Models.Users;
-using System.Security.Cryptography.X509Certificates;
-using Domain.Repositories.Implementations;
-using Shared.Enums;
-using Domain.Repositories.Interfaces;
 
 namespace Domain.Validation
 {

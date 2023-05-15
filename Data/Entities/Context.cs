@@ -1,17 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shared.Models;
+using Microsoft.Extensions.Configuration;
 using Shared.Enums;
+using Shared.Helpers;
+using Shared.Models;
 using Shared.Models.Items;
 using Shared.Models.Users;
-using Shared.Helpers;
-using Microsoft.Extensions.Configuration;
-using Shared.Helpers;
 
 namespace Data.Entities
 {
-    public class EdInvestContext : DbContext 
+    public class EdInvestContext : DbContext
     {
-        public EdInvestContext(DbContextOptions<EdInvestContext> options) : base(options){}
+        public EdInvestContext(DbContextOptions<EdInvestContext> options) : base(options) { }
         public DbSet<Country> Countries => Set<Country>();
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Subcategory> Subcategories => Set<Subcategory>();
@@ -31,7 +30,7 @@ namespace Data.Entities
 
 
             modelBuilder.Entity<User>()
-                .HasDiscriminator(u=>u.Type)
+                .HasDiscriminator(u => u.Type)
                 .HasValue<Organisation>(UserType.Organisation)
                 .HasValue<Investor>(UserType.Investor)
                 .HasValue<Student>(UserType.Student);
@@ -43,7 +42,7 @@ namespace Data.Entities
                 .HasValue<OnlineCourse>(ItemType.OnlineCourse)
                 .HasValue<Event>(ItemType.Event);
 
-                
+
 
             modelBuilder.Entity<Country>()
                 .HasMany(c => c.Users)
@@ -86,6 +85,8 @@ namespace Data.Entities
                    .HasKey(i => new { i.InvestorId, i.ItemId });
             modelBuilder.Entity<User>()
                 .Property(u => u.Claims);
+            modelBuilder.Entity<Subcategory>()
+                .Property(s => s.CategoryId);
             Seeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
 

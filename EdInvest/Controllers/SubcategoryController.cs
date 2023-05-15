@@ -2,15 +2,13 @@
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
+using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
 using Shared.Contracts.Requests.Subcategory;
 using Shared.Contracts.Responses.Subcategory;
 using Shared.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Domain.Validation;
 
 namespace API.Controllers
 {
@@ -40,6 +38,8 @@ namespace API.Controllers
             };
             return await _subcategoryService.GetById(request);
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpPost(AppRoutes.Subcategory.Create)]
         public async Task<ActionResult<CreateSubcategoryResponse>> Post([FromBody] CreateSubcategoryRequest request, CancellationToken cancellationToken)
         {
@@ -50,6 +50,8 @@ namespace API.Controllers
                 Subcategory = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpPut(AppRoutes.Subcategory.Update)]
         public async Task<ActionResult<UpdateSubcategoryResponse>> Update([FromBody] CreateSubcategoryRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
@@ -68,8 +70,10 @@ namespace API.Controllers
                 Subcategory = item,
             };
         }
+        [Authorize(AuthConstants.AdminUserPolicyName)]
+
         [HttpDelete(AppRoutes.Subcategory.Delete)]
-        public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] Guid  id, CancellationToken cancellationToken)
+        public async Task<ActionResult<DeleteSubcategoryResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var item = await _subcategoryService.Delete(id, cancellationToken);
             return new DeleteSubcategoryResponse

@@ -1,14 +1,9 @@
 ﻿using Shared.Contracts.Items.Item;
 using Shared.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shared.Contracts.Requests.Items.Course
 {
-    public  class UpdateCourseRequest : UpdateItemRequest
+    public class UpdateCourseRequest : UpdateItemRequest
     {
         public int? ExpectedApplicants { get; set; }
         public int? ExpectedGraduates { get; set; }

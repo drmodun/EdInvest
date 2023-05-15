@@ -1,16 +1,13 @@
 ﻿using API.Routes;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.Item;
-using Shared.Contracts.Responses.Category;
-using Shared.Contracts.Responses.Items.Item;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Shared.Contracts.Responses.Items.Application;
-using Shared.Contracts.Items.Item;
 using Domain.Validation;
+using Microsoft.AspNetCore.Mvc;
+using Shared.Contracts.Items.Item;
+using Shared.Contracts.Requests.Items.Item;
+using Shared.Contracts.Responses.Items.Item;
+using Shared.Models.Items;
 
 namespace API.Controllers
 {
@@ -22,7 +19,7 @@ namespace API.Controllers
                 GetAllItemsResponse, ItemValidation<Item>
                 > _itemService;
 
-        public ItemController(BaseService<Item, ItemMapper, ItemRepo<Item,GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
+        public ItemController(BaseService<Item, ItemMapper, ItemRepo<Item, GetItemRequest, GetAllItemsRequest>, WriteRepo<Item, Guid>,
                 CreateItemRequest, UpdateItemRequest, GetItemRequest, GetAllItemsRequest, Guid, GetItemResponse,
                 GetAllItemsResponse, ItemValidation<Item>
                 > service)
@@ -35,7 +32,7 @@ namespace API.Controllers
             var request = new GetItemRequest { Id = id };
             return await _itemService.GetById(request);
         }
-        
+
         [HttpDelete(AppRoutes.Item.Delete)]
         public async Task<ActionResult<DeleteItemReponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {

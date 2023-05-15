@@ -1,22 +1,14 @@
-﻿using Shared.Models.Users;
-using Shared.Contracts.Requests.Users.Investor;
+﻿using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.organisation;
-using Shared.Contracts.Requests.Users.Student;
 using Shared.Contracts.Responses.Users.Organisation;
-using System;
-using Shared.Enums;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shared.Hash;
-using Microsoft.AspNetCore.Identity;
+using Shared.Models.Users;
 
 namespace Domain.Mappers
 {
-    public   class OrganisationMapper : IMapper<Organisation, GetOrganisationResponse, CreateOrganisationRequest, UpdateOrganisationRequest>
+    public class OrganisationMapper : IMapper<Organisation, GetOrganisationResponse, CreateOrganisationRequest, UpdateOrganisationRequest>
     {
-        public   Organisation ToEntity(CreateOrganisationRequest request)
+        public Organisation ToEntity(CreateOrganisationRequest request)
         {
             if (request.Password.Length < 8)
                 return null;
@@ -49,7 +41,7 @@ namespace Domain.Mappers
 
             };
         }
-        public   Organisation? ToUpdatedEntity(UpdateOrganisationRequest request)
+        public Organisation? ToUpdatedEntity(UpdateOrganisationRequest request)
         {
             if (request.Password.Length < 8)
                 return null;
@@ -78,25 +70,25 @@ namespace Domain.Mappers
 
             };
         }
-        public   GetOrganisationResponse? ToDTO(Organisation entity)
+        public GetOrganisationResponse? ToDTO(Organisation entity)
         {
-            if (entity.Password.Length<8)
+            if (entity.Password.Length < 8)
                 return null;
             return new GetOrganisationResponse
             {
-                Id = entity .Id,
-                Name = entity .Name,
-                Description = entity .Description,
-                LocationName = entity .LocationName,
-                Balance = entity .Balance,
+                Id = entity.Id,
+                Name = entity.Name,
+                Description = entity.Description,
+                LocationName = entity.LocationName,
+                Balance = entity.Balance,
                 UpdatedAt = DateTime.UtcNow,
-                Type = entity .Type,
-                CountryId = entity .CountryId,
-                ProfilePicture = entity .ProfilePicture,
-                Email = entity .Email,
-                SocialLinks = entity .SocialLinks,
-                WalletAddress = entity .WalletAddress,
-                NumberOfMembers = entity .NumberOfMembers,
+                Type = entity.Type,
+                CountryId = entity.CountryId,
+                ProfilePicture = entity.ProfilePicture,
+                Email = entity.Email,
+                SocialLinks = entity.SocialLinks,
+                WalletAddress = entity.WalletAddress,
+                NumberOfMembers = entity.NumberOfMembers,
 
 
 

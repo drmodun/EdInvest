@@ -1,0 +1,361 @@
+.HeaderHeroWrapper {
+  background-color: var(--color-blue);
+  display: flex;
+  justify-content: center;
+}
+
+.HeaderHeroBackgroundImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.HeaderHeroTextWrapper {
+  position: absolute;
+  z-index: 1;
+  max-width: 763px;
+}
+
+.HeaderHeroTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 90px;
+}
+
+.HeaderHeroSubtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.HeaderHeroButtonsWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 71px;
+}
+
+.HeaderHeroWhiteButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 6px 12px 20px;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  margin-right: 44px;
+  border: none;
+}
+
+.WhiteButtonText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  color: #343434;
+}
+
+.TransparentButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.TransparentButtonText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+  margin-right: 9px;
+}
+/* ---------------------------------------------- */
+.TrustSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 150px;
+}
+
+.TrustSectionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+  text-align: center;
+  color: #343434;
+  margin-bottom: 10px;
+  margin-top: 150px;
+}
+
+.TrustSectionDescription {
+  max-width: 656px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #6d6d6d;
+}
+
+.TrustSectionButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #3f86ef;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+
+/* --------------------------------------------- */
+
+.PromoSectionWrapper {
+  position: relative;
+  overflow: hidden;
+  /* width: 100%; */
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #439196;
+}
+
+.PromoSectionContent {
+  width: 1440px;
+  display: flex;
+  align-items: center;
+}
+
+/* .PromoSectionWrapper::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 80%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background-color: #439196;
+  transform: rotate(-3deg);
+} */
+
+.PromoSectionLeft {
+  margin-left: 147px;
+  width: 371px;
+  color: #ffffff;
+  margin-right: 69px;
+}
+
+.PromoSectionLeftTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 65px;
+  margin-bottom: 10px;
+}
+
+.PromoSectionLeftDescription {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: 0.01em;
+}
+
+.PromoSectionRight {
+  width: fit-content;
+}
+
+.PromoSectionRightButtonsContainer {
+  display: flex;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.PromoSectionLeftButton {
+  padding: 8px 13px;
+  width: 50px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.PromoSectionRightButton {
+  padding: 8px 13px;
+  width: 50px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 5px;
+  transform: rotate(180deg);
+}
+
+.PromoSectionRightCardsContainer {
+  display: flex;
+}
+
+.Card {
+  height: 525px;
+  width: 384px;
+  background: #00000055;
+  margin-right: 20px;
+}
+
+/* --------------------------------------------- */
+.AboutSectionWrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.AboutSectionLeft {
+  width: 686px;
+  margin-left: 147px;
+  margin-right: 130px;
+}
+
+.AboutSectionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+}
+
+.AboutSectionText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  color: #6d6d6d;
+  margin-bottom: 49px;
+}
+
+.AboutSectionRightContainer {
+  display: flex;
+  align-items: center;
+}
+
+.RightCircleBlue {
+  margin-right: 38px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(
+      0deg,
+      rgba(67, 145, 150, 0.65),
+      rgba(67, 145, 150, 0.65)
+    ),
+    linear-gradient(180deg, #3f86ef 0%, #233dff 100%);
+}
+
+.RightCircleGreen {
+  margin-right: 38px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(0deg, #439196, #439196),
+    linear-gradient(
+      180deg,
+      rgba(35, 61, 255, 0.7) 0%,
+      rgba(35, 61, 255, 0.7) 100%
+    );
+}
+
+.RightCirclePurple {
+  margin-right: 38px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #5c69cd;
+}
+
+.AboutSectionRightTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #343434;
+  margin-bottom: 0px;
+}
+
+.AboutSectionRightText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  width: 270px;
+  color: #6d6d6d;
+}
+
+/* --------------------------------------------- */
+.StatsSection {
+  height: 192px;
+  background-color: #0047b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.StatsSectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.StatsSectionContainer:not(:last-child) {
+  margin-right: 80px;
+}
+
+.StatsSectionSmallText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.StatsSectionBigText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 53px;
+  color: #ffffff;
+  margin: 0px;
+}

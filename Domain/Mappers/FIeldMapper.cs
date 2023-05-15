@@ -1,19 +1,13 @@
-﻿using Data.Entities;
-using Shared.Models;
-using Shared.Contracts.Requests.Field;
+﻿using Shared.Contracts.Requests.Field;
 using Shared.Contracts.Responses.Field;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Models;
 
 namespace Domain.Mappers
 {
     public class FieldMapper
     {
 
-        public   GetFieldResponse ToDTO(Field field)
+        public GetFieldResponse ToDTO(Field field)
         {
             var response = new GetFieldResponse()
             {
@@ -22,7 +16,7 @@ namespace Domain.Mappers
             };
             return response;
         }
-        public   Field ToEntity(CreateFieldRequest request)
+        public Field ToEntity(CreateFieldRequest request)
         {
             var newField = new Field
             {
@@ -31,10 +25,13 @@ namespace Domain.Mappers
             };
             return newField;
         }
-        public   Field ToUpdatedEntity(UpdateFieldRequest request)
+        public Field ToUpdatedEntity(UpdateFieldRequest request)
         {
-            var updatedField = new Field { Id = Guid.NewGuid(),
-            Name = request.Name };
+            var updatedField = new Field
+            {
+                Id = Guid.NewGuid(),
+                Name = request.Name
+            };
             return updatedField;
         }
     }

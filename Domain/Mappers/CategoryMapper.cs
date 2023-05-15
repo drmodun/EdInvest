@@ -1,13 +1,6 @@
-﻿using Data.Entities;
-using Shared.Models;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Category;
+﻿using Shared.Contracts.Requests.Category;
 using Shared.Contracts.Responses.Category;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Models;
 
 namespace Domain.Mappers
 {
@@ -20,7 +13,7 @@ namespace Domain.Mappers
             _subcategoryMapper = subcategoryMapper;
         }
 
-        public   GetCategoryResponse ToDTO(Category entity)
+        public GetCategoryResponse ToDTO(Category entity)
         {
             var response = new GetCategoryResponse()
             {
@@ -28,12 +21,12 @@ namespace Domain.Mappers
                 Name = entity.Name,
                 Description = entity.Description,
                 Subcategories = entity.Subcategories.Select(_subcategoryMapper.ToDTO).ToList()//.Select,
-                
+
 
             };
             return response;
         }
-        public   Category ToEntity(CreateCategoryRequest request)
+        public Category ToEntity(CreateCategoryRequest request)
         {
             var newCategory = new Category()
             {
@@ -42,8 +35,8 @@ namespace Domain.Mappers
                 Description = request.Description,
             };
             return newCategory;
-        } 
-        public   Category ToUpdatedEntity(UpdateCategoryRequest request)
+        }
+        public Category ToUpdatedEntity(UpdateCategoryRequest request)
         {
             var updatedCategory = new Category()
             {

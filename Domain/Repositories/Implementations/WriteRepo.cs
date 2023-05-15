@@ -1,20 +1,15 @@
 ﻿using Data.Entities;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Repositories.Implementations
-{ 
-    public class WriteRepo<TEntity, TId> : IWriteRepo<TEntity, TId> where TEntity : class 
+{
+    public class WriteRepo<TEntity, TId> : IWriteRepo<TEntity, TId> where TEntity : class
     {
         private readonly EdInvestContext _context;
         private readonly DbSet<TEntity> _set;
-        public WriteRepo(EdInvestContext edInvestContext) { 
+        public WriteRepo(EdInvestContext edInvestContext)
+        {
             _context = edInvestContext;
             _set = _context.Set<TEntity>();
         }
@@ -22,7 +17,7 @@ namespace Domain.Repositories.Implementations
         {
             await _set.AddAsync(entity);
             return await _context.SaveChangesAsync(cancellationToken) > 0;
-        
+
         }
         public async Task<bool> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
         {

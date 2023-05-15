@@ -1,15 +1,10 @@
-﻿using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.Event;
+﻿using Shared.Contracts.Requests.Items.Event;
 using Shared.Contracts.Responses.Items.Event;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Models.Items;
 
 namespace Domain.Mappers
 {
-    public   class EventMapper : IMapper<Event, GetEventResponse, CreateEventRequest, UpdateEventRequest>
+    public class EventMapper : IMapper<Event, GetEventResponse, CreateEventRequest, UpdateEventRequest>
     {
         private readonly InvestmentMapper _investmentMapper;
 
@@ -17,7 +12,7 @@ namespace Domain.Mappers
         {
             _investmentMapper = investmentMapper;
         }
-        public   Event ToEntity(CreateEventRequest request)
+        public Event ToEntity(CreateEventRequest request)
         {
 
             return new Event
@@ -39,7 +34,7 @@ namespace Domain.Mappers
                 SubcategoryId = request.SubcategoryId,
                 CountryId = request.CountryId,
                 Goal = request.Goal,
-               Images = request.Images,
+                Images = request.Images,
                 UpdatedAt = DateTime.UtcNow,
                 Tiers = request.Tiers,
                 Type = request.Type,
@@ -48,7 +43,7 @@ namespace Domain.Mappers
             };
         }
 
-        public   Event ToUpdatedEntity(UpdateEventRequest request)
+        public Event ToUpdatedEntity(UpdateEventRequest request)
         {
             return new Event
             {
@@ -77,7 +72,7 @@ namespace Domain.Mappers
                 OrganisationId = request.OrganisationId,
             };
         }
-        public   GetEventResponse ToDTO(Event entity)
+        public GetEventResponse ToDTO(Event entity)
         {
             return new GetEventResponse
             {
@@ -107,10 +102,10 @@ namespace Domain.Mappers
                 OrganisationId = entity.OrganisationId,
 
             };
-        } 
+        }
 
-       
-        
+
+
 
     }
 }

@@ -1,11 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shared.Helpers;
 
 namespace Data.Entities
@@ -14,7 +9,7 @@ namespace Data.Entities
     {
         public EdInvestContext CreateDbContext(string[] args)
         {
-         
+
             var options = new DbContextOptionsBuilder<EdInvestContext>()
                 .UseNpgsql(ConfigurationHelper.GetConfiguration().GetConnectionString("Database"))
                 .Options;

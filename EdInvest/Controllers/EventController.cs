@@ -1,19 +1,15 @@
-﻿using API.Routes;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.Event;
-using Shared.Contracts.Responses.Category;
-using Shared.Contracts.Responses.Items.Event;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Shared.Contracts.Responses.Items.Application;
-using Shared.Contracts.Items.Item;
 using Domain.Validation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Constants;
-using API.Auth;
+using Shared.Contracts.Requests.Items.Event;
+using Shared.Contracts.Responses.Items.Event;
+using Shared.Models.Items;
 
 namespace API.Controllers
 {
@@ -51,9 +47,12 @@ namespace API.Controllers
                 Event = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpPut(AppRoutes.Event.Update)]
         public async Task<ActionResult<UpdateEventResponse>> Update([FromBody] CreateEventRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            if (request.OrganisationId != HttpContext.GetUserId())
+                return BadRequest("Cannot create, update or delete an item that has a different organisation than the logged in user");
             var updateRequest =
                 new UpdateEventRequest
                 {
@@ -64,7 +63,7 @@ namespace API.Controllers
                     Location = request.Location,
                     NotableAttendees = request.NotableAttendees,
                     NotableSpeakers = request.NotableSpeakers,
-                    TicketPrice  = request.TicketPrice,
+                    TicketPrice = request.TicketPrice,
                     CategoryId = request.CategoryId,
                     CountryId = request.CountryId,
                     CurrentAmount = request.CurrentAmount,
@@ -82,9 +81,12 @@ namespace API.Controllers
             return new UpdateEventResponse { Success = item != null, Event = item };
 
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpDelete(AppRoutes.Event.Delete)]
         public async Task<ActionResult<DeleteEventResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {
+            var item = await _eventService.GetById(new GetEventRequest { Id = id });
+            if (item.OrganisationId != HttpContext.GetUserId()) { return BadRequest("Cannot delete a item that you do not own"); }
             var deletion = await _eventService.Delete(id, cancellationToken);
             return new DeleteEventResponse { Success = deletion };
 

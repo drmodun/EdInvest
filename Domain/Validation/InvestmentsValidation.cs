@@ -3,16 +3,9 @@ using FluentValidation;
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Requests.Users.Student;
-using Shared.Contracts.Requests.Users.User;
 using Shared.Models;
 using Shared.Models.Items;
 using Shared.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Validation
 {
@@ -21,7 +14,7 @@ namespace Domain.Validation
         private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
         private readonly UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest> _userRepo;
 
-        public InvestmentsValidation(ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo, 
+        public InvestmentsValidation(ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo,
             UserRepo<Investor, GetInvestorRequest, GetAllInvestorsRequest> userRepo)
         {
             _itemRepo = itemRepo;

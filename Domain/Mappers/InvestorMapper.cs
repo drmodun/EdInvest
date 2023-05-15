@@ -1,41 +1,36 @@
-﻿using Shared.Models.Users;
-using Shared.Contracts.Requests.Users.Investor;
+﻿using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Responses.Users.Investor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shared.Hash;
+using Shared.Models.Users;
 
 namespace Domain.Mappers
 {
-    public   class InvestorMapper : IMapper<Investor, GetInvestorResponse, CreateInvestorRequest, UpdateInvestorRequest>
+    public class InvestorMapper : IMapper<Investor, GetInvestorResponse, CreateInvestorRequest, UpdateInvestorRequest>
     {
-        public   GetInvestorResponse ToDTO(Investor entity )
+        public GetInvestorResponse ToDTO(Investor entity)
         {
 
             return new GetInvestorResponse
             {
-                Id = entity .Id,
-                Name = entity .Name,
-                Email = entity .Email,
-                Balance = entity .Balance,
-                NumberOfEmployees = entity .NumberOfEmployees,
-                CreatedAt = entity .CreatedAt,
-                UpdatedAt = entity .UpdatedAt,
-                Description = entity .Description,
-                ProfilePicture = entity .ProfilePicture,
-                SocialLinks = entity .SocialLinks,
-                CountryId = entity .CountryId,
-                LocationName = entity .LocationName,
-                WalletAddress = entity .WalletAddress,
-                Type = entity .Type
-                
+                Id = entity.Id,
+                Name = entity.Name,
+                Email = entity.Email,
+                Balance = entity.Balance,
+                NumberOfEmployees = entity.NumberOfEmployees,
+                CreatedAt = entity.CreatedAt,
+                UpdatedAt = entity.UpdatedAt,
+                Description = entity.Description,
+                ProfilePicture = entity.ProfilePicture,
+                SocialLinks = entity.SocialLinks,
+                CountryId = entity.CountryId,
+                LocationName = entity.LocationName,
+                WalletAddress = entity.WalletAddress,
+                Type = entity.Type
+
 
             };
         }
-        public   Investor ToEntity (CreateInvestorRequest request)
+        public Investor ToEntity(CreateInvestorRequest request)
         {
             if (request.Password.Length < 8)
                 return null;
@@ -62,11 +57,11 @@ namespace Domain.Mappers
                 LocationName = request.LocationName,
                 WalletAddress = request.WalletAddress,
                 Type = request.Type,
-                
+
 
             };
         }
-        public   Investor ToUpdatedEntity(UpdateInvestorRequest request)
+        public Investor ToUpdatedEntity(UpdateInvestorRequest request)
         {
             if (request.Password.Length < 8)
                 return null;
@@ -74,7 +69,7 @@ namespace Domain.Mappers
                 return null;
             return new Investor
             {
-                Id =request.Id,
+                Id = request.Id,
                 Name = request.Name,
                 Email = request.Email,
                 Password = HashHelper.Hash(request.Password),

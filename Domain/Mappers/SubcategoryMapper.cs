@@ -1,32 +1,25 @@
-﻿using Data.Entities;
-using Shared.Models;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Subcategory;
+﻿using Shared.Contracts.Requests.Subcategory;
 using Shared.Contracts.Responses.Subcategory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Models;
 
 namespace Domain.Mappers
 {
     public class SubcategoryMapper : IMapper<Subcategory, GetSubcategoryResponse, CreateSubcategoryRequest, UpdateSubcategoryRequest>
     {
 
-        public   GetSubcategoryResponse ToDTO(Subcategory entity)
+        public GetSubcategoryResponse ToDTO(Subcategory entity)
         {
             var response = new GetSubcategoryResponse()
             {
-                Id = entity .Id,
-                Name =  entity .Name,
-                CategoryId = entity .CategoryId,
-                Description = entity .Description,
+                Id = entity.Id,
+                Name = entity.Name,
+                CategoryId = entity.CategoryId,
+                Description = entity.Description,
 
             };
             return response;
         }
-        public   Subcategory ToEntity(CreateSubcategoryRequest request)
+        public Subcategory ToEntity(CreateSubcategoryRequest request)
         {
             var entity = new Subcategory()
             {
@@ -37,7 +30,7 @@ namespace Domain.Mappers
             };
             return entity;
         }
-        public   Subcategory ToUpdatedEntity(UpdateSubcategoryRequest request)
+        public Subcategory ToUpdatedEntity(UpdateSubcategoryRequest request)
         {
             var entity = new Subcategory()
             {

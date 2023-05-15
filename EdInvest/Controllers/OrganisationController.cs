@@ -1,21 +1,18 @@
-﻿using API.Routes;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
-using Microsoft.AspNetCore.Mvc;
-using Shared.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using Shared.Models.Users;
-using Shared.Contracts.Requests.Users.Organisation;
-using Shared.Contracts.Responses.Users.Organisation;
-using Domain.Repositories.Interfaces;
-using Shared.Contracts.Requests.Users.organisation;
-using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Requests.Users.Student;
 using Domain.Validation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
+using Shared.Contracts.Requests.Users.Investor;
+using Shared.Contracts.Requests.Users.organisation;
+using Shared.Contracts.Requests.Users.Organisation;
+using Shared.Contracts.Requests.Users.Student;
+using Shared.Contracts.Responses.Users.Organisation;
+using Shared.Models.Users;
 
 namespace API.Controllers
 {
@@ -55,9 +52,12 @@ namespace API.Controllers
                 Organisation = item,
             };
         }
+        [Authorize(AuthConstants.TrustMemberPolicyName)]
+
         [HttpPut(AppRoutes.Organisation.Update)]
-        public async Task<ActionResult<UpdateOrganisationResponse>> Update([FromBody] CreateOrganisationRequest request, [FromRoute] Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<UpdateOrganisationResponse>> Update([FromBody] CreateOrganisationRequest request, CancellationToken cancellationToken)
         {
+
             var updateRequest =
                 new UpdateOrganisationRequest
                 {
@@ -72,7 +72,7 @@ namespace API.Controllers
                     ProfilePicture = request.ProfilePicture,
                     SocialLinks = request.SocialLinks,
                     WalletAddress = request.WalletAddress,
-                    Id = id,
+                    Id = (Guid)HttpContext.GetUserId(),
                 };
             var item = await _organisationService.Update(updateRequest, cancellationToken);
             return new UpdateOrganisationResponse
@@ -82,6 +82,7 @@ namespace API.Controllers
             };
         }
         //fix delete
+        [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Organisation.Delete)]
         public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
         {

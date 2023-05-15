@@ -14,6 +14,7 @@ namespace API.Controllers
         {
             _countryService = countryService;
         }
+
         [HttpGet(AppRoutes.Country.Get)]
         public async Task<ActionResult<Country?>> Get([FromRoute] Guid id)
         {

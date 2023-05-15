@@ -1,6 +1,4 @@
-﻿using Shared.Models.Users;
-
-namespace API.Routes
+﻿namespace API.Routes
 {
     public static class AppRoutes
     {
@@ -58,9 +56,11 @@ namespace API.Routes
             public const string GetAll = Base + $"/investments";
             public const string Get = Base + $"/investments/{{itemId:Guid}}/{{investorId:Guid}}";
             public const string Update = Base + $"/investments/{{itemId:Guid}}";
-            public const string Delete = Base + $"/investemtns/{{itemId:Guid}}";
-            public const string Create = Base + $"/investemnts/{{itemId:Guid}}";
+            public const string Delete = Base + $"/investments/{{itemId:Guid}}";
+            public const string Create = Base + $"/investments/{{itemId:Guid}}";
+            public const string GetInvestors = Base + $"/investments/{{itemId:Guid}}/investors";
             public const string UserInvestments = Base + $"/investments/me";
+            public const string TopInvestors = Base + $"/investments/topinvestors";
 
         }
         public static class Country
@@ -86,7 +86,7 @@ namespace API.Routes
             public const string GetAll = Base + $"/investors";
             public const string Get = Base + $"/investors/{{id:Guid}}";
             public const string Create = Base + $"/investors";
-            public const string Update = Base + $"/investors/{{id:Guid}}";
+            public const string Update = Base + $"/investors/";
             public const string Delete = Base + $"/investors/{{id:Guid}}";
             public const string Investments = Base + $"/investors/{{id:Guid}}/investments";
 
@@ -96,12 +96,12 @@ namespace API.Routes
             public const string GetAll = Base + $"/organisations";
             public const string Get = Base + $"/organisations/{{id:Guid}}";
             public const string Create = Base + $"/organisations";
-            public const string Update = Base + $"/organisations/{{id:Guid}}";
+            public const string Update = Base + $"/organisations/";
             public const string Delete = Base + $"/organisations/{{id:Guid}}";
 
 
-        
-    }
+
+        }
         public static class Event
         {
             public const string GetAll = Base + $"/events";

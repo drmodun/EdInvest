@@ -1,17 +1,8 @@
 ﻿using Data.Entities;
-using Shared.Models;
-using Shared.Models.Items;
-using Shared.Contracts.Requests.Items.Item;
-using Shared.Contracts.Requests.Subcategory;
-using Shared.Contracts.Responses.Items.Item;
-using Shared.Contracts.Responses.Subcategory;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Contracts.Requests.Subcategory;
+using Shared.Models;
 
 namespace Domain.Repositories.Implementations
 {
@@ -36,11 +27,11 @@ namespace Domain.Repositories.Implementations
                 || options.CategoryId == null
                 ).ToListAsync();
         }
-               
 
-           
-                }
 
 
     }
+
+
+}
 

@@ -1,23 +1,21 @@
 ﻿using Domain.Repositories.Implementations;
 using Domain.Repositories.Interfaces;
 using FluentValidation;
+using Shared.Contracts.Items.Item;
+using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
 using Shared.Models.Items;
 using Shared.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Validation
 {
     public class EventValidation : ItemValidation<Event>
     {
-        public EventValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,  ICountryRepo countryRepo,
-            UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo) :
-            base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo)
+        public EventValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
+            UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
+            ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo) :
+            base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo, itemRepo)
         {
             RuleFor(x => x.Activities).NotEmpty().WithMessage("Activities cannot be empty");
             RuleFor(x => x.TicketPrice).Must(x => x >= 0 && x < 10000).WithMessage("Tickets cost between 0 and 10000 euros/dollars");

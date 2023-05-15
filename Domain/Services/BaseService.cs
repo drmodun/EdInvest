@@ -1,22 +1,15 @@
 ﻿using Domain.Mappers;
 using Domain.Repositories.Interfaces;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    public class BaseService<TEntity, TMapper, TReadRepo, TWriteRepo, 
+    public class BaseService<TEntity, TMapper, TReadRepo, TWriteRepo,
         TCreateRequest, TUpdateRequest, TGetRequest, TGetAllRequest, TId,
         TGetResponse, TGetAllResponse, TValidation
-        > 
-        : IBaseService<TEntity, TMapper, TReadRepo> where TEntity : class 
-        where TMapper : IMapper<TEntity, TGetResponse, TCreateRequest, TUpdateRequest> 
+        >
+        : IBaseService<TEntity, TMapper, TReadRepo> where TEntity : class
+        where TMapper : IMapper<TEntity, TGetResponse, TCreateRequest, TUpdateRequest>
         where TWriteRepo : IWriteRepo<TEntity, TId>
         where TReadRepo : IReadRepo<TEntity, TGetRequest, TGetAllRequest>
         where TCreateRequest : class
