@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
@@ -7,9 +11,9 @@ a {
 }
 
 :root {
-  --color-blue: #1B2DAF;
-  --color-light-gray: #6D6D6D;
-  --color-dark-gray: #3D3D3D;
+  --color-blue: #1b2daf;
+  --color-light-gray: #6d6d6d;
+  --color-dark-gray: #3d3d3d;
 
   --header-height: 117px;
   --header-background: white;
