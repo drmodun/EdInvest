@@ -189,6 +189,12 @@ const HomePage = () => {
         <p className={classes.UpToDateSectionText}>
           Be the first to receive exciting updates and inspiring success stories
         </p>
+        <div className={classes.UpToDateSectionForm}>
+          <input
+            placeholder="Email"
+            className={classes.UpToDateSectionInput}
+          ></input>
+        </div>
       </div>
     </div>
   );
