@@ -1,0 +1,42 @@
+.footer {
+  width: 100%;
+  height: 325px;
+  background-color: var(--color-azzuro);
+}
+
+.footer p,
+.footer a {
+  font-family: "Inter";
+  color: white;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 72px;
+  padding-bottom: 80px;
+}
+
+.footerLinksNav {
+  display: flex;
+  gap: 60px;
+}
+
+.footerLinksNav > a {
+  font-weight: 500px;
+}
+
+.footerLinksIcons {
+  height: 24px;
+  display: flex;
+  gap: 29px;
+}
+
+.footerLinksIcons > img {
+  cursor: pointer;
+}
+
+.footerCopy {
+  font-weight: 400;
+}

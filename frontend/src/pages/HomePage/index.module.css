@@ -1,3 +1,7 @@
+.MarginRight17px {
+  margin-right: 17px;
+}
+
 .HeaderHeroWrapper {
   background-color: var(--color-blue);
   display: flex;
@@ -129,7 +133,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 150px;
+  background-color: transparent;
 }
 
 /* --------------------------------------------- */
@@ -358,4 +362,121 @@
   line-height: 53px;
   color: #ffffff;
   margin: 0px;
+}
+
+/* --------------------------------------------- */
+.MoreInfoSection {
+  margin-top: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 841px;
+}
+
+.MoreInfoWrapper {
+  width: 1440px;
+  position: relative;
+}
+
+.MoreInfoContainer {
+  width: 660px;
+  margin-left: 173px;
+}
+
+.MoreInfoTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+  color: #1d1e1f;
+}
+
+.MoreInfoText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: 0.01em;
+  color: #4f576a;
+  margin-bottom: 42px;
+}
+
+.SuccessCardWrapper {
+  position: absolute;
+  top: 540px;
+  left: 147px;
+}
+
+.SuccessCardContainer {
+  position: relative;
+}
+
+.SuccessCardText {
+  position: absolute;
+  width: 495px;
+  height: 72px;
+  left: 35px;
+  top: 300px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 36px;
+  color: #ffffff;
+}
+
+.UpToDateSection {
+  height: 684px;
+  background-color: #439196;
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UpToDateSectionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+  text-align: center;
+  color: #ffffff;
+  max-width: 673px;
+  margin-bottom: 0px;
+}
+
+.UpToDateSectionText {
+  width: 383px;
+  height: 56px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 45px;
+}
+
+.UpToDateSectionForm {
+  width: 401px;
+  height: 54px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.UpToDateSectionInput {
+  width: 100%;
+  margin-left: 37px;
+  border: none;
+  outline: none;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 20px;
+  background: none;
 }

@@ -29,6 +29,8 @@
   margin-right: 60px;
 }
 
-.header > div > button {
+.headerButtons {
   margin-left: auto;
+  display: flex;
+  gap: 30px;
 }
