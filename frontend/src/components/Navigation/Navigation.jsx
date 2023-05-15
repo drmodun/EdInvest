@@ -19,7 +19,10 @@ const Navigation = () => {
             Projects
           </a>
         </nav>
-        <Button className={classes.headerButton}>Sign in</Button>
+        <div className={classes.headerButtons}>
+          <Button>Create a project</Button>
+          <Button>Sign in</Button>
+        </div>
       </div>
     </header>
   );

@@ -20,6 +20,8 @@ a {
   --header-height: 117px;
   --header-background: white;
   --header-nav-color: var(--color-light-gray);
+  --header-button-bg-color: var(--color-azzuro);
+  --header-button-color: white;
 }
 
 .headerMargin {
