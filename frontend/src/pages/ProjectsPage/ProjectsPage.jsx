@@ -89,6 +89,17 @@ const ProjectsPage = () => {
             />
           </div>
         </div>
+
+        <div className={classes.sectionExploreCards}>
+          <div className="layoutSpacing">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
+        </div>
       </section>
     </>
   );
