@@ -2,6 +2,7 @@ import HeaderBackground from "../../assets/header-background.png";
 import ChevronRightBlack from "../../assets/chevron-right-black.svg";
 import ChevronRightWhite from "../../assets/chevron-right-white.svg";
 import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
+import ArrowLeft from "../../assets/arrow-left.svg";
 import classes from "./index.module.css";
 import Button from "../../components/Button";
 
@@ -44,6 +45,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <div className={classes.TrustSection}>
         <h2 className={classes.TrustSectionTitle}>We have your back.</h2>
         <h4 className={classes.TrustSectionDescription}>
@@ -56,6 +58,32 @@ const HomePage = () => {
           <span>Trust & Safety</span>
           <img src={ChevronRightBlue} alt="" />
         </button>
+      </div>
+
+      <div className={classes.PromoSectionWrapper}>
+        <div className={classes.PromoSectionBackground}></div>
+        <div className={classes.PromoSectionContent}>
+          <div className={classes.PromoSectionLeft}>
+            <h2 className={classes.PromoSectionLeftTitle}>Worth investing</h2>
+            <h4 className={classes.PromoSectionLeftDescription}>
+              There’s a reason high net worth individuals tend to donate
+              property instead of cash.
+            </h4>
+          </div>
+          <div className={classes.PromoSectionRight}>
+            <div className={classes.PromoSectionRightButtonsContainer}>
+              <button className={classes.PromoSectionLeftButton}>
+                <img src={ArrowLeft} alt="" />
+              </button>
+              <button className={classes.PromoSectionRightButton}>
+                <img src={ArrowLeft} alt="" />
+              </button>
+            </div>
+            <div className={classes.PromoSectionRightCardsContainer}>
+              <div className={classes.Card}></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
