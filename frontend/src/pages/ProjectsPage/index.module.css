@@ -1,6 +1,7 @@
 .sectionSearch {
   width: 100%;
   padding-top: var(--header-height);
+  margin-bottom: 80px;
 }
 
 .sectionSearchTitle {
@@ -37,4 +38,24 @@
 
 .sectionSearchQuery > input::placeholder {
   color: #a2a2a2;
+}
+
+.sectionExamples {
+  background: var(--color-mint);
+  box-sizing: border-box;
+  padding: 50px 0;
+  margin-bottom: 300px;
+}
+
+.sectionExamplesTitle {
+  color: white;
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 40px;
+  margin: 0 0 50px 0;
+}
+
+.sectionExamplesCards {
+  display: flex;
+  justify-content: space-between;
 }
