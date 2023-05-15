@@ -30,6 +30,30 @@ const ProjectsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* EXPLORE ALL SECTION */}
+      <section className={classes.sectionExplore}>
+        <div className={classes.sectionExploreFilters}>
+          <div className="layoutSpacing">
+            <button className={classes.sectionExploreFiltersButton}>All</button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Technology
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Languages
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Creative
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Science
+            </button>
+            <button className={classes.sectionExploreFiltersButton}>
+              Filters
+            </button>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
