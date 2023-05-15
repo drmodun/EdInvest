@@ -81,6 +81,8 @@ const HomePage = () => {
             </div>
             <div className={classes.PromoSectionRightCardsContainer}>
               <div className={classes.Card}></div>
+              <div className={classes.Card}></div>
+              <div className={classes.Card}></div>
             </div>
           </div>
         </div>
