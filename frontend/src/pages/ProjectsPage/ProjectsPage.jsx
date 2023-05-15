@@ -9,15 +9,13 @@ import Dropdown from "../../components/Dropdown";
 const ProjectsPage = () => {
   const sortingOptions = ["Most popular", "A - Z", "Z - A", "Most relevant"];
 
-  const [inputIsFocused, setInputIsFocused] = useState(true);
+  const [inputIsFocused, setInputIsFocused] = useState(false);
   const handleInputFocus = () => {
-    /*
     if (inputIsFocused) {
       setInputIsFocused(false);
     } else {
       setInputIsFocused(true);
     }
-    */
   };
 
   return (
@@ -78,6 +76,7 @@ const ProjectsPage = () => {
               name="Sort by"
               options={sortingOptions}
               isOpened={inputIsFocused}
+              focusEffect={handleInputFocus}
             />
           </div>
         </div>

@@ -1,10 +1,15 @@
 import classes from "./index.module.css";
 
-const Dropdown = ({ name, options, isOpened }) => {
+const Dropdown = ({ name, options, isOpened, focusEffect }) => {
   return (
     <div className={classes.dropdown}>
       <label htmlFor={name}>{name}</label>
-      <input id={name} readOnly></input>
+      <input
+        id={name}
+        readOnly
+        onFocus={focusEffect}
+        onBlur={focusEffect}
+      ></input>
       {isOpened && (
         <div className={classes.dropdownOptions}>
           {options.map((option, index) => {
