@@ -2,6 +2,8 @@
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Requests.Investments;
+using Shared.Contracts.Responses.Ranked;
+using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models;
 
 namespace Domain.Repositories.Implementations
@@ -29,6 +31,23 @@ namespace Domain.Repositories.Implementations
                 .Where(i => i.InvestorId == options.InvestorId || options.InvestorId == null)
                 .Where(i => i.Tier == options.Tier || options.Tier == null)
                 .Where(i => i.UpdatedAt > options.UpdatedAt || options.Tier == null)
+                .ToListAsync();
+        }
+
+        public async Task<List<RankedResponse>> GetInvestmentsForOrganisaton(Guid organisatinId)
+        {
+            return await _context.Investments
+                .Include(i=>i.Item)
+                .Include(i=>i.Investor)
+                .Where(i => i.Item.OrganisationId == organisatinId)
+                .Select(i => new RankedResponse
+                {
+                    Amount = i.Amount,
+                    InvestorId = i.InvestorId,
+                    Email = i.Investor.Email,
+                    Image = i.Investor.ProfilePicture,
+                    Name = i.Item.Name,
+                })
                 .ToListAsync();
         }
     }

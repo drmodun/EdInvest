@@ -119,7 +119,7 @@ namespace API.Controllers
             var items = await _rankedService.GetInvestors(itemId);
             return new AllRankedResponse
             {
-                Investors = items
+                Investments = items
             };
         }
         [HttpGet(AppRoutes.Investments.TopInvestors)]
@@ -128,7 +128,7 @@ namespace API.Controllers
             var items = await _rankedService.GetTopInvestors();
             return new AllRankedResponse
             {
-                Investors = items
+                Investments = items
             };
         }
     }

@@ -2,6 +2,6 @@
 {
     public class AllRankedResponse
     {
-        public List<RankedResponse> Investors { get; set; }
+        public List<RankedResponse> Investments { get; set; }
     }
 }

@@ -11,6 +11,7 @@ using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.organisation;
 using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
+using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Contracts.Responses.Users.Organisation;
 using Shared.Models.Users;
 
@@ -24,14 +25,16 @@ namespace API.Controllers
                 GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
                 GetAllOrganisationsResponse, OrganisationValidation
                 > _organisationService;
-
+        private readonly RankedService _rankedService;
         public OrganisationController(BaseService<Organisation, OrganisationMapper, UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest>, WriteRepo<Organisation, Guid>,
                 CreateOrganisationRequest, UpdateOrganisationRequest, GetOrganisationRequest,
                 GetAllOrganisationsRequest, Guid, GetOrganisationResponse,
                 GetAllOrganisationsResponse, OrganisationValidation
-                > organisationService)
+                > organisationService,
+            RankedService rankedService)
         {
             _organisationService = organisationService;
+            _rankedService = rankedService;
         }
         [HttpGet(AppRoutes.Organisation.Get)]
         public async Task<ActionResult<GetOrganisationResponse>> Get([FromRoute] Guid id)
@@ -96,6 +99,15 @@ namespace API.Controllers
                 Organisations = items,
             };
 
+        }
+        [HttpGet(AppRoutes.Organisation.GetAllInvestments)]
+        public async Task<AllRankedResponse> GetAllInvestments(Guid id)
+        {
+            var items = await _rankedService.GetInvestmentsForOrganisation(id);
+            return new AllRankedResponse
+            {
+                Investments = items,
+            };
         }
 
     }
