@@ -10,7 +10,7 @@ namespace Shared.Contracts.Responses.Items.Item
         public string Description { get; set; }
         public List<string> Images { get; set; } = new List<string>();
 
-
+        public int NumberOfDonations { get; set; }
         public ItemType Type { get; set; }
 
         public DateTime UpdatedAt { get; set; }
@@ -25,6 +25,9 @@ namespace Shared.Contracts.Responses.Items.Item
         public decimal CurrentAmount { get; set; }
 
         public List<decimal> Prices { get; set; }
+
+        public string MainWebsite { get; set; }
+
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();
 
     }

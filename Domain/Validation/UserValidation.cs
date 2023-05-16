@@ -19,7 +19,6 @@ namespace Domain.Validation
             RuleFor(x => x.Email).EmailAddress().WithMessage("Email is not valid");
             RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
             RuleFor(x => x.CountryId).NotEmpty().WithMessage("Country is required");
-            RuleFor(x => x.Balance).Must(b => b > 0).WithMessage("Balance must be a positive number");
             RuleFor(x => x.WalletAddress).MaximumLength(35).WithMessage("Wallet address must be less than 35 characters");
             RuleFor(x => x.WalletAddress).MinimumLength(26).WithMessage("Wallet address must be at least 26 characters");
             RuleFor(x => x.WalletAddress).Matches("^[a-zA-Z0-9]*$").WithMessage("Wallet address must be alphanumeric");

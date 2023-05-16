@@ -63,6 +63,7 @@ namespace API.Routes
             public const string GetInvestors = Base + $"/investments/{{itemId:Guid}}/investors";
             public const string UserInvestments = Base + $"/investments/me";
             public const string TopInvestors = Base + $"/investments/topinvestors";
+            public const string Stats = Base + $"/investments/stats";
 
         }
         public static class Country

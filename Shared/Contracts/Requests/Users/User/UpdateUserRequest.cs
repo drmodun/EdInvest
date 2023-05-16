@@ -17,7 +17,6 @@
         public Guid CountryId;
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }
-        public decimal? Balance { get; set; }
 
     }
 }

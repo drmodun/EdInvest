@@ -24,6 +24,7 @@ namespace Domain.Mappers
                 Description = entity.Description,
                 CountryId = entity.CountryId,
                 Images = entity.Images,
+                NumberOfDonations = entity.Investments.Count,
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
                 Prices = entity.Prices,
@@ -31,7 +32,8 @@ namespace Domain.Mappers
                 Tiers = entity.Tiers,
                 Type = entity.Type,
                 CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
-                UpdatedAt = entity.UpdatedAt
+                UpdatedAt = entity.UpdatedAt,
+                MainWebsite = entity.MainWebsite,
             };
         }
         public Item ToEntity(CreateItemRequest request)

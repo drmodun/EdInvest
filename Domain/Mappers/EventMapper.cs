@@ -35,12 +35,14 @@ namespace Domain.Mappers
                 SubcategoryId = request.SubcategoryId,
                 CountryId = request.CountryId,
                 Goal = request.Goal,
+                MainWebsite = request.MainWebsite,
                 Images = request.Images,
                 UpdatedAt = DateTime.UtcNow,
                 Tiers = request.Tiers,
                 Type = request.Type,
                 Prices = request.Prices.Order().ToList(),
                 OrganisationId = request.OrganisationId,
+
             };
         }
 
@@ -62,6 +64,8 @@ namespace Domain.Mappers
                 NotableSpeakers = request.NotableSpeakers,
                 SubcategoryId = request.SubcategoryId,
                 CountryId = request.CountryId,
+                MainWebsite = request.MainWebsite,
+                
                 Goal = request.Goal,
                 Images = request.Images,
                 UpdatedAt = DateTime.UtcNow,
@@ -84,7 +88,7 @@ namespace Domain.Mappers
                 Capacity = entity.Capacity,
                 CategoryId = entity.CategoryId,
                 Activities = entity.Activities,
-
+                MainWebsite = entity.MainWebsite,
                 ExpectedAttendance = entity.ExpectedAttendance,
                 NotableAttendees = entity.NotableAttendees,
                 NotableSpeakers = entity.NotableSpeakers,
@@ -98,6 +102,7 @@ namespace Domain.Mappers
                 Prices = entity.Prices,
                 OrganisationId = entity.OrganisationId,
                 CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
+                NumberOfDonations = entity.Investments.Count,
 
             };
         }

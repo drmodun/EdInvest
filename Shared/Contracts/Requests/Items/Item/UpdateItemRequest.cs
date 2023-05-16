@@ -12,6 +12,8 @@
         public Guid SubcategoryId { get; set; }
         public Guid OrganisationId;
 
+        public string MainWebsite { get; set; }
+
 
         public Guid CountryId { get; set; }
 

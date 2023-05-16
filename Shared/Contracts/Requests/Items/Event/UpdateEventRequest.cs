@@ -17,6 +17,7 @@ namespace Shared.Contracts.Requests.Items.Event
 
         public List<string> NotableSpeakers { get; set; }
 
+
         public int Capacity { get; set; }
 
         public int ExpectedAttendance { get; set; }

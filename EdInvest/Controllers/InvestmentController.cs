@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Constants;
 using Shared.Contracts.Requests.Investments;
+using Shared.Contracts.Responses;
 using Shared.Contracts.Responses.Investments;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;
@@ -109,7 +110,7 @@ namespace API.Controllers
             var items = await _rankedService.GetAllItems((Guid)HttpContext.GetUserId());
             return new AllRankedItemsResponse
             {
-                Items = items
+                Items = items,
             };
         }
         [HttpGet(AppRoutes.Investments.GetInvestors)]
@@ -131,5 +132,12 @@ namespace API.Controllers
                 Investments = items
             };
         }
+        [HttpGet(AppRoutes.Investments.Stats)]
+        public async Task<ActionResult<StatsResponse>> GetStats()
+        {
+            var item = await _rankedService.GetStats();
+            return item;
+        }
+       
     }
 }

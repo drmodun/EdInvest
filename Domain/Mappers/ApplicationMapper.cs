@@ -26,6 +26,7 @@ namespace Domain.Mappers
                 Images = entity.Images,
                 CategoryId = entity.CategoryId,
                 SubcategoryId = entity.SubcategoryId,
+                NumberOfDonations = entity.Investments.Count,
                 Tiers = entity.Tiers,
                 AppPurpose = entity.AppPurpose,
                 EstimatedNumberOfUsers = entity.EstimatedNumberOfUsers,
@@ -36,6 +37,8 @@ namespace Domain.Mappers
                 Features = entity.Features,
                 Markets = entity.Markets,
                 UpdatedAt = entity.UpdatedAt,
+                MainWebsite = entity.MainWebsite,
+
                 Type = entity.Type,
                 Prices = entity.Prices,
                 CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id)
@@ -51,6 +54,7 @@ namespace Domain.Mappers
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Description = request.Description,
+                MainWebsite = request.MainWebsite,
                 Images = request.Images,
                 CategoryId = request.CategoryId,
                 SubcategoryId = request.SubcategoryId,
@@ -76,6 +80,7 @@ namespace Domain.Mappers
                 Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
+                MainWebsite = request.MainWebsite,
                 Images = request.Images,
                 CategoryId = request.CategoryId,
                 SubcategoryId = request.SubcategoryId,

@@ -36,10 +36,13 @@ namespace Domain.Validation
             { return await _countryRepo.GetById(n) != null; }).WithMessage("Country is not valid");
             RuleFor(x => x.Images).NotEmpty().WithMessage("Images cannot be empty");
             RuleFor(x => x.Goal).Must(g => g > 0).WithMessage("Goal must be positive");
-            RuleFor(x => x.CategoryId).MustAsync(async (n, cancellationToken) =>
-            { return await _categoryRepo.GetById(new GetCategoryRequest { Id = n }) != null; }).WithMessage("Category is not valid");
-            RuleFor(x => x.SubcategoryId).MustAsync(async (n, cancellationToken) =>
-            { return await _subCategoryRepo.GetById(new GetSubcategoryRequest { Id = n }) != null; }).WithMessage("Subcategory is not valid");
+            RuleFor(x => new { x.SubcategoryId, x.CategoryId }).MustAsync(async (n, cancellationToken) =>
+            {
+
+                var category = await _categoryRepo.GetById(new GetCategoryRequest { Id = n.CategoryId });
+                var subcategory = await _subCategoryRepo.GetById(new GetSubcategoryRequest { Id = n.SubcategoryId });
+                return category != null && subcategory != null && category.Id == subcategory.CategoryId;
+            }).WithMessage("Subcategory and/or category is not valid");
             RuleFor(x => x.OrganisationId).MustAsync(async (n, cancellationToken) =>
             { return await _organisatorRepo.GetById(new GetOrganisationRequest { Id = n }) != null; }).WithMessage("Organisation is not valid");
             RuleFor(x => x.UpdatedAt).Must(d => d < DateTime.Now).WithMessage("Invalid date");

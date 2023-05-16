@@ -2,9 +2,11 @@
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Requests.Investments;
+using Shared.Contracts.Responses;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models;
+using Shared.Models.Users;
 
 namespace Domain.Repositories.Implementations
 {
@@ -50,5 +52,32 @@ namespace Domain.Repositories.Implementations
                 })
                 .ToListAsync();
         }
+        public async Task<StatsResponse> GetStats()
+        {
+            var result = await _context.Investments
+                .ToListAsync();
+            var stats = new StatsResponse
+            {
+                NumberOfInvestments = result.Count(),
+                TotalMoneyDonated = result.Sum(i => i.Amount),
+                NumberOfInvestors = result.DistinctBy(i => i.InvestorId).Count(),
+                NumberOfProjects = result.DistinctBy(i => i.ItemId).Count(),
+            };
+            return stats;
+        }
+        public async Task<decimal> GetSpent(Guid investorId)
+        {
+            return await _context.Investments
+                .Where(i=>i.InvestorId == investorId)
+                .SumAsync(i => i.Amount);
+        }
+        public async Task<decimal> GetEarned(Guid organisationId)
+        {
+            return await _context.Investments
+                .Include(i => i.Item)
+                .Where(i => i.Item.OrganisationId == organisationId)
+                .SumAsync(i => i.Amount);
+        }
+
     }
 }

@@ -33,12 +33,14 @@ namespace Domain.Mappers
                 EndDate = entity.EndDate,
                 CountryId = entity.CountryId,
                 Goal = entity.Goal,
+                MainWebsite = entity.MainWebsite,
                 OrganisationId = entity.OrganisationId,
                 Curriculum = entity.Curriculum,
                 UpdatedAt = entity.UpdatedAt,
                 Type = entity.Type,
                 Prices = entity.Prices,
-                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id)
+                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
+                NumberOfDonations = entity.Investments.Count,
 
             };
             return newDTO;
@@ -78,6 +80,7 @@ namespace Domain.Mappers
                 Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
+
                 Images = request.Images,
                 CategoryId = request.CategoryId,
                 SubcategoryId = request.SubcategoryId,

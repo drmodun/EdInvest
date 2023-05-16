@@ -1,4 +1,5 @@
-﻿using Shared.Contracts.Requests.Users.Investor;
+﻿using Domain.Repositories.Implementations;
+using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.organisation;
 using Shared.Contracts.Responses.Users.Organisation;
 using Shared.Hash;
@@ -8,6 +9,12 @@ namespace Domain.Mappers
 {
     public class OrganisationMapper : IMapper<Organisation, GetOrganisationResponse, CreateOrganisationRequest, UpdateOrganisationRequest>
     {
+        private readonly InvestmentRepo _investmentRepo;
+
+        public OrganisationMapper(InvestmentRepo investmentRepo)
+        {
+            _investmentRepo = investmentRepo;
+        }
         public Organisation ToEntity(CreateOrganisationRequest request)
         {
             if (request.Password.Length < 8)
@@ -23,7 +30,6 @@ namespace Domain.Mappers
                 Password = HashHelper.Hash(request.Password),
                 Description = request.Description,
                 LocationName = request.LocationName,
-                Balance = request.Balance,
 
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
@@ -57,14 +63,12 @@ namespace Domain.Mappers
                 Password = HashHelper.Hash(request.Password),
                 Description = request.Description,
                 LocationName = request.LocationName,
-                Balance = request.Balance,
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
                 CountryId = request.CountryId,
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
                 WalletAddress = request.WalletAddress,
-
 
 
             };
@@ -79,9 +83,8 @@ namespace Domain.Mappers
                 Name = entity.Name,
                 Description = entity.Description,
                 LocationName = entity.LocationName,
-                Balance = entity.Balance,
                 UpdatedAt = entity.UpdatedAt,
-
+                Balance = _investmentRepo.GetEarned(entity.Id).Result,
                 Type = entity.Type,
                 CountryId = entity.CountryId,
                 ProfilePicture = entity.ProfilePicture,

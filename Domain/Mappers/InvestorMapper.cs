@@ -1,4 +1,5 @@
-﻿using Shared.Contracts.Requests.Users.Investor;
+﻿using Domain.Repositories.Implementations;
+using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Responses.Users.Investor;
 using Shared.Hash;
 using Shared.Models.Users;
@@ -7,6 +8,13 @@ namespace Domain.Mappers
 {
     public class InvestorMapper : IMapper<Investor, GetInvestorResponse, CreateInvestorRequest, UpdateInvestorRequest>
     {
+        private readonly InvestmentRepo _investmentRepo;
+
+        public InvestorMapper(InvestmentRepo investmentRepo)
+        {
+            _investmentRepo = investmentRepo;
+        }
+
         public GetInvestorResponse ToDTO(Investor entity)
         {
 
@@ -15,7 +23,7 @@ namespace Domain.Mappers
                 Id = entity.Id,
                 Name = entity.Name,
                 Email = entity.Email,
-                Balance = entity.Balance,
+                Balance = _investmentRepo.GetSpent(entity.Id).Result, 
                 NumberOfEmployees = entity.NumberOfEmployees,
 
                 UpdatedAt = entity.UpdatedAt,
@@ -42,9 +50,7 @@ namespace Domain.Mappers
                 Name = request.Name,
                 Email = request.Email,
                 Password = HashHelper.Hash(request.Password),
-                Balance = request.Balance,
                 NumberOfEmployees = request.NumberOfEmployees,
-
                 UpdatedAt = DateTime.UtcNow,
                 Description = request.Description,
                 ProfilePicture = request.ProfilePicture,
@@ -73,7 +79,6 @@ namespace Domain.Mappers
                 Name = request.Name,
                 Email = request.Email,
                 Password = HashHelper.Hash(request.Password),
-                Balance = request.Balance,
                 NumberOfEmployees = request.NumberOfEmployees,
                 UpdatedAt = DateTime.UtcNow,
                 Description = request.Description,

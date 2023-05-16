@@ -20,6 +20,7 @@ namespace Shared.Models.Items
         public Subcategory? Subcategory { get; set; }
         public Guid OrganisationId { get; set; }
 
+        public string MainWebsite { get; set; }
         public decimal Goal { get; set; }
 
         public Guid CountryId { get; set; }

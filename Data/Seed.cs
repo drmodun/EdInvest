@@ -754,7 +754,7 @@ namespace Data.Entities
                 {
                     Name = "FakeCompany",
                     Description = "Descriptiojn of a fake company",
-                    Balance = 0,
+                    
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -779,7 +779,7 @@ namespace Data.Entities
                 {
                     Name = "FakeAdmiinCompany",
                     Description = "Descriptiojn of a fake company",
-                    Balance = 0,
+                    
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -805,7 +805,7 @@ namespace Data.Entities
                 {
                     Name = "Investor",
                     Description = "Descriptiojn of a fake investor",
-                    Balance = 0,
+                    
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -834,7 +834,7 @@ namespace Data.Entities
                 {
                     Name = "Fake event organisator",
                     Description = "Descriptiojn of a fake event organisator",
-                    Balance = 0,
+                    
                     Type = Shared.Enums.UserType.Organisation,
                     Claims = new Dictionary<string, string>()
                     {
@@ -859,7 +859,7 @@ namespace Data.Entities
                 {
                     Name = "RandomCourseCompany",
                     Description = "Descriptiojn of a fake company",
-                    Balance = 0,
+                    
                     Type = Shared.Enums.UserType.Organisation,
                     Claims = new Dictionary<string, string>()
                     {
@@ -885,7 +885,7 @@ namespace Data.Entities
                 {
                     Name = "Organisation",
                     Description = "Descriptiojn of a fake organisation",
-                    Balance = 0,
+                    
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -913,7 +913,8 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "LearnApp",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Features = new List<string>()
                      {
                          "Good learinng experience",
@@ -945,7 +946,8 @@ namespace Data.Entities
                 Id = Guid.NewGuid(),
                      Name = "TeachApp",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Features = new List<string>()
                      {
                          "Good teaching experience",
@@ -982,7 +984,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "LearnConference",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",   
                      Location = "Zagreb",
                      Activities = new Dictionary<string, string>()
                      {
@@ -1024,7 +1026,8 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "designConference",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Location = "Split",
                      Activities = new Dictionary<string, string>()
                      {
@@ -1069,7 +1072,8 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "Webapi Course",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Curriculum = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },
@@ -1104,7 +1108,8 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "React Course",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Curriculum = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },
@@ -1142,7 +1147,8 @@ namespace Data.Entities
                      Id = Guid.NewGuid(),
                      Name = "React online Course",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Lessons = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },
@@ -1187,7 +1193,8 @@ namespace Data.Entities
                      Id = Guid.NewGuid(),
                      Name = "Webapi online Course",
                      Goal = 10000,
-                     
+                 MainWebsite = "https://randomwebsite.com",
+
                      Lessons = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },

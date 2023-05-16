@@ -30,7 +30,9 @@ namespace Domain.Mappers
                 Prices = entity.Prices,
                 SubcategoryId = entity.SubcategoryId,
                 Tiers = entity.Tiers,
+                NumberOfDonations = entity.Investments.Count,
                 LinksToChannels = entity.LinksToChannels,
+                MainWebsite = entity.MainWebsite,
                 Lessons = entity.Lessons,
                 LessonsDate = entity.LessonsDate,
                 AvarageDuration = entity.AvarageDuration,
@@ -60,7 +62,7 @@ namespace Domain.Mappers
                 AvarageDuration = request.AvarageDuration,
                 ExpectedAudience = request.ExpectedAudience,
                 Type = ItemType.OnlineCourse,
-
+                MainWebsite = request.MainWebsite,
                 UpdatedAt = DateTime.UtcNow,
                 Id = Guid.NewGuid(),
 
@@ -83,6 +85,7 @@ namespace Domain.Mappers
                 Tiers = request.Tiers,
                 LinksToChannels = request.LinksToChannels,
                 Lessons = request.Lessons,
+                MainWebsite= request.MainWebsite,
                 LessonsDate = request.LessonsDate,
                 AvarageDuration = request.AvarageDuration,
                 ExpectedAudience = request.ExpectedAudience,
