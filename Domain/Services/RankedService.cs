@@ -2,8 +2,6 @@
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Requests.Users.Organisation;
-using Shared.Contracts.Requests.Users.Student;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models.Items;
@@ -23,7 +21,7 @@ namespace Domain.Services
             _userRepo = userRepo;
             _itemRepo = itemRepo;
             _investmentRepo = investmentRepo;
-            
+
         }
 
         public async Task<List<RankedItemResponse>> GetAllItems(Guid userId)
