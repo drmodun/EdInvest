@@ -4,10 +4,7 @@
     {
         public Guid? InvestorId;
         public Guid ItemId;
-        public int Tier
-        {
-            get; set;
-        }
-        public DateTime UpdatedAt { get; set; }
+
+        public decimal Amount;
     }
 }

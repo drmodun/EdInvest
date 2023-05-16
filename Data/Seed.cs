@@ -913,7 +913,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "LearnApp",
                      Goal = 10000,
-
+                     
                      Features = new List<string>()
                      {
                          "Good learinng experience",
@@ -945,7 +945,7 @@ namespace Data.Entities
                 Id = Guid.NewGuid(),
                      Name = "TeachApp",
                      Goal = 10000,
-
+                     
                      Features = new List<string>()
                      {
                          "Good teaching experience",
@@ -982,7 +982,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "LearnConference",
                      Goal = 10000,
-
+                     
                      Location = "Zagreb",
                      Activities = new Dictionary<string, string>()
                      {
@@ -1024,7 +1024,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "designConference",
                      Goal = 10000,
-
+                     
                      Location = "Split",
                      Activities = new Dictionary<string, string>()
                      {
@@ -1069,7 +1069,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "Webapi Course",
                      Goal = 10000,
-
+                     
                      Curriculum = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },
@@ -1104,7 +1104,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "React Course",
                      Goal = 10000,
-
+                     
                      Curriculum = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },
@@ -1142,7 +1142,7 @@ namespace Data.Entities
                      Id = Guid.NewGuid(),
                      Name = "React online Course",
                      Goal = 10000,
-
+                     
                      Lessons = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },
@@ -1187,7 +1187,7 @@ namespace Data.Entities
                      Id = Guid.NewGuid(),
                      Name = "Webapi online Course",
                      Goal = 10000,
-
+                     
                      Lessons = new Dictionary<string, string>()
                      {
                          {"1st lesson", "Github" },

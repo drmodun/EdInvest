@@ -17,7 +17,7 @@ namespace Domain.Mappers
                 Email = entity.Email,
                 Balance = entity.Balance,
                 NumberOfEmployees = entity.NumberOfEmployees,
-                CreatedAt = entity.CreatedAt,
+
                 UpdatedAt = entity.UpdatedAt,
                 Description = entity.Description,
                 ProfilePicture = entity.ProfilePicture,
@@ -44,7 +44,7 @@ namespace Domain.Mappers
                 Password = HashHelper.Hash(request.Password),
                 Balance = request.Balance,
                 NumberOfEmployees = request.NumberOfEmployees,
-                CreatedAt = DateTime.UtcNow,
+
                 UpdatedAt = DateTime.UtcNow,
                 Description = request.Description,
                 ProfilePicture = request.ProfilePicture,
@@ -75,7 +75,6 @@ namespace Domain.Mappers
                 Password = HashHelper.Hash(request.Password),
                 Balance = request.Balance,
                 NumberOfEmployees = request.NumberOfEmployees,
-                CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
                 Description = request.Description,
                 ProfilePicture = request.ProfilePicture,

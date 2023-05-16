@@ -14,7 +14,7 @@ namespace Domain.Mappers
                 Name = entity.Name,
                 Email = entity.Email,
                 Balance = entity.Balance,
-                CreatedAt = entity.CreatedAt,
+
                 UpdatedAt = entity.UpdatedAt,
                 Description = entity.Description,
                 ProfilePicture = entity.ProfilePicture,

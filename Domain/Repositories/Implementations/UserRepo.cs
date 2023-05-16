@@ -3,6 +3,7 @@ using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Requests.Users.User;
 using Shared.Contracts.Responses.RankedInvestor;
+using Shared.Models;
 using Shared.Models.Users;
 
 namespace Domain.Repositories.Implementations
@@ -59,7 +60,7 @@ namespace Domain.Repositories.Implementations
                 })
                 .ToListAsync();
         }
-
+       
         public async Task<List<RankedResponse>> GetTopGlobalInvestors()
         {
             return await _context.Users

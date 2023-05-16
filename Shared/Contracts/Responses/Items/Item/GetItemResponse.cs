@@ -1,4 +1,5 @@
-﻿using Shared.Enums;
+﻿using Shared.Contracts.Responses.Investments;
+using Shared.Enums;
 
 namespace Shared.Contracts.Responses.Items.Item
 {

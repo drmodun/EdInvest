@@ -85,6 +85,8 @@ namespace Data.Entities
                    .HasKey(i => new { i.InvestorId, i.ItemId });
             modelBuilder.Entity<User>()
                 .Property(u => u.Claims);
+            modelBuilder.Entity<Subcategory>()
+                .Property(s => s.CategoryId);
             Seeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
 
