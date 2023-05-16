@@ -36,7 +36,6 @@ namespace Domain.Validation
             { return await _countryRepo.GetById(n) != null; }).WithMessage("Country is not valid");
             RuleFor(x => x.Images).NotEmpty().WithMessage("Images cannot be empty");
             RuleFor(x => x.Goal).Must(g => g > 0).WithMessage("Goal must be positive");
-            RuleFor(x => new { x.CurrentAmount, x.Goal }).Must(c => c.CurrentAmount >= 0 && c.CurrentAmount <= c.Goal).WithMessage("Current amount must be positive and smaller than the goal");
             RuleFor(x => x.CategoryId).MustAsync(async (n, cancellationToken) =>
             { return await _categoryRepo.GetById(new GetCategoryRequest { Id = n }) != null; }).WithMessage("Category is not valid");
             RuleFor(x => x.SubcategoryId).MustAsync(async (n, cancellationToken) =>

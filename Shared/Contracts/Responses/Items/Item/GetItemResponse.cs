@@ -26,7 +26,6 @@ namespace Shared.Contracts.Responses.Items.Item
 
         public List<decimal> Prices { get; set; }
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();
-        public List<GetInvestmentResponse> Investments { get; set; }
 
     }
 }

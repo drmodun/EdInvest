@@ -59,7 +59,6 @@ namespace API.Controllers
                 {
                     CategoryId = request.CategoryId,
                     CountryId = request.CountryId,
-                    CurrentAmount = request.CurrentAmount,
                     Description = request.Description,
                     Goal = request.Goal,
                     Images = request.Images,

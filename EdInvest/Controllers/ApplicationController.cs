@@ -60,7 +60,6 @@ namespace API.Controllers
                     AppPurpose = request.AppPurpose,
                     CategoryId = request.CategoryId,
                     CountryId = request.CountryId,
-                    CurrentAmount = request.CurrentAmount,
                     Description = request.Description,
                     EstimatedNumberOfUsers = request.EstimatedNumberOfUsers,
                     EstimatedRelease = request.EstimatedRelease,

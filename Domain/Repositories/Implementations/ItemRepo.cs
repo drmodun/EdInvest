@@ -5,6 +5,7 @@ using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Models.Items;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Domain.Repositories.Implementations
 {
@@ -60,6 +61,17 @@ namespace Domain.Repositories.Implementations
                     Updated = i.UpdatedAt
                 })
                 .ToListAsync();
+
+
+        }
+        public decimal GetCurrentAmount(Guid itemId)
+        {
+            var amount =
+                _context.Investments
+               .Where(i => i.ItemId == itemId)
+               .Sum(i => i.Amount);
+            return amount;
+                
 
 
         }

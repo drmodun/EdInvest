@@ -13,10 +13,9 @@ namespace Domain.Repositories.Implementations
         where TGet : GetUserRequest
     {
         private readonly EdInvestContext _context;
-        //private readonly _applicationMapper;
 
         public UserRepo(EdInvestContext edInvest
-            )//, CourseMapper courseMapper) { 
+            )
         {
             _context = edInvest;
 
@@ -28,7 +27,6 @@ namespace Domain.Repositories.Implementations
             return user;
 
         }
-        //i am not sure if this breaks the repository design, however for the time being I will use this, will get changed in the future
         public async Task<List<TEntity>> GetAll(TOptions options)
         {
             var users = await _context.Users
@@ -61,6 +59,7 @@ namespace Domain.Repositories.Implementations
                 })
                 .ToListAsync();
         }
+       // public async GetInvestments(Guid Investment)
         public async Task<List<RankedResponse>> GetTopGlobalInvestors()
         {
             return await _context.Users

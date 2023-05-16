@@ -16,7 +16,6 @@
         public Guid CountryId { get; set; }
 
         public decimal Goal { get; set; }
-        public decimal CurrentAmount { get; set; }
 
         public List<decimal> Prices { get; set; }
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();

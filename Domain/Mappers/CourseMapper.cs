@@ -1,4 +1,7 @@
-﻿using Shared.Contracts.Requests.Items.Course;
+﻿using Domain.Repositories.Implementations;
+using Shared.Contracts.Items.Item;
+using Shared.Contracts.Requests.Items.Course;
+using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Items.Course;
 using Shared.Models.Items;
 
@@ -6,11 +9,11 @@ namespace Domain.Mappers
 {
     public class CourseMapper : IMapper<Course, GetCourseResponse, CreateCourseRequest, UpdateCourseRequest>
     {
-        private readonly InvestmentMapper _investmentMapper;
+        private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
 
-        public CourseMapper(InvestmentMapper investmentMapper)
+        public CourseMapper(ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo)
         {
-            _investmentMapper = investmentMapper;
+            _itemRepo = itemRepo;
         }
         public GetCourseResponse ToDTO(Course entity)
         {
@@ -29,16 +32,13 @@ namespace Domain.Mappers
                 StartDate = entity.StartDate,
                 EndDate = entity.EndDate,
                 CountryId = entity.CountryId,
-
-                CurrentAmount = entity.CurrentAmount,
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
-                Investments = entity.Investments.Select(_investmentMapper.ToDTO).ToList(),
                 Curriculum = entity.Curriculum,
                 UpdatedAt = entity.UpdatedAt,
                 Type = entity.Type,
                 Prices = entity.Prices,
-
+                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id)
 
             };
             return newDTO;
@@ -58,8 +58,6 @@ namespace Domain.Mappers
                 Tiers = request.Tiers,
                 ActiveStudents = request.ActiveStudents,
                 CountryId = request.CountryId,
-
-                CurrentAmount = request.CurrentAmount,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Curriculum = request.Curriculum,
@@ -86,7 +84,6 @@ namespace Domain.Mappers
                 Tiers = request.Tiers,
                 ActiveStudents = request.ActiveStudents,
                 CountryId = request.CountryId,
-                CurrentAmount = request.CurrentAmount,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Curriculum = request.Curriculum,

@@ -5,7 +5,6 @@ namespace Domain.Services
 {
     public class CountryService
     {
-        //I do not see a need to implement special dtos for countries at this time
         private readonly ICountryRepo _countryRepo;
 
         public CountryService(ICountryRepo countryRepo)

@@ -20,7 +20,7 @@ namespace Domain.Mappers
                 Id = entity.Id,
                 Name = entity.Name,
                 Description = entity.Description,
-                Subcategories = entity.Subcategories.Select(_subcategoryMapper.ToDTO).ToList()//.Select,
+                Subcategories = entity.Subcategories.Select(_subcategoryMapper.ToDTO).ToList(),
 
 
             };

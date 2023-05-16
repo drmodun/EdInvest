@@ -25,8 +25,6 @@ namespace Shared.Models.Items
         public Guid CountryId { get; set; }
 
         public Country? Country { get; set; }
-        public decimal CurrentAmount { get; set; }
-
         public List<decimal> Prices { get; set; }
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();
         public Organisation? Organisation { get; set; }

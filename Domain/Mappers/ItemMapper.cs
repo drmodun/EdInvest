@@ -1,4 +1,6 @@
-﻿using Shared.Contracts.Items.Item;
+﻿using Domain.Repositories.Implementations;
+using Shared.Contracts.Items.Item;
+using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Items.Item;
 using Shared.Models.Items;
 
@@ -6,11 +8,11 @@ namespace Domain.Mappers
 {
     public class ItemMapper : IMapper<Item, GetItemResponse, CreateItemRequest, UpdateItemRequest>
     {
-        private readonly InvestmentMapper _investmentMapper;
+        private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
 
-        public ItemMapper(InvestmentMapper mapper)
+        public ItemMapper(ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo)
         {
-            _investmentMapper = mapper;
+            _itemRepo = itemRepo;
         }
         public GetItemResponse ToDTO(Item entity)
         {
@@ -21,16 +23,14 @@ namespace Domain.Mappers
                 CategoryId = entity.CategoryId,
                 Description = entity.Description,
                 CountryId = entity.CountryId,
-                CurrentAmount = entity.CurrentAmount,
                 Images = entity.Images,
                 Goal = entity.Goal,
-                Investments = entity.Investments.Select(_investmentMapper.ToDTO).ToList(),
                 OrganisationId = entity.OrganisationId,
                 Prices = entity.Prices,
                 SubcategoryId = entity.SubcategoryId,
                 Tiers = entity.Tiers,
                 Type = entity.Type,
-
+                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
                 UpdatedAt = entity.UpdatedAt
             };
         }
@@ -42,6 +42,5 @@ namespace Domain.Mappers
         {
             throw new NotImplementedException();
         }
-        //these will most likely never get called, but I will implement them for the sake of the interface (tere will never be create or update Item enpoints)
     }
 }

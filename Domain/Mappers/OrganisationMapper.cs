@@ -14,7 +14,6 @@ namespace Domain.Mappers
                 return null;
             if (request.Password == request.Password.ToLower())
                 return null;
-            //a robust password check beacause we are hashing stuff in the mapper already so it will never validate the password with validation
             return new Organisation
             {
                 Id = Guid.NewGuid(),

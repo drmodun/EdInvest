@@ -1,4 +1,7 @@
-﻿using Shared.Contracts.Requests.Items.Event;
+﻿using Domain.Repositories.Implementations;
+using Shared.Contracts.Items.Item;
+using Shared.Contracts.Requests.Items.Event;
+using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Items.Event;
 using Shared.Models.Items;
 
@@ -6,11 +9,11 @@ namespace Domain.Mappers
 {
     public class EventMapper : IMapper<Event, GetEventResponse, CreateEventRequest, UpdateEventRequest>
     {
-        private readonly InvestmentMapper _investmentMapper;
+        private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
 
-        public EventMapper(InvestmentMapper investmentMapper)
+        public EventMapper(ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo)
         {
-            _investmentMapper = investmentMapper;
+            _itemRepo = itemRepo;
         }
         public Event ToEntity(CreateEventRequest request)
         {
@@ -26,11 +29,9 @@ namespace Domain.Mappers
                 Capacity = request.Capacity,
                 CategoryId = request.CategoryId,
                 Activities = request.Activities,
-
                 ExpectedAttendance = request.ExpectedAttendance,
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
-                CurrentAmount = request.CurrentAmount,
                 SubcategoryId = request.SubcategoryId,
                 CountryId = request.CountryId,
                 Goal = request.Goal,
@@ -59,7 +60,6 @@ namespace Domain.Mappers
                 ExpectedAttendance = request.ExpectedAttendance,
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
-                CurrentAmount = request.CurrentAmount,
                 SubcategoryId = request.SubcategoryId,
                 CountryId = request.CountryId,
                 Goal = request.Goal,
@@ -88,8 +88,6 @@ namespace Domain.Mappers
                 ExpectedAttendance = entity.ExpectedAttendance,
                 NotableAttendees = entity.NotableAttendees,
                 NotableSpeakers = entity.NotableSpeakers,
-                CurrentAmount = entity.CurrentAmount,
-                Investments = entity.Investments.Select(_investmentMapper.ToDTO).ToList(),
                 SubcategoryId = entity.SubcategoryId,
                 CountryId = entity.CountryId,
                 Goal = entity.Goal,
@@ -99,12 +97,9 @@ namespace Domain.Mappers
                 Type = entity.Type,
                 Prices = entity.Prices,
                 OrganisationId = entity.OrganisationId,
+                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
 
             };
         }
-
-
-
-
     }
 }

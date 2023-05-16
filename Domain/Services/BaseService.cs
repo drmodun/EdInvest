@@ -8,7 +8,7 @@ namespace Domain.Services
         TCreateRequest, TUpdateRequest, TGetRequest, TGetAllRequest, TId,
         TGetResponse, TGetAllResponse, TValidation
         >
-        : IBaseService<TEntity, TMapper, TReadRepo> where TEntity : class
+        where TEntity : class
         where TMapper : IMapper<TEntity, TGetResponse, TCreateRequest, TUpdateRequest>
         where TWriteRepo : IWriteRepo<TEntity, TId>
         where TReadRepo : IReadRepo<TEntity, TGetRequest, TGetAllRequest>
