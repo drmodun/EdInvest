@@ -1,5 +1,8 @@
 import classes from "./index.module.css";
 import PlaceholderImg from "../../assets/images/placeholder.jpg";
+import Card from "../../components/Card";
+import Share from "../../assets/icons/share.svg";
+import Heart from "../../assets/icons/heart.svg";
 import { useState } from "react";
 
 const ProjectPage = () => {
@@ -40,14 +43,14 @@ const ProjectPage = () => {
 
             <div>
               {informationsChosen ? (
-                <div>
+                <div className={classes.DescriptionText}>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Doloribus, mollitia. Facilis, odit. Mollitia magnam itaque
                   libero aut expedita natus, perspiciatis molestias, beatae iure
                   quam modi reiciendis at cumque velit nulla. Lorem ipsum, dolor
                 </div>
               ) : (
-                <div>
+                <div className={classes.DescriptionText}>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Praesentium dolor sed maiores tempore eligendi architecto
                   debitis, quaerat corporis ipsam. Dolorem ea delectus assumenda
@@ -69,7 +72,7 @@ const ProjectPage = () => {
                   : classes.InfoChoiceNotChosen
               }
             >
-              Informations
+              <span className={classes.InfoChoiceText}>Informations</span>
             </button>
             <button
               onClick={() => handleClickDonations()}
@@ -79,7 +82,30 @@ const ProjectPage = () => {
                   : classes.InfoChoiceNotChosen
               }
             >
-              Donations
+              <span className={classes.InfoChoiceText}>Donations</span>
+            </button>
+          </div>
+
+          <div className={classes.SimilarSection}>
+            <h3 className={classes.SimilarSectionTitle}>View similar</h3>
+            <div className={classes.CardsContainer}>
+              <Card />
+              <Card />
+              <Card />
+            </div>
+          </div>
+
+          <div className={classes.MoreActionsContainer}>
+            <button className={classes.MoreActionsButtonBlue}>
+              <p className={classes.MoreActionsText}>DONATE</p>
+            </button>
+            <button className={classes.MoreActionsButton}>
+              <img className={classes.SmallIcon} src={Share} alt="" />
+              <p className={classes.MoreActionsText}>SHARE</p>
+            </button>
+            <button className={classes.MoreActionsButton}>
+              <img className={classes.SmallIcon} src={Heart} alt="" />
+              <p className={classes.MoreActionsText}>LIKE</p>
             </button>
           </div>
         </div>
