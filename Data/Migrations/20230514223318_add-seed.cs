@@ -12,15 +12,6 @@ namespace Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-              name: "CatgoryId",
-              table: "Subcategories",
-              newName: "CategoryId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_Subcategories_CatgoryId",
-                table: "Subcategories",
-                newName: "IX_Subcategories_CategoryId");
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
@@ -919,15 +910,6 @@ namespace Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-             name: "CategoryId",
-             table: "Subcategories",
-             newName: "CatgoryId");
-
-            migrationBuilder.RenameIndex(
-                name: "IX_Subcategories_CategoryId",
-                table: "Subcategories",
-                newName: "IX_Subcategories_CatgoryId");
             migrationBuilder.DeleteData(
                 table: "Countries",
                 keyColumn: "Id",
