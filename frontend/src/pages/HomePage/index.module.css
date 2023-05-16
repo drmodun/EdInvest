@@ -224,6 +224,10 @@
   display: flex;
 }
 
+.PromoSectionRightCardsContainer > div {
+  margin-right: 20px;
+}
+
 .Card {
   height: 525px;
   width: 384px;

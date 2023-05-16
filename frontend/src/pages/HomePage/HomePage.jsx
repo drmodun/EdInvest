@@ -5,6 +5,7 @@ import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
 import SmilingGirlImg from "../../assets/smiling-girl-img.png";
 import ArrowLeft from "../../assets/arrow-left.svg";
 import classes from "./index.module.css";
+import Card from "../../components/Card";
 import Button from "../../components/Button";
 
 const HomePage = () => {
@@ -88,9 +89,12 @@ const HomePage = () => {
               </button>
             </div>
             <div className={classes.PromoSectionRightCardsContainer}>
+              {/* <div className={classes.Card}></div>
               <div className={classes.Card}></div>
-              <div className={classes.Card}></div>
-              <div className={classes.Card}></div>
+              <div className={classes.Card}></div> */}
+              <Card />
+              <Card />
+              <Card />
             </div>
           </div>
         </div>
