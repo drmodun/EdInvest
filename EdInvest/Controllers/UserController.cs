@@ -1,4 +1,5 @@
-﻿using API.Routes;
+﻿using API.Auth;
+using API.Routes;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
 using Domain.Services;
@@ -73,6 +74,17 @@ namespace API.Controllers
             if (jwt == null)
                 return NotFound();
             return jwt;
+        }
+        [HttpGet(AppRoutes.User.GetMe)]
+        public async Task<ActionResult<GetUserResponse?>> GetMe()
+        {
+            var id = HttpContext.GetUserId();
+            if (id == null)
+                return NotFound(HttpContext.GetUserId());
+            var user = await _userService.GetById(new GetUserRequest { Id = (Guid)id });
+            if (user == null)
+                return NotFound(HttpContext.GetUserId());
+            return Ok(user);
         }
 
     }

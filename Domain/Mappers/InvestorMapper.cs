@@ -33,7 +33,8 @@ namespace Domain.Mappers
                 CountryId = entity.CountryId,
                 LocationName = entity.LocationName,
                 WalletAddress = entity.WalletAddress,
-                Type = entity.Type
+                Type = entity.Type,
+                AmountOfDonationsGiven = _investmentRepo.GetDonated(entity.Id).Result
 
 
             };

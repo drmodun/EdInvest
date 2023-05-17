@@ -754,6 +754,7 @@ namespace Data.Entities
                 {
                     Name = "FakeCompany",
                     Description = "Descriptiojn of a fake company",
+                    UpdatedAt = DateTime.UtcNow,
 
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
@@ -789,6 +790,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "fakecompany1@gmail.com",
+                    UpdatedAt = DateTime.UtcNow,
 
                     LocationName = "Zagreb",
                     Id = Guid.NewGuid(),
@@ -805,6 +807,7 @@ namespace Data.Entities
                 {
                     Name = "Investor",
                     Description = "Descriptiojn of a fake investor",
+                    UpdatedAt = DateTime.UtcNow,
 
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
@@ -842,7 +845,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[0].Id,
                     Email = "evets@gmail.com",
-
+                    UpdatedAt = DateTime.UtcNow,
                     LocationName = "Split",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -859,6 +862,7 @@ namespace Data.Entities
                 {
                     Name = "RandomCourseCompany",
                     Description = "Descriptiojn of a fake company",
+                    UpdatedAt = DateTime.UtcNow,
 
                     Type = Shared.Enums.UserType.Organisation,
                     Claims = new Dictionary<string, string>()
@@ -893,7 +897,7 @@ namespace Data.Entities
                     },
                     CountryId = countries[2].Id,
                     Email = "organisation@gmail.com",
-
+                    UpdatedAt = DateTime.UtcNow,
                     LocationName = "London",
                     Id = Guid.NewGuid(),
                     NumberOfMembers = 10,
@@ -914,7 +918,7 @@ namespace Data.Entities
                      Name = "LearnApp",
                      Goal = 10000,
                  MainWebsite = "https://randomwebsite.com",
-
+                 
                      Features = new List<string>()
                      {
                          "Good learinng experience",

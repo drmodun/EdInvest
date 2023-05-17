@@ -92,8 +92,7 @@ namespace Domain.Mappers
                 SocialLinks = entity.SocialLinks,
                 WalletAddress = entity.WalletAddress,
                 NumberOfMembers = entity.NumberOfMembers,
-
-
+                AmountOfDonationsReceived = _investmentRepo.GetReceived(entity.Id).Result,
 
             };
 
