@@ -2,7 +2,6 @@ import classes from "./index.module.css";
 
 import Logo from "../../assets/logo.svg";
 import Button from "../Button";
-import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -22,11 +21,7 @@ const Navigation = () => {
         </nav>
         <div className={classes.headerButtons}>
           <Button>Create a project</Button>
-          <Button>
-          <Link to={"/login"}>
-            Sign In 
-            </Link>
-            </Button>
+          <Button route={"/login"}>Sign In</Button>
         </div>
       </div>
     </header>
