@@ -149,6 +149,37 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.AlreadyLogged{
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+    align-items: center;
+    margin-left: 13vw;
+    font-family: "SF Pro Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.LogOut{
+    width: 355px;
+    height: 50px;
+    background: crimson;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    transform: background-color 0.3s ease-in-out;
+
+}
+.LogOut:hover{
+    cursor: pointer;
+    background-color: darkred;
+}
+.LogOut:active{
+    background-color: red;
+}
 @media screen and (max-width: 900px) {
   .LoginPage {
     flex-direction: column;
