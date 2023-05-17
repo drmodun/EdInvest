@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./index.module.css";
+
+import { getOrganisations } from "../../axios/UserCalls/OrganisationApiCalls";
 
 import SearchIcon from "../../assets/icons/search.svg";
 import FilterIcon from "../../assets/icons/filter.svg";
@@ -25,6 +27,17 @@ const ProjectsPage = () => {
     const value = e.target.innerHTML;
     setInputValue(value);
   };
+
+  const [organisations, setOrganisations] = useState([]);
+  const fetchOrganisations = () => {
+    getOrganisations()
+      .then((res) => res.organisations)
+      .then((data) => setOrganisations(data));
+  };
+
+  useEffect(() => {
+    fetchOrganisations();
+  }, []);
 
   return (
     <>
@@ -94,12 +107,19 @@ const ProjectsPage = () => {
 
         <div className={classes.sectionExploreCards}>
           <div className="layoutSpacing">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {organisations.map((organisation, i) => {
+              return (
+                <Card
+                  key={i}
+                  name={organisation.name}
+                  type={organisation.locationName}
+                  isVerified={true}
+                  description={organisation.description}
+                  raised={organisation.balance}
+                  id={organisation.id}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
