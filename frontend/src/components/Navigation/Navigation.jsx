@@ -4,10 +4,18 @@ import Logo from "../../assets/logo.svg";
 import Button from "../Button";
 
 const Navigation = () => {
+  const handleLogoClick = () => {
+    window.location.href = "/";
+  };
   return (
     <header className={classes.header}>
       <div className="layoutSpacing">
-        <img src={Logo} alt="Logo" className={classes.headerLogo} />
+        <img
+          src={Logo}
+          alt="Logo"
+          className={classes.headerLogo}
+          onClick={handleLogoClick}
+        />
         <nav className={classes.headerNav}>
           <a href="/" className={classes.headerNavItem}>
             Home
