@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
 }
-
 .CloseButton {
   position: absolute;
   right: 54px;
@@ -16,7 +15,6 @@
   justify-content: center;
   padding: 0;
 }
-
 .MainImage {
   width: 45vw;
   height: 100vh;
