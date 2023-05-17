@@ -85,7 +85,7 @@ const HomePage = () => {
           <img src={ChevronRightBlue} alt="" />
         </button>
       </div>
-      <button onClick={() => console.log(organisations)}>Orgs</button>
+
       <div className={classes.PromoSectionWrapper}>
         <div className={classes.PromoSectionBackground}></div>
         <div className={classes.PromoSectionContent}>
@@ -204,7 +204,7 @@ const HomePage = () => {
               Save on your taxes by investing with crypto
             </h2>
             <p className={classes.MoreInfoText}>
-              There’s a reason high net worth individuals tend to donate
+              There's a reason high net worth individuals tend to donate
               property instead of cash. Want to maximize your tax savings via
               charitable giving? This is how.
             </p>
