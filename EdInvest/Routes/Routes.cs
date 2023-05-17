@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace API.Routes
+﻿namespace API.Routes
 {
     public static class AppRoutes
     {
@@ -101,7 +99,7 @@ namespace API.Routes
             public const string Create = Base + $"/organisations";
             public const string Update = Base + $"/organisations/";
             public const string Delete = Base + $"/organisations/{{id:Guid}}";
-            public const string GetAllInvestments = $"/organisations/{{id:Guid}}/investments"; 
+            public const string GetAllInvestments = $"/organisations/{{id:Guid}}/investments";
 
 
 

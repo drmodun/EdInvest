@@ -138,6 +138,6 @@ namespace API.Controllers
             var item = await _rankedService.GetStats();
             return item;
         }
-       
+
     }
 }

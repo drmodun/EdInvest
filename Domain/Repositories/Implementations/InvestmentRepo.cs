@@ -3,10 +3,8 @@ using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses;
-using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models;
-using Shared.Models.Users;
 
 namespace Domain.Repositories.Implementations
 {
@@ -39,8 +37,8 @@ namespace Domain.Repositories.Implementations
         public async Task<List<RankedResponse>> GetInvestmentsForOrganisaton(Guid organisatinId)
         {
             return await _context.Investments
-                .Include(i=>i.Item)
-                .Include(i=>i.Investor)
+                .Include(i => i.Item)
+                .Include(i => i.Investor)
                 .Where(i => i.Item.OrganisationId == organisatinId)
                 .Select(i => new RankedResponse
                 {
@@ -68,7 +66,7 @@ namespace Domain.Repositories.Implementations
         public async Task<decimal> GetSpent(Guid investorId)
         {
             return await _context.Investments
-                .Where(i=>i.InvestorId == investorId)
+                .Where(i => i.InvestorId == investorId)
                 .SumAsync(i => i.Amount);
         }
         public async Task<decimal> GetEarned(Guid organisationId)

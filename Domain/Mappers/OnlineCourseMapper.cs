@@ -85,7 +85,7 @@ namespace Domain.Mappers
                 Tiers = request.Tiers,
                 LinksToChannels = request.LinksToChannels,
                 Lessons = request.Lessons,
-                MainWebsite= request.MainWebsite,
+                MainWebsite = request.MainWebsite,
                 LessonsDate = request.LessonsDate,
                 AvarageDuration = request.AvarageDuration,
                 ExpectedAudience = request.ExpectedAudience,

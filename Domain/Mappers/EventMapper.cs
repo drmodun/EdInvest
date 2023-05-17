@@ -65,7 +65,7 @@ namespace Domain.Mappers
                 SubcategoryId = request.SubcategoryId,
                 CountryId = request.CountryId,
                 MainWebsite = request.MainWebsite,
-                
+
                 Goal = request.Goal,
                 Images = request.Images,
                 UpdatedAt = DateTime.UtcNow,
