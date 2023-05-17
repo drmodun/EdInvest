@@ -9,6 +9,9 @@ import Heart from "../../assets/icons/heart.svg";
 import Share from "../../assets/icons/share.svg";
 
 const Card = ({ name, type, isVerified, description, raised, id }) => {
+  const handleCardClick = () => {
+    window.location.href = `/projects/${id}`;
+  };
   return (
     <div className={classes.card}>
       <div className={classes.cardActions}>
@@ -24,7 +27,7 @@ const Card = ({ name, type, isVerified, description, raised, id }) => {
         alt="Placeholder"
         className={classes.cardImage}
       />
-      <div className={classes.cardContent}>
+      <div className={classes.cardContent} onClick={handleCardClick}>
         <h3 className={classes.companyTitle}>
           {name || "#NO_NAME"}
           {isVerified && <img src={VerifiedCheckmark} alt="" />}

@@ -4,9 +4,11 @@ import Router from "./components/Router";
 import { UserInfoProvider } from "./Providers/UserInfoProvider";
 
 function App() {
-  return <UserInfoProvider> 
-  <Router />;
-  </UserInfoProvider>
+  return (
+    <UserInfoProvider>
+      <Router />
+    </UserInfoProvider>
+  );
 }
 
 export default App;
