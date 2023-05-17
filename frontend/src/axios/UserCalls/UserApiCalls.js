@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: "https://localhost:44336/",
+  baseURL: "https://localhost:44336/api/",
   headers: {
     'Content-Type': 'application/json',
   },
@@ -52,13 +52,16 @@ export async function getUsers(params = {}) {
       throw new Error(error.message);
     }
   }
-  export async function login(email, passord){
+  export async function login(email, password){
     try{
-      const response = await api.post('users/login', {email, passord});
+      const response = await api.post('users/login', {email, password});
       if (response.status === 200){
         localStorage.setItem('token', response.data.token);
+        return true;
       }
     }catch(error){
+      console.log({email, password});
+      console.log(error);
       throw new Error(error.message);
     }
   }
