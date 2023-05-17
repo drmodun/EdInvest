@@ -71,9 +71,19 @@ const ProjectsPage = () => {
         <div className="layoutSpacing">
           <h2 className={classes.sectionExamplesTitle}>Take a look</h2>
           <div className={classes.sectionExamplesCards}>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
+            {organisations.slice(0, 3).map((organisation, i) => {
+              return (
+                <Card
+                  key={i}
+                  name={organisation.name}
+                  type={organisation.locationName}
+                  isVerified={true}
+                  description={organisation.description}
+                  raised={organisation.balance}
+                  id={organisation.id}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
