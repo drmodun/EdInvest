@@ -115,7 +115,7 @@ const HomePage = () => {
               <Card />
               <Card />
               */}
-              {items.map((item, i) => {
+              {items.slice(0, 5).map((item, i) => {
                 return (
                   <Card
                     key={i}
