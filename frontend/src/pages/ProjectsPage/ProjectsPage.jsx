@@ -10,8 +10,6 @@ import Card from "../../components/Card";
 import Dropdown from "../../components/Dropdown";
 
 const ProjectsPage = () => {
-  const sortingOptions = ["Most popular", "A - Z", "Z - A", "Most relevant"];
-
   const [inputIsFocused, setInputIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -23,9 +21,24 @@ const ProjectsPage = () => {
     }
   };
 
+  const sortOrganisations = {
+    "A - Z": () => {
+      const copiedOrganisations = [...organisations];
+      copiedOrganisations.sort((a, b) => a.name.localeCompare(b.name));
+      setOrganisations(copiedOrganisations);
+    },
+    "Z - A": () => {
+      const copiedOrganisations = [...organisations];
+      copiedOrganisations.sort((a, b) => b.name.localeCompare(a.name));
+      setOrganisations(copiedOrganisations);
+    },
+  };
+  const sortingOptions = Object.keys(sortOrganisations);
+
   const handleInputSelect = (e) => {
     const value = e.target.innerHTML;
     setInputValue(value);
+    sortOrganisations[value]();
   };
 
   const [organisations, setOrganisations] = useState([]);
