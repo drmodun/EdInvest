@@ -22,6 +22,7 @@ const HomePage = () => {
     .querySelector(":root")
     .style.setProperty("--header-button-color", "#343434");
 
+
   return (
     <div className="headerMargin">
       <div className={classes.HeaderHeroWrapper}>
