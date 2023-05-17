@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getOrganisations } from "../../axios/UserCalls/OrganisationApiCalls";
+import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
 
 import HeaderBackground from "../../assets/header-background.png";
 import ChevronRightBlack from "../../assets/chevron-right-black.svg";
@@ -25,19 +26,19 @@ const HomePage = () => {
     .querySelector(":root")
     .style.setProperty("--header-button-color", "#343434");
 
-  const [organisations, setOrganisations] = useState([]);
-  const fetchOrganisations = () => {
-    getOrganisations()
-      .then((res) => res.organisations)
-      .then((data) => setOrganisations(data))
+  const [items, setItems] = useState([]);
+  const fetchItems = () => {
+    getItems()
+      .then((res) => res.items)
+      .then((data) => setItems(data))
       .catch((err) => console.error(err));
   };
 
   useEffect(() => {
-    fetchOrganisations();
-    const copiedOrganisations = [...organisations];
-    copiedOrganisations.sort((a, b) => a.balance - b.balance);
-    setOrganisations(copiedOrganisations.slice(0, 3));
+    fetchItems();
+    const copiedItems = [...items];
+    copiedItems.sort((a, b) => a.balance - b.balance);
+    setItems(copiedItems.slice(0, 3));
   }, []);
 
   return (
@@ -114,16 +115,16 @@ const HomePage = () => {
               <Card />
               <Card />
               */}
-              {organisations.map((organisation, i) => {
+              {items.slice(0, 5).map((item, i) => {
                 return (
                   <Card
                     key={i}
-                    name={organisation.name}
-                    type={organisation.locationName}
-                    isVerified={true}
-                    description={organisation.description}
-                    raised={organisation.balance}
-                    id={organisation.id}
+                    name={item.name}
+                    type={item.type}
+                    isVerified={false}
+                    description={item.description}
+                    raised={item.currentAmount}
+                    id={item.id}
                   />
                 );
               })}

@@ -72,16 +72,16 @@ const ProjectsPage = () => {
         <div className="layoutSpacing">
           <h2 className={classes.sectionExamplesTitle}>Take a look</h2>
           <div className={classes.sectionExamplesCards}>
-            {items.slice(0, 3).map((organisation, i) => {
+            {items.slice(0, 3).map((item, i) => {
               return (
                 <Card
                   key={i}
-                  name={organisation.name}
-                  type={organisation.locationName}
+                  name={item.name}
+                  type={item.type}
                   isVerified={false}
-                  description={organisation.description}
-                  raised={organisation.balance}
-                  id={organisation.id}
+                  description={item.description}
+                  raised={item.currentAmount}
+                  id={item.id}
                 />
               );
             })}
@@ -131,16 +131,16 @@ const ProjectsPage = () => {
 
         <div className={classes.sectionExploreCards}>
           <div className="layoutSpacing">
-            {items.map((organisation, i) => {
+            {items.map((item, i) => {
               return (
                 <Card
                   key={i}
-                  name={organisation.name}
-                  type={organisation.locationName}
+                  name={item.name}
+                  type={item.type}
                   isVerified={false}
-                  description={organisation.description}
-                  raised={organisation.balance}
-                  id={organisation.id}
+                  description={item.description}
+                  raised={item.currentAmount}
+                  id={item.id}
                 />
               );
             })}

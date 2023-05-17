@@ -4,6 +4,11 @@
   background: var(--header-background);
   position: fixed;
   z-index: 100;
+  transition: 200ms;
+}
+
+.hidden {
+  transform: translateY(-100%);
 }
 
 .header > div {
