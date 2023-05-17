@@ -29,7 +29,8 @@ const HomePage = () => {
   const fetchOrganisations = () => {
     getOrganisations()
       .then((res) => res.organisations)
-      .then((data) => setOrganisations(data));
+      .then((data) => setOrganisations(data))
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
