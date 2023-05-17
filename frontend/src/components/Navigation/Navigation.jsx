@@ -2,13 +2,20 @@ import classes from "./index.module.css";
 
 import Logo from "../../assets/logo.svg";
 import Button from "../Button";
-import { Link } from "react-router-dom";
 
 const Navigation = () => {
+  const handleLogoClick = () => {
+    window.location.href = "/";
+  };
   return (
     <header className={classes.header}>
       <div className="layoutSpacing">
-        <img src={Logo} alt="Logo" className={classes.headerLogo} />
+        <img
+          src={Logo}
+          alt="Logo"
+          className={classes.headerLogo}
+          onClick={handleLogoClick}
+        />
         <nav className={classes.headerNav}>
           <a href="/" className={classes.headerNavItem}>
             Home
@@ -22,11 +29,7 @@ const Navigation = () => {
         </nav>
         <div className={classes.headerButtons}>
           <Button>Create a project</Button>
-          <Button>
-          <Link to={"/login"}>
-            Sign In 
-            </Link>
-            </Button>
+          <Button route={"/login"}>Sign In</Button>
         </div>
       </div>
     </header>

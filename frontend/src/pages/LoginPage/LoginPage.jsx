@@ -10,7 +10,10 @@ import Torus from "../../assets/torus.png";
 import Metamask from "../../assets/metamask.png";
 import BackgroundImage from "../../assets/login-background.png";
 import MobileBackgroundImage from "../../assets/header-background.png";
+import CloseIcon from "../../assets/icons/close.svg";
+
 import useUserInfo from "../../Providers/UserInfoProvider";
+
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +61,12 @@ export const LoginPage = () => {
   }
   return (
     <div className={classes.LoginPage}>
+      <button
+        className={classes.CloseButton}
+        onClick={() => (window.location.href = "/")}
+      >
+        <img src={CloseIcon} alt="" />
+      </button>
       <img
         className={classes.MainImage}
         src={

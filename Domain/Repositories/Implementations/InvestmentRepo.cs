@@ -76,6 +76,21 @@ namespace Domain.Repositories.Implementations
                 .Where(i => i.Item.OrganisationId == organisationId)
                 .SumAsync(i => i.Amount);
         }
+        public async Task<int> GetReceived(Guid organisationId)
+        {
+            return await _context.Investments
+                .Include(i => i.Item)
+                .Where(i=>i.Item.OrganisationId == organisationId)
+                .CountAsync();
+        }
+        public async Task<int> GetDonated(Guid investorId)
+        {
+            return await _context.Investments
+                .Where(i => i.InvestorId == investorId)
+                .CountAsync();
+
+        }
+        
 
     }
 }

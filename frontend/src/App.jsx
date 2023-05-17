@@ -18,10 +18,11 @@ async function getUserInfo() {
   
 
 function App() {
-
-  return <UserInfoProvider> 
-  <Router />
-  </UserInfoProvider>
+  return (
+    <UserInfoProvider>
+      <Router />
+    </UserInfoProvider>
+  );
 }
 
 export default App;
