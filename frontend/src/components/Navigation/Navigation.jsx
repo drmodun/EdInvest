@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import classes from "./index.module.css";
 
 import Logo from "../../assets/logo.svg";
@@ -7,8 +9,22 @@ const Navigation = () => {
   const handleLogoClick = () => {
     window.location.href = "/";
   };
+
+  const [isHidden, setIsHidden] = useState(false);
+
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      setIsHidden(false);
+    } else {
+      if (currentScrollPos > 1100) setIsHidden(true);
+    }
+    prevScrollpos = currentScrollPos;
+  };
+
   return (
-    <header className={classes.header}>
+    <header className={`${classes.header} ${isHidden ? classes.hidden : ""}`}>
       <div className="layoutSpacing">
         <img
           src={Logo}
