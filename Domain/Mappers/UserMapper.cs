@@ -22,7 +22,7 @@ namespace Domain.Mappers
                 Id = entity.Id,
                 Name = entity.Name,
                 Email = entity.Email,
-                Balance = entity.Type == UserType.Investor ? 
+                Balance = entity.Type == UserType.Investor ?
                 _investmentRepo.GetSpent(entity.Id).Result :
                 _investmentRepo.GetEarned(entity.Id).Result,
                 UpdatedAt = entity.UpdatedAt,

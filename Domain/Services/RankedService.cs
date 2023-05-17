@@ -2,8 +2,6 @@
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Users.Investor;
-using Shared.Contracts.Requests.Users.Organisation;
-using Shared.Contracts.Requests.Users.Student;
 using Shared.Contracts.Responses;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.RankedInvestor;

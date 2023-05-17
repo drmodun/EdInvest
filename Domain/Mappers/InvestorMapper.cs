@@ -23,7 +23,7 @@ namespace Domain.Mappers
                 Id = entity.Id,
                 Name = entity.Name,
                 Email = entity.Email,
-                Balance = _investmentRepo.GetSpent(entity.Id).Result, 
+                Balance = _investmentRepo.GetSpent(entity.Id).Result,
                 NumberOfEmployees = entity.NumberOfEmployees,
 
                 UpdatedAt = entity.UpdatedAt,

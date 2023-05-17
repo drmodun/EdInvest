@@ -754,7 +754,7 @@ namespace Data.Entities
                 {
                     Name = "FakeCompany",
                     Description = "Descriptiojn of a fake company",
-                    
+
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -779,7 +779,7 @@ namespace Data.Entities
                 {
                     Name = "FakeAdmiinCompany",
                     Description = "Descriptiojn of a fake company",
-                    
+
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -805,7 +805,7 @@ namespace Data.Entities
                 {
                     Name = "Investor",
                     Description = "Descriptiojn of a fake investor",
-                    
+
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -834,7 +834,7 @@ namespace Data.Entities
                 {
                     Name = "Fake event organisator",
                     Description = "Descriptiojn of a fake event organisator",
-                    
+
                     Type = Shared.Enums.UserType.Organisation,
                     Claims = new Dictionary<string, string>()
                     {
@@ -859,7 +859,7 @@ namespace Data.Entities
                 {
                     Name = "RandomCourseCompany",
                     Description = "Descriptiojn of a fake company",
-                    
+
                     Type = Shared.Enums.UserType.Organisation,
                     Claims = new Dictionary<string, string>()
                     {
@@ -885,7 +885,7 @@ namespace Data.Entities
                 {
                     Name = "Organisation",
                     Description = "Descriptiojn of a fake organisation",
-                    
+
                     Type = Shared.Enums.UserType.Investor,
                     Claims = new Dictionary<string, string>()
                     {
@@ -984,7 +984,7 @@ namespace Data.Entities
                     Id = Guid.NewGuid(),
                      Name = "LearnConference",
                      Goal = 10000,
-                 MainWebsite = "https://randomwebsite.com",   
+                 MainWebsite = "https://randomwebsite.com",
                      Location = "Zagreb",
                      Activities = new Dictionary<string, string>()
                      {
