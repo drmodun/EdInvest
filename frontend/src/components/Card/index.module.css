@@ -52,7 +52,6 @@
   box-sizing: border-box;
   padding: 22px 33px;
   transition: 200ms;
-  cursor: pointer;
 }
 
 .cardContent:hover {

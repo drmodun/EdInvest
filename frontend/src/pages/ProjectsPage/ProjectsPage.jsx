@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import classes from "./index.module.css";
 
-import { getOrganisations } from "../../axios/UserCalls/OrganisationApiCalls";
+import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
 
 import SearchIcon from "../../assets/icons/search.svg";
 import FilterIcon from "../../assets/icons/filter.svg";
@@ -21,36 +21,36 @@ const ProjectsPage = () => {
     }
   };
 
-  const sortOrganisations = {
+  const sortItems = {
     "A - Z": () => {
-      const copiedOrganisations = [...organisations];
-      copiedOrganisations.sort((a, b) => a.name.localeCompare(b.name));
-      setOrganisations(copiedOrganisations);
+      const copiedItems = [...items];
+      copiedItems.sort((a, b) => a.name.localeCompare(b.name));
+      setItems(copiedItems);
     },
     "Z - A": () => {
-      const copiedOrganisations = [...organisations];
-      copiedOrganisations.sort((a, b) => b.name.localeCompare(a.name));
-      setOrganisations(copiedOrganisations);
+      const copiedItems = [...items];
+      copiedItems.sort((a, b) => b.name.localeCompare(a.name));
+      setItems(copiedItems);
     },
   };
-  const sortingOptions = Object.keys(sortOrganisations);
+  const sortingOptions = Object.keys(sortItems);
 
   const handleInputSelect = (e) => {
     const value = e.target.innerHTML;
     setInputValue(value);
-    sortOrganisations[value]();
+    sortItems[value]();
   };
 
-  const [organisations, setOrganisations] = useState([]);
-  const fetchOrganisations = () => {
-    getOrganisations()
-      .then((res) => res.organisations)
-      .then((data) => setOrganisations(data))
+  const [items, setItems] = useState([]);
+  const fetchItems = () => {
+    getItems()
+      .then((res) => res.items)
+      .then((data) => setItems(data))
       .catch((err) => console.error(err));
   };
 
   useEffect(() => {
-    fetchOrganisations();
+    fetchItems();
   }, []);
 
   return (
@@ -72,13 +72,13 @@ const ProjectsPage = () => {
         <div className="layoutSpacing">
           <h2 className={classes.sectionExamplesTitle}>Take a look</h2>
           <div className={classes.sectionExamplesCards}>
-            {organisations.slice(0, 3).map((organisation, i) => {
+            {items.slice(0, 3).map((organisation, i) => {
               return (
                 <Card
                   key={i}
                   name={organisation.name}
                   type={organisation.locationName}
-                  isVerified={true}
+                  isVerified={false}
                   description={organisation.description}
                   raised={organisation.balance}
                   id={organisation.id}
@@ -116,7 +116,7 @@ const ProjectsPage = () => {
         <div className={classes.sectionExploreSort}>
           <div className="layoutSpacing">
             <h3 className={classes.sectionExploreTitle}>
-              Explore all<span>{organisations.length} projects</span>
+              Explore all<span>{items.length} projects</span>
             </h3>
             <Dropdown
               name="Sort by"
@@ -131,13 +131,13 @@ const ProjectsPage = () => {
 
         <div className={classes.sectionExploreCards}>
           <div className="layoutSpacing">
-            {organisations.map((organisation, i) => {
+            {items.map((organisation, i) => {
               return (
                 <Card
                   key={i}
                   name={organisation.name}
                   type={organisation.locationName}
-                  isVerified={true}
+                  isVerified={false}
                   description={organisation.description}
                   raised={organisation.balance}
                   id={organisation.id}
