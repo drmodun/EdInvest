@@ -8,7 +8,7 @@ import VerifiedCheckmark from "../../assets/icons/verified-checkmark.svg";
 import Heart from "../../assets/icons/heart.svg";
 import Share from "../../assets/icons/share.svg";
 
-const Card = () => {
+const Card = ({ name, type, isVerified, description, raised, id }) => {
   return (
     <div className={classes.card}>
       <div className={classes.cardActions}>
@@ -26,14 +26,12 @@ const Card = () => {
       />
       <div className={classes.cardContent}>
         <h3 className={classes.companyTitle}>
-          Company Title
-          <img src={VerifiedCheckmark} alt="" />
+          {name || "#NO_NAME"}
+          {isVerified && <img src={VerifiedCheckmark} alt="" />}
         </h3>
-        <p className={classes.companyType}>Company Type</p>
+        <p className={classes.companyType}>{type || "#NO_TYPE"}</p>
         <p className={classes.companyDescription}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit
-          repudiandae quos unde delectus repellendus nam alias in cupiditate
-          dolor, fugit voluptatibus possimus ut explicabo!
+          {description || "#NO_DESCRIPTION"}
         </p>
         <a href="" className={classes.cardReadMore}>
           Read more
@@ -41,7 +39,7 @@ const Card = () => {
         </a>
         <div className={classes.companyRaised}>
           <p className={classes.companyRaisedValue}>
-            $999 <span>Raised</span>
+            ${raised || "#NO_VALUE"} <span>Raised</span>
           </p>
           <button className={classes.companyInvest}>
             Invest
