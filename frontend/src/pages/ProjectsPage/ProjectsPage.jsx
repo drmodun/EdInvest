@@ -92,7 +92,7 @@ const ProjectsPage = () => {
         <div className={classes.sectionExploreSort}>
           <div className="layoutSpacing">
             <h3 className={classes.sectionExploreTitle}>
-              Explore all<span>117 projects</span>
+              Explore all<span>{organisations.length} projects</span>
             </h3>
             <Dropdown
               name="Sort by"
