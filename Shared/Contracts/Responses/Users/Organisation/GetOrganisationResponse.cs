@@ -6,6 +6,7 @@ namespace Shared.Contracts.Responses.Users.Organisation
     {
 
         public int NumberOfMembers { get; set; }
+        public int AmountOfDonationsReceived { get; set; }
 
     }
 }

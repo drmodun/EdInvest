@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./LoginPage.module.css";
 import { login } from "../../axios/UserCalls/UserApiCalls";
@@ -10,11 +10,13 @@ import Torus from "../../assets/torus.png";
 import Metamask from "../../assets/metamask.png";
 import BackgroundImage from "../../assets/login-background.png";
 import MobileBackgroundImage from "../../assets/header-background.png";
+import useUserInfo from "../../Providers/UserInfoProvider";
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [windowSize, setWindowSize] = useState(getWindowSize());
+    const userInfo = useUserInfo();
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
@@ -46,6 +48,11 @@ export const LoginPage = () => {
       setError("Invalid credentials");
     }
   };
+  function logOutAndRefresh(){
+    userInfo.logOut();
+    window.location.replace("/login");
+    }
+
   console.log(windowSize);
   return (
     <div className={classes.LoginPage}>
@@ -56,6 +63,7 @@ export const LoginPage = () => {
         }
         alt="logo"
       />
+      {!userInfo.isLogged ? (
       <div className={classes.Logins}>
         <span className={classes.Title}>Sign in</span>
         <span className={classes.SubTitle}>
@@ -102,6 +110,13 @@ export const LoginPage = () => {
           </div>
         </div>
       </div>
+      ) : (
+        <div className={classes.AlreadyLogged}>
+            <span>You are already logged in</span>
+            <Link to={"/"}> Go to Home Page</Link>
+            <button className={classes.LogOut} onClick={logOutAndRefresh}>Log out</button>
+        </div>
+      )}
     </div>
   );
 };
