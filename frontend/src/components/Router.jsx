@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  json,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -13,6 +14,10 @@ import ProjectsPage from "../pages/ProjectsPage";
 
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
+import InvestorPage from "../pages/InvestorPage/InvestorPage";
+import OrganisationPage from "../pages/OrganisationPage";
+
+const user = JSON.parse(localStorage.getItem("userInfo"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +28,20 @@ const router = createBrowserRouter(
           <Route index element={<ProjectsPage />} />
           <Route path=":projectId" element={<ProjectPage />} />
         </Route>
+        <Route path="/investors">
+          {//Route index element={<InvestorsPage />} /> will be added here
+          }
+          <Route path=":investorId" element={<InvestorPage />} />
+
+        </Route>
+        <Route path="/organisations">
+          {//Route index element={<OrganisationPage />} /> will be added here
+          }
+          <Route path=":organisationId" element={<OrganisationPage />} />
+        </Route>
+        <Route path="/me" element={
+          user.type === 1 ?
+        <InvestorPage /> : <OrganisationPage />}/>
       <Route path="/login" element={<LoginPage />} />
       </Route>
 

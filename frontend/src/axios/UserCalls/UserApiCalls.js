@@ -56,9 +56,10 @@ export async function login(email, password) {
   try {
     const response = await api.post("users/login", { email, password });
     if (response.status === 200) {
-      localStorage.setItem("token", response.data);
+      localStorage.setItem("token", response.data);    
       return true;
-    }
+      }
+    return false;
   } catch (error) {
     console.log({ email, password });
     console.log(error);

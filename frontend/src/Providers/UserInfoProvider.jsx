@@ -27,11 +27,11 @@ const UserInfoContext = createContext(defaultUserInfo);
 
 export const UserInfoProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
-
-  useEffect(() => {fetchUserInfo();}, []);
+  useEffect(() => {fetchUserInfo()}, []);
   
   async function fetchUserInfo() {
     try {
+      if (!localStorage.getItem("token")) return;
       const response = await GetMe();
       if (response) {
           setUserInfo({
