@@ -27,7 +27,7 @@ const Card = ({ name, type, isVerified, description, raised, id }) => {
         alt="Placeholder"
         className={classes.cardImage}
       />
-      <div className={classes.cardContent} onClick={handleCardClick}>
+      <div className={classes.cardContent}>
         <h3 className={classes.companyTitle}>
           {name || "#NO_NAME"}
           {isVerified && <img src={VerifiedCheckmark} alt="" />}
@@ -36,7 +36,7 @@ const Card = ({ name, type, isVerified, description, raised, id }) => {
         <p className={classes.companyDescription}>
           {description || "#NO_DESCRIPTION"}
         </p>
-        <a href="" className={classes.cardReadMore}>
+        <a href={"projects/" + id} className={classes.cardReadMore}>
           Read more
           <img src={BlueArrow} alt="" />
         </a>
@@ -44,7 +44,7 @@ const Card = ({ name, type, isVerified, description, raised, id }) => {
           <p className={classes.companyRaisedValue}>
             ${raised || "#NO_VALUE"} <span>Raised</span>
           </p>
-          <button className={classes.companyInvest}>
+          <button className={classes.companyInvest} onClick={handleCardClick}>
             Invest
             <img src={WhiteArrow} alt="" />
           </button>
