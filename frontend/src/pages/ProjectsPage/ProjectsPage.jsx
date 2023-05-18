@@ -35,6 +35,7 @@ const ProjectsPage = () => {
   const [categoryId, setCategoryId] = useState(null);
   const [subcategoryId, setSubcategoryId] = useState(null);
   const [sortCriteria, setSortCriteria] = useState("");
+  const [topItems, setTopItems] = useState([]);
   const handleInputFocus = () => {
     if (inputIsFocused) {
       setInputIsFocused(false);
@@ -81,7 +82,7 @@ const ProjectsPage = () => {
   const [items, setItems] = useState([]);
   const fetchItems = async () => {
     const params = {
-      Name: inputValue ? inputValue : null,
+      Name: null,
       CategoryId: categoryId ? categoryId : null,
       SubcategoryId: subcategoryId ? subcategoryId : null,
     };
@@ -107,6 +108,16 @@ const ProjectsPage = () => {
         default:
           response = await getItems(params);
           setItems(response.items);
+          if (topItems.length === 0)
+            setTopItems(
+              JSON.parse(
+                JSON.stringify(
+                  response.items
+                    .sort((a, b) => b.currentAmount - a.currentAmount)
+                    .slice(0, 3)
+                )
+              )
+            );
           break;
       }
       console.log(response);
@@ -127,7 +138,7 @@ const ProjectsPage = () => {
   useEffect(() => {
     fetchItems();
     fetchCategoriesAndSubcategories();
-    console.log(items);
+    console.log(items, topItems);
   }, []);
 
   return (
@@ -150,7 +161,7 @@ const ProjectsPage = () => {
         <div className="layoutSpacing">
           <h2 className={classes.sectionExamplesTitle}>Take a look</h2>
           <div className={classes.sectionExamplesCards}>
-            {items.slice(0, 3).map((item, i) => {
+            {topItems.map((item, i) => {
               return (
                 <Card
                   key={i}

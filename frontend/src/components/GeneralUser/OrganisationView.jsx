@@ -1,8 +1,8 @@
 import classes from "./View.module.css";
-import Facebook from "../../assets/facebook.png";
-import Google from "../../assets/google.png";
-import Twitter from "../../assets/twitter.png";
-import AppStore from "../../assets/IOS.png";
+import Facebook from "../../assets/facebook.svg";
+import Google from "../../assets/google.svg";
+import Twitter from "../../assets/twitter.svg";
+import AppStore from "../../assets/IOS.svg";
 import { Link } from "react-router-dom";
 import useUserInfo from "../../Providers/UserInfoProvider";
 import DefaultProfile from "../../assets/default-profile.png";
