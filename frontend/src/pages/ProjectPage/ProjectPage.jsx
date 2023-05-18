@@ -29,7 +29,6 @@ const ProjectPage = () => {
     (async () => {
       try {
         const data = await getItem(projectId);
-        console.log(data);
 
         const id = data.id;
         const type = data.type;
@@ -40,7 +39,6 @@ const ProjectPage = () => {
               try {
                 const data = await getCourse(id);
                 setProject(data);
-                console.log(data);
               } catch (err) {
                 console.log(err.data);
               }
@@ -51,7 +49,6 @@ const ProjectPage = () => {
               try {
                 const data = await getApplication(id);
                 setProject(data);
-                console.log(data);
               } catch (err) {
                 console.log(err.data);
               }
@@ -62,7 +59,6 @@ const ProjectPage = () => {
               try {
                 const data = await getOnlineCourse(id);
                 setProject(data);
-                console.log(data);
               } catch (err) {
                 console.log(err.data);
               }
@@ -73,7 +69,6 @@ const ProjectPage = () => {
               try {
                 const data = await getEvent(id);
                 setProject(data);
-                console.log(data);
               } catch (err) {
                 console.log(err.data);
               }
