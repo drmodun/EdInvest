@@ -202,4 +202,40 @@ html {
   font-size: 15px;
   line-height: 18px;
   color: #ffffff;
+
+  margin-top: 50px;
+}
+
+.sectionDropzone {
+  box-sizing: border-box;
+  width: 656px;
+  height: 202px;
+  background: #f8f8ff;
+  border: 1px dashed rgba(56, 78, 183, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionDropzone > h4 {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0f0f0f;
+  margin: 0;
+  margin: 20px 0 10px 0;
+}
+
+.sectionDropzone > p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #676767;
+  margin: 0;
 }
