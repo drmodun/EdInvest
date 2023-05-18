@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 import Share from "../../assets/icons/share.svg";
 import Heart from "../../assets/icons/heart.svg";
 import { useEffect, useState } from "react";
-import { renderMatches, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getItem } from "../../axios/ItemCalls/ItemsApiCalls.js";
 import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
 import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
@@ -115,13 +115,6 @@ const ProjectPage = () => {
             <div>
               {informationsChosen ? (
                 <div className={classes.DescriptionText}>
-                  {/* {Object.entries(project).map((pair, i) => (
-                    <div key={pair[0]}>
-                      <h4>{pair[0]}</h4>
-                      <p>{JSON.stringify(pair[1])}</p>
-                    </div>
-                  ))} */}
-
                   {project.type === 0 && <h1>0</h1>}
                   {project.type === 1 && <h1>1</h1>}
                   {project.type === 3 && <h1>3</h1>}
