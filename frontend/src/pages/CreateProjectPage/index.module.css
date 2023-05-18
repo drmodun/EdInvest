@@ -4,7 +4,34 @@ html {
 
 .content {
   width: 100%;
-  min-height: 100vh;
-  background-color: cyan;
-  margin-top: 500px;
+  background-color: white;
+  margin-top: 175px;
+  margin-bottom: 92px;
+  box-sizing: border-box;
+  padding: 55px 63px;
+  border-radius: 20px;
+}
+
+.title {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+}
+
+.sectionNav {
+  display: flex;
+  gap: 10px;
+}
+
+.sectionNavButton {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  box-sizing: border-box;
+  padding: 14px 22px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
 }

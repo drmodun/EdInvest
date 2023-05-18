@@ -18,7 +18,7 @@ const Navigation = () => {
     if (prevScrollpos > currentScrollPos) {
       setIsHidden(false);
     } else {
-      if (currentScrollPos > 1100) setIsHidden(true);
+      if (currentScrollPos > 200) setIsHidden(true);
     }
     prevScrollpos = currentScrollPos;
   };
