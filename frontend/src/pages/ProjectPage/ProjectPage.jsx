@@ -4,12 +4,13 @@ import Card from "../../components/Card";
 import Share from "../../assets/icons/share.svg";
 import Heart from "../../assets/icons/heart.svg";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { renderMatches, useParams } from "react-router-dom";
 import { getItem } from "../../axios/ItemCalls/ItemsApiCalls.js";
 import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
 import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
 import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
 import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
+import EventDescription from "../../components/ProjectPageComponents/EventDescription";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
@@ -114,18 +115,17 @@ const ProjectPage = () => {
             <div>
               {informationsChosen ? (
                 <div className={classes.DescriptionText}>
-                  {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Doloribus, mollitia. Facilis, odit. Mollitia magnam itaque
-                  libero aut expedita natus, perspiciatis molestias, beatae iure
-                  quam modi reiciendis at cumque velit nulla. Lorem ipsum, dolor */}
-                  {Object.entries(project).map((pair, i) => (
+                  {/* {Object.entries(project).map((pair, i) => (
                     <div key={pair[0]}>
                       <h4>{pair[0]}</h4>
                       <p>{JSON.stringify(pair[1])}</p>
                     </div>
-                  ))}
+                  ))} */}
 
-                  <p>{JSON.stringify(project)}</p>
+                  {project.type === 0 && <h1>0</h1>}
+                  {project.type === 1 && <h1>1</h1>}
+                  {project.type === 3 && <h1>3</h1>}
+                  {project.type === 4 && <EventDescription project={project} />}
                 </div>
               ) : (
                 <div className={classes.DescriptionText}>
