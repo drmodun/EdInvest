@@ -6,9 +6,14 @@ import Heart from "../../assets/icons/heart.svg";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getItem } from "../../axios/ItemCalls/ItemsApiCalls.js";
+import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
+import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
+import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
+import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
+  const [project, setProject] = useState({});
   const handleClickInformations = () => {
     setInformationsChosen(true);
   };
@@ -27,10 +32,51 @@ const ProjectPage = () => {
         const id = data.id;
         const type = data.type;
 
-        //
         switch (type) {
           case 0:
-          //courseGet
+            (async (id) => {
+              try {
+                const data = await getCourse(id);
+                setProject(data);
+                console.log(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+          case 1:
+            (async (id) => {
+              try {
+                const data = await getApplication(id);
+                setProject(data);
+                console.log(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+          case 3:
+            (async (id) => {
+              try {
+                const data = await getOnlineCourse(id);
+                setProject(data);
+                console.log(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+          case 4:
+            (async (id) => {
+              try {
+                const data = await getEvent(id);
+                setProject(data);
+                console.log(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
         }
       } catch (err) {
         console.log(err.data);
@@ -68,10 +114,18 @@ const ProjectPage = () => {
             <div>
               {informationsChosen ? (
                 <div className={classes.DescriptionText}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Doloribus, mollitia. Facilis, odit. Mollitia magnam itaque
                   libero aut expedita natus, perspiciatis molestias, beatae iure
-                  quam modi reiciendis at cumque velit nulla. Lorem ipsum, dolor
+                  quam modi reiciendis at cumque velit nulla. Lorem ipsum, dolor */}
+                  {Object.entries(project).map((pair, i) => (
+                    <div key={pair[0]}>
+                      <h4>{pair[0]}</h4>
+                      <p>{JSON.stringify(pair[1])}</p>
+                    </div>
+                  ))}
+
+                  <p>{JSON.stringify(project)}</p>
                 </div>
               ) : (
                 <div className={classes.DescriptionText}>
