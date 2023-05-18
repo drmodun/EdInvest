@@ -160,3 +160,32 @@ html {
 .sectionDateInput:nth-child(3) {
   width: 89px;
 }
+
+.sectionKeywordsContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.sectionKeywordsItem {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  box-sizing: border-box;
+  padding: 14px 22px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.sectionKeywordsButton {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-azzuro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+}

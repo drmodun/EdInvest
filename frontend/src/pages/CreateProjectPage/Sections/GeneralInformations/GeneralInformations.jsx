@@ -1,3 +1,4 @@
+import { useState } from "react";
 import classes from "../../index.module.css";
 
 import H1Icon from "../../../../assets/icons/h1.svg";
@@ -16,10 +17,16 @@ import PictureIcon from "../../../../assets/icons/picture.svg";
 import FilmIcon from "../../../../assets/icons/film.svg";
 
 const GeneralInformations = () => {
+  const [keywords, setKeywords] = useState([]);
+
   const handleTextAreaResize = (e) => {
     const textarea = e.target;
     console.log(textarea.scrollHeight);
     textarea.style.height = textarea.scrollHeight + "px";
+  };
+
+  const addKeywordInput = () => {
+    setKeywords((keywords) => [...keywords, "New keyword"]);
   };
 
   return (
@@ -113,11 +120,22 @@ const GeneralInformations = () => {
         <h3 className={classes.sectionTitle}>
           Add up to 5 key words that describes your project
         </h3>
-        <input
-          type="text"
-          placeholder="New York"
-          className={classes.sectionInputText}
-        />
+        <div className={classes.sectionKeywordsContainer}>
+          {keywords.map((keyword) => {
+            return (
+              <div className={classes.sectionKeywordsItem} contentEditable>
+                {keyword}
+              </div>
+            );
+          })}
+
+          <button
+            className={classes.sectionKeywordsButton}
+            onClick={addKeywordInput}
+          >
+            +
+          </button>
+        </div>
       </section>
     </>
   );
