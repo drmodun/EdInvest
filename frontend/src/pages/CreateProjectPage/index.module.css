@@ -1,0 +1,10 @@
+html {
+  background-color: #f3f3f3;
+}
+
+.content {
+  width: 100%;
+  min-height: 100vh;
+  background-color: cyan;
+  margin-top: 500px;
+}

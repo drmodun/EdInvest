@@ -17,6 +17,7 @@ import LoginPage from "../pages/LoginPage";
 import InvestorPage from "../pages/InvestorPage/InvestorPage";
 import OrganisationPage from "../pages/OrganisationPage";
 import RegisterPage from "../pages/RegisterPage";
+import CreateProjectPage from "../pages/CreateProjectPage";
 
 const user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
         <Route path="/projects">
           <Route index element={<ProjectsPage />} />
           <Route path=":projectId" element={<ProjectPage />} />
+          <Route path="new" element={<CreateProjectPage />} />
         </Route>
         <Route path="/investors">
           {
@@ -43,10 +45,17 @@ const router = createBrowserRouter(
         </Route>
         <Route
           path="/me"
-          element={ user ? 
-             user.type === 1 ? <InvestorPage /> : <OrganisationPage />
-            : <LoginPage />            
-            }
+          element={
+            user ? (
+              user.type === 1 ? (
+                <InvestorPage />
+              ) : (
+                <OrganisationPage />
+              )
+            ) : (
+              <LoginPage />
+            )
+          }
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
