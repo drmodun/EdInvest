@@ -4,6 +4,8 @@ import clsx from "clsx";
 import classes from "./index.module.css";
 
 import GeneralInformations from "./Sections/GeneralInformations";
+import ProjectPicture from "./Sections/ProjectPicture";
+import ReceivingFunds from "./Sections/ReceivingFunds";
 
 const CreateProjectPage = () => {
   const [section, setSection] = useState(1);
@@ -50,6 +52,8 @@ const CreateProjectPage = () => {
         </button>
       </div>
       {section === 1 ? <GeneralInformations /> : null}
+      {section === 2 ? <ProjectPicture /> : null}
+      {section === 3 ? <ReceivingFunds /> : null}
     </div>
   );
 };
