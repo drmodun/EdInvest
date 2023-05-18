@@ -48,7 +48,7 @@
   margin-bottom: 12px;
 }
 .RegisterForm > input {
-  width: 355px;
+  width: 500px;
   height: 65px;
   margin-bottom: 20px;
   border: 1px solid #e0e0e0;
@@ -58,8 +58,9 @@
   font-size: 18px;
 }
 .RegisterForm > select {
-  width: 355px;
+  width: 500px;
   height: 65px;
+  font-family: "SF Pro Display";
   margin-bottom: 20px;
   border: 1px solid #e0e0e0;
   box-sizing: border-box;
@@ -68,6 +69,25 @@
   font-size: 18px;
 }
 
+
+.RegisterForm > textarea {
+  width: 500px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 23px 20px;
+  font-size: 18px;
+}
+
+.RegisterForm > textarea::placeholder{
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #b9b9b9;
+}
 .RegisterForm > input::placeholder {
   font-family: "SF Pro Display";
   font-style: normal;
