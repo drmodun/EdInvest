@@ -3,16 +3,83 @@ import PlaceholderImg from "../../assets/images/placeholder.jpg";
 import Card from "../../components/Card";
 import Share from "../../assets/icons/share.svg";
 import Heart from "../../assets/icons/heart.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getItem } from "../../axios/ItemCalls/ItemsApiCalls.js";
+import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
+import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
+import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
+import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
+import EventDescription from "../../components/ProjectPageComponents/EventDescription";
+import EventDonationInfo from "../../components/ProjectPageComponents/EventDonationInfo";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
+  const [project, setProject] = useState({});
   const handleClickInformations = () => {
     setInformationsChosen(true);
   };
   const handleClickDonations = () => {
     setInformationsChosen(false);
   };
+
+  const { projectId } = useParams();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await getItem(projectId);
+
+        const id = data.id;
+        const type = data.type;
+
+        switch (type) {
+          case 0:
+            (async (id) => {
+              try {
+                const data = await getCourse(id);
+                setProject(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+          case 1:
+            (async (id) => {
+              try {
+                const data = await getApplication(id);
+                setProject(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+          case 3:
+            (async (id) => {
+              try {
+                const data = await getOnlineCourse(id);
+                setProject(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+          case 4:
+            (async (id) => {
+              try {
+                const data = await getEvent(id);
+                setProject(data);
+              } catch (err) {
+                console.log(err.data);
+              }
+            })(id);
+            break;
+        }
+      } catch (err) {
+        console.log(err.data);
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -44,21 +111,19 @@ const ProjectPage = () => {
             <div>
               {informationsChosen ? (
                 <div className={classes.DescriptionText}>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Doloribus, mollitia. Facilis, odit. Mollitia magnam itaque
-                  libero aut expedita natus, perspiciatis molestias, beatae iure
-                  quam modi reiciendis at cumque velit nulla. Lorem ipsum, dolor
+                  {project.type === 0 && <h1>0</h1>}
+                  {project.type === 1 && <h1>1</h1>}
+                  {project.type === 3 && <h1>3</h1>}
+                  {project.type === 4 && <EventDescription project={project} />}
                 </div>
               ) : (
                 <div className={classes.DescriptionText}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Praesentium dolor sed maiores tempore eligendi architecto
-                  debitis, quaerat corporis ipsam. Dolorem ea delectus assumenda
-                  repellat, in eligendi temporibus asperiores! At, fugiat? Lorem
-                  ipsum, dolor sit amet consectetur adipisicing elit.
-                  Praesentium dolor sed maiores tempore eligendi architecto
-                  debitis, quaerat corporis ipsam. Dolorem ea delectus assumenda
-                  repellat, in eligendi temporibus asperiores! At, fugiat? Lorem
+                  {project.type === 0 && <h1>0</h1>}
+                  {project.type === 1 && <h1>1</h1>}
+                  {project.type === 3 && <h1>3</h1>}
+                  {project.type === 4 && (
+                    <EventDonationInfo project={project} />
+                  )}
                 </div>
               )}
             </div>
