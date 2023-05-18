@@ -1,3 +1,33 @@
+.Title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-size: 35px;
+  line-height: 42px;
+  padding-top: var(--header-height);
+  margin-left: 15vw;
+}
+.Bars{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 30px;
+}
+.BlueBar{
+  width: 30%;
+  height: 5px;
+  background-color: #2F80ED;
+  border-radius: 10px;
+}
+.GreyBar{
+  width: 70%;
+  height: 5px;
+  background-color: #D6D6D6;
+  border-radius: 10px;
+}
+
 .RegisterPage {
   display: flex;
   flex-direction: column;
@@ -6,9 +36,8 @@
 .RegisterForm {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 50vw;
+  margin-left: 15vw;
   border-radius: 10px;
 }
 .RegisterForm > label {
@@ -16,6 +45,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
+  margin-bottom: 12px;
 }
 .RegisterForm > input {
   width: 355px;
@@ -73,4 +103,25 @@
   font-size: 15px;
   margin-top: 10px;
   min-height: 20px;
+}
+.socialLink {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.socialLink > img {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+.socialLink > input {
+  width: 355px;
+  height: 65px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 23px 20px;
+  font-size: 18px;
+
 }

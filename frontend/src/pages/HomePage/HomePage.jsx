@@ -11,6 +11,7 @@ import ArrowLeft from "../../assets/arrow-left.svg";
 import classes from "./index.module.css";
 
 import Card from "../../components/Card";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   document
@@ -62,10 +63,12 @@ const HomePage = () => {
           </h3>
 
           <div className={classes.HeaderHeroButtonsWrapper}>
+            <Link to={"projects"}>
             <button className={classes.HeaderHeroWhiteButton}>
               <span className={classes.WhiteButtonText}>Explore projects</span>
               <img src={ChevronRightBlack} />
             </button>
+            </Link>
             <button className={classes.TransparentButton}>
               <span className={classes.TransparentButtonText}>Our mission</span>
               <img src={ChevronRightWhite} />

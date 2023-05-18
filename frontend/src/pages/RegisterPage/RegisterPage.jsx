@@ -2,6 +2,10 @@ import { useState } from "react";
 import classes from "./RegisterPage.module.css";
 import { createOrganisation } from "../../axios/UserCalls/OrganisationApiCalls";
 import { createInvestor } from "../../axios/UserCalls/InvestorApiCalls";
+import Facebook from "../../assets/facebook.svg";
+import Twitter from "../../assets/twitter.svg";
+import Google from "../../assets/google.svg";
+import AppStore from "../../assets/IOS.svg";
 import { login } from "../../axios/UserCalls/UserApiCalls";
 
 export const RegisterPage = () => {
@@ -15,7 +19,11 @@ export const RegisterPage = () => {
   const [type, setType] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState(0);
   const [numberOfMembers, setNumberOfMembers] = useState(0);
-  const [SocialLogins, setSocialLogins] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [google, setGoogle] = useState("");
+  const [appStore, setAppStore] = useState("");
+
   const [location, setLocation] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -31,7 +39,6 @@ export const RegisterPage = () => {
       !passwordConfirmation ||
       !country ||
       !description ||
-      !SocialLogins ||
       !location ||
       !walletAddress
     ) {
@@ -84,13 +91,19 @@ export const RegisterPage = () => {
       setError("Please upload a valid image.");
       return;
     }
+    const socialLogins = {
+      facebook: facebook ? facebook : null,
+      twitter: twitter ? twitter : null,
+      google: twitter ? google : null,
+      appStore: appStore ? appStore : null,
+    };
     const user = {
       name,
       email,
       password,
       country,
       description,
-      socialLogins: SocialLogins,
+      socialLogins,
       location,
       walletAddress,
       profilePicture,
@@ -116,6 +129,11 @@ export const RegisterPage = () => {
 
   return (
     <div className={classes.RegisterPage}>
+      <span className={classes.Title}>Register your account</span>
+      <div className={classes.Bars}>
+        <div className={classes.BlueBar}></div>
+        <div className={classes.GreyBar}></div>
+      </div>
       <form className={classes.RegisterForm} onSubmit={handleSubmit}>
         <label for="type">Type</label>
         <select
@@ -191,12 +209,42 @@ export const RegisterPage = () => {
           </>
         )}
         <label for="SocialLogins">Social Logins</label>
-        <input
-          type="text"
-          placeholder="Social Logins"
-          value={SocialLogins}
-          onChange={(e) => setSocialLogins(e.target.value)}
-        />
+        <div className={classes.socialLink}>
+          <img src={Facebook} alt="facebook" />
+          <input
+            type="text"
+            placeholder="Facebook"
+            value={facebook}
+            onChange={(e) => setFacebook(e.target.value)}
+          />
+        </div>
+        <div className={classes.socialLink}>
+          <img src={Twitter} alt="twitter" />
+          <input
+            type="text"
+            placeholder="Twitter"
+            value={twitter}
+            onChange={(e) => setTwitter(e.target.value)}
+          />
+        </div>
+        <div className={classes.socialLink}>
+          <img src={Google} alt="google" />
+          <input
+            type="text"
+            placeholder="Website"
+            value={google}
+            onChange={(e) => setGoogle(e.target.value)}
+          />
+        </div>
+        <div className={classes.socialLink}>
+          <img src={AppStore} alt="appStore" />
+          <input
+            type="text"
+            placeholder="Apple Store"
+            value={appStore}
+            onChange={(e) => setAppStore(e.target.value)}
+          />
+        </div>
         <label for="location">Location</label>
         <input
           type="text"
