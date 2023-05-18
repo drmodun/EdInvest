@@ -42,7 +42,7 @@ namespace Domain.Mappers
                 
                 Type = entity.Type,
                 Prices = entity.Prices,
-                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id)
+                CurrentAmount = entity.Investments.Sum(x => x.Amount)
 
             };
             return newDTO;

@@ -12,6 +12,7 @@ namespace Shared.Contracts.Responses.Items.Item
         public List<string> Images { get; set; } = new List<string>();
 
         public int NumberOfDonations { get; set; }
+
         public ItemType Type { get; set; }
 
         public DateTime UpdatedAt { get; set; }

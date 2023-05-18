@@ -102,7 +102,7 @@ namespace Domain.Mappers
                 Type = entity.Type,
                 Prices = entity.Prices,
                 OrganisationId = entity.OrganisationId,
-                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
+                CurrentAmount = entity.Investments.Sum(x => x.Amount),
                 NumberOfDonations = entity.Investments.Count,
 
             };

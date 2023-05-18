@@ -40,7 +40,7 @@ namespace Domain.Mappers
                 UpdatedAt = entity.UpdatedAt,
                 Type = entity.Type,
                 Prices = entity.Prices,
-                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
+                CurrentAmount = entity.Investments.Sum(x => x.Amount),
                 NumberOfDonations = entity.Investments.Count,
 
             };

@@ -32,7 +32,7 @@ namespace Domain.Mappers
                 Tiers = entity.Tiers,
                 Type = entity.Type,
                 OrganisationName = entity.Organisation.Name,
-                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
+                CurrentAmount = entity.Investments.Sum(x=>x.Amount),
                 UpdatedAt = entity.UpdatedAt,
                 MainWebsite = entity.MainWebsite,
             };
