@@ -11,7 +11,8 @@ import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
 import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
 import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
 import EventDescription from "../../components/ProjectPageComponents/EventDescription";
-import EventDonationInfo from "../../components/ProjectPageComponents/EventDonationInfo";
+import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
+import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
@@ -112,18 +113,15 @@ const ProjectPage = () => {
               {informationsChosen ? (
                 <div className={classes.DescriptionText}>
                   {project.type === 0 && <h1>0</h1>}
-                  {project.type === 1 && <h1>1</h1>}
+                  {project.type === 1 && (
+                    <ApplicationDescription project={project} />
+                  )}
                   {project.type === 3 && <h1>3</h1>}
                   {project.type === 4 && <EventDescription project={project} />}
                 </div>
               ) : (
                 <div className={classes.DescriptionText}>
-                  {project.type === 0 && <h1>0</h1>}
-                  {project.type === 1 && <h1>1</h1>}
-                  {project.type === 3 && <h1>3</h1>}
-                  {project.type === 4 && (
-                    <EventDonationInfo project={project} />
-                  )}
+                  <DonationInfo project={project} />
                 </div>
               )}
             </div>
