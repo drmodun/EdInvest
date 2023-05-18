@@ -1,0 +1,76 @@
+.RegisterPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.RegisterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  border-radius: 10px;
+}
+.RegisterForm > label {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+.RegisterForm > input {
+  width: 355px;
+  height: 65px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 23px 20px;
+  font-size: 18px;
+}
+.RegisterForm > select {
+  width: 355px;
+  height: 65px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 23px 20px;
+  font-size: 18px;
+}
+
+.RegisterForm > input::placeholder {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #b9b9b9;
+}
+.RegisterForm > button {
+  width: 239px;
+  height: 65px;
+  background: #2f80ed;
+  border-radius: 46px;
+  border: none;
+  font-family: "Sf Pro Display";
+  color : white;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 16px 54px;
+  transform: background-color 0.3s ease-in-out;
+}
+.RegisterForm > button:hover {
+  cursor: pointer;
+  background-color: #2f80bb;
+}
+.RegisterForm > button:active {
+  background-color: #2f8099;
+}
+.RegisterForm > .Error {
+  color: red;
+  font-family: "Sf Pro Display";
+  font-size: 15px;
+  margin-top: 10px;
+  min-height: 20px;
+}

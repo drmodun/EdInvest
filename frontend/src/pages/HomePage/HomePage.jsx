@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import { getOrganisations } from "../../axios/UserCalls/OrganisationApiCalls";
+import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
+
 import HeaderBackground from "../../assets/header-background.png";
 import ChevronRightBlack from "../../assets/chevron-right-black.svg";
 import ChevronRightWhite from "../../assets/chevron-right-white.svg";
@@ -5,8 +9,8 @@ import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
 import SmilingGirlImg from "../../assets/smiling-girl-img.png";
 import ArrowLeft from "../../assets/arrow-left.svg";
 import classes from "./index.module.css";
+
 import Card from "../../components/Card";
-import Button from "../../components/Button";
 
 const HomePage = () => {
   document
@@ -22,6 +26,20 @@ const HomePage = () => {
     .querySelector(":root")
     .style.setProperty("--header-button-color", "#343434");
 
+  const [items, setItems] = useState([]);
+  const fetchItems = () => {
+    getItems()
+      .then((res) => res.items)
+      .then((data) => setItems(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchItems();
+    const copiedItems = [...items];
+    copiedItems.sort((a, b) => a.balance - b.balance);
+    setItems(copiedItems.slice(0, 3));
+  }, []);
 
   return (
     <div className="headerMargin">
@@ -38,7 +56,7 @@ const HomePage = () => {
           <h3 className={classes.HeaderHeroSubtitle}>
             With blockchain technology, we transform project funding, esuring
             efficiency, trust, and accountability. Join us in reshaping
-            education for a brighter future. Together, let’s unlock the
+            education for a brighter future. Together, let's unlock the
             potential of education and make a lasting impact on learners
             worlwide.
           </h3>
@@ -76,7 +94,7 @@ const HomePage = () => {
           <div className={classes.PromoSectionLeft}>
             <h2 className={classes.PromoSectionLeftTitle}>Worth investing</h2>
             <h4 className={classes.PromoSectionLeftDescription}>
-              There’s a reason high net worth individuals tend to donate
+              There's a reason high net worth individuals tend to donate
               property instead of cash.
             </h4>
           </div>
@@ -92,10 +110,24 @@ const HomePage = () => {
             <div className={classes.PromoSectionRightCardsContainer}>
               {/* <div className={classes.Card}></div>
               <div className={classes.Card}></div>
-              <div className={classes.Card}></div> */}
+              <div className={classes.Card}></div> }
               <Card />
               <Card />
               <Card />
+              */}
+              {items.slice(0, 5).map((item, i) => {
+                return (
+                  <Card
+                    key={i}
+                    name={item.name}
+                    type={item.type}
+                    isVerified={false}
+                    description={item.description}
+                    raised={item.currentAmount}
+                    id={item.id}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
@@ -174,7 +206,7 @@ const HomePage = () => {
               Save on your taxes by investing with crypto
             </h2>
             <p className={classes.MoreInfoText}>
-              There’s a reason high net worth individuals tend to donate
+              There's a reason high net worth individuals tend to donate
               property instead of cash. Want to maximize your tax savings via
               charitable giving? This is how.
             </p>

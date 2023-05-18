@@ -1,0 +1,227 @@
+.View {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e3e3e3;
+}
+.ViewImage > img {
+  width: 239px;
+  height: 239px;
+  margin-top: -130px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  overflow: clip;
+}
+.ViewDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ViewDescTitle {
+  font-family: "SF Pro Display";
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  font-weight: bolder;
+}
+.ViewName {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+}
+.ViewEmail {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  margin-top: 12px;
+}
+.ViewLastUpdated {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 12px;
+}
+.ViewButtons > button {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  width: 145px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #233dff;
+  background-color: #e3e3e3;
+  border: 1px solid #233dff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+
+  margin-top: 12px;
+}
+.ViewButtons > button:hover {
+  cursor: pointer;
+  background-color: #233abf;
+  color: white;
+}
+.ViewButtons > button:active {
+  background-color: #23399f;
+}
+.SeeDonations {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: white;
+  background-color: #233dff;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+  padding: 10px 20px;
+  margin-top: 12px;
+}
+.SeeDonations:hover {
+  cursor: pointer;
+  background-color: #e3e3e3;
+  color: white;
+}
+.SeeDonations:active {
+  background-color: #d3d3d3;
+}
+.ViewDesc {
+  margin-top: 20px;
+  font-family: "SF Pro Display";
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.Socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  font-family: "SF Pro Display";
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  font-weight: bolder;
+}
+.Socials > span {
+  margin-bottom: 20px;
+  font-family: "SF Pro Display";
+}
+.Socials img:last-child {
+  margin-right: 0px;
+  cursor: pointer;
+}
+.Socials img {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+.Socials img:hover {
+  cursor: pointer;
+}
+.Socials img:active {
+  opacity: 0.5;
+}
+.WalletAddress {
+    font-family: "SF Pro Display";
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+.WalletAddress > span {
+    margin-bottom: 20px;
+    font-family: "SF Pro Display";
+}
+.Type {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 12px;
+}
+.FinancialInfo {
+    margin-top: 20px;
+
+  width: 507px;
+  height: 116px;
+  background: #ffffff;
+  padding: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+.FinancialInfoDetails {
+  display: flex;
+  flex-direction: column;
+}
+.FinancialInfoDetails > span:first-child {
+  font-family: "Red Hat Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+.FinancialInfoDetails > span:last-child {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: flex-end;
+  color: black;
+}
+.FinancialInfoDonations {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+.FinancialInfoDonations > span:first-child {
+  font-family: "Red Hat Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+.FinancialInfoDonations > span:last-child {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  display: flex;
+  align-items: flex-end;
+  color: black;
+}

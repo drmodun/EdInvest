@@ -17,40 +17,38 @@ const defaultUserInfo = {
   isLogged: false,
   NumberOfMembers: 0,
   NumberOfEmployees: 0,
-  logOut : () => {},
-  fetchUserInfo : () => {},
-
-
+  logOut: () => {},
+  fetchUserInfo: () => {},
 };
 
 const UserInfoContext = createContext(defaultUserInfo);
 
 export const UserInfoProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
-
-  useEffect(() => {fetchUserInfo();}, []);
+  useEffect(() => {fetchUserInfo()}, []);
   
   async function fetchUserInfo() {
     try {
+      if (!localStorage.getItem("token")) return;
       const response = await GetMe();
       if (response) {
-          setUserInfo({
-              ...response,
-              isLogged: true,
-                logOut: logOut,
-                fetchUserInfo: fetchUserInfo,
-            });
-        }
+        setUserInfo({
+          ...response,
+          isLogged: true,
+          logOut: logOut,
+          fetchUserInfo: fetchUserInfo,
+        });
+      }
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   }
-  const logOut = () =>{
+  const logOut = () => {
     localStorage.removeItem("token");
     setUserInfo({
-        ...defaultUserInfo,
-        });
-    }
+      ...defaultUserInfo,
+    });
+  };
 
   return (
     <UserInfoContext.Provider value={userInfo}>

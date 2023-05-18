@@ -60,8 +60,9 @@
 }
 
 .sectionExamplesCards {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 27px;
 }
 
 /* EXPLORE ALL SECTION */
@@ -143,9 +144,8 @@
 }
 
 .sectionExploreCards > div {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  row-gap: 71px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 70px;
 }
