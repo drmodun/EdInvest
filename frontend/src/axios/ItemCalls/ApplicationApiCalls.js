@@ -1,17 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://localhost:44336/api/",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Add a request interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token && ['post', 'put', 'delete'].includes(config.method)) {
+    const token = localStorage.getItem("token");
+    if (token && ["post", "put", "delete"].includes(config.method)) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -36,37 +36,46 @@ api.interceptors.response.use(
   }
 );
 export async function getApplications(params = {}) {
-    try {
-      const response = await api.get('applications', { params });
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+  try {
+    const response = await api.get("applications", { params });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  
-  export async function createApplication(application) {
-    try {
-      const response = await api.post('applications', application);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+}
+
+export async function createApplication(application) {
+  try {
+    const response = await api.post("applications", application);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  
-  export async function updateApplication(id, updates) {
-    try {
-      const response = await api.patch(`applications/${id}`, updates);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+}
+
+export async function updateApplication(id, updates) {
+  try {
+    const response = await api.patch(`applications/${id}`, updates);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  
-  export async function deleteApplication(id) {
-    try {
-      const response = await api.delete(`applications/${id}`);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+}
+
+export async function deleteApplication(id) {
+  try {
+    const response = await api.delete(`applications/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
+}
+
+export async function getApplication(id) {
+  try {
+    const response = await api.get(`applications/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
