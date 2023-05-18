@@ -49,8 +49,8 @@ export const InvestorView = ({investor, onEdit, onDelete, seeDonations}) => {
       <div className={classes.ViewImage}>
         <img
           src={
-            base64regex.test(investor.image)
-              ? "data:image/png;base64," + investor.image
+            base64regex.test(investor.profilePicture) && investor.profilePicture
+              ? "data:image/png;base64," + investor.profilePicture
               : DefaultProfile
           }
           alt={investor.name}

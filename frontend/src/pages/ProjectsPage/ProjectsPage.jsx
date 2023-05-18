@@ -126,6 +126,11 @@ const ProjectsPage = () => {
     }
   };
 
+  const handleCategoryChange = (value) => {
+    setCategoryId(value);
+    setSubcategoryId(null);
+  };
+
   const fetchCategoriesAndSubcategories = async () => {
     const fetchCategories = await getCategories();
     const fetchSubcategories = await getSubcategories();
@@ -237,7 +242,7 @@ const ProjectsPage = () => {
                         ? classes.selected
                         : classes.sectionExploreFiltersButton
                     }
-                    onClick={() => setCategoryId(category.id)}
+                    onClick={() => handleCategoryChange(category.id)}
                   >
                     {category.name}
                   </button>

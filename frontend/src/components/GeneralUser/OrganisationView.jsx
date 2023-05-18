@@ -15,7 +15,7 @@ const dict = {
   appstore: AppStore,
 };
 export const OrganisationView = ({organisation, onEdit, onDelete, seeDonations}) => {
-  console.log(organisation);
+  console.log(organisation.profilePicture);
   const userInfo = JSON.parse(localStorage.getItem("userInfo"))
   let base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
@@ -50,8 +50,8 @@ export const OrganisationView = ({organisation, onEdit, onDelete, seeDonations})
       <div className={classes.ViewImage}>
         <img
           src={
-            base64regex.test(organisation.image)
-              ? "data:image/png;base64," + organisation.image
+            base64regex.test(organisation.profilePicture) && organisation.profilePicture
+              ? "data:image/png;base64," + organisation.profilePicture
               : DefaultProfile
           }
           alt={organisation.name}
