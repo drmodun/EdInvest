@@ -39,7 +39,8 @@ namespace Domain.Mappers
                 ExpectedAudience = entity.ExpectedAudience,
                 Type = ItemType.OnlineCourse,
                 OrganisationName = entity.Organisation.Name,
-                UpdatedAt = entity.UpdatedAt
+                UpdatedAt = entity.UpdatedAt,
+                CurrentAmount = entity.Investments.Sum(x => x.Amount)   
             };
         }
         public OnlineCourse ToEntity(CreateOnlineCourseRequest request)

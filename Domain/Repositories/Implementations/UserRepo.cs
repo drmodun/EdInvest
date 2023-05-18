@@ -23,7 +23,10 @@ namespace Domain.Repositories.Implementations
 
         public async Task<TEntity?> GetById(TGet request)
         {
-            var user = await _context.Users.OfType<TEntity>().FirstOrDefaultAsync(x => x.Id == request.Id);
+            var user = await _context.Users.
+                OfType<TEntity>().
+                FirstOrDefaultAsync(x => x.Id == request.Id);
+
             return user;
 
         }
