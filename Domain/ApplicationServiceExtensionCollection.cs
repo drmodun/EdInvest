@@ -29,6 +29,7 @@ using Shared.Contracts.Responses.Items.Course;
 using Shared.Contracts.Responses.Items.Event;
 using Shared.Contracts.Responses.Items.Item;
 using Shared.Contracts.Responses.Items.OnlineCourse;
+using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.Subcategory;
 using Shared.Contracts.Responses.Users.Investor;
 using Shared.Contracts.Responses.Users.Organisation;
@@ -99,8 +100,8 @@ namespace Domain
                >>();
             services.AddScoped<BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                 CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
-                GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
-                GetAllInvestmentsResponse, InvestmentsValidation>>();
+                GetAllInvestmentsRequest, N_NKey, RankedInvestmentResponse,
+                AllRankedInvestmentsResponse, InvestmentsValidation>>();
             services.AddScoped<CountryService>();
 
             services.AddScoped<ApplicationValidation>();
