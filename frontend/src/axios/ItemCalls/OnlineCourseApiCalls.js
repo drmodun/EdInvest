@@ -72,7 +72,7 @@ export async function deleteOnlineCourse(id) {
 
 export async function getOnlineCourse(id) {
   try {
-    const response = await api.get(`online-courses/${id}`);
+    const response = await api.get(`onlinecourses/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error.message);
