@@ -1,0 +1,7 @@
+.DonationInfoWrapper {
+  display: flex;
+}
+
+.DonationInfoWrapper > div {
+  margin-right: 30px;
+}
