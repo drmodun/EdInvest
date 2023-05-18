@@ -10,13 +10,16 @@ import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
 import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
 import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
 import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
+import { getOrganisationById as getOrganisation } from "../../axios/UserCalls/OrganisationApiCalls.js";
 import EventDescription from "../../components/ProjectPageComponents/EventDescription";
 import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
 import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
+import OnlineCourseDescription from "../../components/ProjectPageComponents/OnlineCourseDescription";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
   const [project, setProject] = useState({});
+  const [organisation, setOrganisation] = useState({});
   const handleClickInformations = () => {
     setInformationsChosen(true);
   };
@@ -41,7 +44,7 @@ const ProjectPage = () => {
                 const data = await getCourse(id);
                 setProject(data);
               } catch (err) {
-                console.log(err.data);
+                console.log(err);
               }
             })(id);
             break;
@@ -51,7 +54,7 @@ const ProjectPage = () => {
                 const data = await getApplication(id);
                 setProject(data);
               } catch (err) {
-                console.log(err.data);
+                console.log(err);
               }
             })(id);
             break;
@@ -61,7 +64,7 @@ const ProjectPage = () => {
                 const data = await getOnlineCourse(id);
                 setProject(data);
               } catch (err) {
-                console.log(err.data);
+                console.log(err);
               }
             })(id);
             break;
@@ -71,13 +74,24 @@ const ProjectPage = () => {
                 const data = await getEvent(id);
                 setProject(data);
               } catch (err) {
-                console.log(err.data);
+                console.log(err);
               }
             })(id);
             break;
         }
       } catch (err) {
-        console.log(err.data);
+        console.log(err);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await getOrganisation(project.organisationId);
+        setOrganisation(data);
+      } catch (err) {
+        console.log(err);
       }
     })();
   }, []);
@@ -92,7 +106,7 @@ const ProjectPage = () => {
           <div className={classes.CenterWrapper}>
             <div className={classes.BasicInfoContainer}>
               <div className={classes.BasicInfoBox}>
-                <h4 className={classes.BasicInfoTitle}>Name</h4>
+                <h4 className={classes.BasicInfoTitle}>Host</h4>
                 <h4 className={classes.BasicInfoText}>DUMP</h4>
               </div>
               <div className={classes.BasicInfoBox}>
@@ -116,7 +130,9 @@ const ProjectPage = () => {
                   {project.type === 1 && (
                     <ApplicationDescription project={project} />
                   )}
-                  {project.type === 3 && <h1>3</h1>}
+                  {project.type === 3 && (
+                    <OnlineCourseDescription project={project} />
+                  )}
                   {project.type === 4 && <EventDescription project={project} />}
                 </div>
               ) : (
