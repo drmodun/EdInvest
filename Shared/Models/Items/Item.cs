@@ -19,6 +19,8 @@ namespace Shared.Models.Items
         public Guid SubcategoryId { get; set; }
         public Subcategory? Subcategory { get; set; }
         public Guid OrganisationId { get; set; }
+        public Organisation? Organisation { get; set; }
+
 
         public string MainWebsite { get; set; }
         public decimal Goal { get; set; }
@@ -28,7 +30,6 @@ namespace Shared.Models.Items
         public Country? Country { get; set; }
         public List<decimal> Prices { get; set; }
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();
-        public Organisation? Organisation { get; set; }
         public ICollection<Investments> Investments = new List<Investments>();
     }
 }

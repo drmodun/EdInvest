@@ -1,9 +1,11 @@
-﻿namespace Shared.Contracts.Responses.Investments
+﻿using Shared.Contracts.Responses.Ranked;
+
+namespace Shared.Contracts.Responses.Investments
 {
     public class CreateInvestmentResponse
     {
         public bool Success { get; set; }
 
-        public GetInvestmentResponse Investment { get; set; }
+        public RankedInvestmentResponse Investment { get; set; }
     }
 }

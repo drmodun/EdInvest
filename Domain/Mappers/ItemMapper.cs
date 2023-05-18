@@ -31,6 +31,7 @@ namespace Domain.Mappers
                 SubcategoryId = entity.SubcategoryId,
                 Tiers = entity.Tiers,
                 Type = entity.Type,
+                OrganisationName = entity.Organisation.Name,
                 CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
                 UpdatedAt = entity.UpdatedAt,
                 MainWebsite = entity.MainWebsite,

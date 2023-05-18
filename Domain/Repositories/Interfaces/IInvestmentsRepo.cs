@@ -1,4 +1,5 @@
 ﻿using Shared.Contracts.Requests.Investments;
+using Shared.Contracts.Responses.Ranked;
 using Shared.Models;
 
 namespace Domain.Repositories.Interfaces

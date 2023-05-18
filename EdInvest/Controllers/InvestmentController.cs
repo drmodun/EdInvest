@@ -22,15 +22,15 @@ namespace API.Controllers
     {
         private readonly BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                            CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
-                                          GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
-                                                         GetAllInvestmentsResponse, InvestmentsValidation
+                                          GetAllInvestmentsRequest, N_NKey, RankedInvestmentResponse,
+                                                         AllRankedInvestmentsResponse, InvestmentsValidation
                            > _investmentService;
 
         private readonly RankedService _rankedService;
         public InvestmentController(BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                            CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
-                                          GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
-                                                         GetAllInvestmentsResponse, InvestmentsValidation
+                                          GetAllInvestmentsRequest, N_NKey, RankedInvestmentResponse,
+                                                         AllRankedInvestmentsResponse, InvestmentsValidation
                            > investmentService, RankedService rankedService)
         {
             _investmentService = investmentService;
@@ -93,10 +93,10 @@ namespace API.Controllers
             return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
         [HttpGet(AppRoutes.Investments.GetAll)]
-        public async Task<ActionResult<GetAllInvestmentsResponse>> GetAll([FromQuery] GetAllInvestmentsRequest options)
+        public async Task<ActionResult<AllRankedInvestmentsResponse>> GetAll([FromQuery] GetAllInvestmentsRequest options)
         {
             var items = await _investmentService.GetAll(options);
-            return new GetAllInvestmentsResponse
+            return new AllRankedInvestmentsResponse
             {
                 Investments = items
             };

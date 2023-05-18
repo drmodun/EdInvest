@@ -6,6 +6,8 @@ namespace Shared.Contracts.Responses.Items.Item
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+
+        public string OrganisationName { get; set; }
         public string Description { get; set; }
         public List<string> Images { get; set; } = new List<string>();
 

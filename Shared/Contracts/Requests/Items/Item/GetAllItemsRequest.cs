@@ -1,4 +1,6 @@
-﻿namespace Shared.Contracts.Requests.Items.Item
+﻿using Shared.Enums;
+
+namespace Shared.Contracts.Requests.Items.Item
 {
     public class GetAllItemsRequest
     {
@@ -7,6 +9,7 @@
         public Guid? SubcategoryId { get; set; }
 
         public Guid? CategoryId { get; set; }
+
         public Guid? OrganisationId;
     }
 }

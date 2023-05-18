@@ -86,6 +86,7 @@ namespace Domain.Mappers
                 Location = entity.Location,
                 TicketPrice = entity.TicketPrice,
                 Capacity = entity.Capacity,
+                OrganisationName = entity.Organisation.Name,
                 CategoryId = entity.CategoryId,
                 Activities = entity.Activities,
                 MainWebsite = entity.MainWebsite,
