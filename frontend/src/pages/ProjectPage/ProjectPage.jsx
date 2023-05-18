@@ -5,7 +5,7 @@ import Share from "../../assets/icons/share.svg";
 import Heart from "../../assets/icons/heart.svg";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GetItem } from "../../ItemCalls/ItemsApiCalls.js";
+import { getItem } from "../../axios/ItemCalls/ItemsApiCalls.js";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
@@ -19,8 +19,23 @@ const ProjectPage = () => {
   const { projectId } = useParams();
 
   useEffect(() => {
-    const generalProjectObject = getItem(projectId);
-    console.log(generalProjectObject);
+    (async () => {
+      try {
+        const data = await getItem(projectId);
+        console.log(data);
+
+        const id = data.id;
+        const type = data.type;
+
+        //
+        switch (type) {
+          case 0:
+          //courseGet
+        }
+      } catch (err) {
+        console.log(err.data);
+      }
+    })();
   }, []);
 
   return (
