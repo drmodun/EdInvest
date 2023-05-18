@@ -10,7 +10,7 @@ import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
 import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
 import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
 import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
-import { getOrganisationById as getOrganisation } from "../../axios/UserCalls/OrganisationApiCalls.js";
+import { getOrganisationById } from "../../axios/UserCalls/OrganisationApiCalls.js";
 import EventDescription from "../../components/ProjectPageComponents/EventDescription";
 import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
 import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
@@ -79,17 +79,10 @@ const ProjectPage = () => {
             })(id);
             break;
         }
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getOrganisation(project.organisationId);
-        setOrganisation(data);
+        const organisationData = await getOrganisationById(data.organisationId);
+        console.log(organisationData);
+        setOrganisation(organisationData);
       } catch (err) {
         console.log(err);
       }
@@ -107,7 +100,7 @@ const ProjectPage = () => {
             <div className={classes.BasicInfoContainer}>
               <div className={classes.BasicInfoBox}>
                 <h4 className={classes.BasicInfoTitle}>Host</h4>
-                <h4 className={classes.BasicInfoText}>DUMP</h4>
+                <h4 className={classes.BasicInfoText}>{organisation.name}</h4>
               </div>
               <div className={classes.BasicInfoBox}>
                 <h4 className={classes.BasicInfoTitle}>Type</h4>
@@ -115,7 +108,9 @@ const ProjectPage = () => {
               </div>
               <div className={classes.BasicInfoBox}>
                 <h4 className={classes.BasicInfoTitle}>Location</h4>
-                <h4 className={classes.BasicInfoText}>Croatia</h4>
+                <h4 className={classes.BasicInfoText}>
+                  {organisation.locationName}
+                </h4>
               </div>
               <div className={classes.BasicInfoBox}>
                 <h4 className={classes.BasicInfoTitle}>Founded</h4>
