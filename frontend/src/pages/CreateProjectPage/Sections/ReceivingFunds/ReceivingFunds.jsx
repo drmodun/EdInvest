@@ -1,8 +1,10 @@
+import classes from "../../index.module.css";
+
 const ReceivingFunds = () => {
   return (
-    <div>
+    <>
       <h1>Receiving Funds</h1>
-    </div>
+    </>
   );
 };
 

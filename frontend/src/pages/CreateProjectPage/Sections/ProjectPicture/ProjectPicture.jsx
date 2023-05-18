@@ -1,8 +1,10 @@
+import classes from "../../index.module.css";
+
 const ProjectPicture = () => {
   return (
-    <div>
+    <>
       <h1>Project Picture</h1>
-    </div>
+    </>
   );
 };
 

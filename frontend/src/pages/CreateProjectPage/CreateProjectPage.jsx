@@ -10,11 +10,6 @@ import ReceivingFunds from "./Sections/ReceivingFunds";
 const CreateProjectPage = () => {
   const [section, setSection] = useState(1);
 
-  const navigationButtonStyle = clsx({
-    [classes.sectionNavButton]: true,
-    [classes.active]: section === 1,
-  });
-
   const handleSectionChange = (section) => {
     setSection(section);
   };

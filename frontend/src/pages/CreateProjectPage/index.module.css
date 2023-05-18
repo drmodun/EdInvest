@@ -8,7 +8,7 @@ html {
   margin-top: 175px;
   margin-bottom: 92px;
   box-sizing: border-box;
-  padding: 55px 63px;
+  padding: 55px 406px 55px 63px;
   border-radius: 20px;
 }
 
@@ -22,6 +22,7 @@ html {
 .sectionNav {
   display: flex;
   gap: 10px;
+  margin-bottom: 72px;
 }
 
 .sectionNavButton {
@@ -40,4 +41,69 @@ html {
   color: white;
   background-color: var(--color-azzuro);
   border: 1px solid var(--color-azzuro);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.sectionDescription {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #6d6d6d;
+  margin: 5px 0 0 0;
+}
+
+.sectionInputText {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-bottom: 23px;
+}
+
+.sectionInputLarge {
+  width: 100%;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 0 21px;
+}
+
+.sectionLargeInputHeader {
+  width: 100%;
+  height: 57px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionLargeInputHeader > img:nth-child(2),
+.sectionLargeInputHeader > img:nth-child(7),
+.sectionLargeInputHeader > img:nth-child(11) {
+  margin-right: 15px;
 }
