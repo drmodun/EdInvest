@@ -918,7 +918,7 @@ namespace Data.Entities
                      Name = "LearnApp",
                      Goal = 10000,
                  MainWebsite = "https://randomwebsite.com",
-                 
+
                      Features = new List<string>()
                      {
                          "Good learinng experience",
@@ -958,7 +958,7 @@ namespace Data.Entities
                          "Amazing customer support"
                      },
                      AppPurpose = "To teach people how to teach",
-                     CategoryId = categories[0].Id,
+                     CategoryId = categories[2].Id,
                      CountryId = countries[0].Id,
 
                      Description = "The greatest teaching app to exist",
@@ -966,7 +966,7 @@ namespace Data.Entities
                      EstimatedRelease = DateTime.UtcNow.AddDays(365),
                      OrganisationId = organisations[1].Id,
                      Markets = new List<string>(){ "Android", "Ios"},
-                     SubcategoryId = subcategories[0].Id,
+                     SubcategoryId = subcategories[7].Id,
                      Type = Shared.Enums.ItemType.Application,
                      Images = new List<string>() { "pfp", "stuffaboutapp"},
                      Prices = new List<decimal>() {10, 100, 1000},
@@ -1004,7 +1004,7 @@ namespace Data.Entities
                          "Lead dev"
                      },
                      Date = DateTime.UtcNow.AddDays(30),
-                     CategoryId = categories[0].Id,
+                     CategoryId = categories[3].Id,
                      CountryId = countries[0].Id,
 
                      Description = "The greatest learning event to exist",
@@ -1012,7 +1012,7 @@ namespace Data.Entities
                      Capacity = 3000,
                      OrganisationId = organisations[0].Id,
                      TicketPrice = 100,
-                     SubcategoryId = subcategories[0].Id,
+                     SubcategoryId = subcategories[10].Id,
                      Type = Shared.Enums.ItemType.Event,
                      Images = new List<string>() { "pfp", "stuffaboutapp"},
                      Prices = new List<decimal>() {10, 100, 1000},
@@ -1047,7 +1047,7 @@ namespace Data.Entities
                          "Lead designer"
                      },
                      Date = DateTime.UtcNow.AddDays(30),
-                     CategoryId = categories[0].Id,
+                     CategoryId = categories[3].Id,
                      CountryId = countries[0].Id,
 
                      Description = "The greatest design event to exist",
@@ -1055,7 +1055,7 @@ namespace Data.Entities
                      Capacity = 3000,
                      OrganisationId = organisations[0].Id,
                      TicketPrice = 100,
-                     SubcategoryId = subcategories[0].Id,
+                     SubcategoryId = subcategories[11].Id,
                      Type = Shared.Enums.ItemType.Event,
                      Images = new List<string>() { "pfp", "stuffaboutapp"},
                      Prices = new List<decimal>() {10, 100, 1000},
@@ -1089,12 +1089,12 @@ namespace Data.Entities
                      StartDate = DateTime.UtcNow.AddDays(82.5),
 
 
-                     CategoryId = categories[0].Id,
+                     CategoryId = categories[1].Id,
                      CountryId = countries[0].Id,
 
                      Description = "The greatest course to exist",
                      OrganisationId = organisations[0].Id,
-                     SubcategoryId = subcategories[0].Id,
+                     SubcategoryId = subcategories[3].Id,
                      Type = Shared.Enums.ItemType.Course,
                      Images = new List<string>() { "pfp", "stuffaboutapp"},
                      Prices = new List<decimal>() {10, 100, 1000},
@@ -1267,6 +1267,63 @@ namespace Data.Entities
                     ItemId = onlineCourses[0].Id,
                     Tier = 3
                 },
+                 new Investments
+                {
+                    Amount = 20,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[2].Id,
+                    ItemId = applications[1].Id,
+                    Tier = 1
+                },
+                new Investments
+                {
+                    Amount = 200,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[0].Id,
+                    ItemId = events[1].Id,
+                    Tier = 2
+                },
+                new Investments
+                {
+                    Amount = 20000,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[0].Id,
+                    ItemId = onlineCourses[1].Id,
+                    Tier = 3
+                },
+                new Investments
+                {
+                    Amount = 30,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[1].Id,
+                    ItemId = applications[1].Id,
+                    Tier = 1
+                },
+                new Investments
+                {
+                    Amount = 300,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[2].Id,
+                    ItemId = events[1].Id,
+                    Tier = 2
+                },
+                new Investments
+                {
+                    Amount = 30000,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[0].Id,
+                    ItemId = courses[1].Id,
+                    Tier = 3
+                },
+                new Investments
+                {
+                    Amount = 40,
+                    UpdatedAt= DateTime.UtcNow,
+                    InvestorId = investors[2].Id,
+                    ItemId = applications[0].Id,
+                    Tier = 1
+                }
+
             };
 
 

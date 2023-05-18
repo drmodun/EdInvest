@@ -28,6 +28,7 @@ namespace Domain.Mappers
                 SubcategoryId = entity.SubcategoryId,
                 NumberOfDonations = entity.Investments.Count,
                 Tiers = entity.Tiers,
+                OrganisationName = entity.Organisation.Name,
                 AppPurpose = entity.AppPurpose,
                 EstimatedNumberOfUsers = entity.EstimatedNumberOfUsers,
                 EstimatedRelease = entity.EstimatedRelease,
@@ -38,7 +39,7 @@ namespace Domain.Mappers
                 Markets = entity.Markets,
                 UpdatedAt = entity.UpdatedAt,
                 MainWebsite = entity.MainWebsite,
-
+                
                 Type = entity.Type,
                 Prices = entity.Prices,
                 CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id)

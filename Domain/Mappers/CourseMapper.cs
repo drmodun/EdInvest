@@ -20,6 +20,7 @@ namespace Domain.Mappers
             var newDTO = new GetCourseResponse
             {
                 Id = entity.Id,
+                OrganisationName = entity.Organisation.Name,
                 Name = entity.Name,
                 Description = entity.Description,
                 Images = entity.Images,

@@ -48,6 +48,7 @@ namespace Data.Entities
                 .HasMany(c => c.Users)
                 .WithOne(u => u.Country)
                 .HasForeignKey(u => u.CountryId)
+
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Subcategories)
@@ -56,9 +57,13 @@ namespace Data.Entities
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Organisation>()
                 .HasMany(u => u.Items)
-                .WithOne(u => u.Organisation)
+                .WithOne(c => c.Organisation)
                 .HasForeignKey(c => c.OrganisationId)
                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Item>()
+                .HasOne(c => c.Organisation)
+                .WithMany(co => co.Items)
+                .HasForeignKey(co => co.OrganisationId);
             modelBuilder.Entity<Investor>()
                 .HasMany(u => u.Investments)
                 .WithOne(i => i.Investor)

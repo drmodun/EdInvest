@@ -5,6 +5,7 @@ using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Models.Items;
+using Shared.Models.Users;
 
 namespace Domain.Repositories.Implementations
 {
@@ -26,6 +27,7 @@ namespace Domain.Repositories.Implementations
         {
             var item = await _context.Items
                 .OfType<TEntity>()
+                .Include(x => x.Organisation)
                 .Include(x => x.Investments)
                 .FirstOrDefaultAsync(x => x.Id == request.Id);
             return item;
@@ -34,6 +36,7 @@ namespace Domain.Repositories.Implementations
         {
             var list = await _context.Items
                 .Include(x => x.Investments)
+                .Include(x => x.Organisation)
                 .OfType<TEntity>()
                 .Where(x => x.Name.Contains(options.Name) || options.Name == null)
                 .Where(x => x.CategoryId == options.CategoryId || options.CategoryId == null)
@@ -69,6 +72,8 @@ namespace Domain.Repositories.Implementations
                 _context.Investments
                .Where(i => i.ItemId == itemId)
                .Sum(i => i.Amount);
+            if (amount == null)
+                return 0;
             return amount;
 
 

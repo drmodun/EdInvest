@@ -38,7 +38,7 @@ namespace Domain.Mappers
                 AvarageDuration = entity.AvarageDuration,
                 ExpectedAudience = entity.ExpectedAudience,
                 Type = ItemType.OnlineCourse,
-
+                OrganisationName = entity.Organisation.Name,
                 UpdatedAt = entity.UpdatedAt
             };
         }
