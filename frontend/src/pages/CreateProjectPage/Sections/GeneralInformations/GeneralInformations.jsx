@@ -29,6 +29,17 @@ const GeneralInformations = () => {
     setKeywords((keywords) => [...keywords, "New keyword"]);
   };
 
+  const removeEmptyKeywords = () => {
+    const newKeywords = keywords.filter((keyword) => keyword !== "");
+    setKeywords(newKeywords);
+  };
+
+  const handleChangeKeyword = (e, index) => {
+    const newKeywords = [...keywords];
+    newKeywords[index] = e.target.value;
+    setKeywords(newKeywords);
+  };
+
   return (
     <>
       <section className={classes.section}>
@@ -121,11 +132,17 @@ const GeneralInformations = () => {
           Add up to 5 key words that describes your project
         </h3>
         <div className={classes.sectionKeywordsContainer}>
-          {keywords.map((keyword) => {
+          {keywords.map((keyword, i) => {
             return (
-              <div className={classes.sectionKeywordsItem} contentEditable>
-                {keyword}
-              </div>
+              <input
+                key={i}
+                type="text"
+                defaultValue={keyword}
+                className={classes.sectionKeywordsItem}
+                onBlur={removeEmptyKeywords}
+                onChange={(e) => handleChangeKeyword(e, i)}
+                contentEditable
+              />
             );
           })}
 
