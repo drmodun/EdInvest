@@ -72,6 +72,53 @@ const GeneralInformations = () => {
           ></textarea>
         </div>
       </section>
+
+      <section className={classes.section}>
+        <h3 className={classes.sectionTitle}>Location</h3>
+        <input
+          type="text"
+          placeholder="New York"
+          className={classes.sectionInputText}
+        />
+      </section>
+
+      <section className={classes.section}>
+        <h3 className={classes.sectionTitle}>Date of foundation</h3>
+        <div className={classes.sectionDateContainer}>
+          <input
+            type="number"
+            min={1}
+            max={31}
+            placeholder="DD"
+            className={classes.sectionDateInput}
+          />
+          <input
+            type="number"
+            min={1}
+            max={29}
+            placeholder="MM"
+            className={classes.sectionDateInput}
+          />
+          <input
+            type="number"
+            min={1900}
+            max={new Date().getFullYear()}
+            placeholder="YYYY"
+            className={classes.sectionDateInput}
+          />
+        </div>
+      </section>
+
+      <section className={classes.section}>
+        <h3 className={classes.sectionTitle}>
+          Add up to 5 key words that describes your project
+        </h3>
+        <input
+          type="text"
+          placeholder="New York"
+          className={classes.sectionInputText}
+        />
+      </section>
     </>
   );
 };

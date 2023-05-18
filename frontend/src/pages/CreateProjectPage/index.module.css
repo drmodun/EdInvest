@@ -80,7 +80,6 @@ html {
   background-color: white;
   border-radius: 6px;
   margin-top: 15px;
-  margin-bottom: 23px;
 }
 
 .sectionInputLarge {
@@ -90,6 +89,12 @@ html {
   border-radius: 6px;
   box-sizing: border-box;
   padding: 22px;
+  margin-top: 5px;
+}
+
+.sectionInputText,
+.sectionInputLarge {
+  margin-bottom: 23px;
 }
 
 .sectionLargeInputHeader {
@@ -120,4 +125,38 @@ html {
   height: auto;
   border: none;
   outline: none;
+}
+
+.sectionDateContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 10px 0 15px 0;
+}
+
+.sectionDateInput {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.sectionDateInput::-webkit-outer-spin-button,
+.sectionDateInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sectionDateInput:nth-child(1),
+.sectionDateInput:nth-child(2) {
+  width: 75px;
+}
+
+.sectionDateInput:nth-child(3) {
+  width: 89px;
 }
