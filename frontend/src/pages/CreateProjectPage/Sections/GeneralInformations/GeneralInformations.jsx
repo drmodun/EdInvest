@@ -154,6 +154,15 @@ const GeneralInformations = () => {
           </button>
         </div>
       </section>
+
+      <section className={classes.section}>
+        <h3 className={classes.sectionTitle}>Website link of your project</h3>
+        <input
+          type="text"
+          placeholder="www.edinvest.com"
+          className={classes.sectionInputText}
+        />
+      </section>
     </>
   );
 };

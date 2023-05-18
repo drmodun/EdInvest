@@ -14,6 +14,11 @@ const CreateProjectPage = () => {
     setSection(section);
   };
 
+  const increaseSection = () => {
+    const newSection = section + 1;
+    setSection(newSection);
+  };
+
   return (
     <div className={"layoutSpacing " + classes.content}>
       <h1 className={classes.title}>Create a project</h1>
@@ -49,6 +54,10 @@ const CreateProjectPage = () => {
       {section === 1 ? <GeneralInformations /> : null}
       {section === 2 ? <ProjectPicture /> : null}
       {section === 3 ? <ReceivingFunds /> : null}
+
+      <button className={classes.continueButton} onClick={increaseSection}>
+        {section === 3 ? "Publish" : "Continue"}
+      </button>
     </div>
   );
 };
