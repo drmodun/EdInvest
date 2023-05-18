@@ -11,6 +11,7 @@ import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
 import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
 import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
 import EventDescription from "../../components/ProjectPageComponents/EventDescription";
+import EventDonationInfo from "../../components/ProjectPageComponents/EventDonationInfo";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
@@ -122,14 +123,12 @@ const ProjectPage = () => {
                 </div>
               ) : (
                 <div className={classes.DescriptionText}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Praesentium dolor sed maiores tempore eligendi architecto
-                  debitis, quaerat corporis ipsam. Dolorem ea delectus assumenda
-                  repellat, in eligendi temporibus asperiores! At, fugiat? Lorem
-                  ipsum, dolor sit amet consectetur adipisicing elit.
-                  Praesentium dolor sed maiores tempore eligendi architecto
-                  debitis, quaerat corporis ipsam. Dolorem ea delectus assumenda
-                  repellat, in eligendi temporibus asperiores! At, fugiat? Lorem
+                  {project.type === 0 && <h1>0</h1>}
+                  {project.type === 1 && <h1>1</h1>}
+                  {project.type === 3 && <h1>3</h1>}
+                  {project.type === 4 && (
+                    <EventDonationInfo project={project} />
+                  )}
                 </div>
               )}
             </div>
