@@ -15,7 +15,7 @@ import EventDescription from "../../components/ProjectPageComponents/EventDescri
 import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
 import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
 import OnlineCourseDescription from "../../components/ProjectPageComponents/OnlineCourseDescription";
-import CourseDescription from "../../components/ProjectPageComponents/CourseDescription/CourseDescription";
+import CourseDescription from "../../components/ProjectPageComponents/CourseDescription";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
