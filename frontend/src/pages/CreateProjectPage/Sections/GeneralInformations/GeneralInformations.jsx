@@ -16,6 +16,12 @@ import PictureIcon from "../../../../assets/icons/picture.svg";
 import FilmIcon from "../../../../assets/icons/film.svg";
 
 const GeneralInformations = () => {
+  const handleTextAreaResize = (e) => {
+    const textarea = e.target;
+    const rows = textarea.value.split("\n").length;
+    textarea.style.height = `${19 * rows + 10}px`;
+  };
+
   return (
     <>
       <section className={classes.section}>
@@ -59,7 +65,11 @@ const GeneralInformations = () => {
             <img src={PictureIcon} alt="" />
             <img src={FilmIcon} alt="" />
           </div>
-          <textarea className={classes.sectionLargeInputArea}></textarea>
+          <textarea
+            placeholder="We are..."
+            className={classes.sectionLargeInputArea}
+            onInput={handleTextAreaResize}
+          ></textarea>
         </div>
       </section>
     </>
