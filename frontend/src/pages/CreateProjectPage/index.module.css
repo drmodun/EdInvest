@@ -35,3 +35,9 @@ html {
   background-color: white;
   border-radius: 6px;
 }
+
+.sectionNavButton.active {
+  color: white;
+  background-color: var(--color-azzuro);
+  border: 1px solid var(--color-azzuro);
+}
