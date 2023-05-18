@@ -3,7 +3,9 @@ import PlaceholderImg from "../../assets/images/placeholder.jpg";
 import Card from "../../components/Card";
 import Share from "../../assets/icons/share.svg";
 import Heart from "../../assets/icons/heart.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { GetItem } from "../../ItemCalls/ItemsApiCalls.js";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
@@ -13,6 +15,13 @@ const ProjectPage = () => {
   const handleClickDonations = () => {
     setInformationsChosen(false);
   };
+
+  const { projectId } = useParams();
+
+  useEffect(() => {
+    const generalProjectObject = getItem(projectId);
+    console.log(generalProjectObject);
+  }, []);
 
   return (
     <>
