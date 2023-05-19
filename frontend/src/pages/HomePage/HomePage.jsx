@@ -60,7 +60,7 @@ const HomePage = () => {
         />
         <div className={classes.HeaderHeroTextWrapper}>
           <h1 className={classes.HeaderHeroTitle}>
-            Invest in minds, supports with crypto
+            Invest in minds, support with crypto
           </h1>
           <h3 className={classes.HeaderHeroSubtitle}>
             With blockchain technology, we transform project funding, esuring
@@ -200,15 +200,23 @@ const HomePage = () => {
       <div className={classes.StatsSection}>
         <div className={classes.StatsSectionContainer}>
           <p className={classes.StatsSectionSmallText}>Invested so far</p>
-          <h1 className={classes.StatsSectionBigText}>{stats.totalMoneyDonated}$</h1>
+          <h1 className={classes.StatsSectionBigText}>
+            {stats.totalMoneyDonated}$
+          </h1>
         </div>
         <div className={classes.StatsSectionContainer}>
-          <p className={classes.StatsSectionSmallText}>Projects that have been doanted to</p>
-          <h1 className={classes.StatsSectionBigText}>{stats.numberOfProjects}</h1>
+          <p className={classes.StatsSectionSmallText}>
+            Projects that have been doanted to
+          </p>
+          <h1 className={classes.StatsSectionBigText}>
+            {stats.numberOfProjects}
+          </h1>
         </div>
         <div className={classes.StatsSectionContainer}>
           <p className={classes.StatsSectionSmallText}>Number of investors</p>
-          <h1 className={classes.StatsSectionBigText}>{stats.numberOfInvestors}</h1>
+          <h1 className={classes.StatsSectionBigText}>
+            {stats.numberOfInvestors}
+          </h1>
         </div>
       </div>
 

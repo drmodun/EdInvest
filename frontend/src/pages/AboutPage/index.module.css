@@ -1,0 +1,244 @@
+.HeaderWrapper {
+  height: 426px;
+  background-color: #e6e6e6;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HeaderTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 18px;
+  color: #000000;
+}
+
+/* ----------------------------------- */
+
+.MoreInfoSection {
+  width: 1440px;
+  padding-left: 149px;
+  padding-right: 122px;
+  padding-top: 149px;
+  padding-bottom: 93px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MoreInfoSectionLeft {
+  max-width: 642px;
+}
+
+.MoreInfoTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+  color: #343434;
+}
+
+.MoreInfoText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  color: #6d6d6d;
+}
+
+.MoreInfoImg {
+  width: 459px;
+  height: 357px;
+  background: #d9d9d9;
+}
+
+/* ----------------------------------- */
+
+.PerksSectionWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.PerksSection {
+  height: 449px;
+  width: 1323px;
+  background: #439196;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.PerkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 257px;
+}
+
+.PerkImg {
+  width: 72px;
+  height: 72px;
+  background: #d9d9d9;
+}
+
+.PerkTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+.PerkText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* ----------------------------------- */
+.TaxesSection {
+  width: 1440px;
+  padding-left: 80px;
+  padding-right: 101px;
+  padding-top: 149px;
+  padding-bottom: 93px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TaxesSectionRight {
+  max-width: 642px;
+}
+
+/* ------------------------- */
+.NewsSectionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  color: #1c2436;
+  text-align: center;
+}
+
+.NewsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.NewsContainer {
+  width: 384px;
+}
+
+.NewsContainer:not(:last-child) {
+  margin-right: 40px;
+}
+
+.NewsImg {
+  height: 290px;
+  width: 384px;
+  background: #d9d9d9;
+}
+
+.NewsText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #818a9c;
+}
+
+.NewsTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 32px;
+  margin-top: 10px;
+}
+
+/* ------------------------------- */
+.MissionSection {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 179px;
+}
+
+.MissionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 40px;
+  color: #1d1e1f;
+}
+
+.MissionText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  color: #6d6d6d;
+  max-width: 907px;
+}
+
+/* ------------------------------- */
+.TeamSection {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  margin-left: 132px;
+  margin-top: 164px;
+  padding-bottom: 214px;
+}
+
+.TeamSectionTitle {
+  width: 470px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 58px;
+  color: #000000;
+  margin-right: 40px;
+}
+
+.TeamMembersWrapper {
+  display: flex;
+  width: fit-content;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.TeamMembersWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.TeamMemberImg {
+  width: 384px;
+  height: 290px;
+  background-color: #6d6d6d;
+  flex-shrink: 0;
+}
+
+.TeamMemberImg:not(:last-child) {
+  margin-right: 40px;
+}
