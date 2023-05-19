@@ -49,6 +49,21 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+
+      <div className={classes.TaxesSection}>
+        <div className={classes.MoreInfoImg}></div>
+        <div className={classes.TaxesSectionRight}>
+          <h3 className={classes.MoreInfoTitle}>
+            Save on your taxes by investing with crypto
+          </h3>
+          <p className={classes.MoreInfoText}>
+            There’s a reason high net worth individuals tend to donate property
+            instead of cash. Want to maximize your tax savings via charitable
+            giving? This is how. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod.
+          </p>
+        </div>
+      </div>
     </>
   );
 };

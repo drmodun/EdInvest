@@ -106,3 +106,19 @@
   color: #ffffff;
   text-align: center;
 }
+
+/* ----------------------------------- */
+.TaxesSection {
+  width: 1440px;
+  padding-left: 80px;
+  padding-right: 101px;
+  padding-top: 149px;
+  padding-bottom: 93px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TaxesSectionRight {
+  max-width: 642px;
+}
