@@ -17,9 +17,9 @@ import LoginPage from "../pages/LoginPage";
 import InvestorPage from "../pages/InvestorPage/InvestorPage";
 import OrganisationPage from "../pages/OrganisationPage";
 import RegisterPage from "../pages/RegisterPage";
+import AboutPage from "../pages/AboutPage";
 
 const user = JSON.parse(localStorage.getItem("userInfo"));
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,13 +44,21 @@ const router = createBrowserRouter(
         </Route>
         <Route
           path="/me"
-          element={ user ? 
-             user.type === 1 ? <InvestorPage /> : <OrganisationPage />
-            : <LoginPage />            
-            }
+          element={
+            user ? (
+              user.type === 1 ? (
+                <InvestorPage />
+              ) : (
+                <OrganisationPage />
+              )
+            ) : (
+              <LoginPage />
+            )
+          }
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
