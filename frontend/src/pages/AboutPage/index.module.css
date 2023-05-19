@@ -177,6 +177,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 179px;
 }
 
 .MissionTitle {
@@ -196,4 +197,48 @@
   line-height: 32px;
   color: #6d6d6d;
   max-width: 907px;
+}
+
+/* ------------------------------- */
+.TeamSection {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  margin-left: 132px;
+  margin-top: 164px;
+  padding-bottom: 214px;
+}
+
+.TeamSectionTitle {
+  width: 470px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 58px;
+  color: #000000;
+  margin-right: 40px;
+}
+
+.TeamMembersWrapper {
+  display: flex;
+  width: fit-content;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.TeamMembersWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.TeamMemberImg {
+  width: 384px;
+  height: 290px;
+  background-color: #6d6d6d;
+  flex-shrink: 0;
+}
+
+.TeamMemberImg:not(:last-child) {
+  margin-right: 40px;
 }

@@ -104,7 +104,7 @@ const AboutPage = () => {
       </div>
 
       <div className={classes.TeamSection}>
-        <h2>Meet our beloved team</h2>
+        <h2 className={classes.TeamSectionTitle}>Meet our beloved team</h2>
         <div className={classes.TeamMembersWrapper}>
           <div className={classes.TeamMemberImg}></div>
           <div className={classes.TeamMemberImg}></div>
