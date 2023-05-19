@@ -80,11 +80,13 @@
   height: 8px;
   background: #e0e0e0;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 .GoalBar > div {
   height: 100%;
   background: #439196;
   border-radius: 4px;
+  max-width: 100%;
 }
 .GoalText {
   font-family: "Inter";
@@ -94,6 +96,21 @@
   line-height: 24px;
   color: #2d2d2d;
   margin-bottom: 10px;
+}
+.CurrentAmount{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #2d2d2d;
+  margin-bottom: 10px;
+}
+.Stats{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 @media screen and (max-width: 700px) {
   .ItemCard {

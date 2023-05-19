@@ -73,8 +73,8 @@ export const InvestorView = ({
         </div>
         <div className={classes.Type}>Type: Investor</div>
         <div className={classes.ViewDetails}>
-          <span className={classes.ViewName}>Name: {investor.name}</span>
-          <span className={classes.ViewEmail}>Email: {investor.email}</span>
+          <span className={classes.ViewName}>{investor.name}</span>
+          <span className={classes.ViewEmail}>{investor.email}</span>
           <span className={classes.ViewLastUpdated}>
             Last updated: {new Date(investor.updatedAt).toDateString()}
           </span>
@@ -88,12 +88,14 @@ export const InvestorView = ({
               );
             })}
           </div>
-          {investor.id === userInfo.id ? (
-            <div className={classes.ViewButtons}>
-              <button onClick={tryEdit}>Edit</button>
-              <button onClick={tryDelete}>Delete</button>
-            </div>
-          ) : null}
+          <div style={{ minHeight: "96px" }}>
+            {investor.id === userInfo.id ? (
+              <div className={classes.ViewButtons}>
+                <button onClick={tryEdit}>Edit</button>
+                <button onClick={tryDelete}>Delete</button>
+              </div>
+            ) : null}
+          </div>
         </div>
         <div className={classes.FinancialInfo}>
           <div className={classes.FinancialInfoDetails}>
@@ -221,7 +223,8 @@ export const InvestorView = ({
                       <div className={classes.ItemPic}>
                         <img
                           src={
-                            donation.itemImage
+                            donation.itemImage &&
+                            base64regex.test(donation.itemImage)
                               ? "data:image/png;base64," + donation.itemImage
                               : DefaultProfile
                           }

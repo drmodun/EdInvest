@@ -213,6 +213,7 @@
   align-items: center;
   margin-top: 12px;
   font-family: "SF Pro Display";
+  height: 30px;
   display: flex;
   width: 400px;
   flex-direction: column;

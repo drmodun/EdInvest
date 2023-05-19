@@ -72,7 +72,7 @@ export async function getMyInvestments(){
 export async function getItemsForInvestor(investorId){
     try{
         console.log(investorId + "investorId");
-        const response = await api.get(`investments/${investorId}`);
+        const response = await api.get(`investments/${investorId}/items`);
         console.log(response.data);
         return response.data;
     }
@@ -113,6 +113,15 @@ export async function updateInvestment(itemId, data){
 export async function deleteInvestment(itemId){
     try{
         const response = await api.delete(`investments/${itemId}`);
+        return response.data;
+    }
+    catch(error){
+        throw new Error(error.message);
+    }
+}
+export async function getInvestmentsForOrg(organisationId){
+    try{
+        const response = await api.get(`investments/${organisationId}`);
         return response.data;
     }
     catch(error){

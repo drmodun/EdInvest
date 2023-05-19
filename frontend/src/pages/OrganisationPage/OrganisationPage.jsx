@@ -2,12 +2,17 @@ import { useParams } from "react-router-dom";
 import useUserInfo from "../../Providers/UserInfoProvider";
 import { OrganisationView } from "../../components/GeneralUser";
 import { getOrganisationById } from "../../axios/UserCalls/OrganisationApiCalls";
+import classes from "./OrganisationPage.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "../../axios/UserCalls/UserApiCalls";
+import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
+import { getInvestmentsForOrg } from "../../axios/InvestmentsApiCalls";
 export const OrganisationPage = () => {
   const { organisationId } = useParams();
   const [organisation, setOrganisation] = useState({});
+  const [items, setItems] = useState([]);
+  const [donations, setDonations] = useState([]);
   const navigation = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   useEffect(() => {
@@ -27,6 +32,26 @@ export const OrganisationPage = () => {
     }
     fetchOrganisation();
   }, [organisationId, userInfo.id, navigation]);
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        console.log(organisation.id);
+        const params = {
+          OrganisationId: organisation.id,
+        };
+        const response = await getItems(params);
+        const donations = await getInvestmentsForOrg(organisation.id);
+        setItems(response.items);
+        setDonations(donations.investments);
+        console.log(donations.investments, response.items);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetch();
+  }, [organisation.id]);
+
   function onEdit() {
     navigation("/edit");
     //connect to edit page later
@@ -53,12 +78,16 @@ export const OrganisationPage = () => {
   }
 
   return (
-    <div style={{ position: "relative", top: "500px", marginBottom: "500px" }}>
+    <div>
+      <div className={classes.Background}></div>
       <OrganisationView
         organisation={organisation}
         onDelete={onDelete}
         onEdit={onEdit}
         seeDonations={seeDonations}
+        donations={donations}
+        items={items}
+        key={organisation.id}
       />
     </div>
   );
