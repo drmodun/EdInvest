@@ -122,3 +122,51 @@
 .TaxesSectionRight {
   max-width: 642px;
 }
+
+/* ------------------------- */
+.NewsSectionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  color: #1c2436;
+  text-align: center;
+}
+
+.NewsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.NewsContainer {
+  width: 384px;
+}
+
+.NewsContainer:not(:last-child) {
+  margin-right: 40px;
+}
+
+.NewsImg {
+  height: 290px;
+  width: 384px;
+  background: #d9d9d9;
+}
+
+.NewsText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #818a9c;
+}
+
+.NewsTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 32px;
+  margin-top: 10px;
+}

@@ -64,6 +64,31 @@ const AboutPage = () => {
           </p>
         </div>
       </div>
+
+      <div className={classes.NewsSection}>
+        <h2 className={classes.NewsSectionTitle}>Our recent news & insights</h2>
+        <div className={classes.NewsWrapper}>
+          <div className={classes.NewsContainer}>
+            <div className={classes.NewsImg}></div>
+            <p className={classes.NewsText}>8 MIN TO READ</p>
+            <h4 className={classes.NewsTitle}>
+              Everything You Need To Know About Crypto
+            </h4>
+          </div>
+          <div className={classes.NewsContainer}>
+            <div className={classes.NewsImg}></div>
+            <p className={classes.NewsText}>10 MIN TO READ</p>
+            <h4 className={classes.NewsTitle}>
+              Seven Signs You're In Love With EdInvest
+            </h4>
+          </div>
+          <div className={classes.NewsContainer}>
+            <div className={classes.NewsImg}></div>
+            <p className={classes.NewsText}>12 MIN TO READ</p>
+            <h4 className={classes.NewsTitle}>Learn more about philantropy</h4>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
