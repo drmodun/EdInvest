@@ -15,3 +15,44 @@
   line-height: 18px;
   color: #000000;
 }
+
+/* ----------------------------------- */
+
+.MoreInfoSection {
+  width: 1440px;
+  padding-left: 149px;
+  padding-right: 122px;
+  padding-top: 149px;
+  padding-bottom: 93px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MoreInfoSectionLeft {
+  max-width: 642px;
+}
+
+.MoreInfoTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+  color: #343434;
+}
+
+.MoreInfoText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  color: #6d6d6d;
+}
+
+.MoreInfoImg {
+  width: 459px;
+  height: 357px;
+  background: #d9d9d9;
+}
