@@ -89,6 +89,30 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+
+      <div className={classes.MissionSection}>
+        <h2 className={classes.MissionTitle}>Our mission</h2>
+        <p className={classes.MissionText}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+          do eiusmod.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod.Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit, sed do eiusmod.Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod.Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod.
+        </p>
+      </div>
+
+      <div className={classes.TeamSection}>
+        <h2>Meet our beloved team</h2>
+        <div className={classes.TeamMembersWrapper}>
+          <div className={classes.TeamMemberImg}></div>
+          <div className={classes.TeamMemberImg}></div>
+          <div className={classes.TeamMemberImg}></div>
+          <div className={classes.TeamMemberImg}></div>
+          <div className={classes.TeamMemberImg}></div>
+        </div>
+      </div>
     </>
   );
 };

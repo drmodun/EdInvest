@@ -170,3 +170,30 @@
   line-height: 32px;
   margin-top: 10px;
 }
+
+/* ------------------------------- */
+.MissionSection {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MissionTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 40px;
+  color: #1d1e1f;
+}
+
+.MissionText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  color: #6d6d6d;
+  max-width: 907px;
+}
