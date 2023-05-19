@@ -6,33 +6,49 @@ import USDC from "../../assets/USDC.svg";
 import BUSD from "../../assets/BUSD.svg";
 import DefaultProfile from "../../assets/default-profile.png";
 import { createInvestment } from "../../axios/InvestmentsApiCalls";
+import Dropdown from "../Dropdown";
 
-export const MakeDonation = ({ tiers, pic, name, id }) => {
+export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
   const base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const [selectTier, setTier] = useState(null);
   const [amount, setAmount] = useState(0);
   const [payment, setPayment] = useState(null);
+  const [tiers, setTiers] = useState([]);
+
+  useState(() => {
+    let tierIndex = 0;
+    const tempTiers = [];
+    for (let tier in tiersDict) {
+      tempTiers.push({
+        name: tier,
+        description: tiersDict[tier],
+        amount: prices[tierIndex],
+      });
+      tierIndex++;
+    }
+    setTiers(tempTiers);
+  }, []);
 
   useState(() => {
     let tierIndex = 0;
     for (let tier of tiers) {
       if (tier.amount <= amount) {
-        tierIndex++;
+        setTier(tier);
       }
+      tierIndex++;
     }
-    setTier(tiers[tierIndex]);
+    setTier(tierIndex);
   }, [amount]);
 
   const handleDonation = async () => {
-    try{
-        await createInvestment(id, amount);
-        alert("Succesfully made donation!")
-        window.location.reload();
-    }
-    catch(err){
-        console.log(err);
+    try {
+      await createInvestment(id, amount);
+      alert("Succesfully made donation!");
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -49,24 +65,22 @@ export const MakeDonation = ({ tiers, pic, name, id }) => {
         ></img>
         <div className={classes.DonationName}>{name}</div>
       </div>
+      <span>Choose your token</span>
       <form className={classes.PaymentMethod}>
         <select
-          name="method"
-          id="method"
-          defaultValue={USDT}
-          value={payment}
+          name="paymentMethod"
+          id="payment"
           onChange={(e) => setPayment(e.target.value)}
+          value={payment}
         >
-          <option value={USDC}>
-            <img src={USDT} alt="USDT" />
-          </option>
-          <option value={USDT}>
-            <img src={USDC} alt="USDC" />
-          </option>
-          <option value={BUSD}>
-            <img src={BUSD} alt="BUSD" />
-          </option>
+          <option value="USDT">USDT</option>
+          <option value="USDC">USDC</option>
+          <option value="BUSD">BUSD</option>
         </select>
+        <img
+          src={payment === "USDT" ? USDT : payment === "USDC" ? USDC : BUSD}
+          alt=""
+        />
         <input
           type="number"
           name="amount"
@@ -75,6 +89,7 @@ export const MakeDonation = ({ tiers, pic, name, id }) => {
           onChange={(e) => setAmount(e.target.value)}
         />
       </form>
+      <span>Tiers</span>
       <div className={classes.Tiers}>
         <span>Tiers</span>
         {tiers.map((tier, index) => (
