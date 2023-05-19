@@ -24,6 +24,7 @@ const CreateProjectPage = () => {
 
   useEffect(() => {
     console.log("Project type: ", projectType);
+    setData({ ...data, _TYPE: projectType });
   }, [projectType]);
 
   const insertData = (key, value) => {
@@ -96,7 +97,7 @@ const CreateProjectPage = () => {
       {section === 3 && (
         <ReceivingFunds insertData={insertData} setAgree={setAgree} />
       )}
-      {section === 4 && <FinalMessage insertData={insertData} />}
+      {section === 4 && <FinalMessage data={data} />}
 
       {section < 4 && (
         <button

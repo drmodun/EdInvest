@@ -7,10 +7,14 @@ import LinkedinBlueIcon from "../../../../assets/icons/linkedin-blue.svg";
 import FacebookBlueIcon from "../../../../assets/icons/facebook-blue.svg";
 import Confetti from "../../../../assets/images/confetti.png";
 
-const FinalMessage = () => {
+const FinalMessage = ({ data }) => {
   return (
     <section className={classes.section}>
-      <SimpleCard />
+      <SimpleCard
+        name={data.name}
+        type={data._TYPE}
+        description={data.description}
+      />
       <div className={classes.content}>
         <img src={Confetti} alt="" className={classes.confetti} />
         <h2 className={classes.contentTitle}>Wooohoo!</h2>
