@@ -2,33 +2,16 @@ import classes from "../../index.module.css";
 
 import AttentionIcon from "../../../../assets/icons/attention.svg";
 
-const ReceivingFunds = () => {
+const ReceivingFunds = ({ insertData, setAgree }) => {
   return (
     <>
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Add your project goal</h3>
-        <div className={classes.sectionSelectGroup}>
-          <button className={classes.sectionSelectButton}>500€</button>
-          <button className={classes.sectionSelectButton}>1000€</button>
-          <button className={classes.sectionSelectButton}>2000€</button>
-          <button className={classes.sectionSelectButton}>5000€</button>
-        </div>
         <input
           type="text"
-          placeholder="Or enter your amount"
+          placeholder="Enter goal amount (€)"
           className={classes.sectionInputText}
-        />
-      </section>
-
-      <section className={classes.section}>
-        <h3 className={classes.sectionTitle}>Receiving address</h3>
-        <p className={classes.sectionDescription}>
-          Please do not share this address will anyone or your funds may be lost
-        </p>
-        <input
-          type="text"
-          placeholder="My Wallet Address"
-          className={classes.sectionInputText}
+          onChange={(e) => insertData("goal", e.target.value)}
         />
       </section>
 
@@ -45,6 +28,7 @@ const ReceivingFunds = () => {
             className={classes.sectionCheckbox}
             type="checkbox"
             id="submissionGuidlines"
+            onClick={(e) => setAgree(e.target.checked)}
           />
           <label
             className={classes.sectionCheckboxLabel}

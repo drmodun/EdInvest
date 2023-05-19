@@ -12,6 +12,11 @@ import FinalMessage from "./Sections/FinalMessage";
 const CreateProjectPage = () => {
   const [data, setData] = useState({});
   const [projectType, setProjectType] = useState("");
+  const [agree, setAgree] = useState(false);
+
+  useEffect(() => {
+    console.log(agree);
+  }, [agree]);
 
   useEffect(() => {
     console.log("Data: ", data);
@@ -88,11 +93,17 @@ const CreateProjectPage = () => {
         />
       ) : null}
       {section === 2 && <ProjectPicture insertData={insertData} />}
-      {section === 3 && <ReceivingFunds insertData={insertData} />}
+      {section === 3 && (
+        <ReceivingFunds insertData={insertData} setAgree={setAgree} />
+      )}
       {section === 4 && <FinalMessage insertData={insertData} />}
 
       {section < 4 && (
-        <button className={classes.continueButton} onClick={increaseSection}>
+        <button
+          className={classes.continueButton}
+          onClick={increaseSection}
+          disabled={section > 2 && !agree}
+        >
           {section === 3 ? "Publish" : "Continue"}
         </button>
       )}
