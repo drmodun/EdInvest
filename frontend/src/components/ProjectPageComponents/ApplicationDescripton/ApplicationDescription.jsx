@@ -11,7 +11,7 @@ const ApplicationDescription = ({ project }) => {
       </div>
       <div>
         <h4>Release date</h4>
-        <p>{project.estimatedRelease}</p>
+        <p>{new Date(project.estimatedRelease).toDateString()}</p>
       </div>
       <div>
         <h4>Markets</h4>

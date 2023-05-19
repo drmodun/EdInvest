@@ -11,7 +11,7 @@ const EventDescription = ({ project }) => {
       </div>
       <div>
         <h4>Date</h4>
-        <p>{project.date}</p>
+        <p>{new Date(project.date).toDateString()}</p>
       </div>
       <div>
         <h4>Location</h4>
