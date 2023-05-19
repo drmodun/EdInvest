@@ -24,10 +24,6 @@ namespace Shared.Models.Items
 
         public string MainWebsite { get; set; }
         public decimal Goal { get; set; }
-
-        public Guid CountryId { get; set; }
-
-        public Country? Country { get; set; }
         public List<decimal> Prices { get; set; }
         public Dictionary<string, string> Tiers { get; set; } = new Dictionary<string, string>();
         public ICollection<Investments> Investments = new List<Investments>();

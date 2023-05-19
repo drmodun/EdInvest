@@ -147,7 +147,7 @@ namespace API.Controllers
             {
                 Items = items
             };
-        
+
         }
         [HttpGet(AppRoutes.Investments.GetInvestmentsForOrganisation)]
         public async Task<ActionResult<AllRankedInvestmentsResponse>> GetInvestmentsForOrganisation([FromRoute] Guid organisationId)

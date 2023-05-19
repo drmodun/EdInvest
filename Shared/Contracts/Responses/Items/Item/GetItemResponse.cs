@@ -22,7 +22,6 @@ namespace Shared.Contracts.Responses.Items.Item
 
         public decimal Goal { get; set; }
 
-        public Guid CountryId { get; set; }
 
         public decimal CurrentAmount { get; set; }
 

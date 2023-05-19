@@ -2,7 +2,6 @@
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Requests.Items.Item;
-using Shared.Contracts.Responses.Investments;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Models;
 using Shared.Models.Items;

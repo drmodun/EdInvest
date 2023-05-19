@@ -5,7 +5,6 @@ using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Models.Items;
-using Shared.Models.Users;
 
 namespace Domain.Repositories.Implementations
 {
@@ -51,7 +50,7 @@ namespace Domain.Repositories.Implementations
             return await _context.Investments
                 .Where(i => i.InvestorId == userId)
                 .Include(i => i.Item)
-               
+
                 .Select(i => new RankedItemResponse
                 {
                     Id = i.ItemId,

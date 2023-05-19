@@ -55,7 +55,7 @@ namespace API.Controllers
                 {
                     Name = request.Name,
                     Description = request.Description,
-                    CountryId = request.CountryId,
+
                     Email = request.Email,
                     LocationName = request.LocationName,
                     NumberOfEmployees = request.NumberOfEmployees,

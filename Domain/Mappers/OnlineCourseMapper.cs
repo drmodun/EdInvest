@@ -23,7 +23,7 @@ namespace Domain.Mappers
                 Name = entity.Name,
                 CategoryId = entity.CategoryId,
                 Description = entity.Description,
-                CountryId = entity.CountryId,
+
                 Images = entity.Images,
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
@@ -40,7 +40,7 @@ namespace Domain.Mappers
                 Type = ItemType.OnlineCourse,
                 OrganisationName = entity.Organisation.Name,
                 UpdatedAt = entity.UpdatedAt,
-                CurrentAmount = entity.Investments.Sum(x => x.Amount)   
+                CurrentAmount = entity.Investments.Sum(x => x.Amount)
             };
         }
         public OnlineCourse ToEntity(CreateOnlineCourseRequest request)
@@ -50,7 +50,7 @@ namespace Domain.Mappers
                 Name = request.Name,
                 CategoryId = request.CategoryId,
                 Description = request.Description,
-                CountryId = request.CountryId,
+
                 Images = request.Images,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
@@ -77,7 +77,7 @@ namespace Domain.Mappers
                 Id = request.Id,
                 CategoryId = request.CategoryId,
                 Description = request.Description,
-                CountryId = request.CountryId,
+
                 Images = request.Images,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,

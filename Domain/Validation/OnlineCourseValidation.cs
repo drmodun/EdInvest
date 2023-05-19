@@ -1,5 +1,4 @@
 ﻿using Domain.Repositories.Implementations;
-using Domain.Repositories.Interfaces;
 using FluentValidation;
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
@@ -12,9 +11,9 @@ namespace Domain.Validation
 {
     public class OnlineCourseValidation : ItemValidation<OnlineCourse>
     {
-        public OnlineCourseValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
+        public OnlineCourseValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,
             UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo, ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo) :
-            base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo, itemRepo)
+            base(categoryRepo, subcategoryRepo, organisationRepo, itemRepo)
         {
             RuleFor(x => x.AvarageDuration).Must(x => x > 1 && x < 600).WithMessage("Avarage duration must be between 1 minute and 10 hours");
             RuleFor(x => x.ExpectedAudience).Must(x => x > 0).WithMessage("Expected Audience must be positive");

@@ -15,7 +15,7 @@
         public string MainWebsite { get; set; }
 
 
-        public Guid CountryId { get; set; }
+
 
         public decimal Goal { get; set; }
 

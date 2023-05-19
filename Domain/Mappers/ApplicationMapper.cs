@@ -32,14 +32,14 @@ namespace Domain.Mappers
                 AppPurpose = entity.AppPurpose,
                 EstimatedNumberOfUsers = entity.EstimatedNumberOfUsers,
                 EstimatedRelease = entity.EstimatedRelease,
-                CountryId = entity.CountryId,
+
                 Goal = entity.Goal,
                 OrganisationId = entity.OrganisationId,
                 Features = entity.Features,
                 Markets = entity.Markets,
                 UpdatedAt = entity.UpdatedAt,
                 MainWebsite = entity.MainWebsite,
-                
+
                 Type = entity.Type,
                 Prices = entity.Prices,
                 CurrentAmount = entity.Investments.Sum(x => x.Amount)
@@ -63,7 +63,7 @@ namespace Domain.Mappers
                 AppPurpose = request.AppPurpose,
                 EstimatedNumberOfUsers = request.EstimatedNumberOfUsers,
                 EstimatedRelease = request.EstimatedRelease,
-                CountryId = request.CountryId,
+
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Features = request.Features,
@@ -89,7 +89,7 @@ namespace Domain.Mappers
                 AppPurpose = request.AppPurpose,
                 EstimatedNumberOfUsers = request.EstimatedNumberOfUsers,
                 EstimatedRelease = request.EstimatedRelease,
-                CountryId = request.CountryId,
+
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Features = request.Features,

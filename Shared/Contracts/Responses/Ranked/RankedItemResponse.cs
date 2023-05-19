@@ -1,5 +1,4 @@
 ﻿using Shared.Enums;
-using System.Globalization;
 
 namespace Shared.Contracts.Responses.Ranked
 {

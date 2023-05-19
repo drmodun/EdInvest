@@ -61,7 +61,7 @@ namespace API.Controllers
                     StartDate = request.StartDate,
                     ExpectedGraduates = request.ExpectedGraduates,
                     CategoryId = request.CategoryId,
-                    CountryId = request.CountryId,
+
                     Description = request.Description,
                     Goal = request.Goal,
                     Images = request.Images,

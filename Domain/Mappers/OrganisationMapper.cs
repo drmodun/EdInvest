@@ -33,7 +33,7 @@ namespace Domain.Mappers
 
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
-                CountryId = request.CountryId,
+
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
                 WalletAddress = request.WalletAddress,
@@ -65,7 +65,7 @@ namespace Domain.Mappers
                 LocationName = request.LocationName,
                 UpdatedAt = DateTime.UtcNow,
                 Type = request.Type,
-                CountryId = request.CountryId,
+
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
                 WalletAddress = request.WalletAddress,
@@ -86,7 +86,7 @@ namespace Domain.Mappers
                 UpdatedAt = entity.UpdatedAt,
                 Balance = _investmentRepo.GetEarned(entity.Id).Result,
                 Type = entity.Type,
-                CountryId = entity.CountryId,
+
                 ProfilePicture = entity.ProfilePicture,
                 Email = entity.Email,
                 SocialLinks = entity.SocialLinks,

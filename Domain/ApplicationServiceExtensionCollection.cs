@@ -2,7 +2,6 @@
 using Domain.Helpers;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
-using Domain.Repositories.Interfaces;
 using Domain.Services;
 using Domain.Validation;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +22,6 @@ using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
 using Shared.Contracts.Requests.Users.User;
 using Shared.Contracts.Responses.Category;
-using Shared.Contracts.Responses.Investments;
 using Shared.Contracts.Responses.Items.Application;
 using Shared.Contracts.Responses.Items.Course;
 using Shared.Contracts.Responses.Items.Event;
@@ -102,7 +100,6 @@ namespace Domain
                 CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
                 GetAllInvestmentsRequest, N_NKey, RankedInvestmentResponse,
                 AllRankedInvestmentsResponse, InvestmentsValidation>>();
-            services.AddScoped<CountryService>();
 
             services.AddScoped<ApplicationValidation>();
             services.AddScoped<CategoryValidation>();
@@ -152,7 +149,6 @@ namespace Domain
             services.AddScoped<SubcategoryRepo>();
             services.AddScoped<SubcategoryMapper>();
             services.AddScoped<WriteRepo<Subcategory, Guid>>();
-            services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<IdentityService>();
 
             //services.AddCors(options =>

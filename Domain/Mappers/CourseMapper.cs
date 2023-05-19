@@ -32,7 +32,7 @@ namespace Domain.Mappers
                 ExpectedApplicants = entity.ExpectedApplicants,
                 StartDate = entity.StartDate,
                 EndDate = entity.EndDate,
-                CountryId = entity.CountryId,
+
                 Goal = entity.Goal,
                 MainWebsite = entity.MainWebsite,
                 OrganisationId = entity.OrganisationId,
@@ -60,7 +60,7 @@ namespace Domain.Mappers
                 SubcategoryId = request.SubcategoryId,
                 Tiers = request.Tiers,
                 ActiveStudents = request.ActiveStudents,
-                CountryId = request.CountryId,
+
                 MainWebsite = request.MainWebsite,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
@@ -89,7 +89,7 @@ namespace Domain.Mappers
                 SubcategoryId = request.SubcategoryId,
                 Tiers = request.Tiers,
                 ActiveStudents = request.ActiveStudents,
-                CountryId = request.CountryId,
+
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Curriculum = request.Curriculum,

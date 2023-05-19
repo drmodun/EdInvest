@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shared.Contracts.Responses.Ranked
+﻿namespace Shared.Contracts.Responses.Ranked
 {
     public class RankedInvestmentResponse
     {

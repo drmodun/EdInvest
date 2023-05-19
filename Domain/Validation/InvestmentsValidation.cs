@@ -1,6 +1,5 @@
 ﻿using Domain.Repositories.Implementations;
 using FluentValidation;
-using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Requests.Users.Investor;

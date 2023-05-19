@@ -1,6 +1,4 @@
-﻿using Shared.Enums;
-
-namespace Shared.Contracts.Requests.Items.Item
+﻿namespace Shared.Contracts.Requests.Items.Item
 {
     public class GetAllItemsRequest
     {

@@ -11,7 +11,6 @@ using Shared.Contracts.Requests.Users.Investor;
 using Shared.Contracts.Requests.Users.organisation;
 using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
-using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Contracts.Responses.Users.Organisation;
 using Shared.Models.Users;
 
@@ -66,7 +65,7 @@ namespace API.Controllers
                 {
                     Name = request.Name,
                     Description = request.Description,
-                    CountryId = request.CountryId,
+
                     Email = request.Email,
                     LocationName = request.LocationName,
                     NumberOfMembers = request.NumberOfMembers,

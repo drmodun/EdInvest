@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Responses;
 using Shared.Contracts.Responses.Ranked;
-using Shared.Contracts.Responses.RankedInvestor;
 using Shared.Models;
 
 namespace Domain.Repositories.Implementations

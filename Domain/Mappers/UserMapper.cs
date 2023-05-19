@@ -30,7 +30,7 @@ namespace Domain.Mappers
                 ProfilePicture = entity.ProfilePicture,
                 SocialLinks = entity.SocialLinks,
 
-                CountryId = entity.CountryId,
+
                 LocationName = entity.LocationName,
                 WalletAddress = entity.WalletAddress,
                 Type = entity.Type
