@@ -149,7 +149,7 @@ namespace API.Controllers
             };
         
         }
-        [HttpGet(AppRoutes.Investments.GetInvesstmentsForOrganisation)]
+        [HttpGet(AppRoutes.Investments.GetInvestmentsForOrganisation)]
         public async Task<ActionResult<AllRankedInvestmentsResponse>> GetInvestmentsForOrganisation([FromRoute] Guid organisationId)
         {
             var items = await _rankedService.GetInvestmentsForOrganisation(organisationId);
