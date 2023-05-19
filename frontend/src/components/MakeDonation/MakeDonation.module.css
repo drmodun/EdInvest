@@ -3,6 +3,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-top: hidden;
+  width: 600px;
+
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 .DonationInfo {
   background-color: #f3f3f3;
@@ -13,10 +18,13 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  width: 600px;
+  border-radius: 20px 20px 0px 0px;
   display: flex;
   align-items: center;
   color: #000000;
   height: 100px;
+  margin-bottom: 20px;
 }
 
 .MakeDonation > span {
@@ -30,7 +38,7 @@
   color: #343434;
 }
 
-.DonationInfo > div {
+.DonationInfo > span {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +48,7 @@
 .DonationInfo > img {
   width: 30px;
   height: 30px;
-  margin: 20px;
+  margin: 40px;
 }
 .PaymentMethod {
   display: flex;
@@ -48,40 +56,58 @@
   align-items: center;
   justify-content: center;
   margin: 20px;
-  width: 389px;
+  width: 489px;
   height: 57px;
   background: #f3f3f3;
-  border-radius: 6px;
+  border-radius: 20px;
 }
 .PaymentMethod > select{
-    width: 50px;
-    height: 50px;
     padding: 20px;
     background-color: #F3F3F3;
     border: none;
+    align-self: flex-start;
     border-radius: 6px;
+    color: #000000;
 }
 .PaymentMethod > img {
   width: 30px;
   height: 30px;
 }
 .PaymentMethod > input{
-    width: 250px;	
     background-color: #F3F3F3;
     border: none;
+    width: 250px;
+    height: 30px;
+    margin-left: 60px;
     border-radius: 6px;
-    padding: 20px;
+    font-size: 20px;
 }
 .Tiers{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    height: 57px;
+}
+.Tier{
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px;
-    width: 389px;
-    height: 57px;
+    width: 160px;
+    height: 100px;
+    word-break: break-all;
     background: #f3f3f3;
     border-radius: 6px;
+    border: 1px solid #000000;
+}
+.Tier:hover{
+    cursor: pointer;
+    color: #FFFFFF;
+    opacity: 0.8;
 }
 .TierName{
     font-family: "Inter";
@@ -91,17 +117,32 @@
     line-height: 24px;
     display: flex;
     align-items: center;
-    color: #343434;
+}
+.SelectedTier{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 160px;
+    height: 100px;
+    word-break: break-all;
+    background: #f3f3f3;
+    border-radius: 6px;
+    border: 1px solid #000000;
+    color: #FFFFFF;
+    background-color : #1B2DAF;
 }
 .TierDesc{
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    width: 80%;
+    font-size: 12px;
+    text-align: left;
     display: flex;
-    align-items: center;
-    color: #343434;
+    min-height: 50px;
 }
 .TierAmount{
     font-family: "Inter";
@@ -111,7 +152,6 @@
     line-height: 24px;
     display: flex;
     align-items: center;
-    color: #343434;
 }
 .Transparency{
     display: flex;

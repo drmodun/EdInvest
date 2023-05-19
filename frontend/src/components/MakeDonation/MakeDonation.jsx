@@ -14,7 +14,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const [selectTier, setTier] = useState(null);
   const [amount, setAmount] = useState(0);
-  const [payment, setPayment] = useState(null);
+  const [payment, setPayment] = useState("USDT");
   const [tiers, setTiers] = useState([]);
 
   useState(() => {
@@ -31,16 +31,20 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
     setTiers(tempTiers);
   }, []);
 
-  useState(() => {
-    let tierIndex = 0;
+  const handleAmount = (amount) => {
+    setAmount(Number(amount));
+    let tierIndex = "not";
     for (let tier of tiers) {
-      if (tier.amount <= amount) {
-        setTier(tier);
+        console.log(tier.amount, amount);
+      if (tier.amount <= Number(amount)) {
+        tierIndex === "not" ? (tierIndex = 0) : tierIndex++;
       }
-      tierIndex++;
     }
+    console.log(amount);
     setTier(tierIndex);
-  }, [amount]);
+    console.log(tierIndex);
+    
+  }
 
   const handleDonation = async () => {
     try {
@@ -63,7 +67,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           }
           alt="Item"
         ></img>
-        <div className={classes.DonationName}>{name}</div>
+        <span className={classes.DonationName}>{name}</span>
       </div>
       <span>Choose your token</span>
       <form className={classes.PaymentMethod}>
@@ -85,18 +89,18 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           type="number"
           name="amount"
           id="amount"
+          key={"amount"}
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => handleAmount(e.target.value)}
         />
       </form>
       <span>Tiers</span>
       <div className={classes.Tiers}>
-        <span>Tiers</span>
         {tiers.map((tier, index) => (
           <div
             key={index}
             className={
-              selectTier === tier ? classes.SelectedTier : classes.Tier
+              selectTier === index ? classes.SelectedTier : classes.Tier
             }
           >
             <div className={classes.TierName}>{tier.name}</div>
