@@ -76,6 +76,49 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
     insertData("estimatedRelease", newDate);
   }, [estimatedRelease]);
 
+  // TIERS
+  const [tiers, setTiers] = useState({});
+  const [tierPrices, setTierPrices] = useState([]);
+
+  const [currentTiers, setCurrentTiers] = useState([]);
+  const emptyTier = {
+    name: "",
+    description: "",
+    price: "",
+  };
+
+  useEffect(() => {
+    let newTierPrices = [];
+    currentTiers.forEach((tier) => {
+      if (tier.name && tier.description && tier.price) {
+        setTiers({ ...tiers, [tier.name]: tier.description });
+        newTierPrices.push(+tier.price);
+      }
+    });
+    setTierPrices(newTierPrices);
+  }, [currentTiers]);
+
+  const removeCurrentTier = (index) => {
+    const newTiers = [...currentTiers];
+    newTiers.splice(index, 1);
+    setCurrentTiers(newTiers);
+  };
+
+  const addCurrentTier = () => {
+    const newTiers = [...currentTiers];
+    newTiers.push(emptyTier);
+    setCurrentTiers(newTiers);
+    console.log(currentTiers);
+  };
+
+  const handleChangeTier = (e, index, key) => {
+    const newTiers = [...currentTiers];
+    newTiers[index][key] = e.target.value;
+    setCurrentTiers(newTiers);
+  };
+
+  // TEXT AREA
+
   const handleTextAreaResize = (e) => {
     const textarea = e.target;
     textarea.style.height = textarea.scrollHeight + "px";
@@ -140,6 +183,7 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
           <option value="event">Event</option>
           <option value="course">Course</option>
           <option value="application">Application</option>
+          <option value="online-course">Online course</option>
         </select>
       </section>
 
@@ -203,6 +247,61 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
             onInput={handleTextAreaResize}
             onChange={(e) => insertData("description", e.target.value)}
           ></textarea>
+        </div>
+      </section>
+
+      {/* TIERS */}
+      <section className={classes.section}>
+        <h3 className={classes.sectionTitle}>Tiers</h3>
+        <p className={classes.sectionDescription}>
+          Create your own tier list for this project.
+        </p>
+        <div className={classes.sectionTiers}>
+          <p className={classes.sectionDescription}>Name</p>
+          <p className={classes.sectionDescription}>Description</p>
+          <p className={classes.sectionDescription}>Price (€)</p>
+          <p></p>
+          {currentTiers.map((tier, index) => {
+            return (
+              <>
+                <input
+                  type="text"
+                  placeholder="Gold"
+                  className={classes.sectionInputText}
+                  onChange={(e) => handleChangeTier(e, index, "name")}
+                  value={tier.name}
+                />
+                <input
+                  type="text"
+                  placeholder="The best tier ever!"
+                  className={classes.sectionInputText}
+                  onChange={(e) => handleChangeTier(e, index, "description")}
+                  value={tier.description}
+                />
+                <input
+                  type="text"
+                  placeholder="1000"
+                  className={classes.sectionInputText}
+                  onChange={(e) => handleChangeTier(e, index, "price")}
+                  value={tier.price}
+                />
+                <button
+                  className={classes.removeTierButton}
+                  onClick={() => removeCurrentTier(index)}
+                >
+                  x
+                </button>
+              </>
+            );
+          })}
+          <button
+            className={classes.addTierButton}
+            onClick={addCurrentTier}
+            disabled={currentTiers.length >= 3}
+          >
+            New tier
+          </button>
+          <button onClick={() => console.log(tierPrices)}>Print tiers</button>
         </div>
       </section>
 
@@ -492,6 +591,36 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
             onChange={(e) =>
               insertData("estimatedNumberOfUsers", e.target.value)
             }
+          />
+        </section>
+      )}
+
+      {/* AVERAGE DURATION */}
+      {projectType === "online-course" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            How long will your course be on average?
+          </h3>
+          <input
+            type="text"
+            placeholder="Estimated duration"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("averageDuration", e.target.value)}
+          />
+        </section>
+      )}
+
+      {/* EXPECTED AUDIENCE */}
+      {projectType === "online-course" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            How long will your audience be?
+          </h3>
+          <input
+            type="text"
+            placeholder="Audience size"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("expectedAudience", e.target.value)}
           />
         </section>
       )}

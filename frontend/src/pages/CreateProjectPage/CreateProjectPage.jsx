@@ -11,6 +11,7 @@ import FinalMessage from "./Sections/FinalMessage";
 import { createEvent } from "../../axios/ItemCalls/EventApiCalls";
 import { createCourse } from "../../axios/ItemCalls/CourseApiCalls";
 import { createApplication } from "../../axios/ItemCalls/ApplicationApiCalls";
+import { createOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls";
 
 const CreateProjectPage = () => {
   const [data, setData] = useState({});
@@ -102,6 +103,37 @@ const CreateProjectPage = () => {
 
       console.log(application);
       createApplication(application).catch((err) => console.error(err));
+    }
+
+    if (projectType === "online-course") {
+      const onlineCourse = {
+        name: data.name,
+        description: data.description,
+        images: data.images,
+        categoryId: data.categoryId,
+        subcategoryId: data.subcategoryId,
+        countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
+        goal: +data.goal,
+        mainWebsite: data.mainWebsite,
+        prices: [1000],
+        tiers: {
+          example: "name",
+        },
+        linksToChannels: {
+          name: "link",
+        },
+        lessons: {
+          name: "lesson",
+        },
+        lessonsDate: {
+          name: new Date().toISOString(),
+        },
+        averageDuration: +data.averageDuration,
+        expectedAudience: +data.expectedAudience,
+      };
+
+      console.log(onlineCourse);
+      createOnlineCourse(onlineCourse).catch((err) => console.error(err));
     }
   };
 
