@@ -107,7 +107,7 @@ namespace API.Controllers
         public async Task<ActionResult<AllRankedItemsResponse>> GetAllFromUser()
         {
 
-            var items = await _rankedService.GetAllItems((Guid)HttpContext.GetUserId());
+            var items = await _rankedService.GetMyInvestedItems((Guid)HttpContext.GetUserId());
             return new AllRankedItemsResponse
             {
                 Items = items,
@@ -138,6 +138,27 @@ namespace API.Controllers
             var item = await _rankedService.GetStats();
             return item;
         }
+
+        [HttpGet(AppRoutes.Investments.GetItems)]
+        public async Task<ActionResult<AllRankedItemsResponse>> GetInvestedItemsFromInvestor([FromRoute] Guid investorId)
+        {
+            var items = await _rankedService.GetItemsForInvestor(investorId);
+            return new AllRankedItemsResponse
+            {
+                Items = items
+            };
+        
+        }
+        [HttpGet(AppRoutes.Investments.GetInvesstmentsForOrganisation)]
+        public async Task<ActionResult<AllRankedInvestmentsResponse>> GetInvestmentsForOrganisation([FromRoute] Guid organisationId)
+        {
+            var items = await _rankedService.GetInvestmentsForOrganisation(organisationId);
+            return new AllRankedInvestmentsResponse
+            {
+                Investments = items
+            };
+        }
+
 
     }
 }

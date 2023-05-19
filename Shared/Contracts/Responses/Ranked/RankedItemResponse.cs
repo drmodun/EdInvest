@@ -1,4 +1,5 @@
 ﻿using Shared.Enums;
+using System.Globalization;
 
 namespace Shared.Contracts.Responses.Ranked
 {
@@ -10,6 +11,14 @@ namespace Shared.Contracts.Responses.Ranked
         public decimal Amount { get; set; }
 
         public Guid OrganisationId { get; set; }
+
+        public string OrganisationName { get; set; }
+
+        public string ItemDescription { get; set; }
+
+        public decimal Goal { get; set; }
+
+        public decimal CurrentAmount { get; set; }
 
         public string Image { get; set; }
 

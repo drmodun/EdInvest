@@ -41,19 +41,26 @@ namespace Domain.Repositories.Implementations
                 .ToListAsync();
         }
 
-        public async Task<List<RankedResponse>> GetInvestmentsForOrganisaton(Guid organisationId)
+        public async Task<List<RankedInvestmentResponse>> GetInvestmentsForOrganisaton(Guid organisationId)
         {
             return await _context.Investments
                 .Include(i => i.Item)
                 .Include(i => i.Investor)
                 .Where(i => i.Item.OrganisationId == organisationId)
-                .Select(i => new RankedResponse
+                .Select(i => new RankedInvestmentResponse
                 {
                     Amount = i.Amount,
                     InvestorId = i.InvestorId,
-                    Email = i.Investor.Email,
-                    Image = i.Investor.ProfilePicture,
-                    Name = i.Item.Name,
+                    InvestorImage = i.Investor.ProfilePicture,
+                    InvestorName = i.Investor.Name,
+                    ItemId = i.ItemId,
+                    ItemName = i.Item.Name,
+                    ItemImage = i.Item.Images[0],
+                    OrganisationId = i.Item.OrganisationId,
+                    OrganisationName = i.Item.Organisation.Name,
+                    Tier = i.Tier,
+                    UpdatedAt = i.UpdatedAt
+
                 })
                 .ToListAsync();
         }
@@ -87,7 +94,7 @@ namespace Domain.Repositories.Implementations
         {
             return await _context.Investments
                 .Include(i => i.Item)
-                .Where(i=>i.Item.OrganisationId == organisationId)
+                .Where(i => i.Item.OrganisationId == organisationId)
                 .CountAsync();
         }
         public async Task<int> GetDonated(Guid investorId)
@@ -97,7 +104,7 @@ namespace Domain.Repositories.Implementations
                 .CountAsync();
 
         }
-        
+
 
     }
 }

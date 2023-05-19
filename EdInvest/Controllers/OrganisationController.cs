@@ -99,15 +99,6 @@ namespace API.Controllers
             };
 
         }
-        [HttpGet(AppRoutes.Organisation.GetAllInvestments)]
-        public async Task<AllRankedResponse> GetAllInvestments(Guid id)
-        {
-            var items = await _rankedService.GetInvestmentsForOrganisation(id);
-            return new AllRankedResponse
-            {
-                Investments = items,
-            };
-        }
 
     }
 }

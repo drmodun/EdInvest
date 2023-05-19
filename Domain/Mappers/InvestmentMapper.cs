@@ -30,6 +30,7 @@ namespace Domain.Mappers
                 OrganisationName = entity.Item.Organisation.Name,
                 Tier = entity.Tier,
                 InvestorImage = entity.Investor.ProfilePicture,
+                ItemImage = entity.Item.Images[0],
                 UpdatedAt = entity.UpdatedAt
             };
         }
