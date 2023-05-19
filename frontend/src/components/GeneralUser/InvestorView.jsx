@@ -160,7 +160,7 @@ export const InvestorView = ({
               })}
           </div>
         ) : selected === "details" ? (
-          <div className={classes.Detais}>
+          <div className={classes.Details}>
             <div className={classes.ViewBio}>
               <span className={classes.ViewDescTitle}>Description </span>
               <span className={classes.ViewDesc}>{investor.description}</span>
@@ -203,22 +203,31 @@ export const InvestorView = ({
                         {donation.investorName}
                       </div>{" "}
                     </Link>
+                    <div className={classes.DonationUpdatedAt}>
+                      {new Date(donation.updatedAt).toDateString()}
+                    </div>
                     <div className={classes.Amount}>${donation.amount}</div>
                     <div className={classes.Arrow}>
                       <span>{"=>"}</span>
                     </div>
-                   <Link to={"/projects/" + donation.itemId}> <div className={classes.ItemName}>{donation.itemName}</div> </Link>
                     <Link to={"/projects/" + donation.itemId}>
-                    <div className={classes.ItemPic}>
-                      <img
-                        src={
-                          donation.itemImage
-                            ? "data:image/png;base64," + donation.itemImage
-                            : DefaultProfile
-                        }
-                        alt="Item"
-                      />
-                    </div>
+                      {" "}
+                      <div className={classes.ItemName}>
+                        {donation.itemName}
+                      </div>{" "}
+                    </Link>
+
+                    <Link to={"/projects/" + donation.itemId}>
+                      <div className={classes.ItemPic}>
+                        <img
+                          src={
+                            donation.itemImage
+                              ? "data:image/png;base64," + donation.itemImage
+                              : DefaultProfile
+                          }
+                          alt="Item"
+                        />
+                      </div>
                     </Link>
                     <div className={classes.ItemAuthor}>
                       {donation.itemAuthor}

@@ -95,3 +95,31 @@
   color: #2d2d2d;
   margin-bottom: 10px;
 }
+@media screen and (max-width: 700px) {
+  .ItemCard {
+    flex-direction: column;
+    height: 600px;
+    min-width: 300px;
+    align-items: center;
+    align-self: center;
+  }
+  .Image {
+    margin-right: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 379px;
+  }
+  .Image  img {
+    width: 100%;
+    height: 379px;
+  }
+
+  .GoalBar {
+    width: 100%;
+  }
+  .Desc {
+   display: none;
+  }
+ 
+
+}

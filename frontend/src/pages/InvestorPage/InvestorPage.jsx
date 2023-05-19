@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "../../axios/UserCalls/UserApiCalls";
 import { getInvestments, getItemsForInvestor } from "../../axios/InvestmentsApiCalls";
+import classes from "./InvestorPage.module.css";
 export const InvestorPage = () => {
   const { investorId } = useParams();
   const [investor, setInvestor] = useState({});
@@ -79,7 +80,8 @@ export const InvestorPage = () => {
   }
 
   return (
-    <div style={{ position: "relative", top: "500px", marginBottom: "500px" }}>
+    <div>
+      <div className={classes.Background}></div>
       { investor && <InvestorView
         investor={investor}
         items={items}
