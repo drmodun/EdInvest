@@ -23,11 +23,11 @@ const CourseDescription = ({ project }) => {
       </div>
       <div>
         <h4>Start</h4>
-        <p>{project.startDate}</p>
+        <p>{new Date(project.startDate).toDateString()}</p>
       </div>
       <div>
         <h4>End</h4>
-        <p>{project.endDate}</p>
+        <p>{new Date(project.endDate).toDateString()}</p>
       </div>
       <div>
         <h4>Website</h4>
