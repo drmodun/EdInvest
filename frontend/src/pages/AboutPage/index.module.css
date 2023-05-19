@@ -56,3 +56,53 @@
   height: 357px;
   background: #d9d9d9;
 }
+
+/* ----------------------------------- */
+
+.PerksSectionWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.PerksSection {
+  height: 449px;
+  width: 1323px;
+  background: #439196;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.PerkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 257px;
+}
+
+.PerkImg {
+  width: 72px;
+  height: 72px;
+  background: #d9d9d9;
+}
+
+.PerkTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+.PerkText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: center;
+}

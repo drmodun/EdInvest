@@ -6,6 +6,7 @@ const AboutPage = () => {
       <div className={`headerMargin ` + classes.HeaderWrapper}>
         <h2 className={classes.HeaderTitle}>EdInvest</h2>
       </div>
+
       <div className={classes.MoreInfoSection}>
         <div className={classes.MoreInfoSectionLeft}>
           <h3 className={classes.MoreInfoTitle}>What is EdInvest?</h3>
@@ -18,7 +19,35 @@ const AboutPage = () => {
           </p>
         </div>
         <div className={classes.MoreInfoImg}></div>
-        <div className={classes.MoreInfoSectionRight}></div>
+      </div>
+
+      <div className={classes.PerksSectionWrapper}>
+        <div className={classes.PerksSection}>
+          <div className={classes.PerkContainer}>
+            <div className={classes.PerkImg}></div>
+            <h4 className={classes.PerkTitle}>Zero fraud</h4>
+            <p className={classes.PerkText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod.
+            </p>
+          </div>
+          <div className={classes.PerkContainer}>
+            <div className={classes.PerkImg}></div>
+            <h4 className={classes.PerkTitle}>Transparent paying</h4>
+            <p className={classes.PerkText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod.
+            </p>
+          </div>
+          <div className={classes.PerkContainer}>
+            <div className={classes.PerkImg}></div>
+            <h4 className={classes.PerkTitle}>Philantropy</h4>
+            <p className={classes.PerkText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod.
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );
