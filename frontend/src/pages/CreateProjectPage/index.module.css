@@ -8,7 +8,7 @@ html {
   margin-top: 175px;
   margin-bottom: 92px;
   box-sizing: border-box;
-  padding: 55px 406px 55px 63px;
+  padding: 55px var(--create-content-right-margin) 55px 63px;
   border-radius: 20px;
 }
 

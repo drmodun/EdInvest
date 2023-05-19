@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import classes from "./index.module.css";
@@ -19,6 +19,14 @@ const CreateProjectPage = () => {
     const newSection = section + 1;
     setSection(newSection);
   };
+
+  const handleRightMargin = useEffect(() => {
+    if (section === 4) {
+      document
+        .querySelector(":root")
+        .style.setProperty("--create-content-right-margin", "63px");
+    }
+  }, [section]);
 
   return (
     <div className={"layoutSpacing " + classes.content}>

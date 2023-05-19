@@ -48,7 +48,7 @@ const ReceivingFunds = () => {
           />
           <label
             className={classes.sectionCheckboxLabel}
-            for="submissionGuidlines"
+            htmlFor="submissionGuidlines"
           >
             I agree with submission guidlines
           </label>
