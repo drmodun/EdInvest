@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 import classes from "../../index.module.css";
@@ -6,9 +6,9 @@ import DownloadIcon from "../../../../assets/icons/download.svg";
 
 // REQUIRES react-dropzone PACKAGE
 
-const ProjectPicture = () => {
+const ProjectPicture = ({ insertData }) => {
   const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
+    insertData("images", []);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });

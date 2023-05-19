@@ -87,15 +87,15 @@ const CreateProjectPage = () => {
           setProjectType={setProjectType}
         />
       ) : null}
-      {section === 2 ? <ProjectPicture insertData={insertData} /> : null}
-      {section === 3 ? <ReceivingFunds insertData={insertData} /> : null}
-      {section === 4 ? <FinalMessage insertData={insertData} /> : null}
+      {section === 2 && <ProjectPicture insertData={insertData} />}
+      {section === 3 && <ReceivingFunds insertData={insertData} />}
+      {section === 4 && <FinalMessage insertData={insertData} />}
 
-      {section < 4 ? (
+      {section < 4 && (
         <button className={classes.continueButton} onClick={increaseSection}>
           {section === 3 ? "Publish" : "Continue"}
         </button>
-      ) : null}
+      )}
     </div>
   );
 };
