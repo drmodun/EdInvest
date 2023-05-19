@@ -114,10 +114,11 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
           className={classes.sectionInputSelect}
           onChange={(e) => setProjectType(e.target.value)}
         >
+          <option value="none">
+            -- Please select the type of your project --
+          </option>
           <option value="event">Event</option>
-          <option value="application">Application</option>
           <option value="course">Course</option>
-          <option value="online-course">Online Course</option>
         </select>
       </section>
 
@@ -127,6 +128,7 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
           className={classes.sectionInputSelect}
           onChange={(e) => handleCategorySelect(e)}
         >
+          <option value="none">-- Please select the category --</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
@@ -138,6 +140,7 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
           onChange={(e) => insertData("subcategoryId", e.target.value)}
           disabled={subcategories.length === 0}
         >
+          <option value="none">-- Please select the subcategory --</option>
           {subcategories.map((subcategory) => (
             <option key={subcategory.id} value={subcategory.id}>
               {subcategory.name}
