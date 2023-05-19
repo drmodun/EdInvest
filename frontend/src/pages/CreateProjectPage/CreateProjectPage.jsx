@@ -10,6 +10,7 @@ import FinalMessage from "./Sections/FinalMessage";
 
 import { createEvent } from "../../axios/ItemCalls/EventApiCalls";
 import { createCourse } from "../../axios/ItemCalls/CourseApiCalls";
+import { createApplication } from "../../axios/ItemCalls/ApplicationApiCalls";
 
 const CreateProjectPage = () => {
   const [data, setData] = useState({});
@@ -77,6 +78,31 @@ const CreateProjectPage = () => {
       console.log(course);
       createCourse(course).catch((err) => console.error(err));
     }
+
+    if (projectType === "application") {
+      const application = {
+        name: data.name,
+        description: data.description,
+        images: data.images,
+        categoryId: data.categoryId,
+        subcategoryId: data.subcategoryId,
+        countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
+        goal: +data.goal,
+        mainWebsite: data.mainWebsite,
+        prices: [1000],
+        tiers: {
+          example: "name",
+        },
+        estimatedRelease: data.estimatedRelease.toISOString(),
+        appPurpose: data.appPurpose,
+        markets: ["market"],
+        features: data.features,
+        estimatedNumberOfUsers: +data.estimatedNumberOfUsers,
+      };
+
+      console.log(application);
+      createApplication(application).catch((err) => console.error(err));
+    }
   };
 
   useEffect(() => {
@@ -89,7 +115,8 @@ const CreateProjectPage = () => {
 
   useEffect(() => {
     //console.log("Project type: ", projectType);
-    setData({ ...data, _TYPE: projectType });
+    const name = data.name || "";
+    setData({ name, _TYPE: projectType });
   }, [projectType]);
 
   const insertData = (key, value) => {

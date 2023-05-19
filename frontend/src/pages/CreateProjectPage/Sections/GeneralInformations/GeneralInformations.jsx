@@ -56,6 +56,26 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
     insertData("endDate", newDate);
   }, [endDate]);
 
+  const [estimatedRelease, setEstimatedRelease] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
+  useEffect(() => {
+    if (
+      !estimatedRelease.day ||
+      !estimatedRelease.month ||
+      !estimatedRelease.year
+    )
+      return;
+    const newDate = new Date(
+      estimatedRelease.year,
+      estimatedRelease.month - 1,
+      estimatedRelease.day
+    );
+    insertData("estimatedRelease", newDate);
+  }, [estimatedRelease]);
+
   const handleTextAreaResize = (e) => {
     const textarea = e.target;
     textarea.style.height = textarea.scrollHeight + "px";
@@ -90,6 +110,7 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
   const handleCategorySelect = (e) => {
     insertData("categoryId", e.target.value);
     const categoryName = e.target.options[e.target.selectedIndex].text;
+    if (categoryName === "-- Please select the category --") return;
     const category = categories.find(
       (category) => category.name === categoryName
     );
@@ -108,39 +129,42 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
         />
       </section>
 
+      {/* PROJECT TYPE */}
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Type of project</h3>
         <select
           className={classes.sectionInputSelect}
           onChange={(e) => setProjectType(e.target.value)}
         >
-          <option value="none">
-            -- Please select the type of your project --
-          </option>
+          <option value="">-- Please select the type of your project --</option>
           <option value="event">Event</option>
           <option value="course">Course</option>
+          <option value="application">Application</option>
         </select>
       </section>
 
+      {/* CATEGORY */}
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Project category</h3>
         <select
           className={classes.sectionInputSelect}
           onChange={(e) => handleCategorySelect(e)}
         >
-          <option value="none">-- Please select the category --</option>
+          <option value="">-- Please select the category --</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
             </option>
           ))}
         </select>
+
+        {/* SUBCATEGORY */}
         <select
           className={classes.sectionInputSelect}
           onChange={(e) => insertData("subcategoryId", e.target.value)}
           disabled={subcategories.length === 0}
         >
-          <option value="none">-- Please select the subcategory --</option>
+          <option value="">-- Please select the subcategory --</option>
           {subcategories.map((subcategory) => (
             <option key={subcategory.id} value={subcategory.id}>
               {subcategory.name}
@@ -149,6 +173,7 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
         </select>
       </section>
 
+      {/* DESCRIPTION */}
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Project description</h3>
         <p className={classes.sectionDescription}>
@@ -255,36 +280,6 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
         </section>
       )}
 
-      {/* FEATURES */}
-      {projectType === "application" && (
-        <section className={classes.section}>
-          <h3 className={classes.sectionTitle}>
-            Add up to 5 features that your project is related to
-          </h3>
-          <div className={classes.sectionKeywordsContainer}>
-            {features.map((feature, i) => {
-              return (
-                <input
-                  key={i}
-                  type="text"
-                  defaultValue={feature}
-                  className={classes.sectionKeywordsItem}
-                  onBlur={removeEmptyFeatures}
-                  onChange={(e) => handleChangeFeature(e, i)}
-                  contentEditable
-                />
-              );
-            })}
-            <button
-              className={classes.sectionKeywordsButton}
-              onClick={addFeaturesInput}
-            >
-              +
-            </button>
-          </div>
-        </section>
-      )}
-
       {/* EXPECTED APPLICANTS */}
       {projectType === "course" && (
         <section className={classes.section}>
@@ -386,6 +381,118 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
               onChange={(e) => setEndDate({ ...endDate, year: e.target.value })}
             />
           </div>
+        </section>
+      )}
+
+      {/* ESTIMATED RELEASE */}
+      {projectType === "application" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Estimated release date of your app
+          </h3>
+          <div className={classes.sectionDateContainer}>
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="DD"
+              className={classes.sectionDateInput}
+              id="day"
+              onChange={(e) =>
+                setEstimatedRelease({
+                  ...estimatedRelease,
+                  day: e.target.value,
+                })
+              }
+            />
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="MM"
+              id="month"
+              className={classes.sectionDateInput}
+              onChange={(e) =>
+                setEstimatedRelease({
+                  ...estimatedRelease,
+                  month: e.target.value,
+                })
+              }
+            />
+            <input
+              type="text"
+              maxLength={4}
+              placeholder="YYYY"
+              id="year"
+              className={classes.sectionDateInput}
+              onChange={(e) =>
+                setEstimatedRelease({
+                  ...estimatedRelease,
+                  year: e.target.value,
+                })
+              }
+            />
+          </div>
+        </section>
+      )}
+
+      {/* APP PURPOSE */}
+      {projectType === "application" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Shortly describe your app's purpose
+          </h3>
+          <input
+            type="text"
+            placeholder="Purpose"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("appPurpose", e.target.value)}
+          />
+        </section>
+      )}
+
+      {/* FEATURES */}
+      {projectType === "application" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Add up to 5 features that your app will have
+          </h3>
+          <div className={classes.sectionKeywordsContainer}>
+            {features.map((feature, i) => {
+              return (
+                <input
+                  key={i}
+                  type="text"
+                  defaultValue={feature}
+                  className={classes.sectionKeywordsItem}
+                  onBlur={removeEmptyFeatures}
+                  onChange={(e) => handleChangeFeature(e, i)}
+                  contentEditable
+                />
+              );
+            })}
+            <button
+              className={classes.sectionKeywordsButton}
+              onClick={addFeaturesInput}
+            >
+              +
+            </button>
+          </div>
+        </section>
+      )}
+
+      {/* ESTIMATED NUMBER OF USERS */}
+      {projectType === "application" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            What is the estimated number of users your app could have?
+          </h3>
+          <input
+            type="text"
+            placeholder="Estimated number of users"
+            className={classes.sectionInputText}
+            onChange={(e) =>
+              insertData("estimatedNumberOfUsers", e.target.value)
+            }
+          />
         </section>
       )}
 
