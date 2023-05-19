@@ -15,6 +15,7 @@ import EventDescription from "../../components/ProjectPageComponents/EventDescri
 import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
 import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
 import OnlineCourseDescription from "../../components/ProjectPageComponents/OnlineCourseDescription";
+import CourseDescription from "../../components/ProjectPageComponents/CourseDescription";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState(true);
@@ -78,6 +79,8 @@ const ProjectPage = () => {
               }
             })(id);
             break;
+          default:
+            break;
         }
 
         const organisationData = await getOrganisationById(data.organisationId);
@@ -121,7 +124,9 @@ const ProjectPage = () => {
             <div>
               {informationsChosen ? (
                 <div className={classes.DescriptionText}>
-                  {project.type === 0 && <h1>0</h1>}
+                  {project.type === 0 && (
+                    <CourseDescription project={project} />
+                  )}
                   {project.type === 1 && (
                     <ApplicationDescription project={project} />
                   )}

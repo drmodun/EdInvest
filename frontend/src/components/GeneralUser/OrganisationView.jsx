@@ -7,16 +7,21 @@ import { Link } from "react-router-dom";
 import useUserInfo from "../../Providers/UserInfoProvider";
 import DefaultProfile from "../../assets/default-profile.png";
 import { useEffect, useState } from "react";
-//even though 
+//even though
 const dict = {
   facebook: Facebook,
   google: Google,
   twitter: Twitter,
   appstore: AppStore,
 };
-export const OrganisationView = ({organisation, onEdit, onDelete, seeDonations}) => {
-  console.log(organisation);
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+export const OrganisationView = ({
+  organisation,
+  onEdit,
+  onDelete,
+  seeDonations,
+}) => {
+  console.log(organisation.profilePicture);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   let base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
 
@@ -33,31 +38,31 @@ export const OrganisationView = ({organisation, onEdit, onDelete, seeDonations})
     console.log(tempSocials);
   }, [organisation.socialLinks]);
 
-  function tryDelete(){
+  function tryDelete() {
     if (organisation.id === userInfo.id) {
       onDelete();
     }
   }
-  function tryEdit(){
+  function tryEdit() {
     if (organisation.id === userInfo.id) {
       onEdit();
     }
   }
-  
 
   return (
     <div className={classes.View}>
       <div className={classes.ViewImage}>
         <img
           src={
-            base64regex.test(organisation.image)
-              ? "data:image/png;base64," + organisation.image
+            base64regex.test(organisation.profilePicture) &&
+            organisation.profilePicture
+              ? "data:image/png;base64," + organisation.profilePicture
               : DefaultProfile
           }
           alt={organisation.name}
         />
       </div>
-        <div className={classes.Type}>Type: Organisation</div>
+      <div className={classes.Type}>Type: Organisation</div>
       <div className={classes.ViewDetails}>
         <span className={classes.ViewName}>Name: {organisation.name}</span>
         <span className={classes.ViewEmail}>Email: {organisation.email}</span>
@@ -80,7 +85,7 @@ export const OrganisationView = ({organisation, onEdit, onDelete, seeDonations})
           </div>
           <div className={classes.FinancialInfoDonations}>
             <span>Total received</span>
-               <span>${organisation.balance}</span>
+            <span>${organisation.balance}</span>
           </div>
         </div>
         <div className={classes.ViewBio}>
@@ -89,17 +94,23 @@ export const OrganisationView = ({organisation, onEdit, onDelete, seeDonations})
         </div>
         <div className={classes.ViewBio}>
           <span className={classes.ViewDescTitle}>Number of Members </span>
-          <span className={classes.ViewDescTitle}>{organisation.numberOfMembers}</span>
+          <span className={classes.ViewDescTitle}>
+            {organisation.numberOfMembers}
+          </span>
         </div>
         <div className={classes.Socials}>
           <span>Social Links</span>
-          {socials.map((social)=>{
-              const key = social.name;
-              return (<a href={social.link}><img src={dict[key]} alt={key} /></a>)
+          {socials.map((social) => {
+            const key = social.name;
+            return (
+              <a href={social.link}>
+                <img src={dict[key]} alt={key} />
+              </a>
+            );
           })}
         </div>
         <div className={classes.WalletAddress}>
-          <span>Wallet Address</span>
+          <pre>{"--->"}</pre>
           <span> {organisation.walletAddress}</span>
         </div>
       </div>

@@ -19,7 +19,7 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
