@@ -24,11 +24,37 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
     month: "",
     year: "",
   });
-
   useEffect(() => {
+    if (!date.day || !date.month || !date.year) return;
     const newDate = new Date(date.year, date.month - 1, date.day);
     insertData("date", newDate);
   }, [date]);
+
+  const [startDate, setStartDate] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
+  useEffect(() => {
+    if (!startDate.day || !startDate.month || !startDate.year) return;
+    const newDate = new Date(
+      startDate.year,
+      startDate.month - 1,
+      startDate.day
+    );
+    insertData("startDate", newDate);
+  }, [startDate]);
+
+  const [endDate, setEndDate] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
+  useEffect(() => {
+    if (!endDate.day || !endDate.month || !endDate.year) return;
+    const newDate = new Date(endDate.year, endDate.month - 1, endDate.day);
+    insertData("endDate", newDate);
+  }, [endDate]);
 
   const handleTextAreaResize = (e) => {
     const textarea = e.target;
@@ -152,99 +178,215 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
         </div>
       </section>
 
+      {/* LOCATION */}
       {projectType === "event" && (
-        <>
-          <section className={classes.section}>
-            <h3 className={classes.sectionTitle}>Location</h3>
-            <input
-              type="text"
-              placeholder="New York"
-              className={classes.sectionInputText}
-              onChange={(e) => insertData("location", e.target.value)}
-            />
-          </section>
-
-          <section className={classes.section}>
-            <h3 className={classes.sectionTitle}>Date of your event</h3>
-            <div className={classes.sectionDateContainer}>
-              <input
-                type="text"
-                maxLength={2}
-                placeholder="DD"
-                className={classes.sectionDateInput}
-                id="day"
-                onChange={(e) => setDate({ ...date, day: e.target.value })}
-              />
-              <input
-                type="text"
-                maxLength={2}
-                placeholder="MM"
-                id="month"
-                className={classes.sectionDateInput}
-                onChange={(e) => setDate({ ...date, month: e.target.value })}
-              />
-              <input
-                type="text"
-                maxLength={4}
-                placeholder="YYYY"
-                id="year"
-                className={classes.sectionDateInput}
-                onChange={(e) => setDate({ ...date, year: e.target.value })}
-              />
-            </div>
-          </section>
-
-          <section className={classes.section}>
-            <h3 className={classes.sectionTitle}>
-              Add up to 5 features that your project is related to
-            </h3>
-            <div className={classes.sectionKeywordsContainer}>
-              {features.map((feature, i) => {
-                return (
-                  <input
-                    key={i}
-                    type="text"
-                    defaultValue={feature}
-                    className={classes.sectionKeywordsItem}
-                    onBlur={removeEmptyFeatures}
-                    onChange={(e) => handleChangeFeature(e, i)}
-                    contentEditable
-                  />
-                );
-              })}
-              <button
-                className={classes.sectionKeywordsButton}
-                onClick={addFeaturesInput}
-              >
-                +
-              </button>
-            </div>
-          </section>
-
-          <section className={classes.section}>
-            <h3 className={classes.sectionTitle}>
-              Ticket price of your event (€)
-            </h3>
-            <input
-              type="text"
-              placeholder="Ticket price"
-              className={classes.sectionInputText}
-              onChange={(e) => insertData("ticketPrice", e.target.value)}
-            />
-          </section>
-
-          <section className={classes.section}>
-            <h3 className={classes.sectionTitle}>Capacity of your event</h3>
-            <input
-              type="text"
-              placeholder="Capacity"
-              className={classes.sectionInputText}
-              onChange={(e) => insertData("capacity", e.target.value)}
-            />
-          </section>
-        </>
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>Location</h3>
+          <input
+            type="text"
+            placeholder="New York"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("location", e.target.value)}
+          />
+        </section>
       )}
 
+      {/* DATE */}
+      {projectType === "event" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>Date of your event</h3>
+          <div className={classes.sectionDateContainer}>
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="DD"
+              className={classes.sectionDateInput}
+              id="day"
+              onChange={(e) => setDate({ ...date, day: e.target.value })}
+            />
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="MM"
+              id="month"
+              className={classes.sectionDateInput}
+              onChange={(e) => setDate({ ...date, month: e.target.value })}
+            />
+            <input
+              type="text"
+              maxLength={4}
+              placeholder="YYYY"
+              id="year"
+              className={classes.sectionDateInput}
+              onChange={(e) => setDate({ ...date, year: e.target.value })}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* TICKET PRICE */}
+      {projectType === "event" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Ticket price of your event (€)
+          </h3>
+          <input
+            type="text"
+            placeholder="Ticket price"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("ticketPrice", e.target.value)}
+          />
+        </section>
+      )}
+
+      {/* CAPACITY */}
+      {projectType === "event" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>Capacity of your event</h3>
+          <input
+            type="text"
+            placeholder="Capacity"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("capacity", e.target.value)}
+          />
+        </section>
+      )}
+
+      {/* FEATURES */}
+      {projectType === "application" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Add up to 5 features that your project is related to
+          </h3>
+          <div className={classes.sectionKeywordsContainer}>
+            {features.map((feature, i) => {
+              return (
+                <input
+                  key={i}
+                  type="text"
+                  defaultValue={feature}
+                  className={classes.sectionKeywordsItem}
+                  onBlur={removeEmptyFeatures}
+                  onChange={(e) => handleChangeFeature(e, i)}
+                  contentEditable
+                />
+              );
+            })}
+            <button
+              className={classes.sectionKeywordsButton}
+              onClick={addFeaturesInput}
+            >
+              +
+            </button>
+          </div>
+        </section>
+      )}
+
+      {/* EXPECTED APPLICANTS */}
+      {projectType === "course" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Expected applicants for your course
+          </h3>
+          <input
+            type="text"
+            placeholder="Expected applicants"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("expectedApplicants", e.target.value)}
+          />
+        </section>
+      )}
+
+      {/* EXPECTED GRADUATES */}
+      {projectType === "course" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>
+            Expected graduates for your course
+          </h3>
+          <input
+            type="text"
+            placeholder="Expected graduates"
+            className={classes.sectionInputText}
+            onChange={(e) => insertData("expectedGraduates", e.target.value)}
+          />
+        </section>
+      )}
+
+      {/* START DATE */}
+      {projectType === "course" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>Start date of your event</h3>
+          <div className={classes.sectionDateContainer}>
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="DD"
+              className={classes.sectionDateInput}
+              id="day"
+              onChange={(e) =>
+                setStartDate({ ...startDate, day: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="MM"
+              id="month"
+              className={classes.sectionDateInput}
+              onChange={(e) =>
+                setStartDate({ ...startDate, month: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              maxLength={4}
+              placeholder="YYYY"
+              id="year"
+              className={classes.sectionDateInput}
+              onChange={(e) =>
+                setStartDate({ ...startDate, year: e.target.value })
+              }
+            />
+          </div>
+        </section>
+      )}
+
+      {/* END DATE */}
+      {projectType === "course" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>End date of your event</h3>
+          <div className={classes.sectionDateContainer}>
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="DD"
+              className={classes.sectionDateInput}
+              id="day"
+              onChange={(e) => setEndDate({ ...endDate, day: e.target.value })}
+            />
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="MM"
+              id="month"
+              className={classes.sectionDateInput}
+              onChange={(e) =>
+                setEndDate({ ...endDate, month: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              maxLength={4}
+              placeholder="YYYY"
+              id="year"
+              className={classes.sectionDateInput}
+              onChange={(e) => setEndDate({ ...endDate, year: e.target.value })}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* WEBSITE LINK */}
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Website link of your project</h3>
         <input

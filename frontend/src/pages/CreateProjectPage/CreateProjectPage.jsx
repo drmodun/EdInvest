@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { getCategories } from "../../axios/CategoryCalls/CategoryApiCalls";
 
 import classes from "./index.module.css";
 
@@ -10,6 +9,7 @@ import ReceivingFunds from "./Sections/ReceivingFunds";
 import FinalMessage from "./Sections/FinalMessage";
 
 import { createEvent } from "../../axios/ItemCalls/EventApiCalls";
+import { createCourse } from "../../axios/ItemCalls/CourseApiCalls";
 
 const CreateProjectPage = () => {
   const [data, setData] = useState({});
@@ -29,20 +29,52 @@ const CreateProjectPage = () => {
         countryId: "0038575a-03dc-48af-9311-6e3720ddf058", // Default: Azerbaijan
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
-        prices: [],
-        tiers: {},
+        prices: [1000],
+        tiers: {
+          example: "name",
+        },
         date: data.date.toISOString(),
         location: data.location,
-        activities: {},
+        activities: {
+          time: "activity",
+        },
         ticketPrice: +data.ticketPrice,
-        notableAttendees: [],
-        notableSpeakers: [],
+        notableAttendees: ["Attendee"],
+        notableSpeakers: ["Speaker"],
         capacity: +data.capacity,
         expectedAttendees: 0,
+        organisationId: "36ad10aa-bf8d-472f-9ab6-609a492718da",
       };
 
       console.log(event);
       createEvent(event).catch((err) => console.error(err));
+    }
+
+    if (data._TYPE === "course") {
+      const course = {
+        name: data.name,
+        description: data.description,
+        images: data.images,
+        categoryId: data.categoryId,
+        subcategoryId: data.subcategoryId,
+        goal: +data.goal,
+        mainWebsite: data.mainWebsite,
+        prices: [1000],
+        tiers: {
+          example: "name",
+        },
+        expectedApplicants: data.expectedApplicants,
+        expectedGraduates: data.expectedGraduates,
+        startDate: data.startDate.toISOString(),
+        endDate: data.endDate.toISOString(),
+        curriculum: {
+          example: "name",
+        },
+        activeStudents: 1,
+      };
+
+      console.log(course);
+      createCourse(course).catch((err) => console.error(err));
     }
   };
 
@@ -51,7 +83,7 @@ const CreateProjectPage = () => {
   }, [agree]);
 
   useEffect(() => {
-    //console.log("Data: ", data);
+    console.log("Data: ", data);
   }, [data]);
 
   useEffect(() => {
