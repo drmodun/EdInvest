@@ -17,6 +17,7 @@ const CreateProjectPage = () => {
   const [data, setData] = useState({});
   const [projectType, setProjectType] = useState("");
   const [agree, setAgree] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState(true);
 
   const handleCreateProject = () => {
     if (section < 3) return;
@@ -31,10 +32,8 @@ const CreateProjectPage = () => {
         countryId: "0038575a-03dc-48af-9311-6e3720ddf058", // Default: Azerbaijan
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
-        prices: [1000],
-        tiers: {
-          example: "name",
-        },
+        prices: data.prices,
+        tiers: data.tiers,
         date: data.date.toISOString(),
         location: data.location,
         activities: {
@@ -62,10 +61,8 @@ const CreateProjectPage = () => {
         countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
-        prices: [1000],
-        tiers: {
-          example: "name",
-        },
+        prices: data.prices,
+        tiers: data.tiers,
         expectedApplicants: data.expectedApplicants,
         expectedGraduates: data.expectedGraduates,
         startDate: data.startDate.toISOString(),
@@ -90,10 +87,8 @@ const CreateProjectPage = () => {
         countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
-        prices: [1000],
-        tiers: {
-          example: "name",
-        },
+        prices: data.prices,
+        tiers: data.tiers,
         estimatedRelease: data.estimatedRelease.toISOString(),
         appPurpose: data.appPurpose,
         markets: ["market"],
@@ -115,10 +110,8 @@ const CreateProjectPage = () => {
         countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
-        prices: [1000],
-        tiers: {
-          example: "name",
-        },
+        prices: data.prices,
+        tiers: data.tiers,
         linksToChannels: {
           name: "link",
         },
@@ -213,9 +206,12 @@ const CreateProjectPage = () => {
       ) : null}
       {section === 1 ? (
         <GeneralInformations
+          data={data}
+          setData={setData}
           insertData={insertData}
           projectType={projectType}
           setProjectType={setProjectType}
+          setButtonStatus={setButtonStatus}
         />
       ) : null}
       {section === 2 && <ProjectPicture insertData={insertData} />}
@@ -228,7 +224,7 @@ const CreateProjectPage = () => {
         <button
           className={classes.continueButton}
           onClick={increaseSection}
-          disabled={section > 2 && !agree}
+          disabled={buttonStatus /*section > 2 && !agree*/}
         >
           {section === 3 ? "Publish" : "Continue"}
         </button>

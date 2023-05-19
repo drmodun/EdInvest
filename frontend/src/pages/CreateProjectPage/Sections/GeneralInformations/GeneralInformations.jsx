@@ -17,7 +17,116 @@ import HyperlinkIcon from "../../../../assets/icons/hyperlink.svg";
 import PictureIcon from "../../../../assets/icons/picture.svg";
 import FilmIcon from "../../../../assets/icons/film.svg";
 
-const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
+const GeneralInformations = ({
+  data,
+  setData,
+  insertData,
+  projectType,
+  setProjectType,
+  setButtonStatus,
+}) => {
+  const [status, setStatus] = useState({
+    name: false,
+    type: false,
+    category: false,
+    subcategory: false,
+    description: false,
+    tiers: false,
+    location: false,
+    date: false,
+    ticketPrice: false,
+    capacity: false,
+    expectedApplicants: false,
+    expectedGraduates: false,
+    startDate: false,
+    endDate: false,
+    estimatedRelease: false,
+    appPurpose: false,
+    features: false,
+    estimatedNumberOfUsers: false,
+    averageDuration: false,
+    expectedAudience: false,
+    link: false,
+  });
+
+  const updateStatus = () => {
+    console.log("updated");
+    setStatus({
+      name: data.name !== "" && data.name !== undefined,
+      type: data._TYPE !== "" && data._TYPE !== undefined,
+      category: data.categoryId !== "" && data.categoryId !== undefined,
+      subcategory:
+        data.subcategoryId !== "" && data.subcategoryId !== undefined,
+      description: data.description !== "" && data.description !== undefined,
+      tiers: data.tiers && data.tiers.length !== 0 && data.tiers[0] !== "",
+      location: data.location !== "" && data.location !== undefined,
+      date: data.date !== "" && data.date !== undefined,
+      ticketPrice: data.ticketPrice !== "" && data.ticketPrice !== undefined,
+      capacity: data.capacity !== "" && data.capacity !== undefined,
+      expectedApplicants:
+        data.expectedApplicants !== "" && data.expectedApplicants !== undefined,
+      expectedGraduates:
+        data.expectedGraduates !== "" && data.expectedGraduates !== undefined,
+      startDate: data.startDate !== "" && data.startDate !== undefined,
+      endDate: data.endDate !== "" && data.endDate !== undefined,
+      estimatedRelease:
+        data.estimatedRelease !== "" && data.estimatedRelease !== undefined,
+      appPurpose: data.appPurpose !== "" && data.appPurpose !== undefined,
+      features:
+        data.features && data.features.length !== 0 && data.features[0] !== "",
+      estimatedNumberOfUsers:
+        data.estimatedNumberOfUsers !== "" &&
+        data.estimatedNumberOfUsers !== undefined,
+      averageDuration:
+        data.averageDuration !== "" && data.averageDuration !== undefined,
+      expectedAudience:
+        data.expectedAudience !== "" && data.expectedAudience !== undefined,
+      link: data.mainWebsite !== "" && data.mainWebsite !== undefined,
+    });
+  };
+
+  useEffect(() => {
+    updateStatus();
+    let newButtonStatus =
+      status.name &&
+      status.type &&
+      status.category &&
+      status.subcategory &&
+      status.description &&
+      status.tiers &&
+      status.link;
+
+    if (data._TYPE == "event")
+      newButtonStatus =
+        newButtonStatus &&
+        status.date &&
+        status.location &&
+        status.ticketPrice &&
+        status.capacity;
+
+    if (data._TYPE == "course")
+      newButtonStatus =
+        newButtonStatus &&
+        status.expectedApplicants &&
+        status.expectedGraduates &&
+        status.startDate &&
+        status.endDate;
+
+    if (data._TYPE == "application")
+      newButtonStatus =
+        newButtonStatus &&
+        status.estimatedRelease &&
+        status.appPurpose &&
+        status.features &&
+        status.estimatedNumberOfUsers;
+
+    if (data._TYPE == "online-course")
+      newButtonStatus =
+        newButtonStatus && status.averageDuration && status.expectedAudience;
+
+    setButtonStatus(!newButtonStatus);
+  }, [data]);
+
   const [features, setFeatures] = useState([]);
   const [date, setDate] = useState({
     day: "",
@@ -88,14 +197,18 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
   };
 
   useEffect(() => {
+    let newTiers = {};
     let newTierPrices = [];
     currentTiers.forEach((tier) => {
-      if (tier.name && tier.description && tier.price) {
-        setTiers({ ...tiers, [tier.name]: tier.description });
+      if (tier.name !== "") {
+        newTiers[tier.name] = tier.description;
         newTierPrices.push(+tier.price);
       }
     });
+    setTiers(newTiers);
     setTierPrices(newTierPrices);
+
+    setData({ ...data, tiers: newTiers, prices: newTierPrices });
   }, [currentTiers]);
 
   const removeCurrentTier = (index) => {
@@ -108,7 +221,6 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
     const newTiers = [...currentTiers];
     newTiers.push(emptyTier);
     setCurrentTiers(newTiers);
-    console.log(currentTiers);
   };
 
   const handleChangeTier = (e, index, key) => {
@@ -254,7 +366,8 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Tiers</h3>
         <p className={classes.sectionDescription}>
-          Create your own tier list for this project.
+          Create your own tier list for this project. You must have at least one
+          and at most three available tiers.
         </p>
         <div className={classes.sectionTiers}>
           <p className={classes.sectionDescription}>Name</p>
@@ -301,7 +414,6 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
           >
             New tier
           </button>
-          <button onClick={() => console.log(tierPrices)}>Print tiers</button>
         </div>
       </section>
 
@@ -635,6 +747,7 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
           onChange={(e) => insertData("mainWebsite", e.target.value)}
         />
       </section>
+      <button onClick={() => console.log(status)}>Print status</button>
     </>
   );
 };
