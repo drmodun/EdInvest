@@ -9,21 +9,53 @@ import ProjectPicture from "./Sections/ProjectPicture";
 import ReceivingFunds from "./Sections/ReceivingFunds";
 import FinalMessage from "./Sections/FinalMessage";
 
+import { createEvent } from "../../axios/ItemCalls/EventApiCalls";
+
 const CreateProjectPage = () => {
   const [data, setData] = useState({});
   const [projectType, setProjectType] = useState("");
   const [agree, setAgree] = useState(false);
 
+  const handleCreateProject = () => {
+    if (section < 3) return;
+
+    if (data._TYPE === "event") {
+      const event = {
+        name: data.name,
+        description: data.description,
+        images: data.images,
+        categoryId: data.categoryId,
+        subcategoryId: data.subcategoryId,
+        countryId: "0038575a-03dc-48af-9311-6e3720ddf058", // Default: Azerbaijan
+        goal: +data.goal,
+        mainWebsite: data.mainWebsite,
+        prices: [],
+        tiers: {},
+        date: data.date.toISOString(),
+        location: data.location,
+        activities: {},
+        ticketPrice: +data.ticketPrice,
+        notableAttendees: [],
+        notableSpeakers: [],
+        capacity: +data.capacity,
+        expectedAttendees: 0,
+      };
+
+      console.log(event);
+      createEvent(event).catch((err) => console.error(err));
+    }
+  };
+
   useEffect(() => {
-    console.log(agree);
+    //console.log(agree);
   }, [agree]);
 
   useEffect(() => {
-    console.log("Data: ", data);
+    //console.log("Data: ", data);
   }, [data]);
 
   useEffect(() => {
-    console.log("Project type: ", projectType);
+    //console.log("Project type: ", projectType);
     setData({ ...data, _TYPE: projectType });
   }, [projectType]);
 
@@ -38,6 +70,7 @@ const CreateProjectPage = () => {
   };
 
   const increaseSection = () => {
+    handleCreateProject();
     const newSection = section + 1;
     setSection(newSection);
   };
