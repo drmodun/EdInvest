@@ -1,0 +1,33 @@
+.MakeDonation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.DonationInfo {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: row;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+.DonationInfo > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.DonationInfo > img {
+  width: 30px;
+  height: 30px;
+  margin: 20px;
+}
+
+
