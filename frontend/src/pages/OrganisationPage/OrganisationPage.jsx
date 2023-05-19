@@ -62,7 +62,7 @@ export const OrganisationPage = () => {
     );
     if (check === userInfo.name) {
       try {
-        const response = await deleteUser(organisationId);
+        const response = await deleteUser(organisation.id);
         if (response) {
           userInfo.logOut();
           navigation("/login");

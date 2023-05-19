@@ -73,7 +73,7 @@ export const OrganisationView = ({
         </div>
         <div className={classes.Type}>Type: Organisation</div>
         <div className={classes.ViewDetails}>
-          <span className={classes.ViewName}>{organisation.name}</span>
+          <div className={classes.ViewName}>{organisation.name}</div>
           <span className={classes.ViewEmail}>{organisation.email}</span>
           <span className={classes.ViewLastUpdated}>
             Last updated: {new Date(organisation.updatedAt).toDateString()}
@@ -113,7 +113,7 @@ export const OrganisationView = ({
           <button
             className={
               selected === "projects"
-                ? classes.Selected
+                ? classes.SelectedOrg
                 : classes.SelectionButton
             }
             onClick={() => setSelected("projects")}
@@ -123,7 +123,7 @@ export const OrganisationView = ({
           <button
             className={
               selected === "details"
-                ? classes.Selected
+                ? classes.SelectedOrg
                 : classes.SelectionButton
             }
             onClick={() => setSelected("details")}
@@ -133,7 +133,7 @@ export const OrganisationView = ({
           <button
             className={
               selected === "investments"
-                ? classes.Selected
+                ? classes.SelectedOrg
                 : classes.SelectionButton
             }
             onClick={() => setSelected("investments")}

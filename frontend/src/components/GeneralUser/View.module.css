@@ -51,6 +51,11 @@
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
+  max-width: 80%;
+  flex-wrap: wrap;
+  word-break: break-all;
+  display: flex;
+  text-align: center;
   line-height: 48px;
 }
 .ViewEmail {
@@ -87,6 +92,23 @@
   transition: background-color 0.3s ease-in-out;
 
   margin-top: 12px;
+}
+.SelectedOrg{
+  font-family: "Inter";
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 14px 22px;
+  gap: 10px;
+  justify-content: center;
+  min-width: 119px;
+  height: 50px;
+  background-color: #233abf;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  margin-right: 28px;
+  color: white;
+  font-size: 14px;
 }
 .ViewButtons > button:hover {
   cursor: pointer;
@@ -347,6 +369,7 @@
   justify-content: flex-start;
   margin-top: 20px;
   padding: 30px;
+  border-radius: 20px;
   background-color: white;
 }
 .InvestorName {
@@ -361,9 +384,9 @@
   font-family: "SF Pro Display";
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 24px;
-  min-width: 70px;
+  min-width: 50px;
 }
 .Arrow {
   font-family: "SF Pro Display";
@@ -371,14 +394,6 @@
   font-weight: 500;
   font-size: 15px;
   min-width: 50px;
-  line-height: 24px;
-}
-.ItemName {
-  font-family: "SF Pro Display";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  min-width: 100px;
   line-height: 24px;
 }
 
@@ -394,7 +409,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
-  min-width: 180px;
+  min-width: 150px;
   line-height: 24px;
   justify-content: flex-end;
   margin-right: 20px;
@@ -423,7 +438,7 @@
   font-size: 12px;
   line-height: 24px;
   justify-content: flex-end;
-  margin-right: 20px;
+  margin-right: 10px;
   text-align: right;
   color: #6d6d6d;
 }

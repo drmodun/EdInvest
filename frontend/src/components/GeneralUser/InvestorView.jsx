@@ -73,7 +73,7 @@ export const InvestorView = ({
         </div>
         <div className={classes.Type}>Type: Investor</div>
         <div className={classes.ViewDetails}>
-          <span className={classes.ViewName}>{investor.name}</span>
+          <div className={classes.ViewName}>{investor.name}</div>
           <span className={classes.ViewEmail}>{investor.email}</span>
           <span className={classes.ViewLastUpdated}>
             Last updated: {new Date(investor.updatedAt).toDateString()}
