@@ -56,6 +56,9 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
   }, []);
 
   const handleAmount = (amount) => {
+    if (isNaN(Number(amount)) && amount !== "") {
+        return;
+    }
     setAmount(Number(amount));
     let tierIndex = "not";
     for (let tier of tiers) {
@@ -81,7 +84,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
         : amount >= previousAmount
         ? await updateInvestment(id, amount)
         : check = false;
-      if (!check) {
+      if (!check || amount < 0) {
         handleDonationFail();
         return;
       }
@@ -122,7 +125,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           alt=""
         />
         <input
-          type="number"
+          type="text"
           name="amount"
           id="amount"
           key={"amount"}
@@ -155,7 +158,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           maintainance
         </span>
       </div>
-      <button type="submit" onClick={handleDonation}>
+      <button disabled={(amount <= previousAmount && donationExists) || amount < prices[0]} type="submit" onClick={handleDonation}>
         Donate
       </button>
       <span className={classes.Error}>{error}</span>
