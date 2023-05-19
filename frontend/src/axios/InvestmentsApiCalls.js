@@ -94,11 +94,11 @@ export async function getInvestments(params = {}){
 }
 export async function createInvestment(itemId, data){
     try{
-        const response = await api.post(`investments/${itemId}`, data);
+        const response = await api.post(`investments/${itemId}`, Number(data));
         return response.data;
     }
     catch(error){
-        throw new Error(error.message);
+        throw new Error(error.data);
     }
 }
 export async function updateInvestment(itemId, data){

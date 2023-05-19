@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import USDT from "../../assets/USDT.svg";
 import classes from "./MakeDonation.module.css";
 import USDC from "../../assets/USDC.svg";
 import BUSD from "../../assets/BUSD.svg";
 import DefaultProfile from "../../assets/default-profile.png";
-import { createInvestment } from "../../axios/InvestmentsApiCalls";
+import {
+  createInvestment,
+  getInvestment,
+  updateInvestment,
+} from "../../axios/InvestmentsApiCalls";
 import Dropdown from "../Dropdown";
 
 export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
@@ -16,7 +20,9 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
   const [amount, setAmount] = useState(0);
   const [payment, setPayment] = useState("USDT");
   const [tiers, setTiers] = useState([]);
-
+  const [donationExists, setDonationExists] = useState(false);
+  const [previousAmount, setPreviousAmount] = useState(0);
+  const [error, setError] = useState("");
   useState(() => {
     let tierIndex = 0;
     const tempTiers = [];
@@ -31,11 +37,29 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
     setTiers(tempTiers);
   }, []);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await getInvestment(userInfo.id, id);
+        setAmount(result.amount);
+        console.log(result);
+        setTier(result.tier - 1);
+        setDonationExists(true);
+        setPreviousAmount(result.amount);
+      } catch (err) {
+        console.log(err);
+        setAmount(0);
+        setTier("not");
+      }
+    }
+    fetchData();
+  }, []);
+
   const handleAmount = (amount) => {
     setAmount(Number(amount));
     let tierIndex = "not";
     for (let tier of tiers) {
-        console.log(tier.amount, amount);
+      console.log(tier.amount, amount);
       if (tier.amount <= Number(amount)) {
         tierIndex === "not" ? (tierIndex = 0) : tierIndex++;
       }
@@ -43,12 +67,24 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
     console.log(amount);
     setTier(tierIndex);
     console.log(tierIndex);
-    
-  }
+  };
+
+  const handleDonationFail = () => {
+    setError("You can't donate less than you already have!");
+  };
 
   const handleDonation = async () => {
     try {
-      await createInvestment(id, amount);
+      let check = true;
+      !donationExists
+        ? await createInvestment(id, amount)
+        : amount >= previousAmount
+        ? await updateInvestment(id, amount)
+        : check = false;
+      if (!check) {
+        handleDonationFail();
+        return;
+      }
       alert("Succesfully made donation!");
       window.location.reload();
     } catch (err) {
@@ -122,6 +158,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
       <button type="submit" onClick={handleDonation}>
         Donate
       </button>
+      <span className={classes.Error}>{error}</span>
     </div>
   );
 };
