@@ -18,6 +18,8 @@ namespace Shared.Contracts.Responses.Ranked
 
         public DateTime UpdatedAt { get; set; }
 
+        public string ItemImage { get; set; }
+
         public string InvestorImage { get; set; }
 
         public string ItemName { get; set; }

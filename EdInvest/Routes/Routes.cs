@@ -65,6 +65,8 @@ namespace API.Routes
             public const string UserInvestments = Base + $"/investments/me";
             public const string TopInvestors = Base + $"/investments/topinvestors";
             public const string Stats = Base + $"/investments/stats";
+            public const string GetItems = Base + $"/investments/{{investorId:Guid}}/items";
+            public const string GetInvesstmentsForOrganisation = Base + $"/investments/{{organisationId:Guid}}";
 
         }
         public static class Country
@@ -102,7 +104,6 @@ namespace API.Routes
             public const string Create = Base + $"/organisations";
             public const string Update = Base + $"/organisations/";
             public const string Delete = Base + $"/organisations/{{id:Guid}}";
-            public const string GetAllInvestments = $"/organisations/{{id:Guid}}/investments";
 
 
 
