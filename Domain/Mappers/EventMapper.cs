@@ -42,7 +42,7 @@ namespace Domain.Mappers
                 Type = request.Type,
                 Prices = request.Prices.Order().ToList(),
                 OrganisationId = request.OrganisationId,
-
+                
             };
         }
 

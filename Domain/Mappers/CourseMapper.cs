@@ -61,6 +61,7 @@ namespace Domain.Mappers
                 Tiers = request.Tiers,
                 ActiveStudents = request.ActiveStudents,
                 CountryId = request.CountryId,
+                MainWebsite = request.MainWebsite,
                 Goal = request.Goal,
                 OrganisationId = request.OrganisationId,
                 Curriculum = request.Curriculum,
@@ -81,7 +82,8 @@ namespace Domain.Mappers
                 Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
-
+                MainWebsite = request.MainWebsite,
+                StartDate = request.StartDate,
                 Images = request.Images,
                 CategoryId = request.CategoryId,
                 SubcategoryId = request.SubcategoryId,
