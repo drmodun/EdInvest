@@ -1,0 +1,215 @@
+.MakeDonation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: hidden;
+  width: 600px;
+
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+.DonationInfo {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: row;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  width: 600px;
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.MakeDonation > span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #343434;
+}
+
+.DonationInfo > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.DonationInfo > img {
+  width: 30px;
+  height: 30px;
+  margin: 40px;
+}
+.PaymentMethod {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  width: 489px;
+  height: 57px;
+  background: #f3f3f3;
+  border-radius: 20px;
+}
+.PaymentMethod > select{
+    padding: 20px;
+    background-color: #F3F3F3;
+    border: none;
+    align-self: flex-start;
+    border-radius: 6px;
+    color: #000000;
+}
+.PaymentMethod > img {
+  width: 30px;
+  height: 30px;
+}
+.PaymentMethod  input{
+    background-color: #F3F3F3;
+    border: none;
+    padding: 10px 10px;
+    width: 250px;
+    height: 30px;
+    margin-left: 60px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+.Tiers{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+.Tier{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 160px;
+    height: 100px;
+    word-break: break-all;
+    background: #f3f3f3;
+    border-radius: 6px;
+    border: 1px solid #000000;
+}
+.Tier:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.TierName{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+}
+.SelectedTier{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 160px;
+    height: 100px;
+    word-break: break-all;
+    background: #f3f3f3;
+    border-radius: 6px;
+    border: 1px solid #000000;
+    color: #FFFFFF;
+    background-color : #1B2DAF;
+}
+.SelectedTier:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.TierDesc{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    width: 80%;
+    font-size: 12px;
+    text-align: left;
+    display: flex;
+    min-height: 50px;
+}
+.TierAmount{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+}
+.Transparency{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 20px;
+    width: 389px;
+    height: 57px;
+    border-radius: 6px;
+}
+.Transparency > span{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    color: #343434;
+}
+.Transparency > span:last-child{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #343434;
+}
+.MakeDonation button{
+    width: 387px;
+    height: 54px;
+    background: #0047B0;
+    border-radius: 8px;
+    color: #F3F3F3;
+    font-family: "Inter";
+    font-style: normal;
+    margin: 20px 0px;
+    font-weight: 600;
+}
+.MakeDonation button:hover{
+    cursor: pointer;
+    background-color: #1B2DAF;
+}
+.MakeDonation button:disabled{
+    background-color: #BFBFBF;
+}
+.MakeDonation button:disabled:hover{
+    cursor: not-allowed;
+}
+
+
+
+
+

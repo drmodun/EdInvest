@@ -16,16 +16,17 @@ import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
 import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
 import OnlineCourseDescription from "../../components/ProjectPageComponents/OnlineCourseDescription";
 import CourseDescription from "../../components/ProjectPageComponents/CourseDescription";
+import { MakeDonation } from "../../components/MakeDonation/MakeDonation";
 
 const ProjectPage = () => {
-  const [informationsChosen, setInformationsChosen] = useState(true);
+  const [informationsChosen, setInformationsChosen] = useState("Info");
   const [project, setProject] = useState({});
   const [organisation, setOrganisation] = useState({});
   const handleClickInformations = () => {
-    setInformationsChosen(true);
+    setInformationsChosen("Info");
   };
   const handleClickDonations = () => {
-    setInformationsChosen(false);
+    setInformationsChosen("Donations");
   };
 
   const { projectId } = useParams();
@@ -82,10 +83,10 @@ const ProjectPage = () => {
           default:
             break;
         }
-
         const organisationData = await getOrganisationById(data.organisationId);
         console.log(organisationData);
         setOrganisation(organisationData);
+        console.log(project);
       } catch (err) {
         console.log(err);
       }
@@ -122,7 +123,7 @@ const ProjectPage = () => {
             </div>
 
             <div>
-              {informationsChosen ? (
+              {informationsChosen === "Info" ? (
                 <div className={classes.DescriptionText}>
                   {project.type === 0 && (
                     <CourseDescription project={project} />
@@ -135,11 +136,21 @@ const ProjectPage = () => {
                   )}
                   {project.type === 4 && <EventDescription project={project} />}
                 </div>
-              ) : (
+              ) : informationsChosen === "Donations" ? (
                 <div className={classes.DescriptionText}>
                   <DonationInfo project={project} />
                 </div>
-              )}
+              )
+              : (project.images && <MakeDonation
+                id={project.id}
+                name={project.name}
+                pic={project.images[0]}
+                tiersDict={project.tiers}
+                prices={project.prices}
+              >
+
+              </MakeDonation>)
+            }   
             </div>
           </div>
           <div className={classes.InfoChoiceWrapper}>
@@ -175,7 +186,7 @@ const ProjectPage = () => {
           </div>
 
           <div className={classes.MoreActionsContainer}>
-            <button className={classes.MoreActionsButtonBlue}>
+            <button className={classes.MoreActionsButtonBlue} onClick={()=>setInformationsChosen("Donate")}>
               <p className={classes.MoreActionsText}>DONATE</p>
             </button>
             <button className={classes.MoreActionsButton}>

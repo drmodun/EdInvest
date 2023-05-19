@@ -64,7 +64,7 @@ export const InvestorPage = () => {
     );
     if (check === userInfo.name) {
       try {
-        const response = await deleteUser(investorId);
+        const response = await deleteUser(investor.id);
         if (response) {
           userInfo.logOut();
           navigation("/login");

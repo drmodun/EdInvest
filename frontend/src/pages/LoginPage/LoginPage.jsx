@@ -45,6 +45,7 @@ export const LoginPage = () => {
       const userInfo = await GetMe();
       if (userInfo) {
         localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        localStorage.setItem("LoginDate", JSON.stringify(Date.now()));
         alert("Logged in successfully");
         window.location.replace("/");
       } else {

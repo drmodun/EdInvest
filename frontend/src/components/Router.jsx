@@ -20,6 +20,7 @@ import RegisterPage from "../pages/RegisterPage";
 
 const user = JSON.parse(localStorage.getItem("userInfo"));
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>

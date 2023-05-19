@@ -229,7 +229,7 @@ const ProjectsPage = () => {
                     ? classes.selected
                     : classes.sectionExploreFiltersButton
                 }
-                onClick={() => setCategoryId(null)}
+                onClick={() => handleCategoryChange(null)}
               >
                 All
               </button>
