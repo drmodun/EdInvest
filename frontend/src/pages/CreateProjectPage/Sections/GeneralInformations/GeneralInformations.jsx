@@ -18,7 +18,7 @@ import PictureIcon from "../../../../assets/icons/picture.svg";
 import FilmIcon from "../../../../assets/icons/film.svg";
 
 const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
-  const [keywords, setKeywords] = useState([]);
+  const [features, setFeatures] = useState([]);
   const [date, setDate] = useState({
     day: "",
     month: "",
@@ -34,19 +34,20 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
     textarea.style.height = textarea.scrollHeight + "px";
   };
 
-  const addKeywordInput = () => {
-    setKeywords((keywords) => [...keywords, "New keyword"]);
+  const addFeaturesInput = () => {
+    setFeatures((features) => [...features, "New feature"]);
   };
 
-  const removeEmptyKeywords = () => {
-    const newKeywords = keywords.filter((keyword) => keyword !== "");
-    setKeywords(newKeywords);
+  const removeEmptyFeatures = () => {
+    const newFeatures = features.filter((feature) => feature !== "");
+    setFeatures(newFeatures);
   };
 
-  const handleChangeKeyword = (e, index) => {
-    const newKeywords = [...keywords];
-    newKeywords[index] = e.target.value;
-    setKeywords(newKeywords);
+  const handleChangeFeature = (e, index) => {
+    const newFeatures = [...features];
+    newFeatures[index] = e.target.value;
+    setFeatures(newFeatures);
+    insertData("features", newFeatures);
   };
 
   // CATEGORIES
@@ -195,18 +196,18 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
 
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>
-          Add up to 5 key words that describes your project
+          Add up to 5 features that your project is related to
         </h3>
         <div className={classes.sectionKeywordsContainer}>
-          {keywords.map((keyword, i) => {
+          {features.map((feature, i) => {
             return (
               <input
                 key={i}
                 type="text"
-                defaultValue={keyword}
+                defaultValue={feature}
                 className={classes.sectionKeywordsItem}
-                onBlur={removeEmptyKeywords}
-                onChange={(e) => handleChangeKeyword(e, i)}
+                onBlur={removeEmptyFeatures}
+                onChange={(e) => handleChangeFeature(e, i)}
                 contentEditable
               />
             );
@@ -214,12 +215,38 @@ const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
 
           <button
             className={classes.sectionKeywordsButton}
-            onClick={addKeywordInput}
+            onClick={addFeaturesInput}
           >
             +
           </button>
         </div>
       </section>
+
+      {projectType === "event" && (
+        <>
+          <section className={classes.section}>
+            <h3 className={classes.sectionTitle}>
+              Ticket price of your event (€)
+            </h3>
+            <input
+              type="text"
+              placeholder="Ticket price"
+              className={classes.sectionInputText}
+              onChange={(e) => insertData("ticketPrice", e.target.value)}
+            />
+          </section>
+
+          <section className={classes.section}>
+            <h3 className={classes.sectionTitle}>Capacity of your event</h3>
+            <input
+              type="text"
+              placeholder="Capacity"
+              className={classes.sectionInputText}
+              onChange={(e) => insertData("capacity", e.target.value)}
+            />
+          </section>
+        </>
+      )}
 
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Website link of your project</h3>
