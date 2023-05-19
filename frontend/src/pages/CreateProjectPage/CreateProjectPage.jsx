@@ -83,6 +83,7 @@ const CreateProjectPage = () => {
       {section === 1 ? (
         <GeneralInformations
           insertData={insertData}
+          projectType={projectType}
           setProjectType={setProjectType}
         />
       ) : null}

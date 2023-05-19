@@ -17,8 +17,17 @@ import HyperlinkIcon from "../../../../assets/icons/hyperlink.svg";
 import PictureIcon from "../../../../assets/icons/picture.svg";
 import FilmIcon from "../../../../assets/icons/film.svg";
 
-const GeneralInformations = ({ insertData, setProjectType }) => {
+const GeneralInformations = ({ insertData, projectType, setProjectType }) => {
   const [keywords, setKeywords] = useState([]);
+  const [date, setDate] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
+
+  useEffect(() => {
+    insertData("date", date.day + "/" + date.month + "/" + date.year);
+  }, [date]);
 
   const handleTextAreaResize = (e) => {
     const textarea = e.target;
@@ -38,17 +47,6 @@ const GeneralInformations = ({ insertData, setProjectType }) => {
     const newKeywords = [...keywords];
     newKeywords[index] = e.target.value;
     setKeywords(newKeywords);
-  };
-
-  const moveToNextField = (input, next) => {
-    console.log("NEXT");
-
-    const value = input.value;
-    const maxLength = parseInt(input.getAttribute("maxlength"));
-
-    if (value.length === maxLength) {
-      document.getElementById(next).focus();
-    }
   };
 
   // CATEGORIES
@@ -162,36 +160,38 @@ const GeneralInformations = ({ insertData, setProjectType }) => {
         />
       </section>
 
-      <section className={classes.section}>
-        <h3 className={classes.sectionTitle}>Date of foundation</h3>
-        <div className={classes.sectionDateContainer}>
-          <input
-            type="text"
-            maxLength={2}
-            placeholder="DD"
-            className={classes.sectionDateInput}
-            id="day"
-            onChange={(e) => moveToNextField(e.target, "month")}
-          />
-          <input
-            type="text"
-            maxLength={2}
-            placeholder="MM"
-            id="month"
-            className={classes.sectionDateInput}
-            onChange={(e) => moveToNextField(e.target, "year")}
-          />
-          <input
-            type="text"
-            maxLength={4}
-            min={1900}
-            max={new Date().getFullYear()}
-            placeholder="YYYY"
-            id="year"
-            className={classes.sectionDateInput}
-          />
-        </div>
-      </section>
+      {/* DATE */}
+      {projectType === "event" && (
+        <section className={classes.section}>
+          <h3 className={classes.sectionTitle}>Date of foundation</h3>
+          <div className={classes.sectionDateContainer}>
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="DD"
+              className={classes.sectionDateInput}
+              id="day"
+              onChange={(e) => setDate({ ...date, day: e.target.value })}
+            />
+            <input
+              type="text"
+              maxLength={2}
+              placeholder="MM"
+              id="month"
+              className={classes.sectionDateInput}
+              onChange={(e) => setDate({ ...date, month: e.target.value })}
+            />
+            <input
+              type="text"
+              maxLength={4}
+              placeholder="YYYY"
+              id="year"
+              className={classes.sectionDateInput}
+              onChange={(e) => setDate({ ...date, year: e.target.value })}
+            />
+          </div>
+        </section>
+      )}
 
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>
@@ -227,6 +227,7 @@ const GeneralInformations = ({ insertData, setProjectType }) => {
           type="text"
           placeholder="www.edinvest.com"
           className={classes.sectionInputText}
+          onChange={(e) => insertData("mainWebsite", e.target.value)}
         />
       </section>
     </>
