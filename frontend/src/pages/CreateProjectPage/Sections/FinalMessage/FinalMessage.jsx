@@ -1,5 +1,7 @@
+import SimpleCard from "../../../../components/SimpleCard";
+
 const FinalMessage = () => {
-  return <h1>Wooohoo!</h1>;
+  return <SimpleCard />;
 };
 
 export default FinalMessage;
