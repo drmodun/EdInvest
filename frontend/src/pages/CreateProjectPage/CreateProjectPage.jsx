@@ -57,6 +57,7 @@ const CreateProjectPage = () => {
         images: data.images,
         categoryId: data.categoryId,
         subcategoryId: data.subcategoryId,
+        countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
         prices: [1000],

@@ -8,7 +8,7 @@ import DownloadIcon from "../../../../assets/icons/download.svg";
 
 const ProjectPicture = ({ insertData }) => {
   const onDrop = useCallback((acceptedFiles) => {
-    insertData("images", []);
+    insertData("images", [""]);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
