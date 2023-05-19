@@ -79,6 +79,8 @@ const ProjectPage = () => {
               }
             })(id);
             break;
+          default:
+            break;
         }
 
         const organisationData = await getOrganisationById(data.organisationId);

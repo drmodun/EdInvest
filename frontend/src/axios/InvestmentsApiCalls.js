@@ -68,12 +68,27 @@ export async function getMyInvestments(){
         throw new Error(error.message);
     }
 }
-export async function getInvestments(params = {}){
+
+export async function getItemsForInvestor(investorId){
     try{
-        const response = await api.get(`investments`, {params});
+        console.log(investorId + "investorId");
+        const response = await api.get(`investments/${investorId}`);
+        console.log(response.data);
         return response.data;
     }
     catch(error){
+        throw new Error(error.message);
+    }
+}
+
+
+export async function getInvestments(params = {}){
+    try{
+        const response = await api.get(`investments`, { params });
+        return response.data;
+    }
+    catch(error){
+        console.log(params, { params });
         throw new Error(error.message);
     }
 }
