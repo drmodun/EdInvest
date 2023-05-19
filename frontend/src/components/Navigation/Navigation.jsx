@@ -44,7 +44,7 @@ const Navigation = () => {
           <a href="/" className={classes.headerNavItem}>
             Home
           </a>
-          <a href="" className={classes.headerNavItem}>
+          <a href="/about" className={classes.headerNavItem}>
             About us
           </a>
           <a href="/projects" className={classes.headerNavItem}>

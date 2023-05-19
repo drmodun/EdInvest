@@ -1,0 +1,17 @@
+.HeaderWrapper {
+  height: 426px;
+  background-color: #e6e6e6;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HeaderTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 18px;
+  color: #000000;
+}
