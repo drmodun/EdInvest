@@ -69,7 +69,8 @@ html {
   margin: 5px 0 0 0;
 }
 
-.sectionInputText {
+.sectionInputText,
+.sectionInputSelect {
   font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
@@ -80,6 +81,10 @@ html {
   background-color: white;
   border-radius: 6px;
   margin-top: 15px;
+}
+
+.sectionInputSelect {
+  cursor: pointer;
 }
 
 .sectionInputLarge {

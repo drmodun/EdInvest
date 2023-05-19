@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { getCategories } from "../../axios/CategoryCalls/CategoryApiCalls";
 
 import classes from "./index.module.css";
 
@@ -9,6 +10,21 @@ import ReceivingFunds from "./Sections/ReceivingFunds";
 import FinalMessage from "./Sections/FinalMessage";
 
 const CreateProjectPage = () => {
+  const [data, setData] = useState({});
+  const [projectType, setProjectType] = useState("");
+
+  useEffect(() => {
+    console.log("Data: ", data);
+  }, [data]);
+
+  useEffect(() => {
+    console.log("Project type: ", projectType);
+  }, [projectType]);
+
+  const insertData = (key, value) => {
+    setData({ ...data, [key]: value });
+  };
+
   const [section, setSection] = useState(1);
 
   const handleSectionChange = (section) => {
@@ -20,7 +36,7 @@ const CreateProjectPage = () => {
     setSection(newSection);
   };
 
-  const handleRightMargin = useEffect(() => {
+  useEffect(() => {
     if (section === 4) {
       document
         .querySelector(":root")
@@ -64,10 +80,15 @@ const CreateProjectPage = () => {
           </div>
         </>
       ) : null}
-      {section === 1 ? <GeneralInformations /> : null}
-      {section === 2 ? <ProjectPicture /> : null}
-      {section === 3 ? <ReceivingFunds /> : null}
-      {section === 4 ? <FinalMessage /> : null}
+      {section === 1 ? (
+        <GeneralInformations
+          insertData={insertData}
+          setProjectType={setProjectType}
+        />
+      ) : null}
+      {section === 2 ? <ProjectPicture insertData={insertData} /> : null}
+      {section === 3 ? <ReceivingFunds insertData={insertData} /> : null}
+      {section === 4 ? <FinalMessage insertData={insertData} /> : null}
 
       {section < 4 ? (
         <button className={classes.continueButton} onClick={increaseSection}>

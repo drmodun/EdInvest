@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "../../index.module.css";
+import { getCategories } from "../../../../axios/CategoryCalls/CategoryApiCalls";
 
 import H1Icon from "../../../../assets/icons/h1.svg";
 import H2Icon from "../../../../assets/icons/h2.svg";
@@ -16,12 +17,11 @@ import HyperlinkIcon from "../../../../assets/icons/hyperlink.svg";
 import PictureIcon from "../../../../assets/icons/picture.svg";
 import FilmIcon from "../../../../assets/icons/film.svg";
 
-const GeneralInformations = () => {
+const GeneralInformations = ({ insertData, setProjectType }) => {
   const [keywords, setKeywords] = useState([]);
 
   const handleTextAreaResize = (e) => {
     const textarea = e.target;
-    console.log(textarea.scrollHeight);
     textarea.style.height = textarea.scrollHeight + "px";
   };
 
@@ -40,6 +40,36 @@ const GeneralInformations = () => {
     setKeywords(newKeywords);
   };
 
+  const moveToNextField = (input, next) => {
+    console.log("NEXT");
+
+    const value = input.value;
+    const maxLength = parseInt(input.getAttribute("maxlength"));
+
+    if (value.length === maxLength) {
+      document.getElementById(next).focus();
+    }
+  };
+
+  // CATEGORIES
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+  useEffect(() => {
+    getCategories()
+      .then((res) => res.categories)
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  });
+
+  const handleCategorySelect = (e) => {
+    insertData("categoryId", e.target.value);
+    const categoryName = e.target.options[e.target.selectedIndex].text;
+    const category = categories.find(
+      (category) => category.name === categoryName
+    );
+    setSubcategories(category.subcategories);
+  };
+
   return (
     <>
       <section className={classes.section}>
@@ -48,16 +78,46 @@ const GeneralInformations = () => {
           type="text"
           placeholder="My First Project"
           className={classes.sectionInputText}
+          onChange={(e) => insertData("name", e.target.value)}
         />
       </section>
 
       <section className={classes.section}>
         <h3 className={classes.sectionTitle}>Type of project</h3>
-        <input
-          type="text"
-          placeholder="Event"
-          className={classes.sectionInputText}
-        />
+        <select
+          className={classes.sectionInputSelect}
+          onChange={(e) => setProjectType(e.target.value)}
+        >
+          <option value="event">Event</option>
+          <option value="application">Application</option>
+          <option value="course">Course</option>
+          <option value="online-course">Online Course</option>
+        </select>
+      </section>
+
+      <section className={classes.section}>
+        <h3 className={classes.sectionTitle}>Project category</h3>
+        <select
+          className={classes.sectionInputSelect}
+          onChange={(e) => handleCategorySelect(e)}
+        >
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+        <select
+          className={classes.sectionInputSelect}
+          onChange={(e) => insertData("subcategoryId", e.target.value)}
+          disabled={subcategories.length === 0}
+        >
+          {subcategories.map((subcategory) => (
+            <option key={subcategory.id} value={subcategory.id}>
+              {subcategory.name}
+            </option>
+          ))}
+        </select>
       </section>
 
       <section className={classes.section}>
@@ -87,6 +147,7 @@ const GeneralInformations = () => {
             placeholder="We are..."
             className={classes.sectionLargeInputArea}
             onInput={handleTextAreaResize}
+            onChange={(e) => insertData("description", e.target.value)}
           ></textarea>
         </div>
       </section>
@@ -97,6 +158,7 @@ const GeneralInformations = () => {
           type="text"
           placeholder="New York"
           className={classes.sectionInputText}
+          onChange={(e) => insertData("location", e.target.value)}
         />
       </section>
 
@@ -104,24 +166,28 @@ const GeneralInformations = () => {
         <h3 className={classes.sectionTitle}>Date of foundation</h3>
         <div className={classes.sectionDateContainer}>
           <input
-            type="number"
-            min={1}
-            max={31}
+            type="text"
+            maxLength={2}
             placeholder="DD"
             className={classes.sectionDateInput}
+            id="day"
+            onChange={(e) => moveToNextField(e.target, "month")}
           />
           <input
-            type="number"
-            min={1}
-            max={29}
+            type="text"
+            maxLength={2}
             placeholder="MM"
+            id="month"
             className={classes.sectionDateInput}
+            onChange={(e) => moveToNextField(e.target, "year")}
           />
           <input
-            type="number"
+            type="text"
+            maxLength={4}
             min={1900}
             max={new Date().getFullYear()}
             placeholder="YYYY"
+            id="year"
             className={classes.sectionDateInput}
           />
         </div>
