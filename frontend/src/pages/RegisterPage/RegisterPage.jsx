@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import classes from "./RegisterPage.module.css";
-import { createOrganisation } from "../../axios/UserCalls/OrganisationApiCalls";
-import { createInvestor } from "../../axios/UserCalls/InvestorApiCalls";
-import Facebook from "../../assets/facebook.svg";
-import Twitter from "../../assets/twitter.svg";
-import Google from "../../assets/google.svg";
 import AppStore from "../../assets/IOS.svg";
-import { login } from "../../axios/UserCalls/UserApiCalls";
+import Facebook from "../../assets/facebook.svg";
+import Google from "../../assets/google.svg";
+import Twitter from "../../assets/twitter.svg";
 import { GetCountries } from "../../axios/CountryApiCalls";
+import { createInvestor } from "../../axios/UserCalls/InvestorApiCalls";
+import { createOrganisation } from "../../axios/UserCalls/OrganisationApiCalls";
+import { login } from "../../axios/UserCalls/UserApiCalls";
+import classes from "./RegisterPage.module.css";
 export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -150,9 +150,7 @@ export const RegisterPage = () => {
     async function fetchCountries() {
       try {
         const response = await GetCountries();
-        setCountries(response.sort(
-          (a, b) => a.name.localeCompare(b.name)
-        ));
+        setCountries(response.sort((a, b) => a.name.localeCompare(b.name)));
         console.log(response.data);
       } catch (err) {
         console.log(err);
@@ -212,9 +210,12 @@ export const RegisterPage = () => {
           placeholder="Country"
           value={country}
           defaultValue={""}
-          onChange={(e) => { console.log(e.target.value); setCountry(e.target.value)}}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setCountry(e.target.value);
+          }}
         >
-          <option disabled ></option>
+          <option disabled></option>
           {countries.map((country) => (
             <option key={country.id} value={country.id}>
               {country.name}

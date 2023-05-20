@@ -1,18 +1,12 @@
-import classes from "./View.module.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import AppStore from "../../assets/IOS.svg";
+import DefaultProfile from "../../assets/default-profile.png";
 import Facebook from "../../assets/facebook.svg";
 import Google from "../../assets/google.svg";
 import Twitter from "../../assets/twitter.svg";
-import AppStore from "../../assets/IOS.svg";
-import { Link } from "react-router-dom";
-import useUserInfo from "../../Providers/UserInfoProvider";
-import DefaultProfile from "../../assets/default-profile.png";
-import { useEffect, useState } from "react";
-import {
-  getInvestments,
-  getItemsFororganisation,
-} from "../../axios/InvestmentsApiCalls";
 import ItemCard from "../ItemCard";
-//even though
+import classes from "./View.module.css";
 const dict = {
   facebook: Facebook,
   google: Google,
@@ -88,13 +82,13 @@ export const OrganisationView = ({
               );
             })}
           </div>
-          <div style={{minHeight: "96px"}}>
-          {organisation.id === userInfo.id ? (
-            <div className={classes.ViewButtons}>
-              <button onClick={tryEdit}>Edit</button>
-              <button onClick={tryDelete}>Delete</button>
-            </div>
-          ) : null}
+          <div style={{ minHeight: "96px" }}>
+            {organisation.id === userInfo.id ? (
+              <div className={classes.ViewButtons}>
+                <button onClick={tryEdit}>Edit</button>
+                <button onClick={tryDelete}>Delete</button>
+              </div>
+            ) : null}
           </div>
         </div>
         <div className={classes.FinancialInfo}>
@@ -118,7 +112,7 @@ export const OrganisationView = ({
             }
             onClick={() => setSelected("projects")}
           >
-           Projects
+            Projects
           </button>
           <button
             className={
@@ -165,12 +159,12 @@ export const OrganisationView = ({
           <div className={classes.Details}>
             <div className={classes.ViewBio}>
               <span className={classes.ViewDescTitle}>Description </span>
-              <span className={classes.ViewDesc}>{organisation.description}</span>
+              <span className={classes.ViewDesc}>
+                {organisation.description}
+              </span>
             </div>
             <div className={classes.ViewBio}>
-              <span className={classes.ViewDescTitle}>
-                Number of members{" "}
-              </span>
+              <span className={classes.ViewDescTitle}>Number of members </span>
               <span className={classes.ViewNumber}>
                 {organisation.numberOfMembers}
               </span>
@@ -223,7 +217,8 @@ export const OrganisationView = ({
                       <div className={classes.ItemPic}>
                         <img
                           src={
-                            donation.itemImage && base64regex.test(donation.itemImage)
+                            donation.itemImage &&
+                            base64regex.test(donation.itemImage)
                               ? "data:image/png;base64," + donation.itemImage
                               : DefaultProfile
                           }

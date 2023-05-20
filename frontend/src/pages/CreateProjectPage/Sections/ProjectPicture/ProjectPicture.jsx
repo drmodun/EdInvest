@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
-import classes from "../../index.module.css";
 import DownloadIcon from "../../../../assets/icons/download.svg";
+import classes from "../../index.module.css";
 
 // REQUIRES react-dropzone PACKAGE
 

@@ -1,18 +1,12 @@
-import classes from "./View.module.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import AppStore from "../../assets/IOS.svg";
+import DefaultProfile from "../../assets/default-profile.png";
 import Facebook from "../../assets/facebook.svg";
 import Google from "../../assets/google.svg";
 import Twitter from "../../assets/twitter.svg";
-import AppStore from "../../assets/IOS.svg";
-import { Link } from "react-router-dom";
-import useUserInfo from "../../Providers/UserInfoProvider";
-import DefaultProfile from "../../assets/default-profile.png";
-import { useEffect, useState } from "react";
-import {
-  getInvestments,
-  getItemsForInvestor,
-} from "../../axios/InvestmentsApiCalls";
 import ItemCard from "../ItemCard";
-//even though
+import classes from "./View.module.css";
 const dict = {
   facebook: Facebook,
   google: Google,

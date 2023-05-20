@@ -2,9 +2,9 @@ import classes from "./index.module.css";
 
 import SimpleCard from "../../../../components/SimpleCard";
 
-import TwitterBlueIcon from "../../../../assets/icons/twitter-blue.svg";
-import LinkedinBlueIcon from "../../../../assets/icons/linkedin-blue.svg";
 import FacebookBlueIcon from "../../../../assets/icons/facebook-blue.svg";
+import LinkedinBlueIcon from "../../../../assets/icons/linkedin-blue.svg";
+import TwitterBlueIcon from "../../../../assets/icons/twitter-blue.svg";
 import Confetti from "../../../../assets/images/confetti.png";
 
 const FinalMessage = ({ data }) => {

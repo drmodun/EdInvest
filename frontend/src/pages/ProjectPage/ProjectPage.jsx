@@ -1,30 +1,24 @@
-import classes from "./index.module.css";
-import PlaceholderImg from "../../assets/images/placeholder.jpg";
-import Card from "../../components/Card";
-import Share from "../../assets/icons/share.svg";
-import Heart from "../../assets/icons/heart.svg";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getItem, getItems } from "../../axios/ItemCalls/ItemsApiCalls.js";
-import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
-import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
-import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
-import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
-import { getOrganisationById } from "../../axios/UserCalls/OrganisationApiCalls.js";
-import EventDescription from "../../components/ProjectPageComponents/EventDescription";
-import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
-import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
-import OnlineCourseDescription from "../../components/ProjectPageComponents/OnlineCourseDescription";
-import CourseDescription from "../../components/ProjectPageComponents/CourseDescription";
-import { MakeDonation } from "../../components/MakeDonation/MakeDonation";
+import Heart from "../../assets/icons/heart.svg";
+import Share from "../../assets/icons/share.svg";
+import PlaceholderImg from "../../assets/images/placeholder.jpg";
 import {
-  getCategories,
-  getCategoryById,
-} from "../../axios/CategoryCalls/CategoryApiCalls";
-import {
-  getSubcategories,
-  getSubcategory,
+  getSubcategory
 } from "../../axios/CategoryCalls/SubcategoryApiCalls";
+import { getApplication } from "../../axios/ItemCalls/ApplicationApiCalls.js";
+import { getCourseById as getCourse } from "../../axios/ItemCalls/CourseApiCalls.js";
+import { getEvent } from "../../axios/ItemCalls/EventApiCalls.js";
+import { getItem, getItems } from "../../axios/ItemCalls/ItemsApiCalls.js";
+import { getOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls.js";
+import Card from "../../components/Card";
+import { MakeDonation } from "../../components/MakeDonation/MakeDonation";
+import ApplicationDescription from "../../components/ProjectPageComponents/ApplicationDescripton";
+import CourseDescription from "../../components/ProjectPageComponents/CourseDescription";
+import DonationInfo from "../../components/ProjectPageComponents/DonationInfo";
+import EventDescription from "../../components/ProjectPageComponents/EventDescription";
+import OnlineCourseDescription from "../../components/ProjectPageComponents/OnlineCourseDescription";
+import classes from "./index.module.css";
 
 const ProjectPage = () => {
   const [informationsChosen, setInformationsChosen] = useState("Info");
@@ -102,7 +96,7 @@ const ProjectPage = () => {
         setSubcategory(subcategoryCall);
         const getSimilarProjects = await getItems({
           categoryId: data.categoryId,
-        })
+        });
         setSimilarProjects(getSimilarProjects.items);
         console.log(project);
         console.log(subcategory);
@@ -203,21 +197,27 @@ const ProjectPage = () => {
           <div className={classes.SimilarSection}>
             <h3 className={classes.SimilarSectionTitle}>View similar</h3>
             <div className={classes.CardsContainer}>
-              {similarProjects.length > 1 ? similarProjects.map((projectToMap) => (
-                projectToMap.id !== project.id &&
-                <Card
-                description={projectToMap.description}
-                id={projectToMap.id}
-                isVerified={projectToMap}
-                type={projectToMap.type}
-                key={projectToMap.id}
-                image={projectToMap.images[0]}
-                name={projectToMap.name}
-                raised={projectToMap.currentAmount ? projectToMap.currentAmount : "0"}
-                />)
-              )
-              : "No similar projects found"
-              }
+              {similarProjects.length > 1
+                ? similarProjects.map(
+                    (projectToMap) =>
+                      projectToMap.id !== project.id && (
+                        <Card
+                          description={projectToMap.description}
+                          id={projectToMap.id}
+                          isVerified={projectToMap}
+                          type={projectToMap.type}
+                          key={projectToMap.id}
+                          image={projectToMap.images[0]}
+                          name={projectToMap.name}
+                          raised={
+                            projectToMap.currentAmount
+                              ? projectToMap.currentAmount
+                              : "0"
+                          }
+                        />
+                      )
+                  )
+                : "No similar projects found"}
             </div>
           </div>
 

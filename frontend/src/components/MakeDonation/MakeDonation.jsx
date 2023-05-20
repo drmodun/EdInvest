@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 
-import USDT from "../../assets/USDT.svg";
-import classes from "./MakeDonation.module.css";
-import USDC from "../../assets/USDC.svg";
 import BUSD from "../../assets/BUSD.svg";
+import USDC from "../../assets/USDC.svg";
+import USDT from "../../assets/USDT.svg";
 import DefaultProfile from "../../assets/default-profile.png";
 import {
-  createInvestment,
-  getInvestment,
-  updateInvestment,
+    createInvestment,
+    getInvestment,
+    updateInvestment,
 } from "../../axios/InvestmentsApiCalls";
-import Dropdown from "../Dropdown";
+import classes from "./MakeDonation.module.css";
 export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
   const base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
@@ -69,12 +68,13 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
 
   const handleAmount = (amount) => {
     if (
-        (
-      !amount.match(/^\d+(\.\d+)?$/) &&
-      amount !== "" &&
-      (amount[amount.length - 1] !== "." ||
-        (amount.match(/\./g) || []).length > 1)
-    ) || amount < 0 || amount > 10000000 || amount.length > 10
+      (!amount.match(/^\d+(\.\d+)?$/) &&
+        amount !== "" &&
+        (amount[amount.length - 1] !== "." ||
+          (amount.match(/\./g) || []).length > 1)) ||
+      amount < 0 ||
+      amount > 10000000 ||
+      amount.length > 10
     )
       return;
     setAmount(amount);
@@ -156,13 +156,11 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
           <div
             key={index}
             className={
-                selectTier === index ? classes.SelectedTier : classes.Tier
+              selectTier === index ? classes.SelectedTier : classes.Tier
             }
-            style={
-                {
-                    backgroundColor: index === selectTier ? "#1B2DAF" : tier.color,
-                }
-            }
+            style={{
+              backgroundColor: index === selectTier ? "#1B2DAF" : tier.color,
+            }}
           >
             <div className={classes.TierName}>{tier.name}</div>
             <div className={classes.TierDesc}>{tier.description}</div>

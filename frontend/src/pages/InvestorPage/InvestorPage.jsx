@@ -1,11 +1,12 @@
-import { useParams } from "react-router-dom";
-import useUserInfo from "../../Providers/UserInfoProvider";
-import { InvestorView } from "../../components/GeneralUser";
-import { getInvestorById } from "../../axios/UserCalls/InvestorApiCalls";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  getInvestments,
+  getItemsForInvestor,
+} from "../../axios/InvestmentsApiCalls";
+import { getInvestorById } from "../../axios/UserCalls/InvestorApiCalls";
 import { deleteUser } from "../../axios/UserCalls/UserApiCalls";
-import { getInvestments, getItemsForInvestor } from "../../axios/InvestmentsApiCalls";
+import { InvestorView } from "../../components/GeneralUser";
 import classes from "./InvestorPage.module.css";
 export const InvestorPage = () => {
   const { investorId } = useParams();
@@ -34,21 +35,20 @@ export const InvestorPage = () => {
 
   useEffect(() => {
     async function fetch() {
-      try{
+      try {
         console.log(investor.id);
-      const response = await getItemsForInvestor(investor.id);
-      const params = {
-        InvestorId : investor.id,
-        ItemId : null,
-        Tier : null,
-        UpdatedAt : null,
-      }
-      const donations = await getInvestments(params);
+        const response = await getItemsForInvestor(investor.id);
+        const params = {
+          InvestorId: investor.id,
+          ItemId: null,
+          Tier: null,
+          UpdatedAt: null,
+        };
+        const donations = await getInvestments(params);
         setItems(response.items);
-      setDonations(donations.investments);
-      console.log(donations.investments, response.items);
-    }
-      catch(err){
+        setDonations(donations.investments);
+        console.log(donations.investments, response.items);
+      } catch (err) {
         console.log(err);
       }
     }
@@ -82,14 +82,16 @@ export const InvestorPage = () => {
   return (
     <div>
       <div className={classes.Background}></div>
-      { investor && <InvestorView
-        investor={investor}
-        items={items}
-        donations={donations}
-        onDelete={onDelete}
-        onEdit={onEdit}
-        seeDonations={seeDonations}
-      />}
+      {investor && (
+        <InvestorView
+          investor={investor}
+          items={items}
+          donations={donations}
+          onDelete={onDelete}
+          onEdit={onEdit}
+          seeDonations={seeDonations}
+        />
+      )}
     </div>
   );
 };

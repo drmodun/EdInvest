@@ -1,6 +1,6 @@
-import classes from "./ItemCard.module.css";
 import { Link } from "react-router-dom";
 import ItemDefault from "../../assets/item-default.svg";
+import classes from "./ItemCard.module.css";
 
 const dict = {
   0: "Course",
@@ -49,9 +49,11 @@ export const ItemCard = ({
               style={{ width: (currentAmount / goal) * 100 + "%" }}
             ></div>
           </div>
-          <div className={classes.Stats} >
-          <div className={classes.CurrentAmount}>{currentAmount}$</div>
-          <div className={classes.CurrentAmount}>{(currentAmount/goal)*100 + "%"}</div>
+          <div className={classes.Stats}>
+            <div className={classes.CurrentAmount}>{currentAmount}$</div>
+            <div className={classes.CurrentAmount}>
+              {(currentAmount / goal) * 100 + "%"}
+            </div>
           </div>
         </div>
       </div>

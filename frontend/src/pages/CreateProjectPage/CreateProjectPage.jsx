@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 import classes from "./index.module.css";
 //due to short deadline some inputs had to be simplified
+import FinalMessage from "./Sections/FinalMessage";
 import GeneralInformations from "./Sections/GeneralInformations";
 import ProjectPicture from "./Sections/ProjectPicture";
 import ReceivingFunds from "./Sections/ReceivingFunds";
-import FinalMessage from "./Sections/FinalMessage";
 
-import { createEvent } from "../../axios/ItemCalls/EventApiCalls";
-import { createCourse } from "../../axios/ItemCalls/CourseApiCalls";
 import { createApplication } from "../../axios/ItemCalls/ApplicationApiCalls";
+import { createCourse } from "../../axios/ItemCalls/CourseApiCalls";
+import { createEvent } from "../../axios/ItemCalls/EventApiCalls";
 import { createOnlineCourse } from "../../axios/ItemCalls/OnlineCourseApiCalls";
 
 const CreateProjectPage = () => {
@@ -219,12 +219,18 @@ const CreateProjectPage = () => {
         <button
           className={classes.continueButton}
           onClick={increaseSection}
-          disabled={buttonStatus || userInfo.type !== 2/*section > 2 && !agree*/}
+          disabled={
+            buttonStatus || userInfo.type !== 2 /*section > 2 && !agree*/
+          }
         >
           {section === 3 ? "Publish" : "Continue"}
         </button>
       )}
-      {(!userInfo || userInfo.type!==2) && <span className={classes.Warning}>You have to be logged in as an organisation to continue</span>} 
+      {(!userInfo || userInfo.type !== 2) && (
+        <span className={classes.Warning}>
+          You have to be logged in as an organisation to continue
+        </span>
+      )}
     </div>
   );
 };

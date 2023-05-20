@@ -1,9 +1,9 @@
 import classes from "./index.module.css";
 
-import PlaceholderImage from "../../assets/images/placeholder.jpg";
 import BlueArrow from "../../assets/icons/blue-arrow.svg";
-import WhiteArrow from "../../assets/icons/white-arrow.svg";
 import VerifiedCheckmark from "../../assets/icons/verified-checkmark.svg";
+import WhiteArrow from "../../assets/icons/white-arrow.svg";
+import PlaceholderImage from "../../assets/images/placeholder.jpg";
 
 import Heart from "../../assets/icons/heart.svg";
 import Share from "../../assets/icons/share.svg";
