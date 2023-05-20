@@ -145,7 +145,7 @@ const ProjectPage = () => {
                 id={project.id}
                 name={project.name}
                 pic={project.images[0]}
-                tiersDict={project.tiers}
+                tierAmount={Object.keys(project.tiers).length}
                 prices={project.prices}
               >
 

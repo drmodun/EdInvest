@@ -11,8 +11,7 @@ import {
   updateInvestment,
 } from "../../axios/InvestmentsApiCalls";
 import Dropdown from "../Dropdown";
-
-export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
+export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
   const base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -24,17 +23,30 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
   const [previousAmount, setPreviousAmount] = useState(0);
   const [error, setError] = useState("");
   useState(() => {
-    let tierIndex = 0;
+    const priceList = [...prices].reverse();
+    console.log(priceList, prices);
     const tempTiers = [];
-    for (let tier in tiersDict) {
+    tempTiers.push({
+      name: "Gold",
+      description: "The best tier",
+      price: priceList[0],
+      color: "#FFD700",
+    });
+    if (tierAmount >= 2)
       tempTiers.push({
-        name: tier,
-        description: tiersDict[tier],
-        amount: prices[tierIndex],
+        name: "Silver",
+        description: "The middle tier",
+        price: priceList[1],
+        color: "#C0C0C0",
       });
-      tierIndex++;
-    }
-    setTiers(tempTiers);
+    if (tierAmount === 3)
+      tempTiers.push({
+        name: "Bronze",
+        description: "The basic tier",
+        price: priceList[2],
+        color: "#CD7F32",
+      });
+    setTiers(tempTiers.reverse());
   }, []);
 
   useEffect(() => {
@@ -56,14 +68,20 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
   }, []);
 
   const handleAmount = (amount) => {
-    if (isNaN(Number(amount)) && amount !== "") {
-        return;
-    }
-    setAmount(Number(amount));
+    if (
+        (
+      !amount.match(/^\d+(\.\d+)?$/) &&
+      amount !== "" &&
+      (amount[amount.length - 1] !== "." ||
+        (amount.match(/\./g) || []).length > 1)
+    ) || amount < 0 || amount > 10000000 || amount.length > 10
+    )
+      return;
+    setAmount(amount);
     let tierIndex = "not";
     for (let tier of tiers) {
       console.log(tier.amount, amount);
-      if (tier.amount <= Number(amount)) {
+      if (tier.price <= Number(amount)) {
         tierIndex === "not" ? (tierIndex = 0) : tierIndex++;
       }
     }
@@ -83,7 +101,7 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
         ? await createInvestment(id, amount)
         : amount >= previousAmount
         ? await updateInvestment(id, amount)
-        : check = false;
+        : (check = false);
       if (!check || amount < 0) {
         handleDonationFail();
         return;
@@ -125,7 +143,6 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           alt=""
         />
         <input
-          type="text"
           name="amount"
           id="amount"
           key={"amount"}
@@ -139,12 +156,17 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           <div
             key={index}
             className={
-              selectTier === index ? classes.SelectedTier : classes.Tier
+                selectTier === index ? classes.SelectedTier : classes.Tier
+            }
+            style={
+                {
+                    backgroundColor: index === selectTier ? "#1B2DAF" : tier.color,
+                }
             }
           >
             <div className={classes.TierName}>{tier.name}</div>
             <div className={classes.TierDesc}>{tier.description}</div>
-            <div className={classes.TierAmount}>{tier.amount}$</div>
+            <div className={classes.TierAmount}>{tier.price}$</div>
           </div>
         ))}
       </div>
@@ -158,7 +180,13 @@ export const MakeDonation = ({ tiersDict, pic, name, id, prices }) => {
           maintainance
         </span>
       </div>
-      <button disabled={(amount <= previousAmount && donationExists) || amount < prices[0]} type="submit" onClick={handleDonation}>
+      <button
+        disabled={
+          (amount <= previousAmount && donationExists) || amount < prices[0]
+        }
+        type="submit"
+        onClick={handleDonation}
+      >
         Donate
       </button>
       <span className={classes.Error}>{error}</span>
