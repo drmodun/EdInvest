@@ -50,7 +50,6 @@ const GeneralInformations = ({
   });
 
   const updateStatus = () => {
-    console.log("updated");
     setStatus({
       name: data.name !== "" && data.name !== undefined,
       type: data._TYPE !== "" && data._TYPE !== undefined,
@@ -715,7 +714,7 @@ const GeneralInformations = ({
           </h3>
           <input
             type="text"
-            placeholder="Estimated duration"
+            placeholder="Estimated duration (in minutes)"
             className={classes.sectionInputText}
             onChange={(e) => insertData("averageDuration", e.target.value)}
           />
@@ -747,7 +746,6 @@ const GeneralInformations = ({
           onChange={(e) => insertData("mainWebsite", e.target.value)}
         />
       </section>
-      <button onClick={() => console.log(status)}>Print status</button>
     </>
   );
 };

@@ -53,7 +53,7 @@ const Navigation = () => {
         </nav>
 
         <div className={classes.headerButtons}>
-          <Button>Create a project</Button>
+          <Button route={"projects/new"}>Create a project</Button>
           {userInfo ? (
             <Button route={"/me"}>
               <img
