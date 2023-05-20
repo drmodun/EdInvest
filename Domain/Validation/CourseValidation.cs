@@ -1,5 +1,4 @@
 ﻿using Domain.Repositories.Implementations;
-using Domain.Repositories.Interfaces;
 using FluentValidation;
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
@@ -12,10 +11,10 @@ namespace Domain.Validation
 {
     public class CourseValidation : ItemValidation<Course>
     {
-        public CourseValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
+        public CourseValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,
             UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
             ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo) :
-            base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo, itemRepo)
+            base(categoryRepo, subcategoryRepo, organisationRepo, itemRepo)
         {
             //active students are not needed for courses to be created
             RuleFor(x => x.Curriculum).NotEmpty().WithMessage("Curriculum must me filled");

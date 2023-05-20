@@ -11,7 +11,6 @@ namespace Data.Entities
     public class EdInvestContext : DbContext
     {
         public EdInvestContext(DbContextOptions<EdInvestContext> options) : base(options) { }
-        public DbSet<Country> Countries => Set<Country>();
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Subcategory> Subcategories => Set<Subcategory>();
         public DbSet<User> Users => Set<User>();
@@ -42,14 +41,6 @@ namespace Data.Entities
                 .HasValue<OnlineCourse>(ItemType.OnlineCourse)
                 .HasValue<Event>(ItemType.Event);
 
-
-
-            modelBuilder.Entity<Country>()
-                .HasMany(c => c.Users)
-                .WithOne(u => u.Country)
-                .HasForeignKey(u => u.CountryId)
-
-                .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Subcategories)
                 .WithOne(s => s.Category)

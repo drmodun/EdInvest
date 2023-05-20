@@ -2,7 +2,6 @@
 using Domain.Helpers;
 using Domain.Mappers;
 using Domain.Repositories.Implementations;
-using Domain.Repositories.Interfaces;
 using Domain.Services;
 using Domain.Validation;
 using Microsoft.EntityFrameworkCore;
@@ -23,12 +22,12 @@ using Shared.Contracts.Requests.Users.Organisation;
 using Shared.Contracts.Requests.Users.Student;
 using Shared.Contracts.Requests.Users.User;
 using Shared.Contracts.Responses.Category;
-using Shared.Contracts.Responses.Investments;
 using Shared.Contracts.Responses.Items.Application;
 using Shared.Contracts.Responses.Items.Course;
 using Shared.Contracts.Responses.Items.Event;
 using Shared.Contracts.Responses.Items.Item;
 using Shared.Contracts.Responses.Items.OnlineCourse;
+using Shared.Contracts.Responses.Ranked;
 using Shared.Contracts.Responses.Subcategory;
 using Shared.Contracts.Responses.Users.Investor;
 using Shared.Contracts.Responses.Users.Organisation;
@@ -99,9 +98,8 @@ namespace Domain
                >>();
             services.AddScoped<BaseService<Investments, InvestmentMapper, InvestmentRepo, WriteRepo<Investments, N_NKey>,
                 CreateInvestmentRequest, UpdateInvestmentRequest, GetInvestmentRequest,
-                GetAllInvestmentsRequest, N_NKey, GetInvestmentResponse,
-                GetAllInvestmentsResponse, InvestmentsValidation>>();
-            services.AddScoped<CountryService>();
+                GetAllInvestmentsRequest, N_NKey, RankedInvestmentResponse,
+                AllRankedInvestmentsResponse, InvestmentsValidation>>();
 
             services.AddScoped<ApplicationValidation>();
             services.AddScoped<CategoryValidation>();
@@ -151,7 +149,6 @@ namespace Domain
             services.AddScoped<SubcategoryRepo>();
             services.AddScoped<SubcategoryMapper>();
             services.AddScoped<WriteRepo<Subcategory, Guid>>();
-            services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<IdentityService>();
 
             //services.AddCors(options =>

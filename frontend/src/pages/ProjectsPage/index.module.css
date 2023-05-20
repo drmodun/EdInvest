@@ -73,9 +73,20 @@
 
 .sectionExploreFilters {
   width: 100%;
-  height: 94px;
+  height: fit-content;
   background: #e6e6e6;
   margin-bottom: 50px;
+  padding: 20px 0;
+  flex-direction: column;
+}
+
+.FilterTitle{
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #343434;
+  margin-bottom: 30px;
 }
 
 .sectionExploreFilters > div {
@@ -110,13 +121,48 @@
   margin-right: 20px;
 }
 
-.sectionExploreFiltersButton:last-child {
+.selected:not(:last-child) {
+  margin-right: 20px;
+}
+.sectionExploreFilter {
   position: absolute;
+  border: none;
+  background-color: white;
+  font-family: "Inter";
+  font-weight: 500;
+  color: #343434;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 12px 20px;
   right: 0;
+}
+
+.selected{
+  background-color: #343434;
+  font-family: "Inter";
+  font-weight: 500;
+  color: white;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 8px;
+  padding: 12px 20px;
+  border : none;
 }
 
 .sectionExploreSort {
   margin-bottom: 39px;
+}
+
+.sectionExplorerCategories {
+  display: flex;
+  flex-flow: row wrap;
+  width: 60%;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 39px;
+
 }
 
 .sectionExploreSort > div {

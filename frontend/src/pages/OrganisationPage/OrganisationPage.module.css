@@ -1,0 +1,5 @@
+.Background {
+  padding-top: var(--header-height);
+  padding-bottom: 250px;
+  background-color: #1B2DAF;
+}

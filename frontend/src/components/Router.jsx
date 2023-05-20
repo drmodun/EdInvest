@@ -18,6 +18,7 @@ import InvestorPage from "../pages/InvestorPage/InvestorPage";
 import OrganisationPage from "../pages/OrganisationPage";
 import RegisterPage from "../pages/RegisterPage";
 import CreateProjectPage from "../pages/CreateProjectPage";
+import AboutPage from "../pages/AboutPage";
 
 const user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -59,6 +60,7 @@ const router = createBrowserRouter(
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

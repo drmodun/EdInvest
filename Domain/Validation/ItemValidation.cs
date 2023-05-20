@@ -1,5 +1,4 @@
 ﻿using Domain.Repositories.Implementations;
-using Domain.Repositories.Interfaces;
 using FluentValidation;
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Category;
@@ -16,24 +15,20 @@ namespace Domain.Validation
     {
         private readonly CategoryRepo _categoryRepo;
         private readonly SubcategoryRepo _subCategoryRepo;
-        private readonly ICountryRepo _countryRepo;
         private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
         private readonly UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> _organisatorRepo;
         //remmber to reesaearch if requests are problematic in repos
-        public ItemValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
+        public ItemValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,
             UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
             ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo)
         {
             _categoryRepo = categoryRepo;
             _subCategoryRepo = subcategoryRepo;
-            _countryRepo = countryRepo;
             _itemRepo = itemRepo;
             _organisatorRepo = organisationRepo;
             RuleFor(x => x.Name).NotEmpty().WithMessage("Last name is required");
             RuleFor(x => x.Description).MaximumLength(10000).WithMessage("Description must be less than 1000 characters");
             RuleFor(x => x.Description).MinimumLength(20).WithMessage("Description must be at least 20 characters long");
-            RuleFor(x => x.CountryId).MustAsync(async (n, cancellationToken) =>
-            { return await _countryRepo.GetById(n) != null; }).WithMessage("Country is not valid");
             RuleFor(x => x.Images).NotEmpty().WithMessage("Images cannot be empty");
             RuleFor(x => x.Goal).Must(g => g > 0).WithMessage("Goal must be positive");
             RuleFor(x => new { x.SubcategoryId, x.CategoryId }).MustAsync(async (n, cancellationToken) =>

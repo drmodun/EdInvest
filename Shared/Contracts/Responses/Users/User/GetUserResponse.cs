@@ -18,7 +18,7 @@ namespace Shared.Contracts.Responses.Users.User
         public Dictionary<string, string> SocialLinks { get; set; }
 
 
-        public Guid CountryId { get; set; }
+
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }
         public decimal? Balance { get; set; }

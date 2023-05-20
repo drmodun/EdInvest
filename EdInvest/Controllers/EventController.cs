@@ -68,7 +68,7 @@ namespace API.Controllers
                     NotableSpeakers = request.NotableSpeakers,
                     TicketPrice = request.TicketPrice,
                     CategoryId = request.CategoryId,
-                    CountryId = request.CountryId,
+
                     Description = request.Description,
                     Goal = request.Goal,
                     Images = request.Images,

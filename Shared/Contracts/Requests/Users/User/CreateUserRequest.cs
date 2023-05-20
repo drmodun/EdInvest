@@ -11,7 +11,7 @@
         public string ProfilePicture { get; set; }
 
         public Dictionary<string, string> SocialLinks { get; set; }
-        public Guid CountryId { get; set; }
+
         public string LocationName { get; set; }
         public string WalletAddress { get; set; }
     }

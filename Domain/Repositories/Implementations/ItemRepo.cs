@@ -5,7 +5,6 @@ using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
 using Shared.Contracts.Responses.Ranked;
 using Shared.Models.Items;
-using Shared.Models.Users;
 
 namespace Domain.Repositories.Implementations
 {
@@ -46,11 +45,12 @@ namespace Domain.Repositories.Implementations
             return list;
 
         }
-        public async Task<List<RankedItemResponse>> GetAllInvestments(Guid userId)
+        public async Task<List<RankedItemResponse>> GetAllInvestedItems(Guid userId)
         {
             return await _context.Investments
                 .Where(i => i.InvestorId == userId)
                 .Include(i => i.Item)
+
                 .Select(i => new RankedItemResponse
                 {
                     Id = i.ItemId,
@@ -59,6 +59,10 @@ namespace Domain.Repositories.Implementations
                     Tier = i.Tier,
                     Name = i.Item.Name,
                     OrganisationId = i.Item.OrganisationId,
+                    CurrentAmount = i.Item.Investments.Sum(x => x.Amount),
+                    Goal = i.Item.Goal,
+                    OrganisationName = i.Item.Organisation.Name,
+                    ItemDescription = i.Item.Description,
                     Type = i.Item.Type,
                     Updated = i.UpdatedAt
                 })

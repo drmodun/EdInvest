@@ -2,13 +2,13 @@
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Investments;
 using Shared.Contracts.Requests.Items.Item;
-using Shared.Contracts.Responses.Investments;
+using Shared.Contracts.Responses.Ranked;
 using Shared.Models;
 using Shared.Models.Items;
 
 namespace Domain.Mappers
 {
-    public class InvestmentMapper : IMapper<Investments, GetInvestmentResponse, CreateInvestmentRequest, UpdateInvestmentRequest>
+    public class InvestmentMapper : IMapper<Investments, RankedInvestmentResponse, CreateInvestmentRequest, UpdateInvestmentRequest>
     {
         private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
 
@@ -16,17 +16,21 @@ namespace Domain.Mappers
         {
             _itemRepo = itemRepo;
         }
-        public GetInvestmentResponse ToDTO(Investments entity)
+        public RankedInvestmentResponse ToDTO(Investments entity)
         {
-            return new GetInvestmentResponse
+            return new RankedInvestmentResponse
             {
-
+                Amount = entity.Amount,
                 InvestorId = entity.InvestorId,
+                InvestorName = entity.Investor.Name,
                 ItemId = entity.ItemId,
-                UpdatedAt = entity.UpdatedAt,
+                ItemName = entity.Item.Name,
+                OrganisationId = entity.Item.OrganisationId,
+                OrganisationName = entity.Item.Organisation.Name,
                 Tier = entity.Tier,
-                Amount = entity.Amount
-
+                InvestorImage = entity.Investor.ProfilePicture,
+                ItemImage = entity.Item.Images[0],
+                UpdatedAt = entity.UpdatedAt
             };
         }
         public Investments? ToUpdatedEntity(UpdateInvestmentRequest request)

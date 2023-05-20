@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./LoginPage.module.css";
 import { GetMe, login } from "../../axios/UserCalls/UserApiCalls";
-import Facebook from "../../assets/facebook.png";
-import Google from "../../assets/google.png";
-import Twitter from "../../assets/twitter.png";
-import AppStore from "../../assets/IOS.png";
+import Facebook from "../../assets/facebook.svg";
+import Google from "../../assets/google.svg";
+import Twitter from "../../assets/twitter.svg";
+import AppStore from "../../assets/IOS.svg";
 import Torus from "../../assets/torus.png";
 import Metamask from "../../assets/metamask.png";
 import BackgroundImage from "../../assets/login-background.png";
@@ -19,7 +19,7 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
@@ -45,6 +45,7 @@ export const LoginPage = () => {
       const userInfo = await GetMe();
       if (userInfo) {
         localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        localStorage.setItem("LoginDate", JSON.stringify(Date.now()));
         alert("Logged in successfully");
         window.location.replace("/");
       } else {

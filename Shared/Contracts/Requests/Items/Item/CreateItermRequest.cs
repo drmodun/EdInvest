@@ -9,9 +9,6 @@
         public Guid SubcategoryId { get; set; }
         public Guid OrganisationId;
 
-
-        public Guid CountryId { get; set; }
-
         public decimal Goal { get; set; }
 
         public string MainWebsite { get; set; }

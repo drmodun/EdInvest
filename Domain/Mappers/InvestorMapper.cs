@@ -30,7 +30,7 @@ namespace Domain.Mappers
                 Description = entity.Description,
                 ProfilePicture = entity.ProfilePicture,
                 SocialLinks = entity.SocialLinks,
-                CountryId = entity.CountryId,
+
                 LocationName = entity.LocationName,
                 WalletAddress = entity.WalletAddress,
                 Type = entity.Type,
@@ -60,7 +60,7 @@ namespace Domain.Mappers
                 {
                     { "trusted_member", "true" }
                 },
-                CountryId = request.CountryId,
+
                 LocationName = request.LocationName,
                 WalletAddress = request.WalletAddress,
                 Type = request.Type,
@@ -85,7 +85,7 @@ namespace Domain.Mappers
                 Description = request.Description,
                 ProfilePicture = request.ProfilePicture,
                 SocialLinks = request.SocialLinks,
-                CountryId = request.CountryId,
+
                 LocationName = request.LocationName,
                 WalletAddress = request.WalletAddress,
                 Type = request.Type,

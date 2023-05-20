@@ -25,9 +25,14 @@ namespace Domain.Services
 
         }
 
-        public async Task<List<RankedItemResponse>> GetAllItems(Guid userId)
+        public async Task<List<RankedItemResponse>> GetMyInvestedItems(Guid userId)
         {
-            return await _itemRepo.GetAllInvestments(userId);
+            return await _itemRepo.GetAllInvestedItems(userId);
+        }
+
+        public async Task<List<RankedItemResponse>> GetItemsForInvestor(Guid id)
+        {
+            return await _itemRepo.GetAllInvestedItems(id);
         }
         public async Task<List<RankedResponse>> GetInvestors(Guid courseId)
         {
@@ -38,7 +43,7 @@ namespace Domain.Services
 
             return await _userRepo.GetTopGlobalInvestors();
         }
-        public async Task<List<RankedResponse>> GetInvestmentsForOrganisation(Guid id)
+        public async Task<List<RankedInvestmentResponse>> GetInvestmentsForOrganisation(Guid id)
         {
             return await _investmentRepo.GetInvestmentsForOrganisaton(id);
         }

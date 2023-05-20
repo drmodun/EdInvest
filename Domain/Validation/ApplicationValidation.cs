@@ -1,5 +1,4 @@
 ﻿using Domain.Repositories.Implementations;
-using Domain.Repositories.Interfaces;
 using FluentValidation;
 using Shared.Contracts.Items.Item;
 using Shared.Contracts.Requests.Items.Item;
@@ -12,10 +11,10 @@ namespace Domain.Validation
 {
     public class ApplicationValidation : ItemValidation<Application>
     {
-        public ApplicationValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo, ICountryRepo countryRepo,
+        public ApplicationValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,
             UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
             ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo) :
-            base(categoryRepo, subcategoryRepo, countryRepo, organisationRepo, itemRepo)
+            base(categoryRepo, subcategoryRepo, organisationRepo, itemRepo)
         {
 
             RuleFor(x => x.EstimatedRelease).Must(x => x > DateTime.Now).WithMessage("Application release date must be in the future");

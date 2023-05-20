@@ -68,22 +68,37 @@ export async function getMyInvestments(){
         throw new Error(error.message);
     }
 }
-export async function getInvestments(params = {}){
+
+export async function getItemsForInvestor(investorId){
     try{
-        const response = await api.get(`investments`, {params});
+        console.log(investorId + "investorId");
+        const response = await api.get(`investments/${investorId}/items`);
+        console.log(response.data);
         return response.data;
     }
     catch(error){
         throw new Error(error.message);
     }
 }
-export async function createInvestment(itemId, data){
+
+
+export async function getInvestments(params = {}){
     try{
-        const response = await api.post(`investments/${itemId}`, data);
+        const response = await api.get(`investments`, { params });
         return response.data;
     }
     catch(error){
+        console.log(params, { params });
         throw new Error(error.message);
+    }
+}
+export async function createInvestment(itemId, data){
+    try{
+        const response = await api.post(`investments/${itemId}`, Number(data));
+        return response.data;
+    }
+    catch(error){
+        throw new Error(error.data);
     }
 }
 export async function updateInvestment(itemId, data){
@@ -98,6 +113,15 @@ export async function updateInvestment(itemId, data){
 export async function deleteInvestment(itemId){
     try{
         const response = await api.delete(`investments/${itemId}`);
+        return response.data;
+    }
+    catch(error){
+        throw new Error(error.message);
+    }
+}
+export async function getInvestmentsForOrg(organisationId){
+    try{
+        const response = await api.get(`investments/${organisationId}`);
         return response.data;
     }
     catch(error){

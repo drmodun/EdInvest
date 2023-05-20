@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./RegisterPage.module.css";
 import { createOrganisation } from "../../axios/UserCalls/OrganisationApiCalls";
 import { createInvestor } from "../../axios/UserCalls/InvestorApiCalls";
+import Facebook from "../../assets/facebook.svg";
+import Twitter from "../../assets/twitter.svg";
+import Google from "../../assets/google.svg";
+import AppStore from "../../assets/IOS.svg";
 import { login } from "../../axios/UserCalls/UserApiCalls";
-
+import { GetCountries } from "../../axios/CountryApiCalls";
 export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +19,11 @@ export const RegisterPage = () => {
   const [type, setType] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState(0);
   const [numberOfMembers, setNumberOfMembers] = useState(0);
-  const [SocialLogins, setSocialLogins] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [google, setGoogle] = useState("");
+  const [appStore, setAppStore] = useState("");
+  const [countries, setCountries] = useState([]);
   const [location, setLocation] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -31,11 +39,21 @@ export const RegisterPage = () => {
       !passwordConfirmation ||
       !country ||
       !description ||
-      !SocialLogins ||
       !location ||
       !walletAddress
     ) {
-      setError("Please fill in all required fields.");
+      console.log(countries);
+      setError("Please fill in all required fields" + country);
+      console.log(
+        name,
+        email,
+        password,
+        passwordConfirmation,
+        country,
+        description,
+        location,
+        walletAddress
+      );
       return;
     }
 
@@ -49,11 +67,13 @@ export const RegisterPage = () => {
     }
     if (type === "Investor") {
       if (!numberOfEmployees) {
+        console.log(numberOfEmployees, type);
         setError("Please fill in all required fields.");
         return;
       }
     } else {
       if (!numberOfMembers) {
+        console.log(numberOfMembers, type);
         setError("Please fill in all required fields.");
         return;
       }
@@ -81,17 +101,23 @@ export const RegisterPage = () => {
     let base64regex =
       /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
     if (!base64regex.test(profilePicture)) {
-      setError("Please upload a valid image.");
+      setProfilePicture("default");
       return;
     }
+    const socialLogins = {
+      facebook: facebook ? facebook : null,
+      twitter: twitter ? twitter : null,
+      google: twitter ? google : null,
+      appStore: appStore ? appStore : null,
+    };
     const user = {
       name,
       email,
       password,
-      country,
+      countryId: country,
       description,
-      socialLogins: SocialLogins,
-      location,
+      socialLinks: socialLogins,
+      locationName: location,
       walletAddress,
       profilePicture,
     };
@@ -99,14 +125,20 @@ export const RegisterPage = () => {
     else user.numberOfMembers = numberOfMembers;
     // Submit user object to server
     const response =
-      user.type === "Investor"
+      type === "Investor"
         ? await createInvestor(user)
         : await createOrganisation(user);
-    if (response.status === 200) {
-      window.location.href = "/login";
-      localStorage.setItem("userInfo", JSON.stringify(response.data));
+    if (response.success) {
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(
+          type === "Investor" ? response.investor : response.organisation
+        )
+      );
       const token = await login(email, password);
+      setError("");
       localStorage.setItem("token", token);
+      window.location.href = "/";
     } else {
       console.log(response);
       console.log(response.data);
@@ -114,8 +146,27 @@ export const RegisterPage = () => {
     }
   };
 
+  useEffect(() => {
+    async function fetchCountries() {
+      try {
+        const response = await GetCountries();
+        setCountries(response.sort(
+          (a, b) => a.name.localeCompare(b.name)
+        ));
+        console.log(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchCountries();
+  }, []);
   return (
     <div className={classes.RegisterPage}>
+      <span className={classes.Title}>Register your account</span>
+      <div className={classes.Bars}>
+        <div className={classes.BlueBar}></div>
+        <div className={classes.GreyBar}></div>
+      </div>
       <form className={classes.RegisterForm} onSubmit={handleSubmit}>
         <label for="type">Type</label>
         <select
@@ -156,18 +207,28 @@ export const RegisterPage = () => {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
         <label for="country">Country</label>
-        <input
+        <select
           type="text"
           placeholder="Country"
           value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        />
+          defaultValue={""}
+          onChange={(e) => { console.log(e.target.value); setCountry(e.target.value)}}
+        >
+          <option disabled ></option>
+          {countries.map((country) => (
+            <option key={country.id} value={country.id}>
+              {country.name}
+            </option>
+          ))}
+        </select>
         <label for="description">Description</label>
-        <input
+        <textarea
           type="text"
           placeholder="Description"
           value={description}
+          rows={10}
           onChange={(e) => setDescription(e.target.value)}
+          style={{ resize: "none", width: "500px" }}
         />
         {type === "Investor" ? (
           <>
@@ -191,12 +252,42 @@ export const RegisterPage = () => {
           </>
         )}
         <label for="SocialLogins">Social Logins</label>
-        <input
-          type="text"
-          placeholder="Social Logins"
-          value={SocialLogins}
-          onChange={(e) => setSocialLogins(e.target.value)}
-        />
+        <div className={classes.socialLink}>
+          <img src={Facebook} alt="facebook" />
+          <input
+            type="text"
+            placeholder="Facebook"
+            value={facebook}
+            onChange={(e) => setFacebook(e.target.value)}
+          />
+        </div>
+        <div className={classes.socialLink}>
+          <img src={Twitter} alt="twitter" />
+          <input
+            type="text"
+            placeholder="Twitter"
+            value={twitter}
+            onChange={(e) => setTwitter(e.target.value)}
+          />
+        </div>
+        <div className={classes.socialLink}>
+          <img src={Google} alt="google" />
+          <input
+            type="text"
+            placeholder="Website"
+            value={google}
+            onChange={(e) => setGoogle(e.target.value)}
+          />
+        </div>
+        <div className={classes.socialLink}>
+          <img src={AppStore} alt="appStore" />
+          <input
+            type="text"
+            placeholder="Apple Store"
+            value={appStore}
+            onChange={(e) => setAppStore(e.target.value)}
+          />
+        </div>
         <label for="location">Location</label>
         <input
           type="text"

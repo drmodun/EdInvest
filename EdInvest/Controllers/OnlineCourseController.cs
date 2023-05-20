@@ -58,7 +58,7 @@ namespace API.Controllers
                 new UpdateOnlineCourseRequest
                 {
                     CategoryId = request.CategoryId,
-                    CountryId = request.CountryId,
+
                     Description = request.Description,
                     Goal = request.Goal,
                     Images = request.Images,

@@ -33,7 +33,7 @@ namespace Domain.Mappers
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
                 SubcategoryId = request.SubcategoryId,
-                CountryId = request.CountryId,
+
                 Goal = request.Goal,
                 MainWebsite = request.MainWebsite,
                 Images = request.Images,
@@ -63,9 +63,8 @@ namespace Domain.Mappers
                 NotableAttendees = request.NotableAttendees,
                 NotableSpeakers = request.NotableSpeakers,
                 SubcategoryId = request.SubcategoryId,
-                CountryId = request.CountryId,
-                MainWebsite = request.MainWebsite,
 
+                MainWebsite = request.MainWebsite,
                 Goal = request.Goal,
                 Images = request.Images,
                 UpdatedAt = DateTime.UtcNow,
@@ -94,7 +93,7 @@ namespace Domain.Mappers
                 NotableAttendees = entity.NotableAttendees,
                 NotableSpeakers = entity.NotableSpeakers,
                 SubcategoryId = entity.SubcategoryId,
-                CountryId = entity.CountryId,
+
                 Goal = entity.Goal,
                 Images = entity.Images,
                 UpdatedAt = entity.UpdatedAt,
@@ -102,7 +101,7 @@ namespace Domain.Mappers
                 Type = entity.Type,
                 Prices = entity.Prices,
                 OrganisationId = entity.OrganisationId,
-                CurrentAmount = _itemRepo.GetCurrentAmount(entity.Id),
+                CurrentAmount = entity.Investments.Sum(x => x.Amount),
                 NumberOfDonations = entity.Investments.Count,
 
             };

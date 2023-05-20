@@ -11,6 +11,8 @@ import ArrowLeft from "../../assets/arrow-left.svg";
 import classes from "./index.module.css";
 
 import Card from "../../components/Card";
+import { Link } from "react-router-dom";
+import { getStats } from "../../axios/InvestmentsApiCalls";
 
 const HomePage = () => {
   document
@@ -26,6 +28,7 @@ const HomePage = () => {
     .querySelector(":root")
     .style.setProperty("--header-button-color", "#343434");
 
+  const [stats, setStats] = useState([]);
   const [items, setItems] = useState([]);
   const fetchItems = () => {
     getItems()
@@ -34,11 +37,17 @@ const HomePage = () => {
       .catch((err) => console.error(err));
   };
 
+  const fetchStats = async () => {
+    const response = await getStats();
+    setStats(response);
+  };
+
   useEffect(() => {
     fetchItems();
     const copiedItems = [...items];
     copiedItems.sort((a, b) => a.balance - b.balance);
     setItems(copiedItems.slice(0, 3));
+    fetchStats();
   }, []);
 
   return (
@@ -51,7 +60,7 @@ const HomePage = () => {
         />
         <div className={classes.HeaderHeroTextWrapper}>
           <h1 className={classes.HeaderHeroTitle}>
-            Invest in minds, supports with crypto
+            Invest in minds, support with crypto
           </h1>
           <h3 className={classes.HeaderHeroSubtitle}>
             With blockchain technology, we transform project funding, esuring
@@ -62,10 +71,14 @@ const HomePage = () => {
           </h3>
 
           <div className={classes.HeaderHeroButtonsWrapper}>
-            <button className={classes.HeaderHeroWhiteButton}>
-              <span className={classes.WhiteButtonText}>Explore projects</span>
-              <img src={ChevronRightBlack} />
-            </button>
+            <Link to={"projects"}>
+              <button className={classes.HeaderHeroWhiteButton}>
+                <span className={classes.WhiteButtonText}>
+                  Explore projects
+                </span>
+                <img src={ChevronRightBlack} />
+              </button>
+            </Link>
             <button className={classes.TransparentButton}>
               <span className={classes.TransparentButtonText}>Our mission</span>
               <img src={ChevronRightWhite} />
@@ -187,15 +200,23 @@ const HomePage = () => {
       <div className={classes.StatsSection}>
         <div className={classes.StatsSectionContainer}>
           <p className={classes.StatsSectionSmallText}>Invested so far</p>
-          <h1 className={classes.StatsSectionBigText}>2550€</h1>
+          <h1 className={classes.StatsSectionBigText}>
+            {stats.totalMoneyDonated}$
+          </h1>
         </div>
         <div className={classes.StatsSectionContainer}>
-          <p className={classes.StatsSectionSmallText}>Projects on EdInvest</p>
-          <h1 className={classes.StatsSectionBigText}>117</h1>
+          <p className={classes.StatsSectionSmallText}>
+            Projects that have been doanted to
+          </p>
+          <h1 className={classes.StatsSectionBigText}>
+            {stats.numberOfProjects}
+          </h1>
         </div>
         <div className={classes.StatsSectionContainer}>
-          <p className={classes.StatsSectionSmallText}>Number of investitors</p>
-          <h1 className={classes.StatsSectionBigText}>45</h1>
+          <p className={classes.StatsSectionSmallText}>Number of investors</p>
+          <h1 className={classes.StatsSectionBigText}>
+            {stats.numberOfInvestors}
+          </h1>
         </div>
       </div>
 

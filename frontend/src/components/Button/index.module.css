@@ -4,6 +4,8 @@
   background: var(--header-button-bg-color);
   color: var(--header-button-color);
   border: none;
+  display: flex;
+  align-items: center;
   border-radius: 8px;
   font-size: 16px;
   font-family: "Manrope", sans-serif;
