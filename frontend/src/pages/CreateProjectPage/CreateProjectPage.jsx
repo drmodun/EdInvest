@@ -47,7 +47,6 @@ const CreateProjectPage = () => {
         organisationId: "36ad10aa-bf8d-472f-9ab6-609a492718da",
       };
 
-      console.log(event);
       createEvent(event).catch((err) => console.error(err));
     }
 
@@ -73,7 +72,6 @@ const CreateProjectPage = () => {
         activeStudents: 1,
       };
 
-      console.log(course);
       createCourse(course).catch((err) => console.error(err));
     }
 
@@ -96,7 +94,6 @@ const CreateProjectPage = () => {
         estimatedNumberOfUsers: +data.estimatedNumberOfUsers,
       };
 
-      console.log(application);
       createApplication(application).catch((err) => console.error(err));
     }
 
@@ -118,28 +115,16 @@ const CreateProjectPage = () => {
         lessons: {
           name: "lesson",
         },
-        lessonsDate: {
-          name: new Date().toISOString(),
-        },
+        lessonsDate: [new Date().toISOString()],
         averageDuration: +data.averageDuration,
         expectedAudience: +data.expectedAudience,
       };
 
-      console.log(onlineCourse);
       createOnlineCourse(onlineCourse).catch((err) => console.error(err));
     }
   };
 
   useEffect(() => {
-    //console.log(agree);
-  }, [agree]);
-
-  useEffect(() => {
-    console.log("Data: ", data);
-  }, [data]);
-
-  useEffect(() => {
-    //console.log("Project type: ", projectType);
     const name = data.name || "";
     setData({ name, _TYPE: projectType });
   }, [projectType]);
@@ -174,33 +159,36 @@ const CreateProjectPage = () => {
         <>
           <h1 className={classes.title}>Create a project</h1>
           <div className={classes.sectionNav}>
-            <button
+            <div
               className={clsx({
                 [classes.sectionNavButton]: true,
                 [classes.active]: section === 1,
+                [classes.disabled]: section > 1,
               })}
-              onClick={() => handleSectionChange(1)}
+              disabled={section > 1}
             >
               General informations
-            </button>
-            <button
+            </div>
+            <div
               className={clsx({
                 [classes.sectionNavButton]: true,
                 [classes.active]: section === 2,
+                [classes.disabled]: section > 2,
               })}
-              onClick={() => handleSectionChange(2)}
+              disabled={section > 2}
             >
               Project picture
-            </button>
-            <button
+            </div>
+            <div
               className={clsx({
                 [classes.sectionNavButton]: true,
                 [classes.active]: section === 3,
+                [classes.disabled]: section > 3,
               })}
-              onClick={() => handleSectionChange(3)}
+              disabled={section > 3}
             >
               Receiving funds
-            </button>
+            </div>
           </div>
         </>
       ) : null}
