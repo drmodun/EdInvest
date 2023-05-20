@@ -79,7 +79,6 @@ namespace API.Controllers
             var response = new UpdateOrganisationResponse { Success = item != null, Organisation = item };
             return (bool)response.Success ? Ok(response) : BadRequest(response);
         }
-        //fix delete
         [Authorize(AuthConstants.AdminUserPolicyName)]
         [HttpDelete(AppRoutes.Organisation.Delete)]
         public async Task<ActionResult<DeleteOrganisationResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)

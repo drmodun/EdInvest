@@ -151,17 +151,6 @@ namespace Domain
             services.AddScoped<WriteRepo<Subcategory, Guid>>();
             services.AddScoped<IdentityService>();
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(name: "AllowOrigin",
-            //        builder =>
-            //        {
-            //            builder.WithOrigins("*")
-            //                                .AllowAnyHeader()
-            //                                .AllowAnyMethod();
-            //        });
-            //});
-
             return services;
 
             //I experimented with generics, sorry if the code is too messy

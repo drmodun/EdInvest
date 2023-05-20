@@ -17,7 +17,6 @@ namespace Domain.Validation
         private readonly SubcategoryRepo _subCategoryRepo;
         private readonly ItemRepo<Item, GetItemRequest, GetAllItemsRequest> _itemRepo;
         private readonly UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> _organisatorRepo;
-        //remmber to reesaearch if requests are problematic in repos
         public ItemValidation(CategoryRepo categoryRepo, SubcategoryRepo subcategoryRepo,
             UserRepo<Organisation, GetOrganisationRequest, GetAllOrganisationsRequest> organisationRepo,
             ItemRepo<Item, GetItemRequest, GetAllItemsRequest> itemRepo)
