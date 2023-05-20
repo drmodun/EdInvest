@@ -1,0 +1,347 @@
+html {
+  background-color: #f3f3f3;
+}
+
+.content {
+  width: 100%;
+  background-color: white;
+  margin-top: 175px;
+  margin-bottom: 92px;
+  box-sizing: border-box;
+  padding: 55px var(--create-content-right-margin) 55px 63px;
+  border-radius: 20px;
+}
+
+.title {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 53px;
+}
+
+.sectionNav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 72px;
+}
+
+.sectionNavButton {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  box-sizing: border-box;
+  padding: 14px 22px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.sectionNavButton.active {
+  color: white;
+  background-color: var(--color-azzuro);
+  border: 1px solid var(--color-azzuro);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.sectionDescription {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #6d6d6d;
+  margin: 5px 0 0 0;
+}
+
+.sectionInputText,
+.sectionInputSelect {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
+.sectionInputSelect {
+  cursor: pointer;
+}
+
+.sectionInputLarge {
+  width: 100%;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 22px;
+  margin-top: 5px;
+}
+
+.sectionInputText,
+.sectionInputLarge {
+  margin-bottom: 23px;
+}
+
+.sectionLargeInputHeader {
+  width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  padding-bottom: 22px;
+}
+
+.sectionLargeInputHeader > img:nth-child(2),
+.sectionLargeInputHeader > img:nth-child(7),
+.sectionLargeInputHeader > img:nth-child(11) {
+  margin-right: 15px;
+}
+
+.sectionLargeInputArea {
+  resize: none;
+  width: 100%;
+  min-height: 200px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  height: auto;
+  border: none;
+  outline: none;
+}
+
+.sectionDateContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 10px 0 15px 0;
+}
+
+.sectionDateInput {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.sectionDateInput::-webkit-outer-spin-button,
+.sectionDateInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sectionDateInput:nth-child(1),
+.sectionDateInput:nth-child(2) {
+  width: 75px;
+}
+
+.sectionDateInput:nth-child(3) {
+  width: 89px;
+}
+
+.sectionKeywordsContainer {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 10px 0;
+  gap: 10px;
+}
+
+.sectionKeywordsItem {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  box-sizing: border-box;
+  padding: 14px 22px;
+  border: 1px solid #a1a1a1;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.sectionKeywordsButton {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-azzuro);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.sectionTiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.sectionTiers > p {
+  color: black;
+  font-weight: 700;
+  margin: 0 0 0 5px;
+}
+
+.sectionTiers > input {
+  margin: 0;
+}
+
+.removeTierButton {
+  height: 40px;
+  width: 40px;
+  margin: auto;
+
+  background: red;
+  border-radius: 8px;
+  border: none;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+.addTierButton {
+  width: 150px;
+  padding: 12px 33px;
+  background: #0047b0;
+  border-radius: 8px;
+  border: none;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+.continueButton {
+  padding: 12px 33px;
+  background: #0047b0;
+  border-radius: 8px;
+  border: none;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+
+  margin-top: 50px;
+}
+
+.continueButton:disabled {
+  background: gray;
+}
+
+.sectionDropzone {
+  box-sizing: border-box;
+  width: 656px;
+  height: 202px;
+  background: #f8f8ff;
+  border: 1px dashed rgba(56, 78, 183, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionDropzone > h4 {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0f0f0f;
+  margin: 0;
+  margin: 20px 0 10px 0;
+}
+
+.sectionDropzone > p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #676767;
+  margin: 0;
+}
+
+.sectionPublish {
+  margin-top: 30px;
+}
+
+.sectionPublishTitle {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.sectionCheckboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -5px;
+  margin-top: 10px;
+}
+
+.sectionCheckboxWrapper > input {
+  height: 20px;
+  width: 20px;
+}
+
+.sectionCheckboxLabel {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1d1e1f;
+  cursor: pointer;
+}
+
+.sectionAttention {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sectionAttention > img {
+  height: 20px;
+  width: 20px;
+}
