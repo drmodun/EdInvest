@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import classes from "./index.module.css";
 
-import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
+import FilterIcon from "../../assets/icons/filter.svg";
+import SearchIcon from "../../assets/icons/search.svg";
 import { getCategories } from "../../axios/CategoryCalls/CategoryApiCalls";
 import { getSubcategories } from "../../axios/CategoryCalls/SubcategoryApiCalls";
-import { getCourses } from "../../axios/ItemCalls/CourseApiCalls";
 import { getApplications } from "../../axios/ItemCalls/ApplicationApiCalls";
-import { getOnlineCourses } from "../../axios/ItemCalls/OnlineCourseApiCalls";
+import { getCourses } from "../../axios/ItemCalls/CourseApiCalls";
 import { getEvents } from "../../axios/ItemCalls/EventApiCalls";
-import SearchIcon from "../../assets/icons/search.svg";
-import FilterIcon from "../../assets/icons/filter.svg";
+import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
+import { getOnlineCourses } from "../../axios/ItemCalls/OnlineCourseApiCalls";
 
 import Card from "../../components/Card";
 import Dropdown from "../../components/Dropdown";

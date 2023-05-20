@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import classes from "./LoginPage.module.css";
-import { GetMe, login } from "../../axios/UserCalls/UserApiCalls";
+import AppStore from "../../assets/IOS.svg";
 import Facebook from "../../assets/facebook.svg";
 import Google from "../../assets/google.svg";
-import Twitter from "../../assets/twitter.svg";
-import AppStore from "../../assets/IOS.svg";
-import Torus from "../../assets/torus.png";
-import Metamask from "../../assets/metamask.png";
-import BackgroundImage from "../../assets/login-background.png";
 import MobileBackgroundImage from "../../assets/header-background.png";
 import CloseIcon from "../../assets/icons/close.svg";
-
-import useUserInfo from "../../Providers/UserInfoProvider";
+import BackgroundImage from "../../assets/login-background.png";
+import Metamask from "../../assets/metamask.png";
+import Torus from "../../assets/torus.png";
+import Twitter from "../../assets/twitter.svg";
+import { GetMe, login } from "../../axios/UserCalls/UserApiCalls";
+import classes from "./LoginPage.module.css";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");

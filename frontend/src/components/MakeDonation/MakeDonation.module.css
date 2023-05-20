@@ -104,6 +104,17 @@
     border-radius: 6px;
     border: 1px solid #000000;
 }
+
+.Gold{
+    background-color : #FFD700;
+}
+.Silver{
+    background-color : #C0C0C0;
+}
+.Bronze{
+    background-color : #CD7F32;
+}
+
 .Tier:hover{
     cursor: pointer;
     opacity: 0.8;

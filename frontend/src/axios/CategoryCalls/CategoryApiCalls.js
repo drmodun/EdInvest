@@ -1,17 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://localhost:44336/api/",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Add a request interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token && ['post', 'put', 'delete'].includes(config.method)) {
+    const token = localStorage.getItem("token");
+    if (token && ["post", "put", "delete"].includes(config.method)) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -36,37 +36,45 @@ api.interceptors.response.use(
   }
 );
 export async function getCategories(params = {}) {
-    try {
-      const response = await api.get('categories', { params });
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+  try {
+    const response = await api.get("categories", { params });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  
-  export async function createCategory(category) {
-    try {
-      const response = await api.post('categories', category);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+}
+
+export async function createCategory(category) {
+  try {
+    const response = await api.post("categories", category);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  
-  export async function updateCategory(id, updates) {
-    try {
-      const response = await api.patch(`categories/${id}`, updates);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+}
+
+export async function updateCategory(id, updates) {
+  try {
+    const response = await api.patch(`categories/${id}`, updates);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
-  
-  export async function deleteCategory(id) {
-    try {
-      const response = await api.delete(`categories/${id}`);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.message);
-    }
+}
+
+export async function deleteCategory(id) {
+  try {
+    const response = await api.delete(`categories/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
   }
+}
+export async function getCategoryById(id) {
+  try {
+    const response = await api.get(`categories/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}

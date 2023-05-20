@@ -20,7 +20,7 @@ const Navigation = () => {
     if (prevScrollpos > currentScrollPos) {
       setIsHidden(false);
     } else {
-      if (currentScrollPos > 1100) setIsHidden(true);
+      if (currentScrollPos > 200) setIsHidden(true);
     }
     prevScrollpos = currentScrollPos;
   };
@@ -53,7 +53,7 @@ const Navigation = () => {
         </nav>
 
         <div className={classes.headerButtons}>
-          <Button>Create a project</Button>
+          <Button route={"projects/new"}>Create a project</Button>
           {userInfo ? (
             <Button route={"/me"}>
               <img

@@ -22,6 +22,8 @@ a {
   --header-nav-color: var(--color-light-gray);
   --header-button-bg-color: var(--color-azzuro);
   --header-button-color: white;
+
+  --create-content-right-margin: 406px;
 }
 
 .headerMargin {

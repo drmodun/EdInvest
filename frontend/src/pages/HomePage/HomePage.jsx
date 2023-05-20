@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
-import { getOrganisations } from "../../axios/UserCalls/OrganisationApiCalls";
+import { useEffect, useState } from "react";
 import { getItems } from "../../axios/ItemCalls/ItemsApiCalls";
 
-import HeaderBackground from "../../assets/header-background.png";
-import ChevronRightBlack from "../../assets/chevron-right-black.svg";
-import ChevronRightWhite from "../../assets/chevron-right-white.svg";
-import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
-import SmilingGirlImg from "../../assets/smiling-girl-img.png";
 import ArrowLeft from "../../assets/arrow-left.svg";
+import ChevronRightBlack from "../../assets/chevron-right-black.svg";
+import ChevronRightBlue from "../../assets/chevron-right-blue.svg";
+import ChevronRightWhite from "../../assets/chevron-right-white.svg";
+import HeaderBackground from "../../assets/header-background.png";
+import SmilingGirlImg from "../../assets/smiling-girl-img.png";
 import classes from "./index.module.css";
 
-import Card from "../../components/Card";
 import { Link } from "react-router-dom";
 import { getStats } from "../../axios/InvestmentsApiCalls";
+import Card from "../../components/Card";
 
 const HomePage = () => {
   document
