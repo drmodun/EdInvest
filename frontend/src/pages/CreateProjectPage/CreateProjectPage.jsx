@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 import classes from "./index.module.css";
-
+//due to short deadline some inputs had to be simplified
 import GeneralInformations from "./Sections/GeneralInformations";
 import ProjectPicture from "./Sections/ProjectPicture";
 import ReceivingFunds from "./Sections/ReceivingFunds";
@@ -18,7 +18,7 @@ const CreateProjectPage = () => {
   const [projectType, setProjectType] = useState("");
   const [agree, setAgree] = useState(false);
   const [buttonStatus, setButtonStatus] = useState(true);
-
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const handleCreateProject = () => {
     if (section < 3) return;
 
@@ -44,7 +44,6 @@ const CreateProjectPage = () => {
         notableSpeakers: ["Speaker"],
         capacity: +data.capacity,
         expectedAttendees: 0,
-        organisationId: "36ad10aa-bf8d-472f-9ab6-609a492718da",
       };
 
       createEvent(event).catch((err) => console.error(err));
@@ -57,7 +56,6 @@ const CreateProjectPage = () => {
         images: data.images,
         categoryId: data.categoryId,
         subcategoryId: data.subcategoryId,
-        countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
         prices: data.prices,
@@ -82,7 +80,6 @@ const CreateProjectPage = () => {
         images: data.images,
         categoryId: data.categoryId,
         subcategoryId: data.subcategoryId,
-        countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
         prices: data.prices,
@@ -104,7 +101,6 @@ const CreateProjectPage = () => {
         images: data.images,
         categoryId: data.categoryId,
         subcategoryId: data.subcategoryId,
-        countryId: "0038575a-03dc-48af-9311-6e3720ddf058",
         goal: +data.goal,
         mainWebsite: data.mainWebsite,
         prices: data.prices,
@@ -126,11 +122,22 @@ const CreateProjectPage = () => {
 
   useEffect(() => {
     const name = data.name || "";
-    setData({ name, _TYPE: projectType });
+    setData({
+      name,
+      _TYPE: projectType,
+      categoryId: data.categoryId ? data.categoryId : "",
+      subcategoryId: data.subcategoryId ? data.subcategoryId : "",
+      description: data.description ? data.description : "",
+      images: data.images ? data.images : [],
+      goal: data.goal ? data.goal : "",
+      mainWebsite: data.mainWebsite ? data.mainWebsite : "",
+      prices: data.prices ? data.prices : [],
+      tiers: data.tiers ? data.tiers : [],
+    });
   }, [projectType]);
 
   const insertData = (key, value) => {
-    setData({ ...data, [key]: value });
+    setData((data) => ({ ...data, [key]: value }));
   };
 
   const [section, setSection] = useState(1);
@@ -212,11 +219,12 @@ const CreateProjectPage = () => {
         <button
           className={classes.continueButton}
           onClick={increaseSection}
-          disabled={buttonStatus /*section > 2 && !agree*/}
+          disabled={buttonStatus || userInfo.type !== 2/*section > 2 && !agree*/}
         >
           {section === 3 ? "Publish" : "Continue"}
         </button>
       )}
+      {(!userInfo || userInfo.type!==2) && <span className={classes.Warning}>You have to be logged in as an organisation to continue</span>} 
     </div>
   );
 };

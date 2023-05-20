@@ -349,3 +349,11 @@ html {
   height: 20px;
   width: 20px;
 }
+.Warning{
+  color: red;
+  display: flex;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
+
+}
