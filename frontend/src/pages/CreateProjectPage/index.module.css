@@ -37,6 +37,10 @@ html {
   border-radius: 6px;
 }
 
+.sectionNavButton.disabled {
+  background-color: rgb(224, 224, 224);
+}
+
 .sectionNavButton.active {
   color: white;
   background-color: var(--color-azzuro);
