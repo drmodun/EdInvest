@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppStore from "../../assets/IOS.svg";
 import Facebook from "../../assets/facebook.svg";
 import Google from "../../assets/google.svg";
 import Twitter from "../../assets/twitter.svg";
-import { GetCountries } from "../../axios/CountryApiCalls";
 import { createInvestor } from "../../axios/UserCalls/InvestorApiCalls";
 import { createOrganisation } from "../../axios/UserCalls/OrganisationApiCalls";
 import { login } from "../../axios/UserCalls/UserApiCalls";
@@ -13,7 +12,6 @@ export const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
-  const [country, setCountry] = useState("");
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -23,7 +21,6 @@ export const RegisterPage = () => {
   const [twitter, setTwitter] = useState("");
   const [google, setGoogle] = useState("");
   const [appStore, setAppStore] = useState("");
-  const [countries, setCountries] = useState([]);
   const [location, setLocation] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -37,19 +34,16 @@ export const RegisterPage = () => {
       !email ||
       !password ||
       !passwordConfirmation ||
-      !country ||
       !description ||
       !location ||
       !walletAddress
     ) {
-      ;
-      setError("Please fill in all required fields" + country);
+      setError("Please fill in all required fields");
       console.log(
         name,
         email,
         password,
         passwordConfirmation,
-        country,
         description,
         location,
         walletAddress
@@ -67,13 +61,11 @@ export const RegisterPage = () => {
     }
     if (type === "Investor") {
       if (!numberOfEmployees) {
-        ;
         setError("Please fill in all required fields.");
         return;
       }
     } else {
       if (!numberOfMembers) {
-        ;
         setError("Please fill in all required fields.");
         return;
       }
@@ -114,7 +106,6 @@ export const RegisterPage = () => {
       name,
       email,
       password,
-      countryId: country,
       description,
       socialLinks: socialLogins,
       locationName: location,
@@ -140,24 +131,10 @@ export const RegisterPage = () => {
       localStorage.setItem("token", token);
       window.location.href = "/";
     } else {
-      ;
-      ;
       setError("Error on submit");
     }
   };
 
-  useEffect(() => {
-    async function fetchCountries() {
-      try {
-        const response = await GetCountries();
-        setCountries(response.sort((a, b) => a.name.localeCompare(b.name)));
-        ;
-      } catch (err) {
-        ;
-      }
-    }
-    fetchCountries();
-  }, []);
   return (
     <div className={classes.RegisterPage}>
       <span className={classes.Title}>Register your account</span>
@@ -204,24 +181,6 @@ export const RegisterPage = () => {
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
-        <label for="country">Country</label>
-        <select
-          type="text"
-          placeholder="Country"
-          value={country}
-          defaultValue={""}
-          onChange={(e) => {
-            ;
-            setCountry(e.target.value);
-          }}
-        >
-          <option disabled></option>
-          {countries.map((country) => (
-            <option key={country.id} value={country.id}>
-              {country.name}
-            </option>
-          ))}
-        </select>
         <label for="description">Description</label>
         <textarea
           type="text"

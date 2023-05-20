@@ -83,7 +83,7 @@ export const InvestorView = ({
             })}
           </div>
           <div style={{ minHeight: "96px" }}>
-            {investor.id === userInfo.id ? (
+            {userInfo && investor.id === userInfo.id ? (
               <div className={classes.ViewButtons}>
                 <button onClick={tryEdit}>Edit</button>
                 <button onClick={tryDelete}>Delete</button>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getInvestorsByItemId } from "../../../axios/InvestmentsApiCalls";
 import classes from "../index.module.css";
+import { Link } from "react-router-dom";
 
 const EventDonationInfo = ({ project }) => {
   const [investments, setInvestments] = useState([]);
@@ -10,7 +11,7 @@ const EventDonationInfo = ({ project }) => {
       try {
         const data = await getInvestorsByItemId(project.id);
         setInvestments(data.investments);
-      } catch (err) {
+      } catch (err) { console.log(err)
         ;
       }
     })();
@@ -32,7 +33,7 @@ const EventDonationInfo = ({ project }) => {
         <div>
           <h4>Contributor</h4>
           {investments.map((investment, i) => (
-            <div key={i}>{investment.name}</div>
+            <Link to={"/investors/" + investment.investorId}><div key={i}>{investment.name}</div></Link>
           ))}
         </div>
 

@@ -28,9 +28,9 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      // Handle unauthorized error
+      console.log("Unauthorized")
     } else {
-      // Handle other errors
+      console.log(error)
     }
     return Promise.reject(error);
   }
@@ -49,10 +49,6 @@ export async function createInvestor(investor) {
     const response = await api.post("investors", investor);
     return response.data;
   } catch (error) {
-    ;
-    ;
-    
-    ;
     throw new Error(error.message);
   }
 }

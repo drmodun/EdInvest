@@ -26,17 +26,15 @@ export const InvestorPage = () => {
           setInvestor(response);
         }
       } catch (error) {
-        ;
         navigation("/404", { replace: true });
       }
     }
     fetchInvestor();
-  }, [investorId, userInfo.id, navigation]);
+  }, [investorId, navigation]);
 
   useEffect(() => {
     async function fetch() {
       try {
-        ;
         const response = await getItemsForInvestor(investor.id);
         const params = {
           InvestorId: investor.id,
@@ -47,16 +45,15 @@ export const InvestorPage = () => {
         const donations = await getInvestments(params);
         setItems(response.items);
         setDonations(donations.investments);
-        ;
       } catch (err) {
-        ;
+        console.log(err);
       }
     }
     fetch();
   }, [investor.id]);
   function onEdit() {
     navigation("/edit");
-    //connect to edit page later
+    //connect to edit page whe it is made
   }
   async function onDelete() {
     const check = prompt(
@@ -69,9 +66,7 @@ export const InvestorPage = () => {
           userInfo.logOut();
           navigation("/login");
         }
-      } catch (error) {
-        ;
-      }
+      } catch (error) {}
     }
   }
 

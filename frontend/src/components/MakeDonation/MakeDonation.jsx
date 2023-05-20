@@ -57,7 +57,7 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
         setTier(result.tier - 1);
         setDonationExists(true);
         setPreviousAmount(result.amount);
-      } catch (err) {
+      } catch (err) { console.log(err)
         ;
         setAmount(0);
         setTier("not");
@@ -108,7 +108,7 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
       }
       alert("Succesfully made donation!");
       window.location.reload();
-    } catch (err) {
+    } catch (err) { console.log(err)
       ;
     }
   };

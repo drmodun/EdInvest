@@ -29,7 +29,7 @@ export const OrganisationPage = () => {
       }
     }
     fetchOrganisation();
-  }, [organisationId, userInfo.id, navigation]);
+  }, [organisationId, navigation]);
 
   useEffect(() => {
     async function fetch() {
@@ -43,7 +43,7 @@ export const OrganisationPage = () => {
         setItems(response.items);
         setDonations(donations.investments);
         ;
-      } catch (err) {
+      } catch (err) { console.log(err)
         ;
       }
     }
