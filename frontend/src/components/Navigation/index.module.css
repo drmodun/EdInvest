@@ -3,6 +3,7 @@
   height: var(--header-height);
   background: var(--header-background);
   position: fixed;
+  top: 0;
   z-index: 100;
   transition: 200ms;
 }

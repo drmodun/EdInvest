@@ -1,0 +1,62 @@
+.section {
+  display: flex;
+  width: 100%;
+}
+
+.section > div:nth-child(1) {
+  align-self: flex-start;
+  min-width: 322px;
+}
+
+.confetti {
+  position: absolute;
+  top: -55px;
+  right: -93px;
+}
+
+.content {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 40px 100px;
+  position: relative;
+}
+
+.contentTitle {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 50px;
+  margin: 0 0 20px 0;
+}
+
+.contentParagraph {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+}
+
+.contentShare > p {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #5a5a5a;
+  margin-top: 60px;
+}
+
+.contentShareButtons {
+  display: flex;
+  gap: 18px;
+}
+
+.contentShareButtons > button {
+  height: 44px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+}
