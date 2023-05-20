@@ -12,7 +12,7 @@ const Footer = () => {
         <div className={classes.footerLinks}>
           <nav className={classes.footerLinksNav}>
             <a href="/">Home</a>
-            <a href="">About us</a>
+            <a href="/about">About us</a>
             <a href="/projects">Projects</a>
           </nav>
           <div className={classes.footerLinksIcons}>

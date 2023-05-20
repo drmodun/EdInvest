@@ -1,11 +1,8 @@
 import classes from "./index.module.css";
 
-const Button = ({ children, route }) => {
-  const handleButtonClick = () => {
-    window.location.replace(route || "/");
-  };
+const Button = ({ children }) => {
   return (
-    <button className={classes.button} onClick={handleButtonClick}>
+    <button className={classes.button}>
       {children}
     </button>
   );

@@ -4,6 +4,7 @@ import classes from "./index.module.css";
 import DefaultProfile from "../../assets/default-profile.png";
 import Logo from "../../assets/logo.svg";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const handleLogoClick = () => {
@@ -53,9 +54,9 @@ const Navigation = () => {
         </nav>
 
         <div className={classes.headerButtons}>
-          <Button route={"projects/new"}>Create a project</Button>
+          <Link to={"/projects/new"}><Button route={"projects/new"}>Create a project</Button></Link>
           {userInfo ? (
-            <Button route={"/me"}>
+            <Link to={"/me"}><Button >
               <img
                 src={
                   base64regex.test(userInfo.profilePicture) &&
@@ -69,9 +70,9 @@ const Navigation = () => {
               />
 
               <span>{userInfo.name}</span>
-            </Button>
+            </Button></Link>
           ) : (
-            <Button route={"/login"}>Sign In</Button>
+            <Link to={"/login"}><Button >Sign In</Button></Link>
           )}
         </div>
         {userInfo && (

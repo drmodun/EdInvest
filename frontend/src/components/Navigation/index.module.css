@@ -36,6 +36,15 @@
   margin-right: 60px;
 }
 
+.headerNavItem:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.headerNavItem:active {
+  opacity: 0.6;
+}
+
 .headerButtons {
   margin-left: auto;
   display: flex;
@@ -80,5 +89,4 @@
 }
 .LogOut > button:active {
   background-color: #2f8099;
-
 }
