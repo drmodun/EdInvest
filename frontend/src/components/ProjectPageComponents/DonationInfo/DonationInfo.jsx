@@ -11,7 +11,7 @@ const EventDonationInfo = ({ project }) => {
         const data = await getInvestorsByItemId(project.id);
         setInvestments(data.investments);
       } catch (err) {
-        console.log(err.data);
+        ;
       }
     })();
   }, []);

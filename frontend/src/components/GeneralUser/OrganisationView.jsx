@@ -21,7 +21,7 @@ export const OrganisationView = ({
   items,
   donations,
 }) => {
-  console.log(organisation);
+  ;
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   let base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
@@ -31,13 +31,13 @@ export const OrganisationView = ({
   useEffect(() => {
     const tempSocials = [];
     for (let key in organisation.socialLinks) {
-      console.log(key);
+      ;
       if (organisation.socialLinks[key]) {
         tempSocials.push({ name: key, link: organisation.socialLinks[key] });
       }
     }
     setSocials(tempSocials);
-    console.log(tempSocials);
+    ;
   }, [organisation.socialLinks]);
 
   function tryDelete() {

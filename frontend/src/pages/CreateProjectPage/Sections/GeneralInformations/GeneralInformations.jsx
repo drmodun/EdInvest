@@ -123,7 +123,7 @@ const GeneralInformations = ({
       newButtonStatus =
         newButtonStatus && status.averageDuration && status.expectedAudience;
 
-    console.log(newButtonStatus, status, data);
+    ;
 
     setButtonStatus(!newButtonStatus);
   }, [data]);

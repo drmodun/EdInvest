@@ -24,7 +24,7 @@ export const OrganisationPage = () => {
           setOrganisation(response);
         }
       } catch (error) {
-        console.log(error);
+        ;
         navigation("/404", { replace: true });
       }
     }
@@ -34,7 +34,7 @@ export const OrganisationPage = () => {
   useEffect(() => {
     async function fetch() {
       try {
-        console.log(organisation.id);
+        ;
         const params = {
           OrganisationId: organisation.id,
         };
@@ -42,9 +42,9 @@ export const OrganisationPage = () => {
         const donations = await getInvestmentsForOrg(organisation.id);
         setItems(response.items);
         setDonations(donations.investments);
-        console.log(donations.investments, response.items);
+        ;
       } catch (err) {
-        console.log(err);
+        ;
       }
     }
     fetch();
@@ -66,7 +66,7 @@ export const OrganisationPage = () => {
           navigation("/login");
         }
       } catch (error) {
-        console.log(error);
+        ;
       }
     }
   }

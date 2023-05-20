@@ -71,9 +71,9 @@ export async function getMyInvestments(){
 
 export async function getItemsForInvestor(investorId){
     try{
-        console.log(investorId + "investorId");
+        ;
         const response = await api.get(`investments/${investorId}/items`);
-        console.log(response.data);
+        ;
         return response.data;
     }
     catch(error){
@@ -88,7 +88,7 @@ export async function getInvestments(params = {}){
         return response.data;
     }
     catch(error){
-        console.log(params, { params });
+        ;
         throw new Error(error.message);
     }
 }

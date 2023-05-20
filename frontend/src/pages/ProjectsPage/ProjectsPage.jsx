@@ -120,9 +120,9 @@ const ProjectsPage = () => {
             );
           break;
       }
-      console.log(response);
+      ;
     } catch (err) {
-      console.log(err);
+      ;
     }
   };
 
@@ -136,14 +136,14 @@ const ProjectsPage = () => {
     const fetchSubcategories = await getSubcategories();
     setCategories(fetchCategories.categories);
     setSubcategories(fetchSubcategories.subcategories);
-    console.log(fetchCategories);
-    console.log(fetchSubcategories);
+    ;
+    ;
   };
 
   useEffect(() => {
     fetchItems();
     fetchCategoriesAndSubcategories();
-    console.log(items, topItems);
+    ;
   }, []);
 
   return (

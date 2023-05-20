@@ -55,7 +55,7 @@ const ProjectPage = () => {
                 const data = await getCourse(id);
                 setProject(data);
               } catch (err) {
-                console.log(err);
+                ;
               }
             })(id);
             break;
@@ -65,7 +65,7 @@ const ProjectPage = () => {
                 const data = await getApplication(id);
                 setProject(data);
               } catch (err) {
-                console.log(err);
+                ;
               }
             })(id);
             break;
@@ -75,7 +75,7 @@ const ProjectPage = () => {
                 const data = await getOnlineCourse(id);
                 setProject(data);
               } catch (err) {
-                console.log(err);
+                ;
               }
             })(id);
             break;
@@ -85,7 +85,7 @@ const ProjectPage = () => {
                 const data = await getEvent(id);
                 setProject(data);
               } catch (err) {
-                console.log(err);
+                ;
               }
             })(id);
             break;
@@ -98,10 +98,10 @@ const ProjectPage = () => {
           categoryId: data.categoryId,
         });
         setSimilarProjects(getSimilarProjects.items);
-        console.log(project);
-        console.log(subcategory);
+        ;
+        ;
       } catch (err) {
-        console.log(err);
+        ;
       }
     })();
   }, []);

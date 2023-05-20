@@ -23,7 +23,7 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
   const [error, setError] = useState("");
   useState(() => {
     const priceList = [...prices].reverse();
-    console.log(priceList, prices);
+    ;
     const tempTiers = [];
     tempTiers.push({
       name: "Gold",
@@ -53,12 +53,12 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
       try {
         const result = await getInvestment(userInfo.id, id);
         setAmount(result.amount);
-        console.log(result);
+        ;
         setTier(result.tier - 1);
         setDonationExists(true);
         setPreviousAmount(result.amount);
       } catch (err) {
-        console.log(err);
+        ;
         setAmount(0);
         setTier("not");
       }
@@ -80,14 +80,14 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
     setAmount(amount);
     let tierIndex = "not";
     for (let tier of tiers) {
-      console.log(tier.amount, amount);
+      ;
       if (tier.price <= Number(amount)) {
         tierIndex === "not" ? (tierIndex = 0) : tierIndex++;
       }
     }
-    console.log(amount);
+    ;
     setTier(tierIndex);
-    console.log(tierIndex);
+    ;
   };
 
   const handleDonationFail = () => {
@@ -109,7 +109,7 @@ export const MakeDonation = ({ tierAmount, pic, name, id, prices }) => {
       alert("Succesfully made donation!");
       window.location.reload();
     } catch (err) {
-      console.log(err);
+      ;
     }
   };
 

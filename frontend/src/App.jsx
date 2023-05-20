@@ -8,7 +8,7 @@ const tokenCheck = () => {
   if (!token) return;
   const time = JSON.parse(localStorage.getItem("LoginDate"));
   if (Date.now() - time > 8 * 3600000) {
-    console.log("token expired", time);
+    ;
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
     localStorage.removeItem("LoginDate");

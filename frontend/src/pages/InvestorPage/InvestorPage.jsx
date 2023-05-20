@@ -26,7 +26,7 @@ export const InvestorPage = () => {
           setInvestor(response);
         }
       } catch (error) {
-        console.log(error);
+        ;
         navigation("/404", { replace: true });
       }
     }
@@ -36,7 +36,7 @@ export const InvestorPage = () => {
   useEffect(() => {
     async function fetch() {
       try {
-        console.log(investor.id);
+        ;
         const response = await getItemsForInvestor(investor.id);
         const params = {
           InvestorId: investor.id,
@@ -47,9 +47,9 @@ export const InvestorPage = () => {
         const donations = await getInvestments(params);
         setItems(response.items);
         setDonations(donations.investments);
-        console.log(donations.investments, response.items);
+        ;
       } catch (err) {
-        console.log(err);
+        ;
       }
     }
     fetch();
@@ -70,7 +70,7 @@ export const InvestorPage = () => {
           navigation("/login");
         }
       } catch (error) {
-        console.log(error);
+        ;
       }
     }
   }

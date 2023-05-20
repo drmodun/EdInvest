@@ -49,10 +49,10 @@ export async function createInvestor(investor) {
     const response = await api.post("investors", investor);
     return response.data;
   } catch (error) {
-    console.log(error);
-    console.log(error.response);
-    console.log(investor)
-    console.log(error.message);
+    ;
+    ;
+    
+    ;
     throw new Error(error.message);
   }
 }

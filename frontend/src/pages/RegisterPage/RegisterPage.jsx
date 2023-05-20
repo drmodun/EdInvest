@@ -42,7 +42,7 @@ export const RegisterPage = () => {
       !location ||
       !walletAddress
     ) {
-      console.log(countries);
+      ;
       setError("Please fill in all required fields" + country);
       console.log(
         name,
@@ -67,13 +67,13 @@ export const RegisterPage = () => {
     }
     if (type === "Investor") {
       if (!numberOfEmployees) {
-        console.log(numberOfEmployees, type);
+        ;
         setError("Please fill in all required fields.");
         return;
       }
     } else {
       if (!numberOfMembers) {
-        console.log(numberOfMembers, type);
+        ;
         setError("Please fill in all required fields.");
         return;
       }
@@ -140,8 +140,8 @@ export const RegisterPage = () => {
       localStorage.setItem("token", token);
       window.location.href = "/";
     } else {
-      console.log(response);
-      console.log(response.data);
+      ;
+      ;
       setError("Error on submit");
     }
   };
@@ -151,9 +151,9 @@ export const RegisterPage = () => {
       try {
         const response = await GetCountries();
         setCountries(response.sort((a, b) => a.name.localeCompare(b.name)));
-        console.log(response.data);
+        ;
       } catch (err) {
-        console.log(err);
+        ;
       }
     }
     fetchCountries();
@@ -211,7 +211,7 @@ export const RegisterPage = () => {
           value={country}
           defaultValue={""}
           onChange={(e) => {
-            console.log(e.target.value);
+            ;
             setCountry(e.target.value);
           }}
         >

@@ -73,7 +73,7 @@ export async function deleteSubcategory(id) {
 export async function getSubcategory(id) {
   try {
     const response = await api.get(`subcategories/${id}`);
-    console.log(response.data);
+    ;
     return response.data;
   } catch (error) {
     throw new Error(error.message);

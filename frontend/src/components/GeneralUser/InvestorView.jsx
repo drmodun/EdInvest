@@ -21,7 +21,7 @@ export const InvestorView = ({
   items,
   donations,
 }) => {
-  console.log(investor);
+  ;
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   let base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
@@ -31,13 +31,13 @@ export const InvestorView = ({
   useEffect(() => {
     const tempSocials = [];
     for (let key in investor.socialLinks) {
-      console.log(key);
+      ;
       if (investor.socialLinks[key]) {
         tempSocials.push({ name: key, link: investor.socialLinks[key] });
       }
     }
     setSocials(tempSocials);
-    console.log(tempSocials);
+    ;
   }, [investor.socialLinks]);
 
   function tryDelete() {
