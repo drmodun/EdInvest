@@ -3,7 +3,7 @@
     public class GetAllUsersResponse
     {
         public List<GetUserResponse> Users { get; set; }
-        //Add students in the future
+        //Add students in the future, will still keep base files
 
     }
 }

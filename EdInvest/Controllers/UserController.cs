@@ -44,7 +44,6 @@ namespace API.Controllers
             return Ok(item);
         }
         //no reason to be able to create a user which is of an unknown type 
-        //maybe change stff for delete requests later
         [Authorize(AuthConstants.TrustMemberPolicyName)]
         [HttpDelete(AppRoutes.User.Delete)]
         public async Task<ActionResult<DeleteUserResponse>> Delete([FromRoute] Guid id, CancellationToken cancellationToken)

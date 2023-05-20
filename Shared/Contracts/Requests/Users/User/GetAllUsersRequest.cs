@@ -2,7 +2,7 @@
 {
     public class GetAllUsersRequest : GetAllUsersBaseRequest
     {
-        //later add a special kind of filter
+        //this is reserved for a multiType filter
 
     }
 }
